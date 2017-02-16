@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8455BAB91E24F3FB0063200E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455BAB81E24F3FB0063200E /* LoginViewController.swift */; };
 		8455BABB1E24FD5B0063200E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455BABA1E24FD5B0063200E /* User.swift */; };
-		847895E61E48B2CE00E86CA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847895E51E48B2CE00E86CA9 /* RegisterViewController.swift */; };
+		849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849611871E5628FD00E4B4B0 /* RegisterViewController.swift */; };
 		84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B71E1D539D0025412C /* AppDelegate.swift */; };
 		84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B91E1D539D0025412C /* MainViewController.swift */; };
 		84B993BD1E1D539D0025412C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B993BB1E1D539D0025412C /* Main.storyboard */; };
@@ -26,7 +26,7 @@
 /* Begin PBXFileReference section */
 		8455BAB81E24F3FB0063200E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8455BABA1E24FD5B0063200E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		847895E51E48B2CE00E86CA9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ../RegisterViewController.swift; sourceTree = "<group>"; };
+		849611871E5628FD00E4B4B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		84B993B41E1D539D0025412C /* HeyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B993B71E1D539D0025412C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B993B91E1D539D0025412C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +72,7 @@
 		84B993B61E1D539D0025412C /* HeyBook */ = {
 			isa = PBXGroup;
 			children = (
+				849611871E5628FD00E4B4B0 /* RegisterViewController.swift */,
 				84B993B71E1D539D0025412C /* AppDelegate.swift */,
 				84B993B91E1D539D0025412C /* MainViewController.swift */,
 				84BF20471E229974001E883E /* Record.swift */,
@@ -85,7 +86,6 @@
 				84B993D01E1D59E50025412C /* CustomCollectionViewCell.swift */,
 				84B993D21E1D5A540025412C /* HeaderCollectionReusableView.swift */,
 				8455BAB81E24F3FB0063200E /* LoginViewController.swift */,
-				847895E51E48B2CE00E86CA9 /* RegisterViewController.swift */,
 				8455BABA1E24FD5B0063200E /* User.swift */,
 			);
 			path = HeyBook;
@@ -164,8 +164,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8455BAB91E24F3FB0063200E /* LoginViewController.swift in Sources */,
-				847895E61E48B2CE00E86CA9 /* RegisterViewController.swift in Sources */,
 				84B993D31E1D5A540025412C /* HeaderCollectionReusableView.swift in Sources */,
+				849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */,
 				84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */,
 				84B993D11E1D59E50025412C /* CustomCollectionViewCell.swift in Sources */,
 				84B993C01E1D539D0025412C /* HeyBook.xcdatamodeld in Sources */,
