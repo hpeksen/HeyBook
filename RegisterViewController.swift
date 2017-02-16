@@ -14,6 +14,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmField: UITextField!
 
+    
+    //register
     @IBAction func register(_ sender: Any) {
         
         self.nameField.resignFirstResponder()
