@@ -21,6 +21,7 @@
 		84B993D31E1D5A540025412C /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993D21E1D5A540025412C /* HeaderCollectionReusableView.swift */; };
 		84B993D51E1D5EC30025412C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993D41E1D5EC30025412C /* SwiftyJSON.swift */; };
 		84BF20481E229974001E883E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF20471E229974001E883E /* Record.swift */; };
+		C59E09A1FC10E9FB0ED40E59 /* Pods_HeyBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15298B32F56ACD156C6CE6C /* Pods_HeyBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,10 @@
 		84B993D21E1D5A540025412C /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		84B993D41E1D5EC30025412C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		84BF20471E229974001E883E /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		ADA825331E59CE700051BE91 /* SideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SideMenu.framework; path = "Pods/../build/Release-iphoneos/SideMenu/SideMenu.framework"; sourceTree = "<group>"; };
+		C15298B32F56ACD156C6CE6C /* Pods_HeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeyBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C59386519FD572BD8E335A4B /* Pods-HeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeyBook/Pods-HeyBook.debug.xcconfig"; sourceTree = "<group>"; };
+		D4A1C5169754879A6EFF63B6 /* Pods-HeyBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeyBook/Pods-HeyBook.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C59E09A1FC10E9FB0ED40E59 /* Pods_HeyBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +64,8 @@
 			children = (
 				84B993B61E1D539D0025412C /* HeyBook */,
 				84B993B51E1D539D0025412C /* Products */,
+				B3EFC50176E94431302D5977 /* Pods */,
+				8AC9EFD661A6E92A27F01930 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +99,24 @@
 			path = HeyBook;
 			sourceTree = "<group>";
 		};
+		8AC9EFD661A6E92A27F01930 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADA825331E59CE700051BE91 /* SideMenu.framework */,
+				C15298B32F56ACD156C6CE6C /* Pods_HeyBook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3EFC50176E94431302D5977 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C59386519FD572BD8E335A4B /* Pods-HeyBook.debug.xcconfig */,
+				D4A1C5169754879A6EFF63B6 /* Pods-HeyBook.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -98,9 +124,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84B993C91E1D539D0025412C /* Build configuration list for PBXNativeTarget "HeyBook" */;
 			buildPhases = (
+				EBAAC4EF417CF07DECD59169 /* [CP] Check Pods Manifest.lock */,
 				84B993B01E1D539C0025412C /* Sources */,
 				84B993B11E1D539C0025412C /* Frameworks */,
 				84B993B21E1D539C0025412C /* Resources */,
+				BC6F6DB036FA7D95546E4270 /* [CP] Embed Pods Frameworks */,
+				888748E953810830BE4CBB96 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -157,6 +186,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		888748E953810830BE4CBB96 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeyBook/Pods-HeyBook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC6F6DB036FA7D95546E4270 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeyBook/Pods-HeyBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBAAC4EF417CF07DECD59169 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84B993B01E1D539C0025412C /* Sources */ = {
@@ -292,9 +369,14 @@
 		};
 		84B993CA1E1D539D0025412C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C59386519FD572BD8E335A4B /* Pods-HeyBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos/SideMenu",
+				);
 				INFOPLIST_FILE = HeyBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -306,9 +388,14 @@
 		};
 		84B993CB1E1D539D0025412C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4A1C5169754879A6EFF63B6 /* Pods-HeyBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos/SideMenu",
+				);
 				INFOPLIST_FILE = HeyBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

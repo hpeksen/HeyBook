@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class MainViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
     var records: [Record] = []
@@ -28,6 +29,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        SideMenuManager.menuPresentMode = .menuSlideIn
         
         if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
             if let data = try? Data(contentsOf: mURL) {
