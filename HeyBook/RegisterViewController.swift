@@ -14,8 +14,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmField: UITextField!
 
-    
-    //register
     @IBAction func register(_ sender: Any) {
         
         self.nameField.resignFirstResponder()
@@ -27,13 +25,14 @@ class RegisterViewController: UIViewController {
         print(nameField.text ?? "")
         print(mailField.text ?? "")
         print(passwordField.text ?? "")
+        print(passwordField.isEqual(passwordConfirmField.text))
+       // print(nameField.text?.isEmpty)
         
-        if(nameField.text! == "" || mailField.text! == "" || passwordField.text! == "" || passwordConfirmField.text! == "") {
-            
-            
+        if((nameField.text?.isEmpty)! || (mailField.text?.isEmpty)! || (passwordField.text?.isEmpty)! || (passwordConfirmField.text?.isEmpty)!) {
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen bütün alanları doldurunuz", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
+            
             
         }
         else if (passwordField.text! != passwordConfirmField.text! ){
@@ -85,6 +84,8 @@ class RegisterViewController: UIViewController {
                     print("JSON Error: \(error.localizedDescription)")
                 }
                 
+                
+                
             }
             
             task.resume()
@@ -99,12 +100,13 @@ class RegisterViewController: UIViewController {
                     
                 }
             }
+            self.performSegue(withIdentifier: "goToLogin", sender: self)
             
         }
-
         
+
     }
- 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         

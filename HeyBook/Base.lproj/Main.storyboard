@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oOQ-kd-fpM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oOQ-kd-fpM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -22,6 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qza-cG-P6Z">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cgc-A7-RkS">
                                     <size key="itemSize" width="368" height="80"/>
@@ -38,21 +42,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T00-wQ-JYy">
+                                                    <rect key="frame" x="8" y="8" width="235" height="30.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aw0-re-Efk">
+                                                    <rect key="frame" x="283" y="4" width="77" height="72"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="77" id="eeV-5o-g4b"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YAzar Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EJ-ev-w4U">
+                                                    <rect key="frame" x="8" y="51.5" width="120" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Süresi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnG-Rs-CB9">
+                                                    <rect key="frame" x="143" y="51.5" width="100" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="0Oj-r4-aZ3"/>
                                                     </constraints>
@@ -94,6 +102,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Son Eklenenler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn3-yf-psO">
+                                            <rect key="frame" x="8" y="8" width="359" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -137,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1140" y="139"/>
         </scene>
         <!--Listen View Controller-->
         <scene sceneID="k8R-Kk-Voy">
@@ -152,6 +161,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F1-AR-25f">
+                                <rect key="frame" x="308" y="405" width="51" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="51" id="RoM-S8-Ezy"/>
                                 </constraints>
@@ -161,8 +171,11 @@
                                     <action selector="listenBook:" destination="kEl-qy-EIS" eventType="touchUpInside" id="VqB-1K-N8e"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCL-yH-39g"/>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCL-yH-39g">
+                                <rect key="frame" x="0.0" y="1" width="375" height="396"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BookName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUo-zZ-0Oi">
+                                <rect key="frame" x="16" y="405" width="169" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="169" id="ZPX-dE-onI"/>
                                     <constraint firstAttribute="height" constant="41" id="eOB-Ut-TLr"/>
@@ -172,11 +185,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AuthorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4c-2Q-9At">
+                                <rect key="frame" x="16" y="454" width="169" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p3M-i1-Iku">
+                                <rect key="frame" x="16" y="503" width="343" height="156"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="156" id="uBS-Yd-DUU"/>
@@ -186,6 +201,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9u8-wi-jJm">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="31"/>
                                 <state key="normal" title="&lt; Back"/>
                                 <connections>
                                     <segue destination="8qr-Qr-Y9u" kind="presentation" id="VcD-6s-BPP"/>
@@ -225,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K7R-TF-Jua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2677.5999999999999" y="138.98050974512745"/>
+            <point key="canvasLocation" x="2649" y="149"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="se5-4F-kvP">
@@ -239,8 +255,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="5FU-rz-gEp"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="5FU-rz-gEp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmB-mK-mdN">
+                                <rect key="frame" x="5" y="632" width="53" height="30"/>
                                 <state key="normal" title="Kayıt Ol">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -249,11 +268,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0Z-VT-bbN">
+                                <rect key="frame" x="214" y="632" width="156" height="30"/>
                                 <state key="normal" title="Şifrenizi mi unuttunuz?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-1X-akW">
+                                <rect key="frame" x="16" y="8" width="42" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="t2C-Qw-f8M"/>
                                 </constraints>
@@ -263,15 +284,19 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Q84-wc-UZt">
+                                <rect key="frame" x="16" y="-2404" width="343" height="3000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAf-6c-aV8">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="1000"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Ea-55-mcD">
+                                                <rect key="frame" x="66" y="8" width="269" height="980"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kullanici" translatesAutoresizingMaskIntoConstraints="NO" id="8Y1-r2-nSl">
+                                                <rect key="frame" x="16" y="16" width="15" height="964"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="15" id="m0g-WD-jEi"/>
                                                 </constraints>
@@ -289,13 +314,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcH-QV-dnC">
+                                        <rect key="frame" x="0.0" y="1000" width="343" height="1000"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJa-Qp-7gw">
+                                                <rect key="frame" x="65" y="8" width="270" height="980"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parola" translatesAutoresizingMaskIntoConstraints="NO" id="vUY-Pz-o6H">
+                                                <rect key="frame" x="18" y="16" width="15" height="964"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="15" id="pp4-gK-gsM"/>
                                                 </constraints>
@@ -313,8 +341,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ta3-YZ-23v">
+                                        <rect key="frame" x="0.0" y="2000" width="343" height="1000"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsj-st-4d1">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="1000"/>
                                                 <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="Giriş yap">
@@ -367,7 +397,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3d-94-cbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="29W-4P-mTh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1885.5999999999999" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1886" y="139"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="zjX-vj-M8I">
@@ -381,8 +411,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vAK-C8-cDD"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vAK-C8-cDD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rut-Ia-Ub2">
+                                <rect key="frame" x="16" y="10" width="50" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Ktz-QZ-aaa"/>
                                     <constraint firstAttribute="width" constant="50" id="hPa-aU-C3W"/>
@@ -393,6 +426,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kayıt Ol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amj-L9-63a">
+                                <rect key="frame" x="25" y="65" width="140" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="Equ-lm-xkH"/>
                                     <constraint firstAttribute="height" constant="45" id="jKl-Cy-NaG"/>
@@ -402,6 +436,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72a-0s-c3m">
+                                <rect key="frame" x="0.0" y="537" width="375" height="65"/>
                                 <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="xOy-nx-1rN"/>
@@ -411,16 +446,17 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="register:" destination="KWD-gG-kZq" eventType="touchUpInside" id="Pgh-gG-uyS"/>
-                                    <segue destination="hE8-7I-0pU" kind="unwind" unwindAction="unwindToLogin:" id="uYP-31-AsX"/>
+                                    <action selector="register:" destination="KWD-gG-kZq" eventType="touchUpInside" id="h0t-sf-ytz"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zaten bir hesabın var mı?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mz-gt-vg8">
+                                <rect key="frame" x="51" y="616" width="192" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlc-NV-GYg">
+                                <rect key="frame" x="252" y="616" width="77" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Giriş yap">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -430,23 +466,27 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="sGW-M6-nJN">
+                                <rect key="frame" x="16" y="143" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="CEs-LP-bvI"/>
                                     <constraint firstAttribute="height" constant="30" id="aZJ-tN-Ujl"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="aYO-Re-bn8">
+                                <rect key="frame" x="16" y="187" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7qQ-s3-rK8"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="QTF-l4-vbi">
+                                <rect key="frame" x="16" y="240" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="78O-CK-acK"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="İsminiz ve soyisminizi yazınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u2a-So-zdE">
-                                <nil key="textColor"/>
+                                <rect key="frame" x="75" y="143" width="284" height="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -456,7 +496,8 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mail adresinizi yazınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txC-bL-te0">
-                                <nil key="textColor"/>
+                                <rect key="frame" x="75" y="187" width="284" height="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -466,7 +507,8 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Şifrenizi yazınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TTf-qh-1wk">
-                                <nil key="textColor"/>
+                                <rect key="frame" x="75" y="240" width="284" height="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -476,12 +518,14 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="Ode-9M-fTj">
+                                <rect key="frame" x="16" y="293" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nfa-57-kMn"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tekrar şifrenizi yazınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w6s-fV-WG0">
-                                <nil key="textColor"/>
+                                <rect key="frame" x="75" y="293" width="284" height="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -544,6 +588,7 @@
                         <outlet property="nameField" destination="u2a-So-zdE" id="wNY-ep-5Ym"/>
                         <outlet property="passwordConfirmField" destination="w6s-fV-WG0" id="4it-Bl-GU7"/>
                         <outlet property="passwordField" destination="TTf-qh-1wk" id="69u-ty-kQ5"/>
+                        <segue destination="8qr-Qr-Y9u" kind="presentation" identifier="goToLogin" id="wqh-KD-WTr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npw-Ib-GVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -581,6 +626,6 @@
         <image name="user" width="40" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U9P-PK-9wb"/>
+        <segue reference="wqh-KD-WTr"/>
     </inferredMetricsTieBreakers>
 </document>
