@@ -19,6 +19,12 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     var desc = ""
      var demo = ""
     var thumb = ""
+    
+    let mSearchController = UISearchController(searchResultsController: nil)
+    var isSearch=false
+    var originalNavigationView: UIView?
+    var searchedRecords: [Record] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -77,11 +83,48 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func clickSearchButton(_ sender: UIBarButtonItem) {
+        
+        if(isSearch){
+            self.navigationItem.titleView = originalNavigationView
+        } else {
+            originalNavigationView = self.navigationItem.titleView
+            
+            mSearchController.searchResultsUpdater = self
+            self.navigationItem.titleView = mSearchController.searchBar
+            mSearchController.searchBar.delegate = self
+            
+            definesPresentationContext = true
+            
+            mSearchController.dimsBackgroundDuringPresentation = false
+            mSearchController.hidesNavigationBarDuringPresentation = false
+            
+            mSearchController.searchBar.placeholder = "Search books"
+            mSearchController.searchBar.tintColor = UIColor.white
+            mSearchController.searchBar.barTintColor = UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+        }
+        isSearch = !isSearch
+    }
+    
+    func searchedRecordsForSearchText(_ searchText: String) {
+        searchedRecords = records.filter ({ (record: Record) -> Bool in
+            return record.book_title.lowercased().contains(searchText.lowercased())
+        })
+        
+        myCollectionView.reloadData()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = getIndexPathForSelectedCell() {
         if let mVC1 = segue.destination as? LoginViewController {
-            let record = records[indexPath.row]
+            let record: Record
+            
+            if mSearchController.isActive && mSearchController.searchBar.text != "" {
+                record = searchedRecords[indexPath.row]
+            } else {
+                record = records[indexPath.row]
+            }
+            
                 mVC1.desc = record.desc
                 mVC1.authorName = record.author_title
                 mVC1.bookLink = record.demo
@@ -105,6 +148,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        if mSearchController.isActive && mSearchController.searchBar.text != "" {
+            return searchedRecords.count
+        }
+        
         return records.count
         
     }
@@ -123,7 +170,13 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomCollectionViewCell
         
         //let records: [Record] = mDataSource.recordsInSection(indexPath.section)
-        let record = records[indexPath.row]
+        let record: Record
+        
+        if mSearchController.isActive && mSearchController.searchBar.text != "" {
+            record = searchedRecords[indexPath.row]
+        } else {
+            record = records[indexPath.row]
+        }
         cell.authorName.text = record.author_title
         cell.bookName.text = record.book_title
         
@@ -151,13 +204,21 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         return headerView
     }
-    
-    
-    
+}
 
+extension MainViewController: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
     
-    
-    
-    
+    // Tells the delegate that the scope button selection changed
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        searchedRecordsForSearchText(searchBar.text!)
+    }
+}
+
+extension MainViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        searchedRecordsForSearchText(searchController.searchBar.text!)
+    }
 }
 
