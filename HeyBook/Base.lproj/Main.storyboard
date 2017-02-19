@@ -124,7 +124,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HeyBook Vitrin" id="wIf-S2-Scu">
-                        <barButtonItem key="leftBarButtonItem" title="Menü" id="0ZQ-Cf-H0Y"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menü" id="0ZQ-Cf-H0Y">
+                            <connections>
+                                <segue destination="TOK-gn-JzD" kind="presentation" id="r2Q-Q0-YuE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="rNv-h8-LSv">
                             <connections>
                                 <action selector="clickSearchButton:" destination="BYZ-38-t0r" id="ldB-Lq-Va4"/>
@@ -368,6 +372,54 @@
                 <exit id="29W-4P-mTh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1885.5999999999999" y="138.98050974512745"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="Y1M-xT-h6U">
+            <objects>
+                <tableViewController id="KjJ-UM-r8X" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hrK-TV-ddF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Och-qn-nBM">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Och-qn-nBM" id="nqU-4j-vB8">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KjJ-UM-r8X" id="YeF-bw-pMc"/>
+                            <outlet property="delegate" destination="KjJ-UM-r8X" id="Pdh-Nv-vLI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="efO-UT-AM1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qHG-sa-Zv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1094" y="904"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="YUQ-2p-OEH">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="TOK-gn-JzD" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cWV-Y5-ixK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="KjJ-UM-r8X" kind="relationship" relationship="rootViewController" id="WP4-EN-VGe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zdt-4z-jpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="904"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="zjX-vj-M8I">
