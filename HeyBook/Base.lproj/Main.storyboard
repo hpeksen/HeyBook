@@ -245,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K7R-TF-Jua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2649" y="149"/>
+            <point key="canvasLocation" x="1908" y="152"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="se5-4F-kvP">
@@ -401,7 +401,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3d-94-cbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="29W-4P-mTh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="139"/>
+            <point key="canvasLocation" x="2884" y="139"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Y1M-xT-h6U">
@@ -416,7 +416,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Och-qn-nBM" id="nqU-4j-vB8">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -678,6 +678,6 @@
         <image name="user" width="40" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wqh-KD-WTr"/>
+        <segue reference="VcD-6s-BPP"/>
     </inferredMetricsTieBreakers>
 </document>

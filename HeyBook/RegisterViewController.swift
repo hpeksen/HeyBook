@@ -25,8 +25,7 @@ class RegisterViewController: UIViewController {
         print(nameField.text ?? "")
         print(mailField.text ?? "")
         print(passwordField.text ?? "")
-        print(passwordField.isEqual(passwordConfirmField.text))
-       // print(nameField.text?.isEmpty)
+        print(isValidEmail(testStr: mailField.text!))
         
         if((nameField.text?.isEmpty)! || (mailField.text?.isEmpty)! || (passwordField.text?.isEmpty)! || (passwordConfirmField.text?.isEmpty)!) {
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen bütün alanları doldurunuz", preferredStyle: UIAlertControllerStyle.alert)
@@ -34,6 +33,13 @@ class RegisterViewController: UIViewController {
             self.present(longPressAlert, animated: true, completion: nil)
             
             
+        }
+        else if (isValidEmail(testStr: mailField.text!) == false){
+            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen uygun bir mail adresi giriniz(Örnek: heybook@online.com)", preferredStyle: UIAlertControllerStyle.alert)
+            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(longPressAlert, animated: true, completion: nil)
+            
+        
         }
         else if (passwordField.text! != passwordConfirmField.text! ){
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen parola alanlarına aynı parola giriniz", preferredStyle: UIAlertControllerStyle.alert)
@@ -107,6 +113,14 @@ class RegisterViewController: UIViewController {
 
     }
   
+    func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
