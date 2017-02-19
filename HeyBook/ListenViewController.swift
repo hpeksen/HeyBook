@@ -11,7 +11,8 @@ import AVFoundation
 
 class ListenViewController: UIViewController {
 
- var player = AVPlayer()
+    var player = AVPlayer()
+    var timer:Timer!
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
@@ -46,6 +47,14 @@ class ListenViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func checkTime() {
+        if self.player.currentTime().seconds >= 5 {
+            self.player.pause()
+            self.player.replaceCurrentItem(with: nil)
+            timer.invalidate()
+        }
+    }
+    
     @IBAction func listenBook(_ sender: UIButton) {
         
         let url = bookLink
@@ -53,6 +62,15 @@ class ListenViewController: UIViewController {
         player = AVPlayer(playerItem:playerItem)
         player.rate = 1.0;
         player.play()
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ListenViewController.checkTime), userInfo: nil, repeats: true)
+        let t1 = Float(self.player.currentTime().value)
+        let t2 = Float(self.player.currentTime().timescale)
+        let currentSeconds = t1 / t2
+        if(currentSeconds >= 10){
+            player.pause()
+        }
+        
         print("çalıyo ")
         print(bookLink)
     }
