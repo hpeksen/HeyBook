@@ -152,6 +152,7 @@
 				TargetAttributes = {
 					84B993B31E1D539C0025412C = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = V58HAM7S33;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -372,7 +373,7 @@
 			baseConfigurationReference = C59386519FD572BD8E335A4B /* Pods-HeyBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V58HAM7S33;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos/SideMenu",
@@ -391,7 +392,7 @@
 			baseConfigurationReference = D4A1C5169754879A6EFF63B6 /* Pods-HeyBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V58HAM7S33;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos/SideMenu",

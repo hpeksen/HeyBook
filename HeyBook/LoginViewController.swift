@@ -87,7 +87,11 @@ class LoginViewController: UIViewController {
                 
             }
             else if( users[i].mail != userEmail && users[i].password != userPassword){
-                
+                print("HAHAAHAHAHA")
+                    print(users[i].mail)
+                print(userEmail)
+                print(users[i].password)
+                print(userPassword)
                 
                 
                 let tapAlert = UIAlertController(title: "Tapped", message: "Your password and/or your e-mail is NOT correct", preferredStyle: UIAlertControllerStyle.alert)

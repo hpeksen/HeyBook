@@ -131,7 +131,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 mVC1.desc = record.desc
                 mVC1.authorName = record.author_title
                 mVC1.bookLink = record.demo
-                mVC1.bookImage = record.photo
+                mVC1.bookImage = record.thumb
                 mVC1.bookName = record.book_title
             }
         
