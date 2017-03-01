@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
     var bookImage = ""
     
     @IBOutlet weak var myStackView: UIStackView!
+   
     var users: [User] = []
     @IBOutlet weak var eMailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
@@ -38,8 +39,7 @@ class LoginViewController: UIViewController {
         
     // Do any additional setup after loading the view.
     }
-
-    @IBAction func login(_ sender: Any) {
+    @IBAction func loginBtn(_ sender: Any) {
         userEmail = eMailTxt.text!
         userPassword = passwordTxt.text!
         
@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
                     password = json["data"][index]["password"].string!
                     subscribe = json["data"][index]["subscribe"].string!
                     photo = json["data"][index]["photo"].string!
-                 
+                    
                     print(password)
                     print(mail)
                     let user: User = User(user_id: user_id, user_title: user_title, mail: mail, password: password, subscribe: subscribe, photo: photo)
@@ -69,10 +69,10 @@ class LoginViewController: UIViewController {
                     
                     users.append(user)
                 }
-
+                
             }
         }
-       
+        
         
         for i in 0..<users.count{
             if( users[i].mail == userEmail && users[i].password == userPassword){
@@ -88,7 +88,7 @@ class LoginViewController: UIViewController {
             }
             else if( users[i].mail != userEmail && users[i].password != userPassword){
                 print("HAHAAHAHAHA")
-                    print(users[i].mail)
+                print(users[i].mail)
                 print(userEmail)
                 print(users[i].password)
                 print(userPassword)
@@ -99,20 +99,15 @@ class LoginViewController: UIViewController {
                 self.present(tapAlert, animated: true, completion: nil)
                 
                 print("print not correct")
-            
+                
             }
         }
         
         
-        
-        
-        
-        
-   // self.performSegue(withIdentifier: "goMain", sender: self)
+        // self.performSegue(withIdentifier: "goMain", sender: self)
     }
-    
-    
-    
+
+  
     
     func keyboardWillShow(notification: NSNotification) {
         

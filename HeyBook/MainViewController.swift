@@ -12,6 +12,7 @@ import SideMenu
 class MainViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
     var records: [Record] = []
 
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var myCollectionView: UICollectionView!
     var book_title = ""
     var author_title = ""
@@ -29,6 +30,21 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Left menu
+        menuButton.target = revealViewController()
+        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        
+        //Background Image
+        let bgImage = UIImageView();
+        bgImage.image = UIImage(named: "register_bg.png");
+        bgImage.contentMode = .scaleToFill
+        
+        
+        self.myCollectionView?.backgroundView = bgImage
+        
         
         SideMenuManager.menuPresentMode = .menuSlideIn
         
@@ -180,20 +196,28 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         } else {
             record = records[indexPath.row]
         }
+        
+        //Aschronized image loading !!!!
+        URLSession.shared.dataTask(with: NSURL(string: record.photo)! as URL, completionHandler: { (data, response, error) -> Void in
+            if error != nil {
+                print(error)
+                return
+            }
+             DispatchQueue.main.async(execute: { () -> Void in
+        
         cell.authorName.text = record.author_title
         cell.bookName.text = record.book_title
-        
-        
         
         cell.duration.text = record.duration + " min."
         
         
-        let url = URL(string: record.photo)
-        let data = try? Data(contentsOf: url!)
-        
         cell.bookImage.image = UIImage(data: data!)
 
-      
+             })
+            
+        }).resume()
+    
+    
         
         return cell
     }
