@@ -77,16 +77,17 @@ class LoginViewController: UIViewController {
         for i in 0..<users.count{
             if( users[i].mail == userEmail && users[i].password == userPassword){
                 
-                self.performSegue(withIdentifier: "listenView", sender: self)
+                self.performSegue(withIdentifier: "goToListenView", sender: self)
                 
-            } else if(userEmail == "" || userPassword == "") {
+            }
+            else if(userEmail == "" || userPassword == "") {
                 let tapAlert = UIAlertController(title: "Tapped", message: "Email/Password field(s) can NOT be empty", preferredStyle: UIAlertControllerStyle.alert)
                 tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
                 print("not empty")
                 
             }
-            else if( users[i].mail != userEmail && users[i].password != userPassword){
+             else if( users[i].mail != userEmail && users[i].password != userPassword){
                 print("HAHAAHAHAHA")
                 print(users[i].mail)
                 print(userEmail)
@@ -101,6 +102,7 @@ class LoginViewController: UIViewController {
                 print("print not correct")
                 
             }
+          
         }
         
         
@@ -134,21 +136,21 @@ class LoginViewController: UIViewController {
     }
 
     
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "listenView" {
-        if let mVC1 = segue.destination as? ListenViewController {
-                
-                mVC1.desc = desc
-                mVC1.authorName = authorName
-                mVC1.bookLink = bookLink
-                mVC1.bookImage = bookImage
-                mVC1.bookName = bookName
-            }
-        }
-    }
-    
+//    
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "listenView" {
+//        if let mVC1 = segue.destination as? ListenViewController {
+//                
+//                mVC1.desc = desc
+//                mVC1.authorName = authorName
+//                mVC1.bookLink = bookLink
+//                mVC1.bookImage = bookImage
+//                mVC1.bookName = bookName
+//            }
+//        }
+//    }
+//    
     override var prefersStatusBarHidden: Bool {
         return true
     }

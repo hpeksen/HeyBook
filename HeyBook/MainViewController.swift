@@ -135,7 +135,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = getIndexPathForSelectedCell() {
-        if let mVC1 = segue.destination as? LoginViewController {
+        if let mVC1 = segue.destination as? ListenViewController {
             let record: Record
             
             if mSearchController.isActive && mSearchController.searchBar.text != "" {
@@ -208,6 +208,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         cell.authorName.text = record.author_title
         cell.bookName.text = record.book_title
         
+                
         cell.duration.text = record.duration + " min."
         
         
@@ -222,6 +223,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         return cell
     }
     
+  
     // For each header setting the data
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
