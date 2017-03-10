@@ -46,6 +46,14 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             
             revealViewController.pushFrontViewController(newFrontViewController, animated: true)
         }
+        if (cell.lblMenuButton.text! == "Ayarlar")
+        {
+            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+            let newFrontViewController = UINavigationController.init(rootViewController: desController)
+            
+            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+        }
 
     }
     override var prefersStatusBarHidden: Bool {

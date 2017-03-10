@@ -42,7 +42,6 @@ class LoginViewController: UIViewController {
     @IBAction func loginBtn(_ sender: Any) {
         userEmail = eMailTxt.text!
         userPassword = passwordTxt.text!
-        
         self.eMailTxt.resignFirstResponder()
         self.passwordTxt.resignFirstResponder()
         
@@ -65,7 +64,7 @@ class LoginViewController: UIViewController {
                     print(password)
                     print(mail)
                     let user: User = User(user_id: user_id, user_title: user_title, mail: mail, password: password, subscribe: subscribe, photo: photo)
-                    
+            
                     
                     users.append(user)
                 }
@@ -78,6 +77,7 @@ class LoginViewController: UIViewController {
             if( users[i].mail == userEmail && users[i].password == userPassword){
                 
                 self.performSegue(withIdentifier: "goToListenView", sender: self)
+                
                 
             }
             else if(userEmail == "" || userPassword == "") {

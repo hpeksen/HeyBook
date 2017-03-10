@@ -42,7 +42,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T00-wQ-JYy">
-                                                    <rect key="frame" x="36" y="8" width="61.5" height="30"/>
+                                                    <rect key="frame" x="36" y="8" width="62" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -119,13 +119,28 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="BfW-A1-ghd"/>
                                 </connections>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4bp-R0-X4C">
+                                <rect key="frame" x="16" y="72" width="343" height="29"/>
+                                <segments>
+                                    <segment title="Son Eklenenler"/>
+                                    <segment title="En Popüler"/>
+                                    <segment title="Çok Satılan"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="segmentedBtn:" destination="BYZ-38-t0r" eventType="valueChanged" id="cVd-0N-29Z"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="qza-cG-P6Z" secondAttribute="trailing" id="3CY-Ti-7XC"/>
                             <constraint firstItem="qza-cG-P6Z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OaS-J2-ldP"/>
                             <constraint firstItem="qza-cG-P6Z" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="mPJ-Xv-FiZ"/>
+                            <constraint firstItem="4bp-R0-X4C" firstAttribute="centerX" secondItem="qza-cG-P6Z" secondAttribute="centerX" id="mrw-Os-VvO"/>
                             <constraint firstItem="qza-cG-P6Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oh4-k9-RZ9"/>
+                            <constraint firstItem="4bp-R0-X4C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="rXZ-4s-cSd"/>
+                            <constraint firstItem="4bp-R0-X4C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z92-nG-Nym"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HeyBook Vitrin" id="wIf-S2-Scu">
@@ -139,11 +154,75 @@
                     <connections>
                         <outlet property="menuButton" destination="0ZQ-Cf-H0Y" id="LYa-Ja-Tyw"/>
                         <outlet property="myCollectionView" destination="qza-cG-P6Z" id="jqR-lE-MJB"/>
+                        <outlet property="segmentedController" destination="4bp-R0-X4C" id="jkl-Xf-xpz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1864.8" y="138.98050974512745"/>
+        </scene>
+        <!--Ayarlar-->
+        <scene sceneID="YT1-vx-AlG">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kxq-es-MRb" customClass="SettingsViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OqX-MM-D0c"/>
+                        <viewControllerLayoutGuide type="bottom" id="MxN-tG-TOq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ngC-Q0-k4m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İsmim :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psv-wy-cVJ">
+                                <rect key="frame" x="41" y="75" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mailim :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGg-Ar-sjS">
+                                <rect key="frame" x="41" y="137" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsB-dq-MYW">
+                                <rect key="frame" x="166" y="75" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytE-RG-DNk">
+                                <rect key="frame" x="166" y="137" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fsB-dq-MYW" firstAttribute="leading" secondItem="ytE-RG-DNk" secondAttribute="leading" id="35H-ho-yjh"/>
+                            <constraint firstItem="VGg-Ar-sjS" firstAttribute="top" secondItem="Psv-wy-cVJ" secondAttribute="bottom" constant="41" id="80J-bT-oa0"/>
+                            <constraint firstItem="Psv-wy-cVJ" firstAttribute="trailing" secondItem="VGg-Ar-sjS" secondAttribute="trailing" id="OGk-Vu-oV3"/>
+                            <constraint firstItem="VGg-Ar-sjS" firstAttribute="baseline" secondItem="ytE-RG-DNk" secondAttribute="baseline" id="Qxg-Sr-rfo"/>
+                            <constraint firstItem="Psv-wy-cVJ" firstAttribute="leading" secondItem="ngC-Q0-k4m" secondAttribute="leadingMargin" constant="25" id="YGP-WP-coF"/>
+                            <constraint firstItem="Psv-wy-cVJ" firstAttribute="top" secondItem="OqX-MM-D0c" secondAttribute="bottom" constant="55" id="ZjR-Zt-Mfb"/>
+                            <constraint firstItem="fsB-dq-MYW" firstAttribute="trailing" secondItem="ytE-RG-DNk" secondAttribute="trailing" id="aVo-Ob-QFp"/>
+                            <constraint firstItem="fsB-dq-MYW" firstAttribute="leading" secondItem="Psv-wy-cVJ" secondAttribute="trailing" constant="46" id="hW3-xg-kLo"/>
+                            <constraint firstItem="fsB-dq-MYW" firstAttribute="centerX" secondItem="ngC-Q0-k4m" secondAttribute="centerX" id="jUW-Ra-gxB"/>
+                            <constraint firstItem="Psv-wy-cVJ" firstAttribute="baseline" secondItem="fsB-dq-MYW" secondAttribute="baseline" id="sXE-UV-3Tj"/>
+                            <constraint firstItem="Psv-wy-cVJ" firstAttribute="leading" secondItem="VGg-Ar-sjS" secondAttribute="leading" id="teb-tc-rzp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ayarlar" id="tKC-Gx-ZlI">
+                        <barButtonItem key="leftBarButtonItem" title="Menü" id="rkO-td-9ix"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnMenu" destination="rkO-td-9ix" id="LSs-c0-cvf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSb-3S-ugw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2814" y="854"/>
         </scene>
         <!--Listen View Controller-->
         <scene sceneID="k8R-Kk-Voy">
@@ -169,7 +248,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCL-yH-39g">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="395"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="375"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BookName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUo-zZ-0Oi">
                                 <rect key="frame" x="16" y="425" width="169" height="41"/>
@@ -627,7 +706,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npw-Ib-GVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hE8-7I-0pU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3950" y="949"/>
+            <point key="canvasLocation" x="3950" y="853"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="iiQ-Up-Mtn">
@@ -742,6 +821,6 @@
         <image name="user" width="40" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wqh-KD-WTr"/>
+        <segue reference="e9v-yY-wUy"/>
     </inferredMetricsTieBreakers>
 </document>

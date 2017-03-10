@@ -21,12 +21,20 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     var desc = ""
      var demo = ""
     var thumb = ""
+    @IBOutlet weak var segmentedController: UISegmentedControl!
     
     let mSearchController = UISearchController(searchResultsController: nil)
     var isSearch=false
     var originalNavigationView: UIView?
     var searchedRecords: [Record] = []
     
+    @IBAction func segmentedBtn(_ sender: Any) {
+        
+       myCollectionView.reloadData()
+        
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,7 +53,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         self.myCollectionView?.backgroundView = bgImage
         
-        
+
         SideMenuManager.menuPresentMode = .menuSlideIn
         
         if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
@@ -178,7 +186,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         //return mDataSource.groups.count
-        return 3
+        return 1
     }
     
     
@@ -228,9 +236,20 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderCollectionReusableView
+        if(segmentedController.selectedSegmentIndex == 0 )
+        {
+        headerView.header.text = "Son Eklenenler"
+        }
         
+        if(segmentedController.selectedSegmentIndex == 1 )
+        {
+            headerView.header.text = "En Populer"
+        }
         
-        
+        if(segmentedController.selectedSegmentIndex == 2 )
+        {
+            headerView.header.text = "Çok satan"
+        }
         return headerView
     }
 }
