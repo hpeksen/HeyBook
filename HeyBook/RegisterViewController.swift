@@ -50,11 +50,11 @@ class RegisterViewController: UIViewController {
         }
         else {
             
-            let myUrl = NSURL(string: "http://heybook.online/test.php");
+            let myUrl = NSURL(string: "http://heybook.online/api.php?request=register&user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)");
             let request = NSMutableURLRequest(url:myUrl! as URL);
-            request.httpMethod = "POST"
+            request.httpMethod = "GET"
             // Compose a query string
-            let postString = "user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)";
+            let postString = "request=register&user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)";
             request.httpBody = postString.data(using: String.Encoding.utf8);
             
             let task = URLSession.shared.dataTask(with: request as URLRequest) {
@@ -96,16 +96,16 @@ class RegisterViewController: UIViewController {
             
             task.resume()
             
-            
-            if let rURL = URL(string: "http://heybook.online/api.php?request=users") { //http://heybook.online/api.php?request=books
-                if let data = try? Data(contentsOf: rURL) {
-                    let json = JSON(data: data)
-                    print(json)
-                    print("ekledi..")
-                    
-                    
-                }
-            }
+//            //bütün kullanıcıları yazdır
+//            if let rURL = URL(string: "http://heybook.online/api.php?request=users") { //http://heybook.online/api.php?request=books
+//                if let data = try? Data(contentsOf: rURL) {
+//                    let json = JSON(data: data)
+//                    print(json)
+//                    print("ekledi..")
+//                    
+//                    
+//                }
+//            }
             self.performSegue(withIdentifier: "goToLogin", sender: self)
             
         }
@@ -127,15 +127,19 @@ class RegisterViewController: UIViewController {
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 //        
-         if let rURL = URL(string: "http://heybook.online/api.php?request=users") { //http://heybook.online/api.php?request=books
-        if let data = try? Data(contentsOf: rURL) {
-            let json = JSON(data: data)
-            print(json)
-            print("ekleyecek")
+        
+//        //bütün kullanıcıları yazdır
+//         if let rURL = URL(string: "http://heybook.online/api.php?request=users") { //http://heybook.online/api.php?request=books
+//        if let data = try? Data(contentsOf: rURL) {
+//            let json = JSON(data: data)
+//            print(json)
+//            print("ekleyecek")
+//        
+//        
+//        }
+//        }
         
         
-        }
-        }
         // Do any additional setup after loading the view.
     }
     
