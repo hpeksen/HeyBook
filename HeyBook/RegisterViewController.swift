@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmField: UITextField!
 
+    var registerResponse = ""
     @IBAction func register(_ sender: Any) {
         
         self.nameField.resignFirstResponder()
@@ -22,10 +23,10 @@ class RegisterViewController: UIViewController {
         self.passwordConfirmField.resignFirstResponder()
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         
-        print(nameField.text ?? "")
-        print(mailField.text ?? "")
-        print(passwordField.text ?? "")
-        print(isValidEmail(testStr: mailField.text!))
+       // print(nameField.text ?? "")
+       // print(mailField.text ?? "")
+       // print(passwordField.text ?? "")
+        //print(isValidEmail(testStr: mailField.text!))
         
         if((nameField.text?.isEmpty)! || (mailField.text?.isEmpty)! || (passwordField.text?.isEmpty)! || (passwordConfirmField.text?.isEmpty)!) {
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen bütün alanları doldurunuz", preferredStyle: UIAlertControllerStyle.alert)
@@ -50,51 +51,82 @@ class RegisterViewController: UIViewController {
         }
         else {
             
-            let myUrl = NSURL(string: "http://heybook.online/api.php?request=register&user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)");
-            let request = NSMutableURLRequest(url:myUrl! as URL);
-            request.httpMethod = "GET"
-            // Compose a query string
-            let postString = "request=register&user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)";
-            request.httpBody = postString.data(using: String.Encoding.utf8);
             
-            let task = URLSession.shared.dataTask(with: request as URLRequest) {
-                data, response, error in
-                
-                if error != nil
-                {
-                    print("error=\(error)")
-                    return
+            if let mURL = URL(string: "http://heybook.online/api.php?request=register&user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)") { //http://heybook.online/api.php?request=books
+                if let data = try? Data(contentsOf: mURL) {
+                    let json = JSON(data: data)
+                    print(json)
+                    registerResponse = json["response"].string!
+                    let total = json["data"].count
+                    print(total)
+                    print(registerResponse)
+                    
+                    
                 }
-                
-                // You can print out response object
-                print("response = \(response)")
-                
-                // Print out response body
-                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                print("responseString = \(responseString)")
-                
-                //Let’s convert response sent from a server side script to a NSDictionary object:
-                
-                do{
-                    
-                    let myJSON = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? NSDictionary
-                    
-                    if let parseJSON = myJSON {
-                        // Now we can access value of First Name by its key
-                        let firstNameValue = parseJSON["password"] as? String
-                        print("firstNameValue: \(firstNameValue)")
-                    }
-                    
-                    
-                }catch let error as NSError {
-                    print("JSON Error: \(error.localizedDescription)")
-                }
-                
-                
-                
             }
             
-            task.resume()
+            
+            if(registerResponse == "error"){
+            
+                let longPressAlert = UIAlertController(title: "Hata", message: "Bu e-mail adresi kullanılıyor. Lütfen başka bir e-mail adresi giriniz!", preferredStyle: UIAlertControllerStyle.alert)
+                longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(longPressAlert, animated: true, completion: nil)
+                
+            
+            
+            }
+            
+            if(registerResponse == "success"){
+            
+            self.performSegue(withIdentifier: "goToLogin", sender: self)
+            
+            }
+            
+//            let myUrl = NSURL(string: "http://heybook.online/api.php?request=register&user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)");
+//            let request = NSMutableURLRequest(url:myUrl! as URL);
+//            request.httpMethod = "GET"
+//            // Compose a query string
+//            let postString = "request=register&user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)";
+//            request.httpBody = postString.data(using: String.Encoding.utf8);
+//        
+//            let task = URLSession.shared.dataTask(with: request as URLRequest) {
+//                data, response, error in
+//                
+//                if error != nil
+//                {
+//                    print("error=\(error)")
+//                    return
+//                }
+//                
+//                // You can print out response object
+//                print("response = \(response)")
+//                
+//                // Print out response body
+//                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+//                print("responseString = \(responseString)")
+//                
+//                //Let’s convert response sent from a server side script to a NSDictionary object:
+//                
+//                do{
+//                    
+//                    let myJSON = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? NSDictionary
+//                    
+//                    if let parseJSON = myJSON {
+//                        // Now we can access value of First Name by its key
+//                        let firstNameValue = parseJSON["password"] as? String
+//                        print("firstNameValue: \(firstNameValue)")
+//                    }
+//                    
+//                    
+//                }catch let error as NSError {
+//                    print("JSON Error: \(error.localizedDescription)")
+//                }
+//                
+//                
+//                
+//            }
+//            
+//            task.resume()
             
 //            //bütün kullanıcıları yazdır
 //            if let rURL = URL(string: "http://heybook.online/api.php?request=users") { //http://heybook.online/api.php?request=books
@@ -106,7 +138,7 @@ class RegisterViewController: UIViewController {
 //                    
 //                }
 //            }
-            self.performSegue(withIdentifier: "goToLogin", sender: self)
+            
             
         }
         

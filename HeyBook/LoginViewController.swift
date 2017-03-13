@@ -11,21 +11,8 @@ import UIKit
 class LoginViewController: UIViewController {
     
     
-    var password = ""
-    var user_id = ""
-    var user_title = ""
-    var mail = ""
-    var subscribe = ""
-    var photo = ""
     
-    var userEmail = ""
-    var userPassword = ""
-    
-    var desc = ""
-    var bookName = ""
-    var authorName = ""
-    var bookLink = ""
-    var bookImage = ""
+    var response = ""
     
     @IBOutlet weak var myStackView: UIStackView!
    
@@ -40,71 +27,56 @@ class LoginViewController: UIViewController {
     // Do any additional setup after loading the view.
     }
     @IBAction func loginBtn(_ sender: Any) {
-        userEmail = eMailTxt.text!
-        userPassword = passwordTxt.text!
+     
         self.eMailTxt.resignFirstResponder()
         self.passwordTxt.resignFirstResponder()
         
-        if let mURL = URL(string: "http://heybook.online/api.php?request=users") { //http://heybook.online/api.php?request=books
+        
+        if(eMailTxt.text == "" || passwordTxt.text == "" ) {
+        
+            let tapAlert = UIAlertController(title: "Tapped", message: "Lütfen bütün alanları doldurunuz!", preferredStyle: UIAlertControllerStyle.alert)
+            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(tapAlert, animated: true, completion: nil)
+        
+        }
+            
+            
+            
+        else {
+        
+        
+        
+        if let mURL = URL(string: "http://heybook.online/api.php?request=login&mail=\(eMailTxt.text!)&password=\(passwordTxt.text!)") { //http://heybook.online/api.php?request=books
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
                 print(json)
-                
+                response = json["response"].string!
                 let total = json["data"].count
                 print(total)
+                print(response)
                 
-                for index in 0..<total {
-                    user_id = json["data"][index]["user_id"].string!
-                    user_title = json["data"][index]["user_title"].string!
-                    mail = json["data"][index]["mail"].string!
-                    password = json["data"][index]["password"].string!
-                    subscribe = json["data"][index]["subscribe"].string!
-                    photo = json["data"][index]["photo"].string!
-                    
-                    print(password)
-                    print(mail)
-                    let user: User = User(user_id: user_id, user_title: user_title, mail: mail, password: password, subscribe: subscribe, photo: photo)
+
+            }
+        }
             
-                    
-                    users.append(user)
-                }
-                
-            }
-        }
-        
-        
-        for i in 0..<users.count{
-            if( users[i].mail == userEmail && users[i].password == userPassword){
-                
-                self.performSegue(withIdentifier: "goToListenView", sender: self)
-                
-                
-            }
-            else if(userEmail == "" || userPassword == "") {
-                let tapAlert = UIAlertController(title: "Tapped", message: "Email/Password field(s) can NOT be empty", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                self.present(tapAlert, animated: true, completion: nil)
-                print("not empty")
-                
-            }
-             else if( users[i].mail != userEmail && users[i].password != userPassword){
-                print("HAHAAHAHAHA")
-                print(users[i].mail)
-                print(userEmail)
-                print(users[i].password)
-                print(userPassword)
-                
-                
-                let tapAlert = UIAlertController(title: "Tapped", message: "Your password and/or your e-mail is NOT correct", preferredStyle: UIAlertControllerStyle.alert)
+            if(response == "error"){
+                let tapAlert = UIAlertController(title: "Tapped", message: "Girilen e-mail ya da şifre yanlış! Lütfen tekrar deneyiniz. 3 hakkınız var :) ", preferredStyle: UIAlertControllerStyle.alert)
                 tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
                 
-                print("print not correct")
-                
+            
+            
             }
-          
-        }
+            
+            
+            if(response == "success"){
+            self.performSegue(withIdentifier: "goToListenView", sender: self)
+            
+            }
         
+            
+        }
+   
         
         // self.performSegue(withIdentifier: "goMain", sender: self)
     }
