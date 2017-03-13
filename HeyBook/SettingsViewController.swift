@@ -11,7 +11,15 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var btnMenu: UIBarButtonItem!
+    @IBOutlet weak var LoginOl: UIButton!
+    @IBOutlet weak var userTitleLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
 
+    @IBOutlet weak var viewLoggedIn: UIView!
+    
+    var mail = ""
+    var userTitle = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,9 +27,31 @@ class SettingsViewController: UIViewController {
         btnMenu.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
+        print("ayarlar ekranındayım")
+        
+        print(mail)
+        print(userTitle)
         // Do any additional setup after loading the view.
+        
+        if(mail == "" || userTitle == ""){
+        
+            viewLoggedIn.isHidden = true
+            LoginOl.isHidden = false
+           
+        }
+        else {
+            
+            viewLoggedIn.isHidden = false
+            LoginOl.isHidden = true
+        
+            userTitleLabel.text = userTitle
+            emailLabel.text = mail
+        
+        }
+    
     }
 
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

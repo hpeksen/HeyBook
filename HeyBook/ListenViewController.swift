@@ -27,6 +27,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     var bookImage = ""
     
     
+
+    
     //voice
     @IBOutlet weak var textView: UITextView!
     
@@ -102,7 +104,23 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     
+    //satın al butounu
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //voice
+    
+    
+    
     
     
     

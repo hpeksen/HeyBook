@@ -13,6 +13,8 @@ class LoginViewController: UIViewController {
     
     
     var response = ""
+    var mail = ""
+    var userTitle = ""
     
     @IBOutlet weak var myStackView: UIStackView!
    
@@ -21,9 +23,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTxt: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        
     // Do any additional setup after loading the view.
     }
     @IBAction func loginBtn(_ sender: Any) {
@@ -52,8 +54,13 @@ class LoginViewController: UIViewController {
                 print(json)
                 response = json["response"].string!
                 let total = json["data"].count
+                mail = json["data"]["mail"].description
+                userTitle = json["data"]["user_title"].description
                 print(total)
                 print(response)
+                print(mail)
+                print(userTitle)
+                
                 
 
             }
@@ -71,6 +78,8 @@ class LoginViewController: UIViewController {
             
             if(response == "success"){
             self.performSegue(withIdentifier: "goToListenView", sender: self)
+                
+                
             
             }
         
@@ -83,46 +92,45 @@ class LoginViewController: UIViewController {
 
   
     
-    func keyboardWillShow(notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-        
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }
-    
-    
+//    func keyboardWillShow(notification: NSNotification) {
+//        
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0{
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//        
+//    }
+//    
+//    func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                self.view.frame.origin.y += keyboardSize.height
+//            }
+//        }
+//    }
+//    
+//    
     
     @IBAction func unwindToLogin(_ sender: UIStoryboardSegue) {
         
     }
 
     
-//    
-//    
+    
+    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "listenView" {
+//
+//        if(segue.identifier == "goToListenView"){
 //        if let mVC1 = segue.destination as? ListenViewController {
 //                
-//                mVC1.desc = desc
-//                mVC1.authorName = authorName
-//                mVC1.bookLink = bookLink
-//                mVC1.bookImage = bookImage
-//                mVC1.bookName = bookName
+//                mVC1.mail = mail
+//                mVC1.userTitle = userTitle
 //            }
-//        }
+//            }
+//        
 //    }
-//    
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

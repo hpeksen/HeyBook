@@ -59,10 +59,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
-                print(json)
+                //print(json)
                 
                 let total = json["data"].count
-                print(total)
+                //print(total)
                 
                    for index in 0..<total {
                  book_title = json["data"][index]["book_title"].string!
@@ -72,10 +72,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 desc = json["data"][index]["description"].string!
                  demo = json["data"][index]["audio"].string!
                    thumb = json["data"][index]["thumb"].string!
-                print(book_title)
-                print(author_title)
-                print(duration)
-                print(photo)
+                //print(book_title)
+                //print(author_title)
+                //print(duration)
+                //print(photo)
                     let record: Record = Record(book_title: book_title, author_title: author_title, duration: duration, photo: photo, desc: desc, demo: demo,thumb: thumb)
                     
                     
