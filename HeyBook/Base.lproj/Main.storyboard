@@ -386,6 +386,9 @@
                                 <state key="normal" title="Şifrenizi mi unuttunuz?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="hgk-PL-VnZ" kind="presentation" id="mYp-jS-djT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-1X-akW">
                                 <rect key="frame" x="16" y="8" width="42" height="50"/>
@@ -510,6 +513,77 @@
                 <exit id="29W-4P-mTh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3950" y="139"/>
+        </scene>
+        <!--New Password View Controller-->
+        <scene sceneID="8hG-4w-tVU">
+            <objects>
+                <viewController id="hgk-PL-VnZ" customClass="NewPasswordViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Xt-ew-pTG"/>
+                        <viewControllerLayoutGuide type="bottom" id="ivV-ww-7yr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Hb-aH-Le0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="jmg-96-6Vu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETE-B3-E6F">
+                                <rect key="frame" x="16" y="0.0" width="42" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Wi7-uZ-ce2"/>
+                                </constraints>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <segue destination="zKy-e2-q97" kind="unwind" unwindAction="unwindToLogin:" id="hvq-TD-OZK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otP-Ns-ZSd">
+                                <rect key="frame" x="30" y="353" width="314" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.01072909524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="iqu-3u-IA9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Şifremi Sıfırla">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newPasswordBtn:" destination="hgk-PL-VnZ" eventType="touchUpInside" id="Kb2-k9-7Nu"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lütfen e-mail adresinizi giriniz" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9x-vm-epT">
+                                <rect key="frame" x="30" y="308" width="314" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ivV-ww-7yr" firstAttribute="top" secondItem="otP-Ns-ZSd" secondAttribute="bottom" constant="284" id="Fih-AU-sDk"/>
+                            <constraint firstAttribute="trailing" secondItem="jmg-96-6Vu" secondAttribute="trailing" id="Ke7-1q-kn7"/>
+                            <constraint firstItem="b9x-vm-epT" firstAttribute="centerX" secondItem="jmg-96-6Vu" secondAttribute="centerX" id="MZi-iA-ZhB"/>
+                            <constraint firstItem="ivV-ww-7yr" firstAttribute="top" secondItem="jmg-96-6Vu" secondAttribute="bottom" id="NHT-iS-X5I"/>
+                            <constraint firstItem="b9x-vm-epT" firstAttribute="leading" secondItem="otP-Ns-ZSd" secondAttribute="leading" id="RRu-rC-uAT"/>
+                            <constraint firstItem="b9x-vm-epT" firstAttribute="trailing" secondItem="otP-Ns-ZSd" secondAttribute="trailing" id="b02-3U-juN"/>
+                            <constraint firstItem="ETE-B3-E6F" firstAttribute="leading" secondItem="3Hb-aH-Le0" secondAttribute="leadingMargin" id="ccV-lH-peO"/>
+                            <constraint firstItem="ETE-B3-E6F" firstAttribute="top" secondItem="1Xt-ew-pTG" secondAttribute="bottom" id="lun-lT-150"/>
+                            <constraint firstItem="jmg-96-6Vu" firstAttribute="leading" secondItem="3Hb-aH-Le0" secondAttribute="leading" id="oHm-pg-six"/>
+                            <constraint firstItem="jmg-96-6Vu" firstAttribute="top" secondItem="3Hb-aH-Le0" secondAttribute="top" id="pzu-Tk-4VD"/>
+                            <constraint firstItem="otP-Ns-ZSd" firstAttribute="top" secondItem="b9x-vm-epT" secondAttribute="bottom" constant="15" id="u3s-LL-AUe"/>
+                            <constraint firstItem="b9x-vm-epT" firstAttribute="leading" secondItem="3Hb-aH-Le0" secondAttribute="leadingMargin" constant="14" id="xkx-Ah-cm7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myTextField" destination="b9x-vm-epT" id="wHJ-jX-NNH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIb-hE-xQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zKy-e2-q97" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4685.6000000000004" y="138.98050974512745"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="zjX-vj-M8I">
@@ -821,6 +895,6 @@
         <image name="user" width="40" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e9v-yY-wUy"/>
+        <segue reference="wqh-KD-WTr"/>
     </inferredMetricsTieBreakers>
 </document>
