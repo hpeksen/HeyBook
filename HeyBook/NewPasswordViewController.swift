@@ -69,7 +69,7 @@ class NewPasswordViewController: UIViewController {
         else if(newPasswordResponse == "success"){
         
         
-            let longPressAlert = UIAlertController(title: "Hata", message: "Yeni şifreniz mail adresinize gönderildi.", preferredStyle: UIAlertControllerStyle.alert)
+            let longPressAlert = UIAlertController(title: "Mesaj", message: "Yeni şifreniz mail adresinize gönderildi.", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
             

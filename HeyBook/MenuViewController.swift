@@ -15,7 +15,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     var iconImage: Array = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Favorilerim","Sepet","Satınalma Geçmişi","Ayarlar","Çıkış Yap"]
+        menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar","Çıkış Yap"]
         
        
         // Do any additional setup after loading the view.
