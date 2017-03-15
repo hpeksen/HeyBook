@@ -62,6 +62,20 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             
             revealViewController.pushFrontViewController(newFrontViewController, animated: true)
         }
+        if (cell.lblMenuButton.text! == "Çıkış Yap")
+        {
+            UserDefaults.standard.setValue(nil, forKey: "user_mail")
+            UserDefaults.standard.setValue(nil, forKey: "user_title")
+            
+            print("pirint")
+            
+            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+            let newFrontViewController = UINavigationController.init(rootViewController: desController)
+            
+            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+            
+        }
 
     }
     override var prefersStatusBarHidden: Bool {

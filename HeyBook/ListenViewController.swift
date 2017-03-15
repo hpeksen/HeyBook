@@ -27,6 +27,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     var bookImage = ""
     
     
+  
+    
 
     
     //voice
@@ -51,6 +53,26 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        if UserDefaults.standard.value(forKey: "desc") != nil || UserDefaults.standard.value(forKey: "demo") != nil {
+//            desc = UserDefaults.standard.value(forKey: "desc") as! String
+//            bookName = UserDefaults.standard.value(forKey: "book_title") as! String
+//            authorName = UserDefaults.standard.value(forKey: "author_name") as! String
+//            bookLink = UserDefaults.standard.value(forKey: "demo") as! String
+//            bookImage = UserDefaults.standard.value(forKey: "thumb") as! String
+//        }
+        
+        let dataa = UserDefaults.standard.data(forKey: "book_record")
+            let record = NSKeyedUnarchiver.unarchiveObject(with: dataa!) as? Record
+            
+            //record?.forEach({print( $0.desc, $0.book_title)})
+            
+            desc = (record?.desc)!
+            bookName = (record?.book_title)!
+            authorName = (record?.author_title)!
+            bookLink = (record?.demo)!
+            bookImage = (record?.thumb)!
+        
+        
         
         //voice
         microphoneButton.isEnabled = false
@@ -94,6 +116,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         print("YÜKLEDİİİİİİ")
         let url = URL(string: bookImage)
         let data = try? Data(contentsOf: url!)
+        
         print(bookImage)
         print("BOOOOKKİMAAAAJJJ")
 

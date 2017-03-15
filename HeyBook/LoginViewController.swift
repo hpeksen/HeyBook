@@ -25,18 +25,22 @@ class LoginViewController: UIViewController {
    
     @IBOutlet weak var eMailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(parentView == "listen"){
-        backBtn.isHidden = false
+        if UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "listenView") as! ListenViewController
+            self.present(nextViewController, animated:true, completion:nil)
         }
-        else {
+        
+      
         btnMenu.target = revealViewController()
         btnMenu.action = #selector(SWRevealViewController.revealToggle(_:))
         //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        backBtn.isHidden = true
-        }
+        
         
         
         
@@ -94,7 +98,13 @@ class LoginViewController: UIViewController {
             
             
             if(response == "success"){
-            self.performSegue(withIdentifier: "goToListenView", sender: self)
+                UserDefaults.standard.setValue(mail, forKey: "user_mail")
+                UserDefaults.standard.setValue(userTitle, forKey: "user_title")
+                
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "listenView") as! ListenViewController
+                self.present(nextViewController, animated:true, completion:nil)
                 
                 
             

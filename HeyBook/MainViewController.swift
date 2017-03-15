@@ -63,7 +63,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+      self.view.backgroundColor = UIColor(patternImage: UIImage(named: "register_bg.png")!)
         //image animation
 
         carouselView.type = .rotary
@@ -75,18 +75,19 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
-        
-        //Background Image
-        let bgImage = UIImageView();
-        bgImage.image = UIImage(named: "register_bg.png");
-        bgImage.contentMode = .scaleToFill
-        
-        
-        self.myCollectionView?.backgroundView = bgImage
-        
+//        
+//        //Background Image
+//        let bgImage = UIImageView();
+//        bgImage.image = UIImage(named: "register_bg.png");
+//        bgImage.contentMode = .scaleToFill
+//        
+//        
+//        self.myCollectionView?.backgroundView = bgImage
+//        
+        self.myCollectionView.backgroundColor = UIColor.clear
 
         SideMenuManager.menuPresentMode = .menuSlideIn
-        
+    
 
     
     
@@ -250,11 +251,22 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 record = records[indexPath.row]
             }
             
-                mVC1.desc = record.desc
-                mVC1.authorName = record.author_title
-                mVC1.bookLink = record.demo
-                mVC1.bookImage = record.thumb
-                mVC1.bookName = record.book_title
+//            UserDefaults.standard.setValue(record.book_title, forKey: "book_title")
+//            UserDefaults.standard.setValue(record.desc, forKey: "desc")
+//            UserDefaults.standard.setValue(record.demo, forKey: "demo")
+//            UserDefaults.standard.setValue(record.author_title, forKey: "author_name")
+//            UserDefaults.standard.setValue(record.thumb, forKey: "thumb")
+            
+        
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+            
+//                mVC1.desc = record.desc
+//                mVC1.authorName = record.author_title
+//                mVC1.bookLink = record.demo
+//                mVC1.bookImage = record.thumb
+//                mVC1.bookName = record.book_title
             }
         
         }
