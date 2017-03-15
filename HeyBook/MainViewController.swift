@@ -9,9 +9,33 @@
 import UIKit
 import SideMenu
 
-class MainViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
+class MainViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, iCarouselDelegate,iCarouselDataSource  {
     var records: [Record] = []
-
+    
+    var imageAnim : [String] = []
+    
+    //image animation(carousel)
+    @IBOutlet weak var carouselView: iCarousel!
+    var numbers = [Int]()
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("ŞİKLKJHGCHVHJHJK")
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var myCollectionView: UICollectionView!
     var book_title = ""
@@ -39,6 +63,13 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        //image animation
+
+        carouselView.type = .rotary
+        
+       
+        
         //Left menu
         menuButton.target = revealViewController()
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -56,6 +87,18 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 
         SideMenuManager.menuPresentMode = .menuSlideIn
         
+
+    
+    
+    }
+
+    
+    
+    
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
@@ -64,35 +107,90 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 let total = json["data"].count
                 //print(total)
                 
-                   for index in 0..<total {
-                 book_title = json["data"][index]["book_title"].string!
-                 author_title = json["data"][index]["author_title"].string!
-                duration = json["data"][index]["duration"].string!
-                 photo = json["data"][index]["photo"].string!
-                desc = json["data"][index]["description"].string!
-                 demo = json["data"][index]["audio"].string!
-                   thumb = json["data"][index]["thumb"].string!
-                //print(book_title)
-                //print(author_title)
-                //print(duration)
-                //print(photo)
+                for index in 0..<total {
+                    book_title = json["data"][index]["book_title"].string!
+                    author_title = json["data"][index]["author_title"].string!
+                    duration = json["data"][index]["duration"].string!
+                    photo = json["data"][index]["photo"].string!
+                    desc = json["data"][index]["description"].string!
+                    demo = json["data"][index]["audio"].string!
+                    thumb = json["data"][index]["thumb"].string!
+                    //print(book_title)
+                    //print(author_title)
+                    //print(duration)
+                    //print(photo)
                     let record: Record = Record(book_title: book_title, author_title: author_title, duration: duration, photo: photo, desc: desc, demo: demo,thumb: thumb)
                     
                     
+                    
+                    
                     records.append(record)
-                
+                    
+                    
+                    
                 }
                 
             }
             else {
                 print("NSdata error")
-            
+                
             }
         }
+        
+        
+        
+        
+        
+        
+        
+    }
     
     
+    func numberOfItems(in carousel: iCarousel) -> Int {
+        return records.count
+    }
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 150 , height: 150))
+        
+        
+        
+        
+        
+        
+        // Aschronized image loading !!!!
+        URLSession.shared.dataTask(with: NSURL(string: records[index].photo)! as URL, completionHandler: { (data, response, error) -> Void in
+            if error != nil {
+                print(error)
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                
+                let button = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+                button.setTitle("\(index)", for: .normal)
+                button.setImage(UIImage(data: data!), for: .normal)
+                //                            button.imageView?.image = UIImage(data: data!)
+                tempView.addSubview(button)
+                
+                
+                //cell.bookImage.image = UIImage(data: data!)
+                
+            })
+            
+        }).resume()
+        
+        
+        return tempView
+    }
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        if option == iCarouselOption.spacing{
+            return 1
+        }
+        return value
     }
 
+    
+    
     
     @IBAction func unwindToVitrin(_ sender: UIStoryboardSegue) {
         
@@ -221,7 +319,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         
         cell.bookImage.image = UIImage(data: data!)
-
+                
              })
             
         }).resume()

@@ -18,7 +18,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar","Çıkış Yap"]
         
        
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.  LoginFromMenuViewController
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +50,14 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         {
             let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let desController = mainStoryboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+            let newFrontViewController = UINavigationController.init(rootViewController: desController)
+            
+            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+        }
+        if (cell.lblMenuButton.text! == "Giriş Yap")
+        {
+            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryboard.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
             let newFrontViewController = UINavigationController.init(rootViewController: desController)
             
             revealViewController.pushFrontViewController(newFrontViewController, animated: true)

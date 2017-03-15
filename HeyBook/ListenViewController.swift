@@ -104,7 +104,18 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     
-    //satın al butounu
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      
+            if let mVC1 = segue.destination as? LoginViewController {
+                
+                
+                mVC1.parentView = "listen"
+              
+            }
+            
+        }
+        
+    
     
 
     

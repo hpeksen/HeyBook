@@ -16,13 +16,30 @@ class LoginViewController: UIViewController {
     var mail = ""
     var userTitle = ""
     
+    var parentView = ""
+    
     @IBOutlet weak var myStackView: UIStackView!
    
-    var users: [User] = []
+    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var btnMenu: UIBarButtonItem!
+   
     @IBOutlet weak var eMailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(parentView == "listen"){
+        backBtn.isHidden = false
+        }
+        else {
+        btnMenu.target = revealViewController()
+        btnMenu.action = #selector(SWRevealViewController.revealToggle(_:))
+        //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        backBtn.isHidden = true
+        }
+        
+        
+        
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 //        
