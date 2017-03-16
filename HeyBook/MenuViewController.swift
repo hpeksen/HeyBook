@@ -13,11 +13,18 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var imgIcon: UIImageView!
     var menuNameArr: Array = [String]()
     var iconImage: Array = [UIImage]()
+    var isLogin:Bool=false
+    
+    @IBOutlet weak var myTableView: UITableView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loginOrNot()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar","Çıkış Yap"]
+        menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar"]
         
-       
         // Do any additional setup after loading the view.  LoginFromMenuViewController
     }
 
@@ -56,12 +63,20 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         }
         if (cell.lblMenuButton.text! == "Giriş Yap")
         {
+            if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+                let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let desController = mainStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                let newFrontViewController = UINavigationController.init(rootViewController: desController)
+             revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+            }
+            else {
             let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let desController = mainStoryboard.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
             let newFrontViewController = UINavigationController.init(rootViewController: desController)
             
             revealViewController.pushFrontViewController(newFrontViewController, animated: true)
-        }
+            }
+            }
         if (cell.lblMenuButton.text! == "Çıkış Yap")
         {
             UserDefaults.standard.setValue(nil, forKey: "user_mail")
@@ -80,6 +95,18 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func loginOrNot(){
+        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+            isLogin=true
+            menuNameArr[5]="Çıkış Yap"
+        }
+        else {
+            isLogin=false
+            menuNameArr[5]="Giriş Yap"
+        }
+        myTableView.reloadData()
     }
     
     /*

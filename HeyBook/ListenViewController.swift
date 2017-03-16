@@ -52,25 +52,19 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        if UserDefaults.standard.value(forKey: "desc") != nil || UserDefaults.standard.value(forKey: "demo") != nil {
-//            desc = UserDefaults.standard.value(forKey: "desc") as! String
-//            bookName = UserDefaults.standard.value(forKey: "book_title") as! String
-//            authorName = UserDefaults.standard.value(forKey: "author_name") as! String
-//            bookLink = UserDefaults.standard.value(forKey: "demo") as! String
-//            bookImage = UserDefaults.standard.value(forKey: "thumb") as! String
-//        }
         
-        let dataa = UserDefaults.standard.data(forKey: "book_record")
-            let record = NSKeyedUnarchiver.unarchiveObject(with: dataa!) as? Record
-            
-            //record?.forEach({print( $0.desc, $0.book_title)})
-            
-            desc = (record?.desc)!
-            bookName = (record?.book_title)!
-            authorName = (record?.author_title)!
-            bookLink = (record?.demo)!
-            bookImage = (record?.thumb)!
+       if let dataa = UserDefaults.standard.data(forKey: "book_record"),
+        let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
+        
+            desc = (record.desc)
+            bookName = (record.book_title)
+            authorName = (record.author_title)
+            bookLink = (record.demo)
+            bookImage = (record.thumb)
+       } else {
+        print("olmadi lan....")
+
+        }
         
         
         
@@ -139,9 +133,25 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
     
-    
+    //ssatın al butonu
 
     
+    @IBAction func satinAlBtn(_ sender: Any) {
+        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+        
+            //satın alma ekranına gidecek
+         
+        }
+        else {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+            
+            
+            self.present(nextViewController, animated:true, completion:nil)
+        }
+
+        
+    }
     
     
     

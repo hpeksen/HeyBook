@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
         print(userTitle)
         // Do any additional setup after loading the view.
         
-        if(mail == "" || userTitle == ""){
+        if(UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
         
             viewLoggedIn.isHidden = true
             LoginOl.isHidden = false
@@ -44,8 +44,8 @@ class SettingsViewController: UIViewController {
             viewLoggedIn.isHidden = false
             LoginOl.isHidden = true
         
-            userTitleLabel.text = userTitle
-            emailLabel.text = mail
+            userTitleLabel.text =  UserDefaults.standard.value(forKey: "user_title") as? String
+            emailLabel.text = UserDefaults.standard.value(forKey: "user_mail") as? String
         
         }
     

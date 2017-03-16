@@ -232,6 +232,17 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         isSearch = !isSearch
     }
     
+    
+    //satın al butonu
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func searchedRecordsForSearchText(_ searchText: String) {
         searchedRecords = records.filter ({ (record: Record) -> Bool in
             return record.book_title.lowercased().contains(searchText.lowercased())
