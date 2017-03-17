@@ -139,6 +139,10 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func satinAlBtn(_ sender: Any) {
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
         
+            let tapAlert = UIAlertController(title: "Satın Al", message: "satın alma ekranına gidecek", preferredStyle: UIAlertControllerStyle.alert)
+            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(tapAlert, animated: true, completion: nil)
+            
             //satın alma ekranına gidecek
          
         }

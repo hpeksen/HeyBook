@@ -14,7 +14,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     var menuNameArr: Array = [String]()
     var iconImage: Array = [UIImage]()
     var isLogin:Bool=false
-    
+    var menu = ""
     @IBOutlet weak var myTableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,7 +62,10 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             revealViewController.pushFrontViewController(newFrontViewController, animated: true)
         }
         if (cell.lblMenuButton.text! == "Giriş Yap")
+            
         {
+            menu = "menu"
+         
             if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                 let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let desController = mainStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
@@ -96,6 +99,19 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let mVC1 = segue.destination as? LoginViewController {
+            
+            
+            mVC1.parentView = menu
+            
+        }
+        
+    }
+    
     
     func loginOrNot(){
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){

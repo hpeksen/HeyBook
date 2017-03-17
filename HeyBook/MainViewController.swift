@@ -73,7 +73,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         //Left menu
         menuButton.target = revealViewController()
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+      //r  self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
 //        
 //        //Background Image
@@ -168,12 +168,13 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 
                 
                 let button = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
-                button.setTitle("\(index)", for: .normal)
+                button.setTitle("\(self.records[index].book_title)", for: .normal)
                 button.setImage(UIImage(data: data!), for: .normal)
                 //                            button.imageView?.image = UIImage(data: data!)
                 tempView.addSubview(button)
                 
-                
+                button.addTarget(self, action: #selector(self.click), for: .touchUpInside)
+              
                 //cell.bookImage.image = UIImage(data: data!)
                 
             })
@@ -182,6 +183,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         
         return tempView
+    }
+    
+    func click(sender: UIButton!) {
+        print("click")
+        print(sender.titleLabel?.text)
     }
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         if option == iCarouselOption.spacing{

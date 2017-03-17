@@ -28,8 +28,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
- 
+        print("parent")
+ print(parentView)
         
         
         if UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil {
@@ -105,12 +105,24 @@ class LoginViewController: UIViewController {
             if(response == "success"){
                 UserDefaults.standard.setValue(mail, forKey: "user_mail")
                 UserDefaults.standard.setValue(userTitle, forKey: "user_title")
+                print("hebelehübele")
+                print(parentView)
+                if(parentView == ""){
                 
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "listenView") as! ListenViewController
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
                 self.present(nextViewController, animated:true, completion:nil)
+                }
+                else if (parentView == "listen"){
                 
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "listenView") as! ListenViewController
+                    self.present(nextViewController, animated:true, completion:nil)
+                    
+                
+                }
                 
             
             }

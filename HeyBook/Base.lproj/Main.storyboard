@@ -258,6 +258,9 @@
                                 <state key="normal" title="Lütfen Giriş Yapınız">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="8qr-Qr-Y9u" kind="presentation" id="KsW-go-FkU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1068,5 +1071,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lfy-Vi-6Km"/>
+        <segue reference="KsW-go-FkU"/>
     </inferredMetricsTieBreakers>
 </document>
