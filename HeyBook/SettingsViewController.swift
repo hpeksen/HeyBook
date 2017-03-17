@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class SettingsViewController: UIViewController {
 
@@ -23,9 +24,14 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnMenu.target = revealViewController()
-        btnMenu.action = #selector(SWRevealViewController.revealToggle(_:))
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        menuLeftNavigationController.leftSide = true
+        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        SideMenuManager.menuPresentMode = .menuSlideIn
 
         print("ayarlar ekranındayım")
         
@@ -51,6 +57,9 @@ class SettingsViewController: UIViewController {
     
     }
 
+    @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
+        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+    }
     
     override var prefersStatusBarHidden: Bool {
         return true

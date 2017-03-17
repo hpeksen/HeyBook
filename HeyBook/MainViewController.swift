@@ -35,8 +35,6 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     
     
-    
-    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var myCollectionView: UICollectionView!
     var book_title = ""
     var author_title = ""
@@ -68,12 +66,16 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 
         carouselView.type = .rotary
         
-       
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        menuLeftNavigationController.leftSide = true
+        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
         
-        //Left menu
-        menuButton.target = revealViewController()
-        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-      //r  self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        SideMenuManager.menuPresentMode = .menuSlideIn
+        
+       
         
 //        
 //        //Background Image
@@ -86,14 +88,13 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 //        
         self.myCollectionView.backgroundColor = UIColor.clear
 
-        SideMenuManager.menuPresentMode = .menuSlideIn
-    
-
     
     
     }
 
-    
+    @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
+        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+    }
     
     
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
@@ -38,60 +39,55 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
        
-        cell.lblMenuButton.text! = menuNameArr[indexPath.row]
+        cell.textLabel?.text = menuNameArr[indexPath.row]
+        cell.imageView?.image=UIImage(named: "kullanici")
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let revealViewController: SWRevealViewController = self.revealViewController()
-        let cell:MenuTableViewCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
+        let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
+        let cell = tableView.cellForRow(at: indexPath!)! as UITableViewCell
         
-        if (cell.lblMenuButton.text! == "HeyBook! Vitrin")
+        SideMenuManager.menuPushStyle = .popWhenPossible
+        
+        if (cell.textLabel?.text == "HeyBook! Vitrin")
         {
-            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-            let newFrontViewController = UINavigationController.init(rootViewController: desController)
-            
-            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
         }
-        if (cell.lblMenuButton.text! == "Ayarlar")
+        if (cell.textLabel?.text == "Ayarlar")
         {
-            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
-            let newFrontViewController = UINavigationController.init(rootViewController: desController)
-            
-            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
         }
-        if (cell.lblMenuButton.text! == "Giriş Yap")
+        if (cell.textLabel?.text == "Giriş Yap")
             
         {
             menu = "menu"
          
             if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
-                let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let desController = mainStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-                let newFrontViewController = UINavigationController.init(rootViewController: desController)
-             revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                self.navigationController?.pushViewController(controller, animated: true)
             }
             else {
-            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryboard.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
-            let newFrontViewController = UINavigationController.init(rootViewController: desController)
-            
-            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                self.navigationController?.pushViewController(controller, animated: true)
             }
-            }
-        if (cell.lblMenuButton.text! == "Çıkış Yap")
+        }
+        if (cell.textLabel?.text == "Çıkış Yap")
         {
             UserDefaults.standard.setValue(nil, forKey: "user_mail")
             UserDefaults.standard.setValue(nil, forKey: "user_title")
             
             print("pirint")
             
-            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-            let newFrontViewController = UINavigationController.init(rootViewController: desController)
-            
-            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
             
         }
 
