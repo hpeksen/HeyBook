@@ -11,123 +11,150 @@ import UIKit
 class LoginViewController: UIViewController {
     
     
-    var password = ""
-    var user_id = ""
-    var user_title = ""
+    
+    var response = ""
     var mail = ""
-    var subscribe = ""
-    var photo = ""
+    var userTitle = ""
     
-    var userEmail = ""
-    var userPassword = ""
-    
-    var desc = ""
-    var bookName = ""
-    var authorName = ""
-    var bookLink = ""
-    var bookImage = ""
+    var parentView = ""
     
     @IBOutlet weak var myStackView: UIStackView!
    
-    var users: [User] = []
+    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var btnMenu: UIBarButtonItem!
+   
     @IBOutlet weak var eMailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        print("parent")
+ print(parentView)
         
+        
+        if UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "listenView") as! ListenViewController
+            
+        
+            self.present(nextViewController, animated:true, completion:nil)
+        }
+        
+      
+        btnMenu.target = revealViewController()
+        btnMenu.action = #selector(SWRevealViewController.revealToggle(_:))
+        //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        
+        
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        
     // Do any additional setup after loading the view.
     }
     @IBAction func loginBtn(_ sender: Any) {
-        userEmail = eMailTxt.text!
-        userPassword = passwordTxt.text!
-        
+     
         self.eMailTxt.resignFirstResponder()
         self.passwordTxt.resignFirstResponder()
         
-        if let mURL = URL(string: "http://heybook.online/api.php?request=users") { //http://heybook.online/api.php?request=books
+        
+        if(eMailTxt.text == "" || passwordTxt.text == "" ) {
+        
+            let tapAlert = UIAlertController(title: "Tapped", message: "Lütfen bütün alanları doldurunuz!", preferredStyle: UIAlertControllerStyle.alert)
+            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(tapAlert, animated: true, completion: nil)
+        
+        }
+            
+            
+            
+        else {
+        
+        
+        
+        if let mURL = URL(string: "http://heybook.online/api.php?request=login&mail=\(eMailTxt.text!)&password=\(passwordTxt.text!)") { //http://heybook.online/api.php?request=books
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
                 print(json)
-                
+                response = json["response"].string!
                 let total = json["data"].count
+                mail = json["data"]["mail"].description
+                userTitle = json["data"]["user_title"].description
                 print(total)
+                print(response)
+                print(mail)
+                print(userTitle)
                 
-                for index in 0..<total {
-                    user_id = json["data"][index]["user_id"].string!
-                    user_title = json["data"][index]["user_title"].string!
-                    mail = json["data"][index]["mail"].string!
-                    password = json["data"][index]["password"].string!
-                    subscribe = json["data"][index]["subscribe"].string!
-                    photo = json["data"][index]["photo"].string!
+                
+
+            }
+        }
+            
+            if(response == "error"){
+                let tapAlert = UIAlertController(title: "Tapped", message: "Girilen e-mail ya da şifre yanlış! Lütfen tekrar deneyiniz. 3 hakkınız var :) ", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+            
+            
+            }
+            
+            
+            if(response == "success"){
+                UserDefaults.standard.setValue(mail, forKey: "user_mail")
+                UserDefaults.standard.setValue(userTitle, forKey: "user_title")
+                print("hebelehübele")
+                print(parentView)
+                if(parentView == ""){
+                
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                self.present(nextViewController, animated:true, completion:nil)
+                }
+                else if (parentView == "listen"){
+                
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     
-                    print(password)
-                    print(mail)
-                    let user: User = User(user_id: user_id, user_title: user_title, mail: mail, password: password, subscribe: subscribe, photo: photo)
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "listenView") as! ListenViewController
+                    self.present(nextViewController, animated:true, completion:nil)
                     
-                    
-                    users.append(user)
+                
                 }
                 
+            
             }
+        
+            
         }
-        
-        
-        for i in 0..<users.count{
-            if( users[i].mail == userEmail && users[i].password == userPassword){
-                
-                self.performSegue(withIdentifier: "listenView", sender: self)
-                
-            } else if(userEmail == "" || userPassword == "") {
-                let tapAlert = UIAlertController(title: "Tapped", message: "Email/Password field(s) can NOT be empty", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                self.present(tapAlert, animated: true, completion: nil)
-                print("not empty")
-                
-            }
-            else if( users[i].mail != userEmail && users[i].password != userPassword){
-                print("HAHAAHAHAHA")
-                print(users[i].mail)
-                print(userEmail)
-                print(users[i].password)
-                print(userPassword)
-                
-                
-                let tapAlert = UIAlertController(title: "Tapped", message: "Your password and/or your e-mail is NOT correct", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                self.present(tapAlert, animated: true, completion: nil)
-                
-                print("print not correct")
-                
-            }
-        }
-        
+   
         
         // self.performSegue(withIdentifier: "goMain", sender: self)
     }
 
   
     
-    func keyboardWillShow(notification: NSNotification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-        
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }
-    
-    
+//    func keyboardWillShow(notification: NSNotification) {
+//        
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0{
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//        
+//    }
+//    
+//    func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                self.view.frame.origin.y += keyboardSize.height
+//            }
+//        }
+//    }
+//    
+//    
     
     @IBAction func unwindToLogin(_ sender: UIStoryboardSegue) {
         
@@ -136,18 +163,17 @@ class LoginViewController: UIViewController {
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "listenView" {
-        if let mVC1 = segue.destination as? ListenViewController {
-                
-                mVC1.desc = desc
-                mVC1.authorName = authorName
-                mVC1.bookLink = bookLink
-                mVC1.bookImage = bookImage
-                mVC1.bookName = bookName
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if(segue.identifier == "goToListenView"){
+//        if let mVC1 = segue.destination as? ListenViewController {
+//                
+//                mVC1.mail = mail
+//                mVC1.userTitle = userTitle
+//            }
+//            }
+//        
+//    }
     
     override var prefersStatusBarHidden: Bool {
         return true

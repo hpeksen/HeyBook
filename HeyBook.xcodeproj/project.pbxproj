@@ -13,6 +13,10 @@
 		846AC0FF1E67582D00C95001 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AC0FE1E67582D00C95001 /* SWRevealViewController.m */; };
 		846AC1011E67594100C95001 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1001E67594100C95001 /* MenuViewController.swift */; };
 		846AC1031E67595C00C95001 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1021E67595C00C95001 /* MenuTableViewCell.swift */; };
+		846AC1051E70665300C95001 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1041E70665300C95001 /* SettingsViewController.swift */; };
+		846AC1081E77141300C95001 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1071E77141300C95001 /* NewPasswordViewController.swift */; };
+		846AC10A1E7736D600C95001 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1091E7736D600C95001 /* PurchaseViewController.swift */; };
+		846AC1351E7858A900C95001 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1341E7858A900C95001 /* iCarousel.m */; };
 		849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849611871E5628FD00E4B4B0 /* RegisterViewController.swift */; };
 		84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B71E1D539D0025412C /* AppDelegate.swift */; };
 		84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B91E1D539D0025412C /* MainViewController.swift */; };
@@ -37,6 +41,11 @@
 		846AC0FE1E67582D00C95001 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		846AC1001E67594100C95001 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		846AC1021E67595C00C95001 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		846AC1041E70665300C95001 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		846AC1071E77141300C95001 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
+		846AC1091E7736D600C95001 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		846AC1331E7858A900C95001 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		846AC1341E7858A900C95001 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		849611871E5628FD00E4B4B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		84B993B41E1D539D0025412C /* HeyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B993B71E1D539D0025412C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +101,8 @@
 			children = (
 				846AC0FD1E67582D00C95001 /* SWRevealViewController.h */,
 				846AC0FE1E67582D00C95001 /* SWRevealViewController.m */,
+				846AC1331E7858A900C95001 /* iCarousel.h */,
+				846AC1341E7858A900C95001 /* iCarousel.m */,
 				849611871E5628FD00E4B4B0 /* RegisterViewController.swift */,
 				84B993B71E1D539D0025412C /* AppDelegate.swift */,
 				84B993B91E1D539D0025412C /* MainViewController.swift */,
@@ -111,6 +122,9 @@
 				8455BAB81E24F3FB0063200E /* LoginViewController.swift */,
 				8455BABA1E24FD5B0063200E /* User.swift */,
 				846AC0FC1E67582C00C95001 /* HeyBook-Bridging-Header.h */,
+				846AC1041E70665300C95001 /* SettingsViewController.swift */,
+				846AC1071E77141300C95001 /* NewPasswordViewController.swift */,
+				846AC1091E7736D600C95001 /* PurchaseViewController.swift */,
 			);
 			path = HeyBook;
 			sourceTree = "<group>";
@@ -259,14 +273,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				846AC0FF1E67582D00C95001 /* SWRevealViewController.m in Sources */,
+				846AC1351E7858A900C95001 /* iCarousel.m in Sources */,
 				8455BAB91E24F3FB0063200E /* LoginViewController.swift in Sources */,
 				84B993D31E1D5A540025412C /* HeaderCollectionReusableView.swift in Sources */,
 				846AC1011E67594100C95001 /* MenuViewController.swift in Sources */,
+				846AC1081E77141300C95001 /* NewPasswordViewController.swift in Sources */,
 				849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */,
 				84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */,
 				84B993D11E1D59E50025412C /* CustomCollectionViewCell.swift in Sources */,
+				846AC1051E70665300C95001 /* SettingsViewController.swift in Sources */,
 				846AC0881E66F03400C95001 /* VoiceViewController.swift in Sources */,
 				84B993C01E1D539D0025412C /* HeyBook.xcdatamodeld in Sources */,
+				846AC10A1E7736D600C95001 /* PurchaseViewController.swift in Sources */,
 				84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */,
 				84B993D51E1D5EC30025412C /* SwiftyJSON.swift in Sources */,
 				84BF20481E229974001E883E /* Record.swift in Sources */,

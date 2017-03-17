@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Record {
+@objc(Blog)
+class Record : NSObject, NSCoding {
     
     var book_title: String
     var author_title: String
@@ -27,5 +28,26 @@ class Record {
         self.demo = demo
         self.thumb=thumb
     }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let book_title = aDecoder.decodeObject(forKey: "book_title") as! String
+        let author_title = aDecoder.decodeObject(forKey: "author_title") as! String
+        let duration = aDecoder.decodeObject(forKey: "duration") as! String
+        let photo = aDecoder.decodeObject(forKey: "photo") as! String
+        let desc = aDecoder.decodeObject(forKey: "desc") as! String
+        let demo = aDecoder.decodeObject(forKey: "demo") as! String
+        let thumb = aDecoder.decodeObject(forKey: "thumb") as! String
         
+        self.init(book_title: book_title, author_title: author_title, duration: duration, photo: photo, desc: desc, demo: demo, thumb: thumb)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(book_title, forKey: "book_title")
+        aCoder.encode(author_title, forKey: "author_title")
+        aCoder.encode(duration, forKey: "duration")
+        aCoder.encode(photo, forKey: "photo")
+        aCoder.encode(desc, forKey: "desc")
+        aCoder.encode(demo, forKey: "demo")
+        aCoder.encode(thumb, forKey: "thumb")
+    }
 }
