@@ -147,11 +147,10 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
          
         }
         else {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
-            
-            
-            self.present(nextViewController, animated:true, completion:nil)
+            print("girdiiii")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+            self.navigationController?.pushViewController(controller, animated: true)
         }
 
         

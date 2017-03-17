@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class LoginViewController: UIViewController {
     
@@ -42,9 +43,14 @@ class LoginViewController: UIViewController {
         }
         
       
-        btnMenu.target = revealViewController()
-        btnMenu.action = #selector(SWRevealViewController.revealToggle(_:))
-        //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        menuLeftNavigationController.leftSide = true
+        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        SideMenuManager.menuPresentMode = .menuSlideIn
         
         
         
@@ -54,6 +60,11 @@ class LoginViewController: UIViewController {
 //        
     // Do any additional setup after loading the view.
     }
+    
+    @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
+        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+    }
+    
     @IBAction func loginBtn(_ sender: Any) {
      
         self.eMailTxt.resignFirstResponder()
@@ -109,17 +120,15 @@ class LoginViewController: UIViewController {
                 print(parentView)
                 if(parentView == ""){
                 
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-                self.present(nextViewController, animated:true, completion:nil)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
                 }
                 else if (parentView == "listen"){
                 
-                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                    
-                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "listenView") as! ListenViewController
-                    self.present(nextViewController, animated:true, completion:nil)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "listenView")
+                    self.navigationController?.pushViewController(controller, animated: true)
                     
                 
                 }
