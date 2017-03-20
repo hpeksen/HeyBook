@@ -188,7 +188,103 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     func click(sender: UIButton!) {
         print("click")
-        print(sender.titleLabel?.text)
+        print((sender.titleLabel?.text)!)
+        
+       // record = records[indexPath.row]
+
+      
+        
+        
+        if((sender.titleLabel?.text)! == "Vurun Kahpeye"){
+            let record: Record
+            record = records[0]
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+            
+
+            
+        }
+        
+        else if((sender.titleLabel?.text)! == "Serenad"){
+            let record: Record
+            record = records[1]
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+            
+
+            
+        }
+        
+       else if((sender.titleLabel?.text)! == "Bakele"){
+            let record: Record
+            record = records[2]
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+            
+
+            
+        }
+        
+       else if((sender.titleLabel?.text)! == "Aşk"){
+            let record: Record
+            record = records[3]
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+            
+
+            
+        }
+        
+       else if((sender.titleLabel?.text)! == "Dahi Diktatör"){
+            let record: Record
+            record = records[4]
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+            
+
+            
+        }
+        
+       else if((sender.titleLabel?.text)! == "Kadın Olmak"){
+            let record: Record
+            record = records[5]
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+            
+
+            
+        }
+        
+       else if((sender.titleLabel?.text)! == "Engereğin Gözü"){
+            let record: Record
+            record = records[6]
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+            
+
+        }
+        
+    
+        
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "listenView")
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         if option == iCarouselOption.spacing{
