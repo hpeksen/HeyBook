@@ -16,14 +16,19 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var userTitleLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
 
+ 
+    @IBOutlet weak var newPassTxt: UITextField!
+    @IBOutlet weak var newPassTxt2: UITextField!
+    @IBOutlet weak var oldPassTxt: UITextField!
     @IBOutlet weak var viewLoggedIn: UIView!
     
+    @IBOutlet weak var viewChangePass: UIView!
     var mail = ""
     var userTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         viewChangePass.isHidden = true
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         menuLeftNavigationController.leftSide = true
         SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
@@ -57,6 +62,58 @@ class SettingsViewController: UIViewController {
     
     }
 
+    @IBAction func changePasswordButton(_ sender: Any) {
+      print(UserDefaults.standard.value(forKey: "user_title")!)
+        print(oldPassTxt.text!)
+        print(newPassTxt.text!)
+        print(newPassTxt2.text!)
+      
+            if let mURL = URL(string: "http://heybook.online/api.php?request=change-password&mail=\(UserDefaults.standard.value(forKey: "user_mail")!)&password=\(oldPassTxt.text!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)") {
+               
+                if let data = try? Data(contentsOf: mURL) {
+                    let json = JSON(data: data)
+                    print(json)
+                   let registerResponse = json["response"].string!
+                    print(registerResponse)
+                    
+                    if(json["message"].string! == "Şifreniz başarılı bir şekilde değiştirildi."){
+                    
+                    let tapAlert = UIAlertController(title: "Mesaj", message: json["message"].string!, preferredStyle: UIAlertControllerStyle.alert)
+                    tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(tapAlert, animated: true, completion: nil)
+                    }
+                    else {
+                    
+                        
+                        let tapAlert = UIAlertController(title: "Hata", message: json["message"].string!, preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                        self.present(tapAlert, animated: true, completion: nil)
+                    
+                    }
+                    
+                  
+                    
+                }
+                
+              
+        
+        }
+    }
+    
+    @IBAction func goLoginPage(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+        self.navigationController?.pushViewController(controller, animated: true)
+    
+    
+    }
+    
+    
+    @IBAction func changePassword(_ sender: Any) {
+        
+        viewChangePass.isHidden = false
+    }
     @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
     }
