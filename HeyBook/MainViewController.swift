@@ -301,10 +301,16 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     }
     
     
-    
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    // Clicking the view (the container for UI components) removes the Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
     
     
     override func didReceiveMemoryWarning() {

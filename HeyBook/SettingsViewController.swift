@@ -62,42 +62,34 @@ class SettingsViewController: UIViewController {
     
     }
 
-    @IBAction func changePasswordButton(_ sender: Any) {
-      print(UserDefaults.standard.value(forKey: "user_title")!)
+    @IBAction func changeParola(_ sender: Any) {
+        self.oldPassTxt.resignFirstResponder()
+        self.newPassTxt.resignFirstResponder()
+        self.newPassTxt2.resignFirstResponder()
+        print(UserDefaults.standard.value(forKey: "user_title")!)
         print(oldPassTxt.text!)
         print(newPassTxt.text!)
         print(newPassTxt2.text!)
-      
-            if let mURL = URL(string: "http://heybook.online/api.php?request=change-password&mail=\(UserDefaults.standard.value(forKey: "user_mail")!)&password=\(oldPassTxt.text!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)") {
-               
-                if let data = try? Data(contentsOf: mURL) {
-                    let json = JSON(data: data)
-                    print(json)
-                   let registerResponse = json["response"].string!
-                    print(registerResponse)
-                    
-                    if(json["message"].string! == "Şifreniz başarılı bir şekilde değiştirildi."){
-                    
-                    let tapAlert = UIAlertController(title: "Mesaj", message: json["message"].string!, preferredStyle: UIAlertControllerStyle.alert)
-                    tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                    self.present(tapAlert, animated: true, completion: nil)
-                    }
-                    else {
-                    
-                        
-                        let tapAlert = UIAlertController(title: "Hata", message: json["message"].string!, preferredStyle: UIAlertControllerStyle.alert)
-                        tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
-                    
-                    }
-                    
-                  
-                    
-                }
-                
-              
         
+        if let mURL = URL(string: "http://heybook.online/api.php?request=change-password&mail=\(UserDefaults.standard.value(forKey: "user_mail")!)&password=\(oldPassTxt.text!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)") {
+            
+            if let data = try? Data(contentsOf: mURL) {
+                let json = JSON(data: data)
+                print(json)
+                let registerResponse = json["response"].string!
+                print(registerResponse)
+                
+                
+                let tapAlert = UIAlertController(title: registerResponse, message: json["message"].string!, preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+            }
+            
+            
+            
         }
+        
     }
     
     @IBAction func goLoginPage(_ sender: Any) {
@@ -121,6 +113,22 @@ class SettingsViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    // Clicking the view (the container for UI components) removes the Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    
+    // Delegate to remove the keyboard (When the return key is pressed the keyboard will disappear)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
