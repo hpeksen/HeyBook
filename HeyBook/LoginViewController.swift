@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
     
     
     
@@ -29,6 +29,22 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //keyboard için
+        eMailTxt.delegate = self
+        passwordTxt.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        /////
+        
+        
+        
+        
         print("parent")
  print(parentView)
         
@@ -53,13 +69,59 @@ class LoginViewController: UIViewController {
         SideMenuManager.menuPresentMode = .menuSlideIn
         
         
-        
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//        
+      
     // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    
+    //keyboard için
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var translation:CGFloat = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if passwordTxt.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if passwordTxt.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if eMailTxt.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if eMailTxt.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: translation)
+        }
+    }
+    
+    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        } 
+    }
+    
+    // Clicking the view (the container for UI components) removes the Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    ////////keyboard
+    
+    
     
     @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
@@ -143,27 +205,7 @@ class LoginViewController: UIViewController {
         // self.performSegue(withIdentifier: "goMain", sender: self)
     }
 
-  
-    
-//    func keyboardWillShow(notification: NSNotification) {
-//        
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0{
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//        
-//    }
-//    
-//    func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                self.view.frame.origin.y += keyboardSize.height
-//            }
-//        }
-//    }
-//    
-//    
+ 
     
     @IBAction func unwindToLogin(_ sender: UIStoryboardSegue) {
         
@@ -171,29 +213,11 @@ class LoginViewController: UIViewController {
 
     
     
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if(segue.identifier == "goToListenView"){
-//        if let mVC1 = segue.destination as? ListenViewController {
-//                
-//                mVC1.mail = mail
-//                mVC1.userTitle = userTitle
-//            }
-//            }
-//        
-//    }
-    
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    // Clicking the view (the container for UI components) removes the Keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        self.view.endEditing(true)
-       
-    }
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

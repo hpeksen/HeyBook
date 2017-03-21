@@ -743,14 +743,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYR-FU-bqE">
-                                <rect key="frame" x="164" y="522" width="136" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="kxq-es-MRb" kind="presentation" id="QYp-ka-7KV"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1121,7 +1113,4 @@
         <image name="register_bg" width="750" height="1334"/>
         <image name="user" width="40" height="38"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="QYp-ka-7KV"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     @IBOutlet weak var LoginOl: UIButton!
@@ -28,6 +28,23 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //keyboard için
+        newPassTxt.delegate = self
+        newPassTxt2.delegate = self
+        oldPassTxt.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+
+        
+        
+        //////keyboard
+        
          viewChangePass.isHidden = true
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         menuLeftNavigationController.leftSide = true
@@ -62,6 +79,68 @@ class SettingsViewController: UIViewController {
     
     }
 
+    
+    //keyboard için
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var translation:CGFloat = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if newPassTxt.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if newPassTxt.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if newPassTxt2.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if newPassTxt2.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if oldPassTxt.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if oldPassTxt.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: translation)
+        }
+    }
+    
+    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
+    }
+    
+    // Clicking the view (the container for UI components) removes the Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    ////////keyboard  oldPassTxt
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBAction func changeParola(_ sender: Any) {
         self.oldPassTxt.resignFirstResponder()
         self.newPassTxt.resignFirstResponder()
@@ -114,20 +193,7 @@ class SettingsViewController: UIViewController {
         return true
     }
     
-    // Clicking the view (the container for UI components) removes the Keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        self.view.endEditing(true)
-        
-    }
-    
-    
-    // Delegate to remove the keyboard (When the return key is pressed the keyboard will disappear)
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

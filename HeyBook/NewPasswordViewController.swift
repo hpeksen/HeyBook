@@ -8,17 +8,54 @@
 
 import UIKit
 
-class NewPasswordViewController: UIViewController {
+class NewPasswordViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var myTextField: UITextField!
     var newPasswordResponse = ""
     var message = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        myTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+              // Do any additional setup after loading the view.
     }
 
+    //keyboard için
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var translation:CGFloat = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if myTextField.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if myTextField.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: translation)
+        }
+        
+    }
+    
+    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        } 
+    }
+//keyboard için
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -90,12 +127,12 @@ class NewPasswordViewController: UIViewController {
     }
     
     
-    // Delegate to remove the keyboard (When the return key is pressed the keyboard will disappear)
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
-    }
+//    // Delegate to remove the keyboard (When the return key is pressed the keyboard will disappear)
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        
+//        return true
+//    }
     
     
     /*
