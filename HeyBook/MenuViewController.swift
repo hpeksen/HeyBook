@@ -47,7 +47,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             cell.menuImage.image=UIImage(named: "Giris Yap")
         }
         else if(menuNameArr[indexPath.row] == "Çıkış Yap"){
-            cell.menuImage.image=UIImage(named: "Cıkıs Yap")
+            cell.menuImage.image=UIImage(named: "Cikis Yap")
         }
         else {
         cell.menuImage.image=UIImage(named: menuNameArr[indexPath.row])
