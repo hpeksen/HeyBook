@@ -17,6 +17,7 @@
 		846AC1081E77141300C95001 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1071E77141300C95001 /* NewPasswordViewController.swift */; };
 		846AC10A1E7736D600C95001 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1091E7736D600C95001 /* PurchaseViewController.swift */; };
 		846AC1351E7858A900C95001 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1341E7858A900C95001 /* iCarousel.m */; };
+		849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247431E814CF3009AD151 /* CatagoriesViewController.swift */; };
 		849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849611871E5628FD00E4B4B0 /* RegisterViewController.swift */; };
 		84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B71E1D539D0025412C /* AppDelegate.swift */; };
 		84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B91E1D539D0025412C /* MainViewController.swift */; };
@@ -46,6 +47,7 @@
 		846AC1091E7736D600C95001 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		846AC1331E7858A900C95001 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		846AC1341E7858A900C95001 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		849247431E814CF3009AD151 /* CatagoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoriesViewController.swift; sourceTree = "<group>"; };
 		849611871E5628FD00E4B4B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		84B993B41E1D539D0025412C /* HeyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B993B71E1D539D0025412C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				846AC1041E70665300C95001 /* SettingsViewController.swift */,
 				846AC1071E77141300C95001 /* NewPasswordViewController.swift */,
 				846AC1091E7736D600C95001 /* PurchaseViewController.swift */,
+				849247431E814CF3009AD151 /* CatagoriesViewController.swift */,
 			);
 			path = HeyBook;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				84BF20481E229974001E883E /* Record.swift in Sources */,
 				8455BABB1E24FD5B0063200E /* User.swift in Sources */,
 				84B993CD1E1D59120025412C /* ListenViewController.swift in Sources */,
+				849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */,
 				846AC1031E67595C00C95001 /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

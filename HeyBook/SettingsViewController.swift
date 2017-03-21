@@ -46,6 +46,8 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         //////keyboard
         
          viewChangePass.isHidden = true
+        
+        
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         menuLeftNavigationController.leftSide = true
         SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
