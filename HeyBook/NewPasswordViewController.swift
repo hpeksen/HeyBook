@@ -53,6 +53,13 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
             self.view.transform = CGAffineTransform(translationX: 0, y: 0)
         } 
     }
+    // Clicking the view (the container for UI components) removes the Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
 //keyboard için
     
     
@@ -119,13 +126,7 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
         return true
     }
     
-    // Clicking the view (the container for UI components) removes the Keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        self.view.endEditing(true)
-        
-    }
-    
+  
     
 //    // Delegate to remove the keyboard (When the return key is pressed the keyboard will disappear)
 //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {

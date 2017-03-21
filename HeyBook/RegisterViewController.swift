@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var mailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -156,51 +156,74 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//        
+        //klavye için
+        nameField.delegate = self
+        mailField.delegate = self
+        passwordField.delegate = self
+        passwordConfirmField.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
-//        //bütün kullanıcıları yazdır
-//         if let rURL = URL(string: "http://heybook.online/api.php?request=users") { //http://heybook.online/api.php?request=books
-//        if let data = try? Data(contentsOf: rURL) {
-//            let json = JSON(data: data)
-//            print(json)
-//            print("ekleyecek")
-//        
-//        
-//        }
-//        }
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+
         
         
+        ////klavye
+
         // Do any additional setup after loading the view.
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+    
+    //keyboard için
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var translation:CGFloat = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if nameField.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if nameField.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if mailField.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if mailField.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if passwordField.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if passwordField.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if passwordConfirmField.isEditing{
+                translation = CGFloat(-keyboardSize.height)
+            }else if passwordConfirmField.isEditing{
+                translation = CGFloat(-keyboardSize.height / 3.8)
+            }
+        }
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: translation)
+        }
+        
     }
     
     
-    
-//    func keyboardWillShow(notification: NSNotification) {
-//        
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0{
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//        
-//    }
-//    
-//    func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                self.view.frame.origin.y += keyboardSize.height
-//            }
-//        }
-//    }
-//    
-//    
-    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
+    }
     // Clicking the view (the container for UI components) removes the Keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -208,14 +231,15 @@ class RegisterViewController: UIViewController {
         
     }
     
+    //keyboard için
     
-    // Delegate to remove the keyboard (When the return key is pressed the keyboard will disappear)
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
+    
+    
+    override var prefersStatusBarHidden: Bool {
         return true
     }
     
+  
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
