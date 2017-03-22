@@ -8,7 +8,7 @@
 
 import UIKit
 import SideMenu
-
+import SystemConfiguration
 class MainViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, iCarouselDelegate,iCarouselDataSource  {
     var records: [Record] = []
     
@@ -61,6 +61,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+       
       self.view.backgroundColor = UIColor(patternImage: UIImage(named: "register_bg.png")!)
         //image animation
 
@@ -138,11 +139,6 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 
             }
         }
-        
-        
-        
-        
-        
         
         
     }
@@ -388,6 +384,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 //                mVC1.bookImage = record.thumb
 //                mVC1.bookName = record.book_title
             }
+           
         
         }
         
@@ -481,6 +478,33 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             headerView.header.text = "Çok satan"
         }
         return headerView
+    }
+    
+    //check the internet connection
+    func isConnectedToNetwork()->Bool{
+        
+        var Status:Bool = false
+        let url = URL(string: "https://google.com/")
+        var response: URLResponse?
+        let request = NSMutableURLRequest(url: url!)
+        request.httpMethod = "HEAD"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
+        request.timeoutInterval = 10.0
+        
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    Status = true
+                }
+            }
+    
+        
+        task.resume()
+        return !Status
     }
 }
 
