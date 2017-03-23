@@ -360,7 +360,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         if let indexPath = getIndexPathForSelectedCell() {
         if let mVC1 = segue.destination as? ListenViewController {
             let record: Record
-            
+        
             if mSearchController.isActive && mSearchController.searchBar.text != "" {
                 record = searchedRecords[indexPath.row]
             } else {

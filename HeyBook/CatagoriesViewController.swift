@@ -9,15 +9,34 @@
 import UIKit
 import SideMenu
 
-class CatagoriesViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
+class CatagoriesViewController: UIViewController {
 
   
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     @IBOutlet weak var catagoriesCollectionView: UICollectionView!
-    var buttonArr:[Record]=[]
     var records:[Record] = []
+    
+    var numberOfCells=1
+    
+    var loadingStatus = LoadMoreStatus.haveMore
+    
+    func loadMore() {
+        
+        if numberOfCells >= 1{
+            loadingStatus = .finished
+            catagoriesCollectionView.reloadData()
+            return
+        }
+        
+        
+        self.numberOfCells += 5
+        self.catagoriesCollectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false;
 
         
         
@@ -77,46 +96,6 @@ class CatagoriesViewController: UIViewController,UICollectionViewDataSource, UIC
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        
-        return records.count
-        
-    }
-    
-    
-    
-    // For each cell setting the data
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomCatagoriesCollectionViewCell
-        cell.bookImageCatagory.image = UIImage(named: "kullanici")
-        cell.bookNameCatagory.text = records[indexPath.row].book_title
-        
-        
-        //Aschronized image loading !!!!
-        URLSession.shared.dataTask(with: NSURL(string: records[indexPath.row].photo)! as URL, completionHandler: { (data, response, error) -> Void in
-            if error != nil {
-                print(error)
-                return
-            }
-            DispatchQueue.main.async(execute: { () -> Void in
-                
-                
-                cell.bookImageCatagory.image = UIImage(data: data!)
-                
-            })
-            
-        }).resume()
-        
-        
-        
-        
-  
-        return cell
-    }
-    
-    
  
     
     
@@ -146,4 +125,64 @@ class CatagoriesViewController: UIViewController,UICollectionViewDataSource, UIC
     }
     */
 
+}
+
+extension CatagoriesViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return numberOfCells
+        
+    }
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
+        if(indexPath.row==numberOfCells-1){
+            if loadingStatus == .haveMore {
+                self.perform(#selector(CatagoriesViewController.loadMore), with: nil, afterDelay: 0)
+            }
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerticalCellIdentifier", for: indexPath) as! VerticalCategoriesCollectionViewCell
+        return cell
+        
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int{
+        return 9
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if (kind ==  UICollectionElementKindSectionFooter) && (loadingStatus != .finished){
+            var footerView:LoadMoreCollectionReusableView!
+            footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LoadMoreVerticalCollectionFooterViewCellIdentifier", for: indexPath) as! LoadMoreCollectionReusableView
+            return footerView
+        } else if(kind == UICollectionElementKindSectionHeader){
+            var headerView:HeaderCategoriesCollectionReusableView!
+            headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderCategoriesCollectionReusableView
+            return headerView
+        }
+        assert(false, "Unexpected element kind")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        return (loadingStatus == .finished) ? CGSize.zero : CGSize(width: self.view.frame.width, height: 150)
+        
+    }
+    
+}
+
+extension CatagoriesViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: self.view.frame.width, height: 150)
+        
+    }
+    
+    
+    
 }

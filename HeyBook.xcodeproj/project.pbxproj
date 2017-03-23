@@ -19,6 +19,10 @@
 		846AC1351E7858A900C95001 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1341E7858A900C95001 /* iCarousel.m */; };
 		849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247431E814CF3009AD151 /* CatagoriesViewController.swift */; };
 		849247461E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247451E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift */; };
+		8492474D1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492474C1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift */; };
+		8492474F1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492474E1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift */; };
+		849247531E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247521E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift */; };
+		849247551E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */; };
 		849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849611871E5628FD00E4B4B0 /* RegisterViewController.swift */; };
 		84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B71E1D539D0025412C /* AppDelegate.swift */; };
 		84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B91E1D539D0025412C /* MainViewController.swift */; };
@@ -50,6 +54,10 @@
 		846AC1341E7858A900C95001 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		849247431E814CF3009AD151 /* CatagoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoriesViewController.swift; sourceTree = "<group>"; };
 		849247451E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCatagoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		8492474C1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCategoriesCollectionReusableView.swift; sourceTree = "<group>"; };
+		8492474E1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreCollectionReusableView.swift; sourceTree = "<group>"; };
+		849247521E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		849611871E5628FD00E4B4B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		84B993B41E1D539D0025412C /* HeyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B993B71E1D539D0025412C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +118,11 @@
 				849611871E5628FD00E4B4B0 /* RegisterViewController.swift */,
 				84B993B71E1D539D0025412C /* AppDelegate.swift */,
 				84B993B91E1D539D0025412C /* MainViewController.swift */,
+				8492474C1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift */,
 				84BF20471E229974001E883E /* Record.swift */,
+				849247521E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift */,
+				8492474E1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift */,
+				849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */,
 				84B993D41E1D5EC30025412C /* SwiftyJSON.swift */,
 				84B993BB1E1D539D0025412C /* Main.storyboard */,
 				846AC1001E67594100C95001 /* MenuViewController.swift */,
@@ -278,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849247531E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift in Sources */,
 				846AC0FF1E67582D00C95001 /* SWRevealViewController.m in Sources */,
 				846AC1351E7858A900C95001 /* iCarousel.m in Sources */,
 				8455BAB91E24F3FB0063200E /* LoginViewController.swift in Sources */,
@@ -290,14 +303,17 @@
 				846AC1051E70665300C95001 /* SettingsViewController.swift in Sources */,
 				846AC0881E66F03400C95001 /* VoiceViewController.swift in Sources */,
 				849247461E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift in Sources */,
+				849247551E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift in Sources */,
 				84B993C01E1D539D0025412C /* HeyBook.xcdatamodeld in Sources */,
 				846AC10A1E7736D600C95001 /* PurchaseViewController.swift in Sources */,
 				84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */,
 				84B993D51E1D5EC30025412C /* SwiftyJSON.swift in Sources */,
 				84BF20481E229974001E883E /* Record.swift in Sources */,
 				8455BABB1E24FD5B0063200E /* User.swift in Sources */,
+				8492474F1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift in Sources */,
 				84B993CD1E1D59120025412C /* ListenViewController.swift in Sources */,
 				849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */,
+				8492474D1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift in Sources */,
 				846AC1031E67595C00C95001 /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

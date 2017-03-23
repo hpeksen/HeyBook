@@ -96,6 +96,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                 let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
                 self.navigationController?.pushViewController(controller, animated: true)
             }
+           
         }
         if ( cell.lblMenuButton.text  == "Çıkış Yap")
         {
@@ -107,9 +108,8 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
             self.navigationController?.pushViewController(controller, animated: true)
-            
+       
         }
-
     }
     override var prefersStatusBarHidden: Bool {
         return true
