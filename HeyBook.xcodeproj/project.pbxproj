@@ -23,6 +23,7 @@
 		8492474F1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492474E1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift */; };
 		849247531E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247521E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift */; };
 		849247551E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */; };
+		849247571E89A118009AD151 /* SepetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247561E89A118009AD151 /* SepetViewController.swift */; };
 		849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849611871E5628FD00E4B4B0 /* RegisterViewController.swift */; };
 		84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B71E1D539D0025412C /* AppDelegate.swift */; };
 		84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B91E1D539D0025412C /* MainViewController.swift */; };
@@ -58,6 +59,7 @@
 		8492474E1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreCollectionReusableView.swift; sourceTree = "<group>"; };
 		849247521E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		849247561E89A118009AD151 /* SepetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SepetViewController.swift; sourceTree = "<group>"; };
 		849611871E5628FD00E4B4B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		84B993B41E1D539D0025412C /* HeyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B993B71E1D539D0025412C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				846AC1091E7736D600C95001 /* PurchaseViewController.swift */,
 				849247431E814CF3009AD151 /* CatagoriesViewController.swift */,
 				849247451E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift */,
+				849247561E89A118009AD151 /* SepetViewController.swift */,
 			);
 			path = HeyBook;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				846AC0FF1E67582D00C95001 /* SWRevealViewController.m in Sources */,
 				846AC1351E7858A900C95001 /* iCarousel.m in Sources */,
 				8455BAB91E24F3FB0063200E /* LoginViewController.swift in Sources */,
+				849247571E89A118009AD151 /* SepetViewController.swift in Sources */,
 				84B993D31E1D5A540025412C /* HeaderCollectionReusableView.swift in Sources */,
 				846AC1011E67594100C95001 /* MenuViewController.swift in Sources */,
 				846AC1081E77141300C95001 /* NewPasswordViewController.swift in Sources */,

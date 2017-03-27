@@ -74,6 +74,12 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
             self.navigationController?.pushViewController(controller, animated: true)
         }
+        if ( cell.lblMenuButton.text  == "Sepet")
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
         if ( cell.lblMenuButton.text  == "Ayarlar")
         {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

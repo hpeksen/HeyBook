@@ -133,18 +133,17 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
     
-    //ssatın al butonu
+    //sepete ekle butonu
 
-    
-    @IBAction func satinAlBtn(_ sender: Any) {
+    @IBAction func sepeteEkle(_ sender: Any) {
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
-        
-            let tapAlert = UIAlertController(title: "Satın Al", message: "satın alma ekranına gidecek", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let tapAlert = UIAlertController(title: "Sepete Ekle", message: "sepete eklendi mesajı gelecek", preferredStyle: UIAlertControllerStyle.alert)
             tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(tapAlert, animated: true, completion: nil)
             
             //satın alma ekranına gidecek
-         
+            
         }
         else {
             print("girdiiii")
@@ -153,9 +152,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             self.navigationController?.pushViewController(controller, animated: true)
         }
 
-        
     }
-    
     
     
     
@@ -176,7 +173,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             microphoneButton.isEnabled = false
-            listen(ses: (textView.text)! as String)
+           
             
             
             microphoneButton.setTitle("Start Recording", for: .normal)
@@ -225,6 +222,58 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 self.textView.text = result?.bestTranscription.formattedString  //9
             
+                if(self.textView.text == "Hey book"){
+                
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                
+                }
+                if(self.textView.text == "Catagory"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
+                if(self.textView.text == "Settings"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
+                if(self.textView.text == "Bucket"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
+                
+                if(self.textView.text == "Login"){
+                    if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
+                        
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else {
+                    
+                        
+                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya  giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                        longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                        self.present(longPressAlert, animated: true, completion: nil)
+                    
+                    
+                    
+                    }
+                }
+                
+                
+                
+                
+                
                 isFinal = (result?.isFinal)!
                 
                
@@ -270,28 +319,30 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
   
     
     
-    func  listen(ses: String){
-        print(ses)
-        if(ses == "Play" || ses == "play" || ses == "ses"){
+    func  listen(){
+        print("listen functionu")
+   
+       
     
-    let url = bookLink
-    let playerItem = AVPlayerItem( url:NSURL( string:url ) as! URL )
-    player = AVPlayer(playerItem:playerItem)
-    player.rate = 1.0;
-    player.play()
-    
-    timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ListenViewController.checkTime), userInfo: nil, repeats: true)
-    let t1 = Float(self.player.currentTime().value)
-    let t2 = Float(self.player.currentTime().timescale)
-    let currentSeconds = t1 / t2
-    if(currentSeconds >= 10){
-    player.pause()
-    }
-    
-    print("çalıyo")
-    print(bookLink)
         
+        let url = bookLink
+        let playerItem = AVPlayerItem( url:NSURL( string:url ) as! URL )
+        player = AVPlayer(playerItem:playerItem)
+        player.rate = 1.0;
+        player.play()
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ListenViewController.checkTime), userInfo: nil, repeats: true)
+        let t1 = Float(self.player.currentTime().value)
+        let t2 = Float(self.player.currentTime().timescale)
+        let currentSeconds = t1 / t2
+        if(currentSeconds >= 10){
+            player.pause()
         }
+        
+        print("çalıyo")
+        print(bookLink)
+
+        
     
     }
     
