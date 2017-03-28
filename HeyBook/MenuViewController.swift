@@ -24,7 +24,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Katagoriler","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar"]
+        menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Kategoriler","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar"]
         
         // Do any additional setup after loading the view.  LoginFromMenuViewController
     }
@@ -68,7 +68,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             self.navigationController?.pushViewController(controller, animated: true)
         }
         
-        if ( cell.lblMenuButton.text  == "Katagoriler")
+        if ( cell.lblMenuButton.text  == "Kategoriler")
         {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
