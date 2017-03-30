@@ -13,16 +13,15 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     @IBOutlet weak var LoginOl: UIButton!
-    @IBOutlet weak var userTitleLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var userTitleLabel: UITextField!
+    @IBOutlet weak var emailLabel: UITextField!
 
  
     @IBOutlet weak var newPassTxt: UITextField!
     @IBOutlet weak var newPassTxt2: UITextField!
-    @IBOutlet weak var oldPassTxt: UITextField!
     @IBOutlet weak var viewLoggedIn: UIView!
+    @IBOutlet weak var viewNotLoggedIn: UIView!
     
-    @IBOutlet weak var viewChangePass: UIView!
     var mail = ""
     var userTitle = ""
     
@@ -32,7 +31,6 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         //keyboard için
         newPassTxt.delegate = self
         newPassTxt2.delegate = self
-        oldPassTxt.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
                                                name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -44,8 +42,6 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         
         
         //////keyboard
-        
-         viewChangePass.isHidden = true
         
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
@@ -66,12 +62,14 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         if(UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
         
             viewLoggedIn.isHidden = true
+            viewNotLoggedIn.isHidden = false
             LoginOl.isHidden = false
            
         }
         else {
             
             viewLoggedIn.isHidden = false
+            viewNotLoggedIn.isHidden = true
             LoginOl.isHidden = true
         
             userTitleLabel.text =  UserDefaults.standard.value(forKey: "user_title") as? String
@@ -105,13 +103,6 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
                 translation = CGFloat(-keyboardSize.height / 3.8)
             }
         }
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if oldPassTxt.isEditing{
-                translation = CGFloat(-keyboardSize.height)
-            }else if oldPassTxt.isEditing{
-                translation = CGFloat(-keyboardSize.height / 3.8)
-            }
-        }
         UIView.animate(withDuration: 0.2) {
             self.view.transform = CGAffineTransform(translationX: 0, y: translation)
         }
@@ -138,21 +129,14 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
     
     
     
-    
-    
-    
-    
-    
-    @IBAction func changeParola(_ sender: Any) {
-        self.oldPassTxt.resignFirstResponder()
+    @IBAction func buttonUpdate(_ sender: UIButton) {
         self.newPassTxt.resignFirstResponder()
         self.newPassTxt2.resignFirstResponder()
         print(UserDefaults.standard.value(forKey: "user_title")!)
-        print(oldPassTxt.text!)
         print(newPassTxt.text!)
         print(newPassTxt2.text!)
         
-        if let mURL = URL(string: "http://heybook.online/api.php?request=change-password&mail=\(UserDefaults.standard.value(forKey: "user_mail")!)&password=\(oldPassTxt.text!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)") {
+        if let mURL = URL(string: "http://heybook.online/api.php?request=change-password&mail=\(UserDefaults.standard.value(forKey: "user_mail")!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)") {
             
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
@@ -170,23 +154,16 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
             
             
         }
-        
     }
     
-    @IBAction func goLoginPage(_ sender: Any) {
+    
+    @IBAction func goLoginPage(_ sender: UIButton) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
         self.navigationController?.pushViewController(controller, animated: true)
-    
-    
     }
     
-    
-    @IBAction func changePassword(_ sender: Any) {
-        
-        viewChangePass.isHidden = false
-    }
     @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
     }
