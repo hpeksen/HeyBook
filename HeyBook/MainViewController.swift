@@ -41,30 +41,22 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     var duration = ""
     var photo = ""
     var desc = ""
-     var demo = ""
+    var demo = ""
     var thumb = ""
-    @IBOutlet weak var segmentedController: UISegmentedControl!
     
     let mSearchController = UISearchController(searchResultsController: nil)
     var isSearch=false
     var originalNavigationView: UIView?
     var searchedRecords: [Record] = []
     
-    @IBAction func segmentedBtn(_ sender: Any) {
-        
-       myCollectionView.reloadData()
-        
-        
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-       
-      self.view.backgroundColor = UIColor(patternImage: UIImage(named: "register_bg.png")!)
+        
+        /*self.view.backgroundColor = UIColor(patternImage: UIImage(named: "register_bg.png")!)*/
         //image animation
-
+        
         carouselView.type = .rotary
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
@@ -76,23 +68,38 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         SideMenuManager.menuPresentMode = .menuSlideIn
         
-       
         
-//        
-//        //Background Image
-//        let bgImage = UIImageView();
-//        bgImage.image = UIImage(named: "register_bg.png");
-//        bgImage.contentMode = .scaleToFill
-//        
-//        
-//        self.myCollectionView?.backgroundView = bgImage
-//        
+        
+        //
+        //        //Background Image
+        //        let bgImage = UIImageView();
+        //        bgImage.image = UIImage(named: "register_bg.png");
+        //        bgImage.contentMode = .scaleToFill
+        //
+        //
+        //        self.myCollectionView?.backgroundView = bgImage
+        //
         self.myCollectionView.backgroundColor = UIColor.clear
-
-    
-    
+        
+        
+        //cell spacing in collection view
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        //let screenHeight = screenSize.height
+        
+        var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout = myCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: screenWidth, height: 80)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        myCollectionView!.collectionViewLayout = layout
+        
+        
     }
-
+    
+    
+    
     @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
     }
@@ -171,7 +178,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 tempView.addSubview(button)
                 
                 button.addTarget(self, action: #selector(self.click), for: .touchUpInside)
-              
+                
                 //cell.bookImage.image = UIImage(data: data!)
                 
             })
@@ -186,9 +193,9 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         print("click")
         print((sender.titleLabel?.text)!)
         
-       // record = records[indexPath.row]
-
-      
+        // record = records[indexPath.row]
+        
+        
         
         
         if((sender.titleLabel?.text)! == "Vurun Kahpeye"){
@@ -199,10 +206,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             UserDefaults.standard.set(encodedData, forKey: "book_record")
             UserDefaults.standard.synchronize()
             
-
+            
             
         }
-        
+            
         else if((sender.titleLabel?.text)! == "Serenad"){
             let record: Record
             record = records[1]
@@ -211,11 +218,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             UserDefaults.standard.set(encodedData, forKey: "book_record")
             UserDefaults.standard.synchronize()
             
-
+            
             
         }
-        
-       else if((sender.titleLabel?.text)! == "Bakele"){
+            
+        else if((sender.titleLabel?.text)! == "Bakele"){
             let record: Record
             record = records[2]
             
@@ -223,11 +230,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             UserDefaults.standard.set(encodedData, forKey: "book_record")
             UserDefaults.standard.synchronize()
             
-
+            
             
         }
-        
-       else if((sender.titleLabel?.text)! == "Aşk"){
+            
+        else if((sender.titleLabel?.text)! == "Aşk"){
             let record: Record
             record = records[3]
             
@@ -235,11 +242,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             UserDefaults.standard.set(encodedData, forKey: "book_record")
             UserDefaults.standard.synchronize()
             
-
+            
             
         }
-        
-       else if((sender.titleLabel?.text)! == "Dahi Diktatör"){
+            
+        else if((sender.titleLabel?.text)! == "Dahi Diktatör"){
             let record: Record
             record = records[4]
             
@@ -247,11 +254,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             UserDefaults.standard.set(encodedData, forKey: "book_record")
             UserDefaults.standard.synchronize()
             
-
+            
             
         }
-        
-       else if((sender.titleLabel?.text)! == "Kadın Olmak"){
+            
+        else if((sender.titleLabel?.text)! == "Kadın Olmak"){
             let record: Record
             record = records[5]
             
@@ -259,11 +266,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             UserDefaults.standard.set(encodedData, forKey: "book_record")
             UserDefaults.standard.synchronize()
             
-
+            
             
         }
-        
-       else if((sender.titleLabel?.text)! == "Engereğin Gözü"){
+            
+        else if((sender.titleLabel?.text)! == "Engereğin Gözü"){
             let record: Record
             record = records[6]
             
@@ -271,10 +278,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             UserDefaults.standard.set(encodedData, forKey: "book_record")
             UserDefaults.standard.synchronize()
             
-
+            
         }
         
-    
+        
         
         
         
@@ -288,7 +295,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         }
         return value
     }
-
+    
     
     
     
@@ -313,7 +320,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func clickSearchButton(_ sender: UIBarButtonItem) {
         
         if(isSearch){
@@ -358,34 +365,34 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = getIndexPathForSelectedCell() {
-        if let mVC1 = segue.destination as? ListenViewController {
-            let record: Record
-        
-            if mSearchController.isActive && mSearchController.searchBar.text != "" {
-                record = searchedRecords[indexPath.row]
-            } else {
-                record = records[indexPath.row]
+            if let mVC1 = segue.destination as? ListenViewController {
+                let record: Record
+                
+                if mSearchController.isActive && mSearchController.searchBar.text != "" {
+                    record = searchedRecords[indexPath.row]
+                } else {
+                    record = records[indexPath.row]
+                }
+                
+                //            UserDefaults.standard.setValue(record.book_title, forKey: "book_title")
+                //            UserDefaults.standard.setValue(record.desc, forKey: "desc")
+                //            UserDefaults.standard.setValue(record.demo, forKey: "demo")
+                //            UserDefaults.standard.setValue(record.author_title, forKey: "author_name")
+                //            UserDefaults.standard.setValue(record.thumb, forKey: "thumb")
+                
+                
+                let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+                UserDefaults.standard.set(encodedData, forKey: "book_record")
+                UserDefaults.standard.synchronize()
+                
+                //                mVC1.desc = record.desc
+                //                mVC1.authorName = record.author_title
+                //                mVC1.bookLink = record.demo
+                //                mVC1.bookImage = record.thumb
+                //                mVC1.bookName = record.book_title
             }
             
-//            UserDefaults.standard.setValue(record.book_title, forKey: "book_title")
-//            UserDefaults.standard.setValue(record.desc, forKey: "desc")
-//            UserDefaults.standard.setValue(record.demo, forKey: "demo")
-//            UserDefaults.standard.setValue(record.author_title, forKey: "author_name")
-//            UserDefaults.standard.setValue(record.thumb, forKey: "thumb")
             
-        
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-            
-//                mVC1.desc = record.desc
-//                mVC1.authorName = record.author_title
-//                mVC1.bookLink = record.demo
-//                mVC1.bookImage = record.thumb
-//                mVC1.bookName = record.book_title
-            }
-           
-        
         }
         
     }
@@ -413,10 +420,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         //return mDataSource.groups.count
-        return 1
+        return 3
     }
-    
-    
     
     // For each cell setting the data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -438,46 +443,62 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 print(error)
                 return
             }
-             DispatchQueue.main.async(execute: { () -> Void in
-        
-        cell.authorName.text = record.author_title
-        cell.bookName.text = record.book_title
-        
+            DispatchQueue.main.async(execute: { () -> Void in
                 
-        cell.duration.text = record.duration + " min."
-        
-        
-        cell.bookImage.image = UIImage(data: data!)
+                cell.authorName.text = record.author_title
+                cell.bookName.text = record.book_title
                 
-             })
+                let (h,m,s) = self.secondsToHoursMinutesSeconds(seconds: (Int(record.duration)! * 60))
+                cell.duration.text = "\(h) sa \(m) dk"
+                
+                
+                cell.bookImage.image = UIImage(data: data!)
+                
+            })
             
         }).resume()
-    
-    
+        
+        if(indexPath.section == 0) {
+            cell.leftView.backgroundColor = UIColor(hex: "50D2C2") //UIColor(red: 0x50, green: 0xD2, blue: 0xC2, alpha: 1)
+        } else if(indexPath.section == 1) {
+            cell.leftView.backgroundColor = UIColor(hex: "FCAB53")
+        } else if(indexPath.section == 2) {
+            cell.leftView.backgroundColor = UIColor(hex: "039BE5")
+        }
+        
+        
         
         return cell
     }
     
-  
+    
     // For each header setting the data
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderCollectionReusableView
-        if(segmentedController.selectedSegmentIndex == 0 )
+        
+        if(indexPath.section == 0 )
         {
-        headerView.header.text = "Son Eklenenler"
+            headerView.header.text = "SON EKLENENLER"
         }
         
-        if(segmentedController.selectedSegmentIndex == 1 )
+        if(indexPath.section == 1 )
         {
-            headerView.header.text = "En Populer"
+            headerView.header.text = "BU HAFTA EN ÇOK DİNLENENLER"
         }
         
-        if(segmentedController.selectedSegmentIndex == 2 )
+        if(indexPath.section == 2 )
         {
-            headerView.header.text = "Çok satan"
+            headerView.header.text = "ÇOK SATAN"
         }
         return headerView
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+        let hours = Int(seconds) / 3600
+        let minutes = Int(seconds) / 60 % 60
+        let seconds = Int(seconds) % 60
+        return (hours, minutes, seconds)
     }
     
     //check the internet connection
@@ -495,13 +516,13 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest)
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    Status = true
-                }
+        
+        if let httpResponse = response as? HTTPURLResponse {
+            if httpResponse.statusCode == 200 {
+                Status = true
             }
-    
+        }
+        
         
         task.resume()
         return !Status
@@ -521,6 +542,27 @@ extension MainViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         searchedRecordsForSearchText(searchController.searchBar.text!)
+    }
+}
+
+extension UIColor {
+    convenience init(hex: String) {
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 0
+        
+        var rgbValue: UInt64 = 0
+        
+        scanner.scanHexInt64(&rgbValue)
+        
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+        
+        self.init(
+            red: CGFloat(r) / 0xff,
+            green: CGFloat(g) / 0xff,
+            blue: CGFloat(b) / 0xff, alpha: 1
+        )
     }
 }
 

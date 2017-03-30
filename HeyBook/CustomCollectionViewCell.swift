@@ -14,4 +14,5 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var bookImage: UIImageView!
+    @IBOutlet weak var leftView: UIView!
 }
