@@ -109,6 +109,10 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             UserDefaults.standard.setValue(nil, forKey: "user_mail")
             UserDefaults.standard.setValue(nil, forKey: "user_title")
             
+            let tapAlert = UIAlertController(title: "mesaj", message: "çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(tapAlert, animated: true, completion: nil)
+            
             print("pirint")
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

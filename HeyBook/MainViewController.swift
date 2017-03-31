@@ -18,6 +18,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     @IBOutlet weak var carouselView: iCarousel!
     var numbers = [Int]()
     
+    @IBOutlet weak var animationBookName: UILabel!
+    @IBOutlet weak var animationAuthorName: UILabel!
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,10 +55,9 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        carouselView.backgroundColor = UIColor.red
         /*self.view.backgroundColor = UIColor(patternImage: UIImage(named: "register_bg.png")!)*/
         //image animation
-        
         carouselView.type = .rotary
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
@@ -155,7 +156,9 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         return records.count
     }
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
-        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 150 , height: 150))
+        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 100 , height: 100))
+        
+        
         
         
         
@@ -171,7 +174,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             DispatchQueue.main.async(execute: { () -> Void in
                 
                 
-                let button = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+                let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 140))
                 button.setTitle("\(self.records[index].book_title)", for: .normal)
                 button.setImage(UIImage(data: data!), for: .normal)
                 //                            button.imageView?.image = UIImage(data: data!)
@@ -296,7 +299,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         return value
     }
     
-    
+    func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+        animationBookName.text = records[carousel.currentItemIndex].book_title
+        animationAuthorName.text = records[carousel.currentItemIndex].author_title
+    }
     
     
     @IBAction func unwindToVitrin(_ sender: UIStoryboardSegue) {
