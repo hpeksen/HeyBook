@@ -55,7 +55,6 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        carouselView.backgroundColor = UIColor.red
         /*self.view.backgroundColor = UIColor(patternImage: UIImage(named: "register_bg.png")!)*/
         //image animation
         carouselView.type = .rotary
@@ -156,7 +155,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         return records.count
     }
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
-        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 100 , height: 100))
+        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 100 , height: 120))
         
         
         
@@ -174,7 +173,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             DispatchQueue.main.async(execute: { () -> Void in
                 
                 
-                let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 140))
+                let button = UIButton(frame: CGRect(x: 0, y: 0, width: 90, height: 120))
                 button.setTitle("\(self.records[index].book_title)", for: .normal)
                 button.setImage(UIImage(data: data!), for: .normal)
                 //                            button.imageView?.image = UIImage(data: data!)

@@ -36,6 +36,11 @@ class CatagoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
         self.automaticallyAdjustsScrollViewInsets = false;
 
         
@@ -150,7 +155,7 @@ extension CatagoriesViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
-        return 9
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -162,6 +167,17 @@ extension CatagoriesViewController: UICollectionViewDataSource {
         } else if(kind == UICollectionElementKindSectionHeader){
             var headerView:HeaderCategoriesCollectionReusableView!
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderCategoriesCollectionReusableView
+            
+            if(indexPath.section == 0){
+                headerView.headerLabel.text = "MACERA"
+            } else if(indexPath.section == 1){
+                headerView.headerLabel.text = "ROMAN"
+            } else if(indexPath.section == 2){
+                headerView.headerLabel.text = "BİLİM KURGU"
+            } else if(indexPath.section == 3){
+                headerView.headerLabel.text = "ÇİZGİ ROMAN"
+            }
+            
             return headerView
         }
         assert(false, "Unexpected element kind")
