@@ -499,6 +499,13 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         return headerView
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
+        UserDefaults.standard.set(encodedData, forKey: "book_record")
+        UserDefaults.standard.synchronize()
+    }
+    
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
         let hours = Int(seconds) / 3600
         let minutes = Int(seconds) / 60 % 60

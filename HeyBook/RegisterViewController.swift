@@ -51,8 +51,14 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         }
         else {
             
+          //  URLEncoder.encode(q, "UTF-8")
+            let originalString = nameField.text!
+            let escapedString = originalString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            print(escapedString!)
             
-            if let mURL = URL(string: "http://heybook.online/api.php?request=register&user_title=\(nameField.text!)&mail=\(mailField.text!)&password=\(passwordField.text!)") { //http://heybook.online/api.php?request=books
+            
+            
+            if let mURL = URL(string: "http://heybook.online/api.php?request=register&user_title=\(escapedString!)&mail=\(mailField.text!)&password=\(passwordField.text!)") { //http://heybook.online/api.php?request=books
                 if let data = try? Data(contentsOf: mURL) {
                     let json = JSON(data: data)
                     print(json)
@@ -155,7 +161,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         //klavye için
         nameField.delegate = self
         mailField.delegate = self

@@ -30,6 +30,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         //keyboard için
         eMailTxt.delegate = self
         passwordTxt.delegate = self

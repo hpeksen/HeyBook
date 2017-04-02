@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Speech
+import SideMenu
 
 class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
@@ -49,9 +50,17 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
     }
     
+    @IBAction func menuButton(_ sender: UIBarButtonItem) {
+         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
        if let dataa = UserDefaults.standard.data(forKey: "book_record"),
         let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
@@ -65,6 +74,17 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         print("olmadi lan....")
 
         }
+        
+        //yan menu
+        
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        menuLeftNavigationController.leftSide = true
+        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        SideMenuManager.menuPresentMode = .menuSlideIn
         
         
         
