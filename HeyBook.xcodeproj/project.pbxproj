@@ -17,6 +17,10 @@
 		846AC1081E77141300C95001 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1071E77141300C95001 /* NewPasswordViewController.swift */; };
 		846AC10A1E7736D600C95001 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1091E7736D600C95001 /* PurchaseViewController.swift */; };
 		846AC1351E7858A900C95001 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1341E7858A900C95001 /* iCarousel.m */; };
+		846D80531E9272060025D4DB /* KitaplarimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D80521E9272060025D4DB /* KitaplarimViewController.swift */; };
+		846D80551E9272720025D4DB /* HeaderKitaplarimCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D80541E9272720025D4DB /* HeaderKitaplarimCollectionReusableView.swift */; };
+		846D80571E9272E00025D4DB /* CustomKitaplarimCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D80561E9272E00025D4DB /* CustomKitaplarimCollectionViewCell.swift */; };
+		846D80591E9284BB0025D4DB /* PlayBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D80581E9284BB0025D4DB /* PlayBookViewController.swift */; };
 		849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247431E814CF3009AD151 /* CatagoriesViewController.swift */; };
 		849247461E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247451E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift */; };
 		8492474D1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492474C1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift */; };
@@ -53,6 +57,10 @@
 		846AC1091E7736D600C95001 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		846AC1331E7858A900C95001 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		846AC1341E7858A900C95001 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		846D80521E9272060025D4DB /* KitaplarimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitaplarimViewController.swift; sourceTree = "<group>"; };
+		846D80541E9272720025D4DB /* HeaderKitaplarimCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKitaplarimCollectionReusableView.swift; sourceTree = "<group>"; };
+		846D80561E9272E00025D4DB /* CustomKitaplarimCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomKitaplarimCollectionViewCell.swift; sourceTree = "<group>"; };
+		846D80581E9284BB0025D4DB /* PlayBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayBookViewController.swift; sourceTree = "<group>"; };
 		849247431E814CF3009AD151 /* CatagoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoriesViewController.swift; sourceTree = "<group>"; };
 		849247451E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCatagoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		8492474C1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCategoriesCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -129,13 +137,17 @@
 				84B993BB1E1D539D0025412C /* Main.storyboard */,
 				846AC1001E67594100C95001 /* MenuViewController.swift */,
 				846AC1021E67595C00C95001 /* MenuTableViewCell.swift */,
+				846D80521E9272060025D4DB /* KitaplarimViewController.swift */,
 				846AC0871E66F03400C95001 /* VoiceViewController.swift */,
+				846D80581E9284BB0025D4DB /* PlayBookViewController.swift */,
 				84B993C11E1D539D0025412C /* Assets.xcassets */,
 				84B993C31E1D539D0025412C /* LaunchScreen.storyboard */,
 				84B993C61E1D539D0025412C /* Info.plist */,
 				84B993BE1E1D539D0025412C /* HeyBook.xcdatamodeld */,
 				84B993CC1E1D59120025412C /* ListenViewController.swift */,
+				846D80541E9272720025D4DB /* HeaderKitaplarimCollectionReusableView.swift */,
 				84B993D01E1D59E50025412C /* CustomCollectionViewCell.swift */,
+				846D80561E9272E00025D4DB /* CustomKitaplarimCollectionViewCell.swift */,
 				84B993D21E1D5A540025412C /* HeaderCollectionReusableView.swift */,
 				8455BAB81E24F3FB0063200E /* LoginViewController.swift */,
 				8455BABA1E24FD5B0063200E /* User.swift */,
@@ -302,6 +314,7 @@
 				846AC1011E67594100C95001 /* MenuViewController.swift in Sources */,
 				846AC1081E77141300C95001 /* NewPasswordViewController.swift in Sources */,
 				849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */,
+				846D80531E9272060025D4DB /* KitaplarimViewController.swift in Sources */,
 				84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */,
 				84B993D11E1D59E50025412C /* CustomCollectionViewCell.swift in Sources */,
 				846AC1051E70665300C95001 /* SettingsViewController.swift in Sources */,
@@ -312,13 +325,16 @@
 				846AC10A1E7736D600C95001 /* PurchaseViewController.swift in Sources */,
 				84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */,
 				84B993D51E1D5EC30025412C /* SwiftyJSON.swift in Sources */,
+				846D80551E9272720025D4DB /* HeaderKitaplarimCollectionReusableView.swift in Sources */,
 				84BF20481E229974001E883E /* Record.swift in Sources */,
+				846D80571E9272E00025D4DB /* CustomKitaplarimCollectionViewCell.swift in Sources */,
 				8455BABB1E24FD5B0063200E /* User.swift in Sources */,
 				8492474F1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift in Sources */,
 				84B993CD1E1D59120025412C /* ListenViewController.swift in Sources */,
 				849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */,
 				8492474D1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift in Sources */,
 				846AC1031E67595C00C95001 /* MenuTableViewCell.swift in Sources */,
+				846D80591E9284BB0025D4DB /* PlayBookViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
