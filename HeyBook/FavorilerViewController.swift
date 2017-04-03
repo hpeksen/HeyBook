@@ -14,7 +14,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
     var records: [Record] = []
     
     @IBOutlet weak var myCollectionView: UICollectionView!
-    
+    var book_id = ""
     var book_title = ""
     var author_title = ""
     var duration = ""
@@ -25,15 +25,20 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
+        if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)") { //http://heybook.online/api.php?request=books
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
-                //print(json)
+                 print(UserDefaults.standard.value(forKey: "user_title"))
+                 print(UserDefaults.standard.value(forKey: "user_mail"))
+                print(UserDefaults.standard.value(forKey: "user_id")!)
+                print("FAVORİLERİM")
+                print(json)
                 
                 let total = json["data"].count
                 //print(total)
                 
                 for index in 0..<total {
+                    book_id = json["data"][index]["book_id"].string!
                     book_title = json["data"][index]["book_title"].string!
                     author_title = json["data"][index]["author_title"].string!
                     duration = json["data"][index]["duration"].string!
@@ -45,7 +50,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
                     //print(author_title)
                     //print(duration)
                     //print(photo)
-                    let record: Record = Record(book_title: book_title, author_title: author_title, duration: duration, photo: photo, desc: desc, demo: demo,thumb: thumb)
+                    let record: Record = Record(book_id:book_id,book_title: book_title, author_title: author_title, duration: duration, photo: photo, desc: desc, demo: demo,thumb: thumb)
                     
                     
                     
@@ -133,7 +138,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         //return mDataSource.groups.count
-        return 3
+        return 1
     }
     
     // For each cell setting the data

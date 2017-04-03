@@ -21,6 +21,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
  
 
     @IBOutlet weak var bookListenImage: UIImageView!
+    var book_id = ""
     var desc = ""
     var bookName = ""
     var authorName = ""
@@ -64,7 +65,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
        if let dataa = UserDefaults.standard.data(forKey: "book_record"),
         let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
-        
+            book_id = (record.book_id)
             desc = (record.desc)
             bookName = (record.book_title)
             authorName = (record.author_title)
@@ -412,6 +413,85 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         print(bookLink)
 
        
+    }
+    
+    
+    @IBOutlet weak var switchToAdd: UISwitch!
+    var registerResponse = ""
+    @IBAction func addToFavori(_ sender: Any) {
+        
+        if(switchToAdd.isOn){
+            if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
+            
+                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş Yapmalısınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+            
+            
+            }
+            else if(UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+
+            //Kitabı favorilerime ekle
+                if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites-add&user_id=30&book_id=\(book_id)") { //http://heybook.online/api.php?request=books
+                    if let data = try? Data(contentsOf: mURL) {
+                        let json = JSON(data: data)
+                        print("FAVORİLERİME EKLENDİ")
+                        print(json)
+                        registerResponse = json["response"].string!
+                        let total = json["data"].count
+                        print(total)
+                        print(registerResponse)
+                        
+                        
+                    }
+                }
+            
+            
+            }
+        
+        }
+        if(!switchToAdd.isOn){
+        
+            if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
+                
+                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş Yapmalısınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+                
+                
+            }
+            else if(UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+                
+                //Kitabı favorilerimden sil
+                //Kitabı favorilerime ekle
+                if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites-delete&user_id=30&book_id=\(book_id)") { //http://heybook.online/api.php?request=books
+                    if let data = try? Data(contentsOf: mURL) {
+                        let json = JSON(data: data)
+                        print("FAVORİLERİME EKLENDİ")
+                        print(json)
+                        registerResponse = json["response"].string!
+                        let total = json["data"].count
+                        print(total)
+                        print(registerResponse)
+                        
+                        
+                    }
+                }
+                
+                
+                
+                
+            }
+            
+        
+        
+        
+        
+        
+        }
+        
     }
 
     /*

@@ -105,7 +105,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         {
             menu = "menu"
          
-            if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+            if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
@@ -122,6 +122,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         {
             UserDefaults.standard.setValue(nil, forKey: "user_mail")
             UserDefaults.standard.setValue(nil, forKey: "user_title")
+            UserDefaults.standard.setValue(nil, forKey: "user_id")
             
             let tapAlert = UIAlertController(title: "mesaj", message: "çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
             tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
@@ -153,7 +154,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
     
     func loginOrNot(){
-        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
             isLogin=true
             menuNameArr[6]="Çıkış Yap"
         }

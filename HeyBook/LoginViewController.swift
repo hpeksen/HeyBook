@@ -16,6 +16,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     var response = ""
     var mail = ""
     var userTitle = ""
+    var user_id = ""
     
     var parentView = ""
     
@@ -151,15 +152,18 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         if let mURL = URL(string: "http://heybook.online/api.php?request=login&mail=\(eMailTxt.text!)&password=\(passwordTxt.text!)") { //http://heybook.online/api.php?request=books
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
+                print("USER BİLGİLERİ")
                 print(json)
                 response = json["response"].string!
                 let total = json["data"].count
                 mail = json["data"]["mail"].description
                 userTitle = json["data"]["user_title"].description
+                user_id = json["data"]["user_id"].description
                 print(total)
                 print(response)
                 print(mail)
                 print(userTitle)
+                print(user_id)
                 
                 
 
@@ -179,6 +183,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             if(response == "success"){
                 UserDefaults.standard.setValue(mail, forKey: "user_mail")
                 UserDefaults.standard.setValue(userTitle, forKey: "user_title")
+                UserDefaults.standard.setValue(user_id, forKey: "user_id")
                 print("hebelehübele")
                 print(parentView)
                 if(parentView == ""){

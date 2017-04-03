@@ -69,6 +69,7 @@ class CatagoriesViewController: UIViewController {
                 //print(total)
                 
                 for index in 0..<total {
+                    let  book_id = json["data"][index]["book_id"].string!
                   let  book_title = json["data"][index]["book_title"].string!
                   let  author_title = json["data"][index]["author_title"].string!
                    let duration = json["data"][index]["duration"].string!
@@ -80,7 +81,7 @@ class CatagoriesViewController: UIViewController {
                     //print(author_title)
                     //print(duration)
                     //print(photo)
-                    let record: Record = Record(book_title: book_title, author_title: author_title, duration: duration, photo: photo, desc: desc, demo: demo,thumb: thumb)
+                    let record: Record = Record(book_id:book_id, book_title: book_title, author_title: author_title, duration: duration, photo: photo, desc: desc, demo: demo,thumb: thumb)
                     
                     
                     
