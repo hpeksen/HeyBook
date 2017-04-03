@@ -389,6 +389,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
+    @IBOutlet weak var listesnBookImage: UIButton!
     @IBAction func listenBook(_ sender: UIButton) {
         
         
@@ -397,13 +398,14 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         player = AVPlayer(playerItem:playerItem)
         player.rate = 1.0;
         player.play()
-        
+        listesnBookImage.imageView?.image = UIImage(named: "pause.png")
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ListenViewController.checkTime), userInfo: nil, repeats: true)
         let t1 = Float(self.player.currentTime().value)
         let t2 = Float(self.player.currentTime().timescale)
         let currentSeconds = t1 / t2
         if(currentSeconds >= 10){
             player.pause()
+            listesnBookImage.imageView?.image = UIImage(named: "play.png")
         }
         
         print("çalıyo")

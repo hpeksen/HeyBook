@@ -75,6 +75,13 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             self.navigationController?.pushViewController(controller, animated: true)
         }
         
+        if ( cell.lblMenuButton.text  == "Favorilerim")
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        
         if ( cell.lblMenuButton.text  == "Kategoriler")
         {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

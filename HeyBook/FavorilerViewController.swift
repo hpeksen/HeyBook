@@ -1,5 +1,5 @@
 //
-//  KitaplarimViewController.swift
+//  FavorilerViewController.swift
 //  HeyBook
 //
 //  Created by Admin on 03/04/2017.
@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
+class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
 
     var records: [Record] = []
     
@@ -22,41 +22,6 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     var desc = ""
     var demo = ""
     var thumb = ""
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        
-        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
-        menuLeftNavigationController.leftSide = true
-        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
-        
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        SideMenuManager.menuPresentMode = .menuSlideIn
-        
-        self.myCollectionView.backgroundColor = UIColor.clear
-        
-        //cell spacing in collection view
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        //let screenHeight = screenSize.height
-        
-        var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout = myCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: screenWidth, height: 80)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        myCollectionView!.collectionViewLayout = layout
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -99,6 +64,41 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         }
         
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        menuLeftNavigationController.leftSide = true
+        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        SideMenuManager.menuPresentMode = .menuSlideIn
+        
+        self.myCollectionView.backgroundColor = UIColor.clear
+        
+        //cell spacing in collection view
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        //let screenHeight = screenSize.height
+        
+        var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout = myCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: screenWidth, height: 80)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        myCollectionView!.collectionViewLayout = layout
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,7 +143,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         
         //let records: [Record] = mDataSource.recordsInSection(indexPath.section)
         let record: Record
-            record = records[indexPath.row]
+        record = records[indexPath.row]
         
         //Aschronized image loading !!!!
         URLSession.shared.dataTask(with: NSURL(string: record.photo)! as URL, completionHandler: { (data, response, error) -> Void in
