@@ -26,6 +26,7 @@ class PlayBookViewController: UIViewController {
     var duration = ""
     
     var player = AVPlayer()
+    var playerLayer:AVPlayerLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,17 @@ class PlayBookViewController: UIViewController {
         SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         SideMenuManager.menuPresentMode = .menuSlideIn
+        
+        
+        let url = URL(string: bookLink)
+        let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
+        player = AVPlayer(playerItem: playerItem)
+        
+        
+        slider.maximumValue = Float(CMTimeGetSeconds((player.currentItem?.asset.duration)!))
+        slider.value = 0.0
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,14 +110,6 @@ class PlayBookViewController: UIViewController {
         }
         else {
             
-            let url = bookLink
-            let playerItem = AVPlayerItem( url:NSURL( string:url ) as! URL )
-            player = AVPlayer(playerItem:playerItem)
-            player.rate = 1.0;
-            slider.maximumValue = Float(CMTimeGetSeconds((player.currentItem?.asset.duration)!))
-            slider.value = 0.0
-            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
-            
             player.play()
             
             playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
@@ -116,16 +120,39 @@ class PlayBookViewController: UIViewController {
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        //player.seek(to: CMTimeGetSeconds(sender.value))
+        player.seek(to: CMTimeMakeWithSeconds(Float64(sender.value), 10000))
+        
     }
     
     func updateTime(_ timer: Timer) {
+        let time = Int(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+        
+        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: time)
+        
         slider.value = Float(CMTimeGetSeconds((player.currentItem?.currentTime())!))
-        timeLabel.text = String(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+        timeLabel.text = NSString(format: "%02d:%02d", m,s) as String
+    }
+    
+    @IBAction func forwardButtonClicked(_ sender: AnyObject) {
+        let forwardTimeInSeconds = (Float(CMTimeGetSeconds((player.currentItem?.currentTime())!)) + 10)
+        
+        player.seek(to: CMTimeMakeWithSeconds(Float64(forwardTimeInSeconds), 10000))
+    }
+    
+    @IBAction func backwardButtonClicked(_ sender: AnyObject) {
+        let backwardTimeInSeconds = (Float(CMTimeGetSeconds((player.currentItem?.currentTime())!)) - 10)
+        player.seek(to: CMTimeMakeWithSeconds(Float64(backwardTimeInSeconds), 10000))
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+        let hours = Int(seconds) / 3600
+        let minutes = Int(seconds) / 60 % 60
+        let seconds = Int(seconds) % 60
+        return (hours, minutes, seconds)
     }
 
     /*

@@ -188,14 +188,15 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 let json = JSON(data: data)
                 print(json)
           
-                
-                
+                for i in 0..<records.count {
+                    if (Int(records[i].book_id) == index) {
+                        records.remove(at: i)
+                        break
+                    }
+                }
+                myCollectionView.reloadData()
             }
         }
-        
-      
-    //self.myCollectionView.reloadData()
-        awakeFromNib()
     
     }
     

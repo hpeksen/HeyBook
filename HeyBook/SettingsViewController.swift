@@ -12,21 +12,42 @@ import SideMenu
 class SettingsViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var btnMenu: UIBarButtonItem!
-    @IBOutlet weak var LoginOl: UIButton!
     @IBOutlet weak var userTitleLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
 
  
+    @IBOutlet weak var PassTxt: UITextField!
     @IBOutlet weak var newPassTxt: UITextField!
-    @IBOutlet weak var newPassTxt2: UITextField!
     @IBOutlet weak var viewLoggedIn: UIView!
     @IBOutlet weak var viewNotLoggedIn: UIView!
+    @IBOutlet weak var newPassTxt2: UITextField!
     
     var mail = ""
     var userTitle = ""
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewLoggedIn.isHidden = false
+        viewNotLoggedIn.isHidden = false
+        
+        if(UserDefaults.standard.value(forKey: "user_mail") == nil && UserDefaults.standard.value(forKey: "user_title") == nil){
+            
+            viewLoggedIn.isHidden = true
+            viewNotLoggedIn.isHidden = false
+        }
+        else {
+            
+            viewLoggedIn.isHidden = false
+            viewNotLoggedIn.isHidden = true
+            
+            userTitleLabel.text =  UserDefaults.standard.value(forKey: "user_title") as? String
+            emailLabel.text = UserDefaults.standard.value(forKey: "user_mail") as? String
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //keyboard için
         newPassTxt.delegate = self
@@ -58,25 +79,6 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         print(mail)
         print(userTitle)
         // Do any additional setup after loading the view.
-        
-        if(UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
-        
-            viewLoggedIn.isHidden = true
-            viewNotLoggedIn.isHidden = false
-            LoginOl.isHidden = false
-           
-        }
-        else {
-            
-            viewLoggedIn.isHidden = false
-            viewNotLoggedIn.isHidden = true
-            LoginOl.isHidden = true
-        
-            userTitleLabel.text =  UserDefaults.standard.value(forKey: "user_title") as? String
-            emailLabel.text = UserDefaults.standard.value(forKey: "user_mail") as? String
-        
-        }
-    
     }
 
     
@@ -136,7 +138,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         print(newPassTxt.text!)
         print(newPassTxt2.text!)
         
-        if let mURL = URL(string: "http://heybook.online/api.php?request=change-password&mail=\(UserDefaults.standard.value(forKey: "user_mail")!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)") {
+        if let mURL = URL(string: "http://heybook.online/api.php?request=change-password&mail=\(UserDefaults.standard.value(forKey: "user_mail")!)&password=\(PassTxt.text!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)") {
             
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
