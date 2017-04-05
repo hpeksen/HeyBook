@@ -70,17 +70,38 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         if ( cell.lblMenuButton.text  == "Kitaplarım")
         {
+            if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
             self.navigationController?.pushViewController(controller, animated: true)
+            }
+            else {
+                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+            
+            }
         }
         
         if ( cell.lblMenuButton.text  == "Favorilerim")
         {
+            if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
             self.navigationController?.pushViewController(controller, animated: true)
-        }
+            }
+            else{
+                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+            
+            
+            }
+            
+            }
         
         if ( cell.lblMenuButton.text  == "Kategoriler")
         {
@@ -90,10 +111,20 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         }
         if ( cell.lblMenuButton.text  == "Sepet")
         {
+            if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
             self.navigationController?.pushViewController(controller, animated: true)
-        }
+            }
+            else {
+                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+            
+            }
+            }
         if ( cell.lblMenuButton.text  == "Ayarlar")
         {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

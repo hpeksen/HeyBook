@@ -159,7 +159,30 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func sepeteEkle(_ sender: Any) {
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
             
-            let tapAlert = UIAlertController(title: "Sepete Ekle", message: "sepete eklendi mesajı gelecek", preferredStyle: UIAlertControllerStyle.alert)
+            
+            //Kitabı favorilerime ekle
+            if let mURL = URL(string: "http://heybook.online/api.php?request=user_cart-add&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&book_id=\(book_id)") { //http://heybook.online/api.php?request=books
+                if let data = try? Data(contentsOf: mURL) {
+                    let json = JSON(data: data)
+                    print("FAVORİLERİME EKLENDİ")
+                    print(json)
+                    registerResponse = json["response"].string!
+                    let total = json["data"].count
+                    print(total)
+                    print(registerResponse)
+                    
+                    
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            let tapAlert = UIAlertController(title: "Sepete Ekle", message: "Kitap sepete eklendi", preferredStyle: UIAlertControllerStyle.alert)
             tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(tapAlert, animated: true, completion: nil)
             
@@ -167,10 +190,15 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             
         }
         else {
-            print("girdiiii")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
-            self.navigationController?.pushViewController(controller, animated: true)
+          
+            let tapAlert = UIAlertController(title: "Mesaj", message: "Lütfen giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(tapAlert, animated: true, completion: nil)
+            
+            
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+//            self.navigationController?.pushViewController(controller, animated: true)
         }
 
     }
@@ -433,7 +461,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             else if(UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
 
             //Kitabı favorilerime ekle
-                if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites-add&user_id=30&book_id=\(book_id)") { //http://heybook.online/api.php?request=books
+                if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites-add&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&book_id=\(book_id)") { //http://heybook.online/api.php?request=books
                     if let data = try? Data(contentsOf: mURL) {
                         let json = JSON(data: data)
                         print("FAVORİLERİME EKLENDİ")

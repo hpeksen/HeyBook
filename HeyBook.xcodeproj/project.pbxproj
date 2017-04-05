@@ -22,6 +22,7 @@
 		846D80571E9272E00025D4DB /* CustomKitaplarimCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D80561E9272E00025D4DB /* CustomKitaplarimCollectionViewCell.swift */; };
 		846D80591E9284BB0025D4DB /* PlayBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D80581E9284BB0025D4DB /* PlayBookViewController.swift */; };
 		846D805B1E92A1360025D4DB /* FavorilerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D805A1E92A1360025D4DB /* FavorilerViewController.swift */; };
+		846D805D1E94DB800025D4DB /* CustomSepetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D805C1E94DB800025D4DB /* CustomSepetCollectionViewCell.swift */; };
 		849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247431E814CF3009AD151 /* CatagoriesViewController.swift */; };
 		849247461E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247451E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift */; };
 		8492474D1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492474C1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift */; };
@@ -63,6 +64,7 @@
 		846D80561E9272E00025D4DB /* CustomKitaplarimCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomKitaplarimCollectionViewCell.swift; sourceTree = "<group>"; };
 		846D80581E9284BB0025D4DB /* PlayBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayBookViewController.swift; sourceTree = "<group>"; };
 		846D805A1E92A1360025D4DB /* FavorilerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorilerViewController.swift; sourceTree = "<group>"; };
+		846D805C1E94DB800025D4DB /* CustomSepetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSepetCollectionViewCell.swift; sourceTree = "<group>"; };
 		849247431E814CF3009AD151 /* CatagoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatagoriesViewController.swift; sourceTree = "<group>"; };
 		849247451E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCatagoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		8492474C1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCategoriesCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				849247521E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift */,
 				8492474E1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift */,
 				849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */,
+				846D805C1E94DB800025D4DB /* CustomSepetCollectionViewCell.swift */,
 				84B993D41E1D5EC30025412C /* SwiftyJSON.swift */,
 				84B993BB1E1D539D0025412C /* Main.storyboard */,
 				846AC1001E67594100C95001 /* MenuViewController.swift */,
@@ -317,6 +320,7 @@
 				846AC1011E67594100C95001 /* MenuViewController.swift in Sources */,
 				846AC1081E77141300C95001 /* NewPasswordViewController.swift in Sources */,
 				849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */,
+				846D805D1E94DB800025D4DB /* CustomSepetCollectionViewCell.swift in Sources */,
 				846D80531E9272060025D4DB /* KitaplarimViewController.swift in Sources */,
 				84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */,
 				84B993D11E1D59E50025412C /* CustomCollectionViewCell.swift in Sources */,
