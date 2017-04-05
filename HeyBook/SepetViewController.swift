@@ -156,6 +156,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 cell.bookName.text = record.book_title
                 cell.bookImage.image = UIImage(data: data!)
                 cell.bookPrice.text = record.duration
+               
+                cell.deleteBookFromFav.tag = Int(record.book_id)!
             })
             
         }).resume()
@@ -173,6 +175,29 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         return cell
     }
     
+
+    
+    @IBAction func deleteBookFromSepet(sender : UIButton){
+    
+    let index = sender.tag
+        print("book Id sini bastırıyom: ")
+        print(index)
+        
+        if let mURL = URL(string: "http://heybook.online/api.php?request=user_cart-delete&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&book_id=\(index)") { //http://heybook.online/api.php?request=books
+            if let data = try? Data(contentsOf: mURL) {
+                let json = JSON(data: data)
+                print(json)
+          
+                
+                
+            }
+        }
+        
+      
+    //self.myCollectionView.reloadData()
+        awakeFromNib()
+    
+    }
     
     // For each header setting the data
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

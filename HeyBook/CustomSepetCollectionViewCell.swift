@@ -15,5 +15,8 @@ class CustomSepetCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var deleteBookFromFav: UIButton!
     @IBOutlet weak var leftView: UIView!
 
+    @IBAction func deleteBookBtn(_ sender: UIButton) {
+    }
+    
     
 }

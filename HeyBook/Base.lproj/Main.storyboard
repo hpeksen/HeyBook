@@ -574,7 +574,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="KKw-YF-WXh" customClass="CustomSepetCollectionViewCell" customModule="HeyBook" customModuleProvider="target">
-                                        <rect key="frame" x="4" y="42" width="368" height="80"/>
+                                        <rect key="frame" x="3.5" y="42" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
@@ -614,6 +614,9 @@
                                                         <constraint firstAttribute="height" constant="32" id="vz5-39-g5z"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="sil"/>
+                                                    <connections>
+                                                        <action selector="deleteBookFromSepetWithSender:" destination="fah-Bo-lry" eventType="touchUpInside" id="POO-0k-nez"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="avQ-Ge-vcP">
                                                     <rect key="frame" x="246" y="9" width="60" height="63"/>
@@ -651,6 +654,7 @@
                                             <outlet property="bookImage" destination="avQ-Ge-vcP" id="mKN-rp-LYi"/>
                                             <outlet property="bookName" destination="Biq-Oi-5In" id="le8-y9-QtS"/>
                                             <outlet property="bookPrice" destination="Lpm-m7-fcK" id="Fr4-ww-3St"/>
+                                            <outlet property="deleteBookFromFav" destination="KSW-0v-7gW" id="URQ-jq-Iik"/>
                                             <outlet property="leftView" destination="5VL-oN-uKM" id="UXC-FA-J26"/>
                                         </connections>
                                     </collectionViewCell>
