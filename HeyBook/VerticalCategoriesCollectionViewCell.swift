@@ -23,7 +23,25 @@ class VerticalCategoriesCollectionViewCell: UICollectionViewCell {
     var loadingStatus = LoadMoreStatus.haveMore
     
     var records:[Record] = []
-    
+    var book_id = ""
+    var category_id = ""
+    var publisher_id = ""
+    var author_id = ""
+    var narrator_id = ""
+    var book_title = ""
+    var desc = ""
+    var price = ""
+    var photo = ""
+    var thumb = ""
+    var audio = ""
+    var duration = ""
+    var size = ""
+    var demo = ""
+    var star = ""
+    var category_title = ""
+    var author_title = ""
+    var publisher_title = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
@@ -35,20 +53,29 @@ class VerticalCategoriesCollectionViewCell: UICollectionViewCell {
                 //print(total)
                 
                 for index in 0..<total {
-                    let  book_id = json["data"][index]["book_id"].string!
-                    let  book_title = json["data"][index]["book_title"].string!
-                    let  author_title = json["data"][index]["author_title"].string!
-                    let duration = json["data"][index]["duration"].string!
-                    let photo = json["data"][index]["photo"].string!
-                    let desc = json["data"][index]["description"].string!
-                    let  demo = json["data"][index]["audio"].string!
-                    let  thumb = json["data"][index]["thumb"].string!
+                    book_id = json["data"][index]["book_id"].string!
+                    category_id = json["data"][index]["category_id"].string!
+                    publisher_id = json["data"][index]["publisher_id"].string!
+                    author_id = json["data"][index]["author_id"].string!
+                    narrator_id = json["data"][index]["narrator_id"].string!
+                    book_title = json["data"][index]["book_title"].string!
+                    desc = json["data"][index]["description"].string!
+                    price = json["data"][index]["price"].string!
+                    photo = json["data"][index]["photo"].string!
+                    thumb = json["data"][index]["thumb"].string!
+                    audio = json["data"][index]["audio"].string!
+                    duration = json["data"][index]["duration"].string!
+                    size = json["data"][index]["size"].string!
+                    demo = json["data"][index]["demo"].string!
+                    star = json["data"][index]["star"].string!
+                    category_title = json["data"][index]["category_title"].string!
+                    author_title = json["data"][index]["author_title"].string!
+                    publisher_title = json["data"][index]["publisher_title"].string!
                     //print(book_title)
                     //print(author_title)
                     //print(duration)
                     //print(photo)
-                    let record: Record = Record(book_id:book_id,book_title: book_title, author_title: author_title, duration: duration, photo: photo, desc: desc, demo: demo,thumb: thumb)
-                    
+                    let record: Record = Record(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title)
                     
                     
                     

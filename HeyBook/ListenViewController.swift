@@ -18,6 +18,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
+    @IBOutlet weak var priceLabel: UILabel!
  
 
     @IBOutlet weak var bookListenImage: UIImageView!
@@ -27,7 +28,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     var authorName = ""
     var bookLink = ""
     var bookImage = ""
-    
+    var price = ""
     
   
     
@@ -71,6 +72,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             authorName = (record.author_title)
             bookLink = (record.demo)
             bookImage = (record.thumb)
+        price = (record.price)
        } else {
         print("olmadi lan....")
 
@@ -128,6 +130,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         descriptionLabel.text = desc
         bookNameLabel.text = bookName
         authorNameLabel.text = authorName
+        priceLabel.text = price
         print("YÜKLEDİİİİİİ")
         let url = URL(string: bookImage)
         let data = try? Data(contentsOf: url!)
@@ -137,6 +140,26 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
         bookListenImage.image = UIImage(data: data!)
         
+        
+        
+        //Favori switch kontrol
+        
+        if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)") { //http://heybook.online/api.php?request=books
+            if let data = try? Data(contentsOf: mURL) {
+                let json = JSON(data: data)
+                print(json)
+                registerResponse = json["response"].string!
+                let total = json["data"].count
+                print(total)
+                
+                for index in 0..<total {
+                    if (book_id == json["data"][index]["book_id"].string!){
+                        switchToAdd.setOn(true, animated: true)
+                    }
+                }
+                
+                print(registerResponse)            }
+        }
         
         // Do any additional setup after loading the view.
     }
