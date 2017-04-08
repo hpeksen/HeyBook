@@ -19,10 +19,16 @@ class PlayBookViewController: UIViewController {
     @IBOutlet weak var bookAuthorLabel2: UILabel!
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookNameLabel: UILabel!
+    @IBOutlet weak var sureLabel: UILabel!
+    @IBOutlet weak var publisherNameLabel: UILabel!
+    @IBOutlet weak var narratorNameLabel: UILabel!
+    
     var bookName = ""
     var authorName = ""
     var bookLink = ""
     var bookImage = ""
+    var narratorName = ""
+    var publisherName = ""
     var duration = ""
     
     var player = AVPlayer()
@@ -43,8 +49,10 @@ class PlayBookViewController: UIViewController {
             
             bookName = (record.book_title)
             authorName = (record.author_title)
-            bookLink = (record.demo)
+            bookLink = (record.audio)
             bookImage = (record.thumb)
+            narratorName = "Nimet Ceren Serim"
+            publisherName = "Can Yayınları"
             duration = (record.duration)
         } else {
             print("olmadi lan....")
@@ -54,6 +62,17 @@ class PlayBookViewController: UIViewController {
         bookAuthorLabel.text = authorName
         bookAuthorLabel2.text = authorName
         bookNameLabel.text = bookName
+        narratorNameLabel.text = narratorName
+        publisherNameLabel.text = publisherName
+        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int(duration)!)
+        var durationMessage = ""
+        if h != 0 {
+            durationMessage += "\(h) saat"
+        }
+        if m != 0 {
+            durationMessage += "\(m) dakika"
+        }
+        sureLabel.text = durationMessage
         
         self.bookPhoto.layer.cornerRadius = self.bookPhoto.frame.size.width / 2;
         self.bookPhoto.clipsToBounds = true;
