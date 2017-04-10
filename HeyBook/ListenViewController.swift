@@ -13,8 +13,7 @@ import SideMenu
 import Cosmos
 
 class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
-
-    var player = AVPlayer()
+    
     var timer:Timer!
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
@@ -31,6 +30,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     var bookImage = ""
     var price = ""
     var star = ""
+    var demo = ""
     
     @IBOutlet weak var starsView: CosmosView!
   
@@ -40,7 +40,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     //voice
     @IBOutlet weak var textView: UITextView!
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))!
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
     @IBOutlet weak var microphoneButton: UIButton!
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -57,6 +57,11 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func menuButton(_ sender: UIBarButtonItem) {
          present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descriptionLabel.setContentOffset(CGPoint.zero, animated: false)
     }
     
     override func viewDidLoad() {
@@ -77,6 +82,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             bookImage = (record.thumb)
         price = (record.price)
         star = (record.star)
+        demo = (record.demo)
        } else {
         print("olmadi lan....")
 
@@ -193,11 +199,20 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             starsView.didFinishTouchingCosmos = {
                 rating in
                 self.starsView.rating = Double(self.star)!
-                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş Yapmalısınız", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }))
+                tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
             }
         }
+        
+        let url_demo = URL(string: demo)
+        let playerItem:AVPlayerItem = AVPlayerItem(url: url_demo!)
+        player = AVPlayer(playerItem: playerItem)
         
         // Do any additional setup after loading the view.
     }
@@ -252,8 +267,13 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         else {
           
-            let tapAlert = UIAlertController(title: "Mesaj", message: "Lütfen giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
-            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+            tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }))
+            tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
             self.present(tapAlert, animated: true, completion: nil)
             
             
@@ -332,28 +352,28 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 self.textView.text = result?.bestTranscription.formattedString  //9
             
-                if(self.textView.text == "Hey book"){
+                if(self.textView.text == "Vitrin"){
                 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                 
                 }
-                if(self.textView.text == "Catagory"){
+                if(self.textView.text == "Kategori"){
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
-                if(self.textView.text == "Settings"){
+                if(self.textView.text == "Ayarlar"){
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
-                if(self.textView.text == "Bucket"){
+                if(self.textView.text == "Sepet"){
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
@@ -361,7 +381,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                     
                 }
                 
-                if(self.textView.text == "Login"){
+                if(self.textView.text == "Giriş yap"){
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
                         
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -480,26 +500,24 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     @IBOutlet weak var listesnBookImage: UIButton!
+    var player = AVPlayer()
+    var playerLayer:AVPlayerLayer?
+    
     @IBAction func listenBook(_ sender: UIButton) {
-        
-        
-        let url = bookLink
-        let playerItem = AVPlayerItem( url:NSURL( string:url ) as! URL )
-        player = AVPlayer(playerItem:playerItem)
-        player.rate = 1.0;
-        player.play()
-        listesnBookImage.imageView?.image = UIImage(named: "pause.png")
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ListenViewController.checkTime), userInfo: nil, repeats: true)
-        let t1 = Float(self.player.currentTime().value)
-        let t2 = Float(self.player.currentTime().timescale)
-        let currentSeconds = t1 / t2
-        if(currentSeconds >= 10){
+
+        if((player.rate != 0) && (player.error == nil)) {
             player.pause()
-            listesnBookImage.imageView?.image = UIImage(named: "play.png")
+            listesnBookImage.setImage(UIImage(named: "play.png"), for: UIControlState.normal)
         }
-        
-        print("çalıyo")
-        print(bookLink)
+        else {
+            
+            player.play()
+            
+            listesnBookImage.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
+            
+            print("çalıyo")
+            print(bookLink)
+        }
 
        
     }
@@ -513,8 +531,13 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
             
                 switchToAdd.setOn(false, animated: true)
-                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş Yapmalısınız", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }))
+                tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
             }
             else if(UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
@@ -543,8 +566,13 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
                 
                 switchToAdd.setOn(false, animated: false)
-                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş Yapmalısınız", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }))
+                tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
                 
                 
