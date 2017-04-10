@@ -11,4 +11,5 @@ import UIKit
 class HeaderCategoriesCollectionReusableView: UICollectionReusableView {
         
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var headerBookCount: UILabel!
 }

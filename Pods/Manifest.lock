@@ -1,12 +1,18 @@
 PODS:
+  - Cosmos (9.0.0)
+  - SearchTextField (1.1.0)
   - SideMenu (2.2.0)
 
 DEPENDENCIES:
+  - Cosmos (~> 9.0)
+  - SearchTextField
   - SideMenu
 
 SPEC CHECKSUMS:
+  Cosmos: 33eee62b2a0418452aef470f711f83c3ea061b7b
+  SearchTextField: 5daab6cecfd90e06f9b08b2814593656c0c99f3d
   SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
 
-PODFILE CHECKSUM: 95fa4613e27e784f90e389cffbbbe96cfb43bcca
+PODFILE CHECKSUM: edeb7fd667630787ec3aa6834c406d7022b5f1a2
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.1.1

@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Cosmos
 
 class HorizontalCategoriesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var categoriesBookName: UILabel!
     @IBOutlet weak var categoriesBookImage: UIImageView!
+    @IBOutlet weak var categoriesBookRating: CosmosView!
+    @IBOutlet weak var categoriesBookAuthor: UILabel!
+    @IBOutlet weak var categoriesBookPrice: UILabel!
 }

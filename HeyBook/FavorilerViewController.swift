@@ -12,6 +12,7 @@ import SideMenu
 class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
 
     var records: [Record] = []
+     var categories: [String] = []
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     var book_id = ""
@@ -77,7 +78,9 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
                     
                     
                     records.append(record)
-                    
+                    if !categories.contains(record.category_title) {
+                        categories.append(record.category_title)
+                    }
                     
                     
                 }
@@ -152,14 +155,26 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return records.count
+        return categoriesInGroup(section).count
         
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         //return mDataSource.groups.count
-        return 1
+        return categories.count
+    }
+    
+    func categoriesInGroup(_ index: Int) -> [Record] {
+        let item = categories[index]
+        
+        // See playground6 for Closure
+        // http://locomoviles.com/uncategorized/filtering-swift-array-dictionaries-object-property/
+        let filteredFruits = records.filter { (_ record: Record) -> Bool in
+            return record.category_title == item
+        }
+        
+        return filteredFruits
     }
     
     // For each cell setting the data
@@ -169,7 +184,9 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
         
         //let records: [Record] = mDataSource.recordsInSection(indexPath.section)
         let record: Record
-        record = records[indexPath.row]
+        let records_:[Record] = categoriesInGroup(indexPath.section)
+        
+        record = records_[indexPath.row]
         
         //Aschronized image loading !!!!
         URLSession.shared.dataTask(with: NSURL(string: record.photo)! as URL, completionHandler: { (data, response, error) -> Void in
@@ -211,20 +228,8 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderKitaplarimCollectionReusableView
         
-        if(indexPath.section == 0 )
-        {
-            headerView.header.text = "ROMAN"
-        }
+        headerView.header.text = categories[indexPath.section]
         
-        if(indexPath.section == 1 )
-        {
-            headerView.header.text = "KİŞİSEL GELİŞİM"
-        }
-        
-        if(indexPath.section == 2 )
-        {
-            headerView.header.text = "BİLİM KURGU"
-        }
         return headerView
     }
     

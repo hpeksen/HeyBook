@@ -75,6 +75,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         SideMenuManager.menuPresentMode = .menuSlideIn
+        
 
         print("ayarlar ekranındayım")
         

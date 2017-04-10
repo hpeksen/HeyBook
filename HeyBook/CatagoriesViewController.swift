@@ -183,7 +183,7 @@ extension CatagoriesViewController: UICollectionViewDataSource {
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerticalCellIdentifier", for: indexPath) as! VerticalCategoriesCollectionViewCell
-        cell.section = String(indexPath.section)
+        //cell.section = String(indexPath.section)
         return cell
         
     }
@@ -203,6 +203,7 @@ extension CatagoriesViewController: UICollectionViewDataSource {
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderCategoriesCollectionReusableView
             
             headerView.headerLabel.text = categories[indexPath.section]
+            headerView.headerBookCount.text = "\(records.count) kitap"
             
             return headerView
         }

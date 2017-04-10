@@ -234,20 +234,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderKitaplarimCollectionReusableView
         
-        if(indexPath.section == 0 )
-        {
-            headerView.header.text = "ROMAN"
-        }
+        headerView.header.text = records[indexPath.section].category_title
         
-        if(indexPath.section == 1 )
-        {
-            headerView.header.text = "KİŞİSEL GELİŞİM"
-        }
-        
-        if(indexPath.section == 2 )
-        {
-            headerView.header.text = "BİLİM KURGU"
-        }
         return headerView
     }
     

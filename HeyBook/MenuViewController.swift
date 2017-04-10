@@ -77,8 +77,13 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             self.navigationController?.pushViewController(controller, animated: true)
             }
             else {
-                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }))
+                tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
                 
             
@@ -94,8 +99,13 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             self.navigationController?.pushViewController(controller, animated: true)
             }
             else{
-                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }))
+                tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
             
             
@@ -118,8 +128,13 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             self.navigationController?.pushViewController(controller, animated: true)
             }
             else {
-                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }))
+                tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
                 
             
@@ -155,15 +170,13 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             UserDefaults.standard.setValue(nil, forKey: "user_title")
             UserDefaults.standard.setValue(nil, forKey: "user_id")
             
-            let tapAlert = UIAlertController(title: "mesaj", message: "çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
-            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            let tapAlert = UIAlertController(title: "mesaj", message: "Çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+            tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }))
             self.present(tapAlert, animated: true, completion: nil)
-            
-            print("pirint")
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-            self.navigationController?.pushViewController(controller, animated: true)
        
         }
     }
