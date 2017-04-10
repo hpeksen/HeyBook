@@ -92,24 +92,16 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
         
         
         }
-       else if (newPasswordResponse == "error" && message == "Error: Email address is invalid."){
+       else if (newPasswordResponse == "error"){
             
-            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen uygun bir mail adresi giriniz(Örnek: heybook@online.com) ", preferredStyle: UIAlertControllerStyle.alert)
+            let longPressAlert = UIAlertController(title: "", message: "\(message)", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
             
             
             
         }
-        else if (newPasswordResponse == "error" && message == "Error: Email address can not be found."){
-            
-            let longPressAlert = UIAlertController(title: "Hata", message: "Böyle bir e-mail adresi yoktur. Lütfen e-mail adresinizi tekrar giriniz! ", preferredStyle: UIAlertControllerStyle.alert)
-            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(longPressAlert, animated: true, completion: nil)
-            
-            
-            
-        }
+      
         else if(newPasswordResponse == "success"){
         
         
@@ -120,6 +112,7 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
         
         
         }
+      
         
     }
     override var prefersStatusBarHidden: Bool {
