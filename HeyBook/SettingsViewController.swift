@@ -21,6 +21,8 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var viewLoggedIn: UIView!
     @IBOutlet weak var viewNotLoggedIn: UIView!
     @IBOutlet weak var newPassTxt2: UITextField!
+    @IBOutlet weak var disableSwitch: UISwitch!
+    @IBOutlet weak var subscribeSwitch: UISwitch!
     
     var mail = ""
     var userTitle = ""
@@ -138,8 +140,11 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         print(newPassTxt.text!)
         print(newPassTxt2.text!)
         
-        if let mURL = URL(string: "http://heybook.online/api.php?request=change-password&mail=\(UserDefaults.standard.value(forKey: "user_mail")!)&password=\(PassTxt.text!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)") {
-            
+        let originalString = userTitleLabel.text!
+        let escapedString = originalString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        
+        if let mURL = URL(string: "http://heybook.online/api.php?request=settings&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&user_title=\(escapedString!)&mail=\(emailLabel.text!)&password=\(PassTxt.text!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)&subscribe=\(subscribeSwitch.isOn)&disabled=\(disableSwitch.isOn)") {
+            print(mURL)
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
                 print(json)
@@ -151,10 +156,13 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
                 tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
                 
+                PassTxt.text = ""
+                newPassTxt.text = ""
+                newPassTxt2.text = ""
+                
+                UserDefaults.standard.setValue(emailLabel.text!, forKey: "user_mail")
+                UserDefaults.standard.setValue(userTitleLabel.text!, forKey: "user_title")
             }
-            
-            
-            
         }
     }
     

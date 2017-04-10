@@ -15,6 +15,7 @@ class CatagoriesViewController: UIViewController {
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     @IBOutlet weak var catagoriesCollectionView: UICollectionView!
     var records:[Record] = []
+    var categories:[String] = []
     var book_id = ""
     var category_id = ""
     var publisher_id = ""
@@ -116,7 +117,9 @@ class CatagoriesViewController: UIViewController {
                     
                     
                     records.append(record)
-                    
+                    if !categories.contains(record.category_title) {
+                        categories.append(record.category_title)
+                    }
                     
                     
                 }
@@ -180,12 +183,13 @@ extension CatagoriesViewController: UICollectionViewDataSource {
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerticalCellIdentifier", for: indexPath) as! VerticalCategoriesCollectionViewCell
+        cell.section = String(indexPath.section)
         return cell
         
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
-        return 4
+        return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -198,15 +202,7 @@ extension CatagoriesViewController: UICollectionViewDataSource {
             var headerView:HeaderCategoriesCollectionReusableView!
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderCategoriesCollectionReusableView
             
-            if(indexPath.section == 0){
-                headerView.headerLabel.text = "MACERA"
-            } else if(indexPath.section == 1){
-                headerView.headerLabel.text = "ROMAN"
-            } else if(indexPath.section == 2){
-                headerView.headerLabel.text = "BİLİM KURGU"
-            } else if(indexPath.section == 3){
-                headerView.headerLabel.text = "ÇİZGİ ROMAN"
-            }
+            headerView.headerLabel.text = categories[indexPath.section]
             
             return headerView
         }

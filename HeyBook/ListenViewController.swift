@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Speech
 import SideMenu
+import Cosmos
 
 class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
 
@@ -29,7 +30,9 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     var bookLink = ""
     var bookImage = ""
     var price = ""
+    var star = ""
     
+    @IBOutlet weak var starsView: CosmosView!
   
     
 
@@ -73,6 +76,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             bookLink = (record.demo)
             bookImage = (record.thumb)
         price = (record.price)
+        star = (record.star)
        } else {
         print("olmadi lan....")
 
@@ -142,8 +146,11 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         
         
-        //Favori switch kontrol
+        //Favori yıldızları: https://github.com/marketplacer/Cosmos
+        starsView.rating = Double(star)!
         
+        //Favori switch kontrol
+        if UserDefaults.standard.value(forKey: "user_id") != nil {
         if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)") { //http://heybook.online/api.php?request=books
             if let data = try? Data(contentsOf: mURL) {
                 let json = JSON(data: data)
@@ -158,7 +165,38 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                     }
                 }
                 
-                print(registerResponse)            }
+                print(registerResponse)
+            }
+            }
+            
+            
+            starsView.isUserInteractionEnabled = true
+            starsView.didFinishTouchingCosmos = {
+                rating in
+                print("stars")
+                print(rating)
+                
+                if let mURL = URL(string: "http://heybook.online/api.php?request=user_stars-add&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&book_id=\(self.book_id)&star=\(rating)") { //http://heybook.online/api.php?request=books
+                    if let data = try? Data(contentsOf: mURL) {
+                        var registerResponse = ""
+                        let json = JSON(data: data)
+                        print(json)
+                        registerResponse = json["response"].string!
+                        let total = json["data"].count
+                        print(total)
+                        print(registerResponse)
+                    }
+                }
+            }
+            
+        } else {
+            starsView.didFinishTouchingCosmos = {
+                rating in
+                self.starsView.rating = Double(self.star)!
+                let tapAlert = UIAlertController(title: "mesaj", message: "Giriş Yapmalısınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+            }
         }
         
         // Do any additional setup after loading the view.
@@ -474,12 +512,10 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         if(switchToAdd.isOn){
             if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
             
+                switchToAdd.setOn(false, animated: true)
                 let tapAlert = UIAlertController(title: "mesaj", message: "Giriş Yapmalısınız", preferredStyle: UIAlertControllerStyle.alert)
                 tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)
-                
-            
-            
             }
             else if(UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
 
@@ -506,6 +542,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
             if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
                 
+                switchToAdd.setOn(false, animated: false)
                 let tapAlert = UIAlertController(title: "mesaj", message: "Giriş Yapmalısınız", preferredStyle: UIAlertControllerStyle.alert)
                 tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)

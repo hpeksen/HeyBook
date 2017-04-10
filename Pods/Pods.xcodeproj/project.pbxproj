@@ -7,81 +7,176 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03BBA3E05E9F2DD25C0E507E2D2411E8 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF13F0BB1AB42B2F1C6A72A59BD82F /* UITableViewVibrantCell.swift */; };
-		08B4F83FAB744B5EEB54FE4F69D188BB /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35093DD994A172D53932151A6DBAEBC3 /* SideMenu-dummy.m */; };
-		0B32CE98FF6449FC51568A6E6EAE2215 /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E72E3ED37D9B76098CC2B9BB49D386DF /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		109D5C0B740AE058E8F40848EBB5CD9E /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F5E4E267C03BAC23C64C2DEC825B6 /* UISideMenuNavigationController.swift */; };
-		4439E6C99309ADCD30AE92B42C63FA9B /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB323BB3B2B0A52D555C01DBCD0305 /* SideMenuTransition.swift */; };
-		4B1C96BAF3D588312856327095288623 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F4BA49D06E8F4C1A0DF192A1FB11 /* SideMenuManager.swift */; };
-		4F54EC789AF6A60D9FF3D01E73A715CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		A7A76EA07FED51A23C33828B31435033 /* Pods-HeyBook-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CFEC1CDB40FA5FEBADDB56C1701FB6 /* Pods-HeyBook-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D03EEDD2B5A9277C9EC1E8980E59B26F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		D6FDA26B6B21A910512ADE88E7CF50E4 /* Pods-HeyBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EBEB4605B47C15B700B2B28937733F /* Pods-HeyBook-dummy.m */; };
+		015C902B9C0E63DA0519A0D34E10F739 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C1D2770AEE40C4260E30908330E83E /* CosmosSettings.swift */; };
+		0EC88D04EAE0CD3EFD3C3C89C1B9F45F /* CosmosLocalizedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BC5285152497F9D9632F6B735DAF5E /* CosmosLocalizedRating.swift */; };
+		11566D3F5482E156C9E887A885D2B4DF /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F6BA5B1B9E2A0F3BF34ABC9AACA1261 /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1931D0E808B838F46403067D21D77605 /* Pods-HeyBook-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CFEC1CDB40FA5FEBADDB56C1701FB6 /* Pods-HeyBook-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FC39FAD324ECAF9588DE0BFC3E4BE43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		25DFA72039CBA011EBA738AA73084A8E /* CosmosSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3567F606854CDB3A024221160F10CAAF /* CosmosSize.swift */; };
+		371F422D050761A63F0156F537B8902D /* CosmosDefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA20FF29800ECDACAE742CA03065B0 /* CosmosDefaultSettings.swift */; };
+		3DF6ECF23D38E7DA5B5B2B43707F2F4D /* Cosmos-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B448BE5AC0A1535069D4A50D2D03635 /* Cosmos-dummy.m */; };
+		424AD9605CBDCD867083B9820784E0AC /* CosmosText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1BF17C0788C8CCF9FEE03E1E3D7B3 /* CosmosText.swift */; };
+		45E37BA83222F36F56E15A8984615D9A /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B95A96683FB1978467EA2B5F8EA5772D /* SideMenu-dummy.m */; };
+		45F546D14166EDEE46371951EC705C03 /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA633882E987B5C3ED73A1FB6D0EA71 /* CosmosView.swift */; };
+		4F40A9CBB316E7100828F0C6F5714946 /* CosmosTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652BA4C62EBE75692C49043C000DC21 /* CosmosTouch.swift */; };
+		6A6CF4B88C3F0F123CF5648C50B94A48 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D419C0A04204BAAF7283FA7E706316C /* SearchTextField.swift */; };
+		7CC5A43D7E1372EB6292FCBC0151A36E /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52BA18D6AAD12ECE79378CA051F0304 /* CosmosAccessibility.swift */; };
+		88BA9FFC474BD7B995A0CEA06FF431F7 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DDDAF93A20A9E2333D5BE15670254 /* StarFillMode.swift */; };
+		908586E402EA0B81EC3773A4BB585308 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		937C41A13EEF8BEE80E8197BC1F6689A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		98F8190F4D25CDB0D02ED1EE17A2F191 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158157EB08EA766D089B630C2094B9DC /* UISideMenuNavigationController.swift */; };
+		99F08F6FE2B165EEBD5E01EDDA176620 /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189B60A7E967EB3EB90EF8605325AD7 /* CosmosRating.swift */; };
+		A0AEFB2FD935D82F30B581D447E176C0 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBAC640BBE8C758631DF7762AA28BA0 /* SideMenuManager.swift */; };
+		AA971D9492DD9B9E288045C2C0CC9A99 /* CosmosLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6807621F00200922956B5886189453B /* CosmosLayers.swift */; };
+		BB50463D481C4F19ADEB77CEC18A0FA8 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED958AF1400D1FF4BC599CBC737590 /* UITableViewVibrantCell.swift */; };
+		BED617600725EDDC6439F6C8ED07F2D2 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD1C145AFCE26188DE3352BF555C075 /* SideMenuTransition.swift */; };
+		C7934E0F50F7625B4CEDBE3B7EF1026E /* SearchTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52371D1ED968B6FEC0CD587171E9C749 /* SearchTextField-dummy.m */; };
+		C79D2F2FCE3EF9B31D1222E0C4A59DC5 /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D41275E15CC6C08A1DE7235A354F6E /* RightToLeft.swift */; };
+		C95B658D689425ED9DAA95EB479B44A6 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050DCE75768CE1A756C4F45FF89DB8B1 /* StarLayer.swift */; };
+		D4BCCF0FBC97A6125EF8FD51E78E6A34 /* SearchTextField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11829ABDEE0CBEE54CFC448E8E565803 /* SearchTextField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE5E91A47C1BF6869DF17747D61C2FF1 /* Cosmos-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B95B5FB427F4425BF7B2BC5CDE3A872B /* Cosmos-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2D8D1AA0D41C73C4B570DE682C05D72 /* CosmosTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A54080710546EBFE34774786157E501 /* CosmosTouchTarget.swift */; };
+		F37DDDC2660EB17E1BE35429C1C58AD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		F4897C901F2D18AD5625BAE44C9DBAF9 /* Pods-HeyBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EBEB4605B47C15B700B2B28937733F /* Pods-HeyBook-dummy.m */; };
+		F66DE3EF01408C42C115587B201CB541 /* CosmosLayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6BBF80388A3C0C620BA96D9B60D62 /* CosmosLayerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		58A4C5662AFCB6634D6B8C6D1B56A84C /* PBXContainerItemProxy */ = {
+		7E96F91E97FA749646BC25DB0841DEA1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C6351B14875AAF6061D822A6B1262302;
+			remoteGlobalIDString = 665D7375C8DBCE614896682CC02AF9CA;
+			remoteInfo = SearchTextField;
+		};
+		890709BF578E17FC3D40263CC1DBAE87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F99E669D0FC8306D2D96DF7ABE9F2C08;
 			remoteInfo = SideMenu;
+		};
+		DF8B6437AFB67C93EA118F851F0F78F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FDC533A4360A68ABDCE852F04B30927;
+			remoteInfo = Cosmos;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0049F4BA49D06E8F4C1A0DF192A1FB11 /* SideMenuManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
+		012BCF1798AAA982B2E76311B073B770 /* SideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.xcconfig; sourceTree = "<group>"; };
+		050DCE75768CE1A756C4F45FF89DB8B1 /* StarLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarLayer.swift; path = Cosmos/StarLayer.swift; sourceTree = "<group>"; };
+		0D419C0A04204BAAF7283FA7E706316C /* SearchTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SearchTextField.swift; path = SearchTextField/Classes/SearchTextField.swift; sourceTree = "<group>"; };
+		11829ABDEE0CBEE54CFC448E8E565803 /* SearchTextField-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SearchTextField-umbrella.h"; sourceTree = "<group>"; };
+		1189B60A7E967EB3EB90EF8605325AD7 /* CosmosRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosRating.swift; path = Cosmos/CosmosRating.swift; sourceTree = "<group>"; };
+		158157EB08EA766D089B630C2094B9DC /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UISideMenuNavigationController.swift; path = Pod/Classes/UISideMenuNavigationController.swift; sourceTree = "<group>"; };
+		15C1D2770AEE40C4260E30908330E83E /* CosmosSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosSettings.swift; path = Cosmos/CosmosSettings.swift; sourceTree = "<group>"; };
+		1AD1C145AFCE26188DE3352BF555C075 /* SideMenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuTransition.swift; path = Pod/Classes/SideMenuTransition.swift; sourceTree = "<group>"; };
+		1B448BE5AC0A1535069D4A50D2D03635 /* Cosmos-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cosmos-dummy.m"; sourceTree = "<group>"; };
 		2178E95FF813667177FEFCEB4A52D49F /* Pods-HeyBook-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HeyBook-resources.sh"; sourceTree = "<group>"; };
-		2DB5AE7A4422CAA15ADF5288304DB57A /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SideMenu.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29ED958AF1400D1FF4BC599CBC737590 /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITableViewVibrantCell.swift; path = Pod/Classes/UITableViewVibrantCell.swift; sourceTree = "<group>"; };
+		2BBAC640BBE8C758631DF7762AA28BA0 /* SideMenuManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
+		2FA633882E987B5C3ED73A1FB6D0EA71 /* CosmosView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosView.swift; path = Cosmos/CosmosView.swift; sourceTree = "<group>"; };
+		32EA20FF29800ECDACAE742CA03065B0 /* CosmosDefaultSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosDefaultSettings.swift; path = Cosmos/CosmosDefaultSettings.swift; sourceTree = "<group>"; };
 		3390A644106DE7543F27D85647CD8C23 /* Pods-HeyBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HeyBook.release.xcconfig"; sourceTree = "<group>"; };
-		35093DD994A172D53932151A6DBAEBC3 /* SideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SideMenu-dummy.m"; sourceTree = "<group>"; };
+		3567F606854CDB3A024221160F10CAAF /* CosmosSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosSize.swift; path = Cosmos/CosmosSize.swift; sourceTree = "<group>"; };
 		361D7B7522E20ACA54395EFEAADB17C3 /* Pods-HeyBook.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-HeyBook.modulemap"; sourceTree = "<group>"; };
-		38FF13F0BB1AB42B2F1C6A72A59BD82F /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITableViewVibrantCell.swift; path = Pod/Classes/UITableViewVibrantCell.swift; sourceTree = "<group>"; };
+		47D41275E15CC6C08A1DE7235A354F6E /* RightToLeft.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RightToLeft.swift; path = Cosmos/Helpers/RightToLeft.swift; sourceTree = "<group>"; };
+		4F6BA5B1B9E2A0F3BF34ABC9AACA1261 /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
+		51577605D1DF0F74BB8C3947077A6FB4 /* Cosmos.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Cosmos.modulemap; sourceTree = "<group>"; };
+		52371D1ED968B6FEC0CD587171E9C749 /* SearchTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SearchTextField-dummy.m"; sourceTree = "<group>"; };
+		5A54080710546EBFE34774786157E501 /* CosmosTouchTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouchTarget.swift; path = Cosmos/Helpers/CosmosTouchTarget.swift; sourceTree = "<group>"; };
+		5BF1BF17C0788C8CCF9FEE03E1E3D7B3 /* CosmosText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosText.swift; path = Cosmos/CosmosText.swift; sourceTree = "<group>"; };
+		649DDDAF93A20A9E2333D5BE15670254 /* StarFillMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarFillMode.swift; path = Cosmos/StarFillMode.swift; sourceTree = "<group>"; };
+		64BC5285152497F9D9632F6B735DAF5E /* CosmosLocalizedRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLocalizedRating.swift; path = Cosmos/CosmosLocalizedRating.swift; sourceTree = "<group>"; };
 		683CE8EDEC9184B5DF42876D0BFE1765 /* Pods-HeyBook-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HeyBook-frameworks.sh"; sourceTree = "<group>"; };
 		69B873C278930DA6CC80F371417A4C9D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6CF81980B2B851D5ED4718BC47020609 /* SideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-prefix.pch"; sourceTree = "<group>"; };
+		6FC4FA06982E64D1EEC63CA483A26B2D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71A6E860E4F8E6898D9FCE06762A6950 /* Pods-HeyBook-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HeyBook-acknowledgements.plist"; sourceTree = "<group>"; };
 		71CFEC1CDB40FA5FEBADDB56C1701FB6 /* Pods-HeyBook-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HeyBook-umbrella.h"; sourceTree = "<group>"; };
+		732BF3259021D2BB4DF9DC1B36D28C6C /* Pods_HeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HeyBook.framework; path = "Pods-HeyBook.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED7F0B8FE28317D051D29CCD67B4C51 /* Pods-HeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HeyBook.debug.xcconfig"; sourceTree = "<group>"; };
+		8476B2778C3616D1EA5667363F35DCD2 /* SearchTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SearchTextField-prefix.pch"; sourceTree = "<group>"; };
+		8F910EEA870E8082CBC59022CE318CAE /* Cosmos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cosmos.xcconfig; sourceTree = "<group>"; };
+		90FD141E532A7936701E90F8C324C8A8 /* SideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-prefix.pch"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9652BA4C62EBE75692C49043C000DC21 /* CosmosTouch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouch.swift; path = Cosmos/CosmosTouch.swift; sourceTree = "<group>"; };
 		96EBEB4605B47C15B700B2B28937733F /* Pods-HeyBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HeyBook-dummy.m"; sourceTree = "<group>"; };
-		995DC884942ED5E9B85C72A343F9AB5D /* SideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SideMenu.modulemap; sourceTree = "<group>"; };
-		A9DB323BB3B2B0A52D555C01DBCD0305 /* SideMenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuTransition.swift; path = Pod/Classes/SideMenuTransition.swift; sourceTree = "<group>"; };
+		9947B389A41EC0B087665C144D1FF889 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cosmos.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A475E4ACF1B3AC8DDBBCA52DAC45E30E /* Cosmos-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-prefix.pch"; sourceTree = "<group>"; };
+		A72E13A490A7FB120110D5EDF99A1743 /* SearchTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SearchTextField.xcconfig; sourceTree = "<group>"; };
 		AC40E5D772F4C78ACDF1728A47F78CC2 /* Pods-HeyBook-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HeyBook-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B688B649B81CECA42A8E56C38A1B1C0B /* Pods_HeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HeyBook.framework; path = "Pods-HeyBook.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B32564475AA9D8B16467F94BE2E87E08 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B32D5E9EC3B8644E610F102A54106311 /* SideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SideMenu.modulemap; sourceTree = "<group>"; };
+		B6807621F00200922956B5886189453B /* CosmosLayers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayers.swift; path = Cosmos/CosmosLayers.swift; sourceTree = "<group>"; };
+		B95A96683FB1978467EA2B5F8EA5772D /* SideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SideMenu-dummy.m"; sourceTree = "<group>"; };
+		B95B5FB427F4425BF7B2BC5CDE3A872B /* Cosmos-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-umbrella.h"; sourceTree = "<group>"; };
+		BBE06BB72824FF9F59E4C4EB1521E3F9 /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SideMenu.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD7D79955020B6EDECAC1A1EC596D173 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFE6BBF80388A3C0C620BA96D9B60D62 /* CosmosLayerHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayerHelper.swift; path = Cosmos/CosmosLayerHelper.swift; sourceTree = "<group>"; };
+		C39401F994A01ECF2DF702E2B1411A12 /* SearchTextField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SearchTextField.modulemap; sourceTree = "<group>"; };
+		C52BA18D6AAD12ECE79378CA051F0304 /* CosmosAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosAccessibility.swift; path = Cosmos/CosmosAccessibility.swift; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E72E3ED37D9B76098CC2B9BB49D386DF /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
-		EA4F5E4E267C03BAC23C64C2DEC825B6 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UISideMenuNavigationController.swift; path = Pod/Classes/UISideMenuNavigationController.swift; sourceTree = "<group>"; };
-		FBB886EBE499ADAF32629979A36A3169 /* SideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.xcconfig; sourceTree = "<group>"; };
-		FC0BD2A3E45C40B9C9716812311BF563 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDB3BB0E159EFB92783744DAF94A39F5 /* SearchTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SearchTextField.framework; path = SearchTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8E4F41E325D3D531622A1222CAE40FAC /* Frameworks */ = {
+		23E1D2C8911A1F4127AF93A478D985B5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D03EEDD2B5A9277C9EC1E8980E59B26F /* Foundation.framework in Frameworks */,
+				F37DDDC2660EB17E1BE35429C1C58AD4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FCEED96CC91ED516CC6DD4F9EC632498 /* Frameworks */ = {
+		7BE301EA0935133958E1461D5CD991A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F54EC789AF6A60D9FF3D01E73A715CE /* Foundation.framework in Frameworks */,
+				908586E402EA0B81EC3773A4BB585308 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA8BC3BF3287A92193B29D6FD2225763 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FC39FAD324ECAF9588DE0BFC3E4BE43 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C03C9EE745DD880F7525B62E0799648E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				937C41A13EEF8BEE80E8197BC1F6689A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4C7DECB9505A3661801AB8D77F9249EF /* Pods */ = {
+		2362F66ACE67CCCA00B8865DC354A472 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6139AD2A3B1702A32298B3F55914EA43 /* SideMenu */,
+				AD6CD491DEB221CC8F91CE03B0718B2C /* Cosmos */,
+				EEA46369112BA28A0D06BACAA4FC3A06 /* SearchTextField */,
+				7C3D04F16E1C7BD45FDED6964D7F2131 /* SideMenu */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		502CAFD725B547B736F2799173DAF8EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9947B389A41EC0B087665C144D1FF889 /* Cosmos.framework */,
+				732BF3259021D2BB4DF9DC1B36D28C6C /* Pods_HeyBook.framework */,
+				CDB3BB0E159EFB92783744DAF94A39F5 /* SearchTextField.framework */,
+				BBE06BB72824FF9F59E4C4EB1521E3F9 /* SideMenu.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		5B2E0E7EFA39B22E97C9DCCFE82C616D /* Pods-HeyBook */ = {
@@ -102,19 +197,6 @@
 			path = "Target Support Files/Pods-HeyBook";
 			sourceTree = "<group>";
 		};
-		6139AD2A3B1702A32298B3F55914EA43 /* SideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				0049F4BA49D06E8F4C1A0DF192A1FB11 /* SideMenuManager.swift */,
-				A9DB323BB3B2B0A52D555C01DBCD0305 /* SideMenuTransition.swift */,
-				EA4F5E4E267C03BAC23C64C2DEC825B6 /* UISideMenuNavigationController.swift */,
-				38FF13F0BB1AB42B2F1C6A72A59BD82F /* UITableViewVibrantCell.swift */,
-				F9853A6F97D22D33E240344F832559E2 /* Support Files */,
-			);
-			name = SideMenu;
-			path = SideMenu;
-			sourceTree = "<group>";
-		};
 		663CFA0D844B8A3B5B3F186CB8684CA5 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,24 +213,52 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		7C3D04F16E1C7BD45FDED6964D7F2131 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				2BBAC640BBE8C758631DF7762AA28BA0 /* SideMenuManager.swift */,
+				1AD1C145AFCE26188DE3352BF555C075 /* SideMenuTransition.swift */,
+				158157EB08EA766D089B630C2094B9DC /* UISideMenuNavigationController.swift */,
+				29ED958AF1400D1FF4BC599CBC737590 /* UITableViewVibrantCell.swift */,
+				F5D1C7111FC8F7D997FDDDBBC2B9A4C1 /* Support Files */,
+			);
+			name = SideMenu;
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				4C7DECB9505A3661801AB8D77F9249EF /* Pods */,
-				8250FB87853836506983A8883E1CF87F /* Products */,
+				2362F66ACE67CCCA00B8865DC354A472 /* Pods */,
+				502CAFD725B547B736F2799173DAF8EB /* Products */,
 				663CFA0D844B8A3B5B3F186CB8684CA5 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8250FB87853836506983A8883E1CF87F /* Products */ = {
+		AD6CD491DEB221CC8F91CE03B0718B2C /* Cosmos */ = {
 			isa = PBXGroup;
 			children = (
-				B688B649B81CECA42A8E56C38A1B1C0B /* Pods_HeyBook.framework */,
-				2DB5AE7A4422CAA15ADF5288304DB57A /* SideMenu.framework */,
+				C52BA18D6AAD12ECE79378CA051F0304 /* CosmosAccessibility.swift */,
+				32EA20FF29800ECDACAE742CA03065B0 /* CosmosDefaultSettings.swift */,
+				BFE6BBF80388A3C0C620BA96D9B60D62 /* CosmosLayerHelper.swift */,
+				B6807621F00200922956B5886189453B /* CosmosLayers.swift */,
+				64BC5285152497F9D9632F6B735DAF5E /* CosmosLocalizedRating.swift */,
+				1189B60A7E967EB3EB90EF8605325AD7 /* CosmosRating.swift */,
+				15C1D2770AEE40C4260E30908330E83E /* CosmosSettings.swift */,
+				3567F606854CDB3A024221160F10CAAF /* CosmosSize.swift */,
+				5BF1BF17C0788C8CCF9FEE03E1E3D7B3 /* CosmosText.swift */,
+				9652BA4C62EBE75692C49043C000DC21 /* CosmosTouch.swift */,
+				5A54080710546EBFE34774786157E501 /* CosmosTouchTarget.swift */,
+				2FA633882E987B5C3ED73A1FB6D0EA71 /* CosmosView.swift */,
+				47D41275E15CC6C08A1DE7235A354F6E /* RightToLeft.swift */,
+				649DDDAF93A20A9E2333D5BE15670254 /* StarFillMode.swift */,
+				050DCE75768CE1A756C4F45FF89DB8B1 /* StarLayer.swift */,
+				F5E242C9333BAC23C4EB402F7A52EEC9 /* Support Files */,
 			);
-			name = Products;
+			name = Cosmos;
+			path = Cosmos;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -159,67 +269,157 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F9853A6F97D22D33E240344F832559E2 /* Support Files */ = {
+		D25D4FB603B9C2783BB29D334797CEE8 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				FC0BD2A3E45C40B9C9716812311BF563 /* Info.plist */,
-				995DC884942ED5E9B85C72A343F9AB5D /* SideMenu.modulemap */,
-				FBB886EBE499ADAF32629979A36A3169 /* SideMenu.xcconfig */,
-				35093DD994A172D53932151A6DBAEBC3 /* SideMenu-dummy.m */,
-				6CF81980B2B851D5ED4718BC47020609 /* SideMenu-prefix.pch */,
-				E72E3ED37D9B76098CC2B9BB49D386DF /* SideMenu-umbrella.h */,
+				B32564475AA9D8B16467F94BE2E87E08 /* Info.plist */,
+				C39401F994A01ECF2DF702E2B1411A12 /* SearchTextField.modulemap */,
+				A72E13A490A7FB120110D5EDF99A1743 /* SearchTextField.xcconfig */,
+				52371D1ED968B6FEC0CD587171E9C749 /* SearchTextField-dummy.m */,
+				8476B2778C3616D1EA5667363F35DCD2 /* SearchTextField-prefix.pch */,
+				11829ABDEE0CBEE54CFC448E8E565803 /* SearchTextField-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SearchTextField";
+			sourceTree = "<group>";
+		};
+		EEA46369112BA28A0D06BACAA4FC3A06 /* SearchTextField */ = {
+			isa = PBXGroup;
+			children = (
+				0D419C0A04204BAAF7283FA7E706316C /* SearchTextField.swift */,
+				D25D4FB603B9C2783BB29D334797CEE8 /* Support Files */,
+			);
+			name = SearchTextField;
+			path = SearchTextField;
+			sourceTree = "<group>";
+		};
+		F5D1C7111FC8F7D997FDDDBBC2B9A4C1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FC4FA06982E64D1EEC63CA483A26B2D /* Info.plist */,
+				B32D5E9EC3B8644E610F102A54106311 /* SideMenu.modulemap */,
+				012BCF1798AAA982B2E76311B073B770 /* SideMenu.xcconfig */,
+				B95A96683FB1978467EA2B5F8EA5772D /* SideMenu-dummy.m */,
+				90FD141E532A7936701E90F8C324C8A8 /* SideMenu-prefix.pch */,
+				4F6BA5B1B9E2A0F3BF34ABC9AACA1261 /* SideMenu-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SideMenu";
 			sourceTree = "<group>";
 		};
+		F5E242C9333BAC23C4EB402F7A52EEC9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				51577605D1DF0F74BB8C3947077A6FB4 /* Cosmos.modulemap */,
+				8F910EEA870E8082CBC59022CE318CAE /* Cosmos.xcconfig */,
+				1B448BE5AC0A1535069D4A50D2D03635 /* Cosmos-dummy.m */,
+				A475E4ACF1B3AC8DDBBCA52DAC45E30E /* Cosmos-prefix.pch */,
+				B95B5FB427F4425BF7B2BC5CDE3A872B /* Cosmos-umbrella.h */,
+				BD7D79955020B6EDECAC1A1EC596D173 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Cosmos";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		8CE455A5DE99EF338AE0DC8CD4B759C8 /* Headers */ = {
+		6063933B9AA254560C99ADFE067C9D06 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B32CE98FF6449FC51568A6E6EAE2215 /* SideMenu-umbrella.h in Headers */,
+				1931D0E808B838F46403067D21D77605 /* Pods-HeyBook-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E30F4E302D206A9FEB760EE7F8D3E3F /* Headers */ = {
+		B7F72A88918035AFA923560A84B87C61 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A76EA07FED51A23C33828B31435033 /* Pods-HeyBook-umbrella.h in Headers */,
+				DE5E91A47C1BF6869DF17747D61C2FF1 /* Cosmos-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2D304EE98D6A674B8DB6A6D66D3BCEF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11566D3F5482E156C9E887A885D2B4DF /* SideMenu-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9CA41F9BBE1E0003FA734739DD96B79 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4BCCF0FBC97A6125EF8FD51E78E6A34 /* SearchTextField-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		115735AE176CDF2B8BD481A5189F79BF /* Pods-HeyBook */ = {
+		4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 175AF5E6AE41C29C497B232FB7F4AB9F /* Build configuration list for PBXNativeTarget "Pods-HeyBook" */;
+			buildConfigurationList = 38CA41A3E689F135BAEECE91B63D9EA0 /* Build configuration list for PBXNativeTarget "Cosmos" */;
 			buildPhases = (
-				E60C49BC186A856E80732E8D685A2E53 /* Sources */,
-				FCEED96CC91ED516CC6DD4F9EC632498 /* Frameworks */,
-				9E30F4E302D206A9FEB760EE7F8D3E3F /* Headers */,
+				64A8AA816E108F31E7CEE1A683E42839 /* Sources */,
+				23E1D2C8911A1F4127AF93A478D985B5 /* Frameworks */,
+				B7F72A88918035AFA923560A84B87C61 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6E1BBA5DE5AE670898F3993B5750C64F /* PBXTargetDependency */,
+			);
+			name = Cosmos;
+			productName = Cosmos;
+			productReference = 9947B389A41EC0B087665C144D1FF889 /* Cosmos.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		665D7375C8DBCE614896682CC02AF9CA /* SearchTextField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E33B8984B4F574B56CA10D069D2F656 /* Build configuration list for PBXNativeTarget "SearchTextField" */;
+			buildPhases = (
+				9AA2FAAEABEBBA6EB6919A3C60F8EF9F /* Sources */,
+				BA8BC3BF3287A92193B29D6FD2225763 /* Frameworks */,
+				E9CA41F9BBE1E0003FA734739DD96B79 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SearchTextField;
+			productName = SearchTextField;
+			productReference = CDB3BB0E159EFB92783744DAF94A39F5 /* SearchTextField.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CE21D731FAC7E2AF926822E043AC38E4 /* Pods-HeyBook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21C459141256E87D8A6F832EE388BB27 /* Build configuration list for PBXNativeTarget "Pods-HeyBook" */;
+			buildPhases = (
+				C9D51A9EBBDEC065F85CBF8A2B887E06 /* Sources */,
+				7BE301EA0935133958E1461D5CD991A3 /* Frameworks */,
+				6063933B9AA254560C99ADFE067C9D06 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD16AB4292DE3E55BF00023E41A17CE9 /* PBXTargetDependency */,
+				69247CBE7EA0616C3057603AC936EAC8 /* PBXTargetDependency */,
+				73FA78EEE9EC04294BF216E14FCF0560 /* PBXTargetDependency */,
 			);
 			name = "Pods-HeyBook";
 			productName = "Pods-HeyBook";
-			productReference = B688B649B81CECA42A8E56C38A1B1C0B /* Pods_HeyBook.framework */;
+			productReference = 732BF3259021D2BB4DF9DC1B36D28C6C /* Pods_HeyBook.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C6351B14875AAF6061D822A6B1262302 /* SideMenu */ = {
+		F99E669D0FC8306D2D96DF7ABE9F2C08 /* SideMenu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA367529019CFAB79BC49DA4CC89DAC0 /* Build configuration list for PBXNativeTarget "SideMenu" */;
+			buildConfigurationList = 344D1F3B1D6E5E69F50EEA0E6D6288A7 /* Build configuration list for PBXNativeTarget "SideMenu" */;
 			buildPhases = (
-				6231D3E8E623A8CA07880589657BBA90 /* Sources */,
-				8E4F41E325D3D531622A1222CAE40FAC /* Frameworks */,
-				8CE455A5DE99EF338AE0DC8CD4B759C8 /* Headers */,
+				3A5BDFF26F3E629A6590B8096B7E79A1 /* Sources */,
+				C03C9EE745DD880F7525B62E0799648E /* Frameworks */,
+				D2D304EE98D6A674B8DB6A6D66D3BCEF /* Headers */,
 			);
 			buildRules = (
 			);
@@ -227,7 +427,7 @@
 			);
 			name = SideMenu;
 			productName = SideMenu;
-			productReference = 2DB5AE7A4422CAA15ADF5288304DB57A /* SideMenu.framework */;
+			productReference = BBE06BB72824FF9F59E4C4EB1521E3F9 /* SideMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -247,84 +447,95 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 8250FB87853836506983A8883E1CF87F /* Products */;
+			productRefGroup = 502CAFD725B547B736F2799173DAF8EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				115735AE176CDF2B8BD481A5189F79BF /* Pods-HeyBook */,
-				C6351B14875AAF6061D822A6B1262302 /* SideMenu */,
+				4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */,
+				CE21D731FAC7E2AF926822E043AC38E4 /* Pods-HeyBook */,
+				665D7375C8DBCE614896682CC02AF9CA /* SearchTextField */,
+				F99E669D0FC8306D2D96DF7ABE9F2C08 /* SideMenu */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6231D3E8E623A8CA07880589657BBA90 /* Sources */ = {
+		3A5BDFF26F3E629A6590B8096B7E79A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08B4F83FAB744B5EEB54FE4F69D188BB /* SideMenu-dummy.m in Sources */,
-				4B1C96BAF3D588312856327095288623 /* SideMenuManager.swift in Sources */,
-				4439E6C99309ADCD30AE92B42C63FA9B /* SideMenuTransition.swift in Sources */,
-				109D5C0B740AE058E8F40848EBB5CD9E /* UISideMenuNavigationController.swift in Sources */,
-				03BBA3E05E9F2DD25C0E507E2D2411E8 /* UITableViewVibrantCell.swift in Sources */,
+				45E37BA83222F36F56E15A8984615D9A /* SideMenu-dummy.m in Sources */,
+				A0AEFB2FD935D82F30B581D447E176C0 /* SideMenuManager.swift in Sources */,
+				BED617600725EDDC6439F6C8ED07F2D2 /* SideMenuTransition.swift in Sources */,
+				98F8190F4D25CDB0D02ED1EE17A2F191 /* UISideMenuNavigationController.swift in Sources */,
+				BB50463D481C4F19ADEB77CEC18A0FA8 /* UITableViewVibrantCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E60C49BC186A856E80732E8D685A2E53 /* Sources */ = {
+		64A8AA816E108F31E7CEE1A683E42839 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6FDA26B6B21A910512ADE88E7CF50E4 /* Pods-HeyBook-dummy.m in Sources */,
+				3DF6ECF23D38E7DA5B5B2B43707F2F4D /* Cosmos-dummy.m in Sources */,
+				7CC5A43D7E1372EB6292FCBC0151A36E /* CosmosAccessibility.swift in Sources */,
+				371F422D050761A63F0156F537B8902D /* CosmosDefaultSettings.swift in Sources */,
+				F66DE3EF01408C42C115587B201CB541 /* CosmosLayerHelper.swift in Sources */,
+				AA971D9492DD9B9E288045C2C0CC9A99 /* CosmosLayers.swift in Sources */,
+				0EC88D04EAE0CD3EFD3C3C89C1B9F45F /* CosmosLocalizedRating.swift in Sources */,
+				99F08F6FE2B165EEBD5E01EDDA176620 /* CosmosRating.swift in Sources */,
+				015C902B9C0E63DA0519A0D34E10F739 /* CosmosSettings.swift in Sources */,
+				25DFA72039CBA011EBA738AA73084A8E /* CosmosSize.swift in Sources */,
+				424AD9605CBDCD867083B9820784E0AC /* CosmosText.swift in Sources */,
+				4F40A9CBB316E7100828F0C6F5714946 /* CosmosTouch.swift in Sources */,
+				E2D8D1AA0D41C73C4B570DE682C05D72 /* CosmosTouchTarget.swift in Sources */,
+				45F546D14166EDEE46371951EC705C03 /* CosmosView.swift in Sources */,
+				C79D2F2FCE3EF9B31D1222E0C4A59DC5 /* RightToLeft.swift in Sources */,
+				88BA9FFC474BD7B995A0CEA06FF431F7 /* StarFillMode.swift in Sources */,
+				C95B658D689425ED9DAA95EB479B44A6 /* StarLayer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AA2FAAEABEBBA6EB6919A3C60F8EF9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7934E0F50F7625B4CEDBE3B7EF1026E /* SearchTextField-dummy.m in Sources */,
+				6A6CF4B88C3F0F123CF5648C50B94A48 /* SearchTextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9D51A9EBBDEC065F85CBF8A2B887E06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4897C901F2D18AD5625BAE44C9DBAF9 /* Pods-HeyBook-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6E1BBA5DE5AE670898F3993B5750C64F /* PBXTargetDependency */ = {
+		69247CBE7EA0616C3057603AC936EAC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SearchTextField;
+			target = 665D7375C8DBCE614896682CC02AF9CA /* SearchTextField */;
+			targetProxy = 7E96F91E97FA749646BC25DB0841DEA1 /* PBXContainerItemProxy */;
+		};
+		73FA78EEE9EC04294BF216E14FCF0560 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SideMenu;
-			target = C6351B14875AAF6061D822A6B1262302 /* SideMenu */;
-			targetProxy = 58A4C5662AFCB6634D6B8C6D1B56A84C /* PBXContainerItemProxy */;
+			target = F99E669D0FC8306D2D96DF7ABE9F2C08 /* SideMenu */;
+			targetProxy = 890709BF578E17FC3D40263CC1DBAE87 /* PBXContainerItemProxy */;
+		};
+		AD16AB4292DE3E55BF00023E41A17CE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Cosmos;
+			target = 4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */;
+			targetProxy = DF8B6437AFB67C93EA118F851F0F78F0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0935FB71C2D489600B1A370D797E0D40 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3390A644106DE7543F27D85647CD8C23 /* Pods-HeyBook.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-HeyBook/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-HeyBook/Pods-HeyBook.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_HeyBook;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -369,9 +580,42 @@
 			};
 			name = Debug;
 		};
-		66D2E78DD1F2BBF77FBE601B39B25594 /* Release */ = {
+		15DA3BE466ABA683BF5DDC3A0DF83B49 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FBB886EBE499ADAF32629979A36A3169 /* SideMenu.xcconfig */;
+			baseConfigurationReference = A72E13A490A7FB120110D5EDF99A1743 /* SearchTextField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SearchTextField/SearchTextField-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SearchTextField/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SearchTextField/SearchTextField.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SearchTextField;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2CAF27A35ED39D0EAA398749AE2A3296 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 012BCF1798AAA982B2E76311B073B770 /* SideMenu.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -401,40 +645,42 @@
 			};
 			name = Release;
 		};
-		8E9A3979808D3A0C5AE171984E1E21D7 /* Debug */ = {
+		34C5824EE976E6668974C486A4C6F90A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FBB886EBE499ADAF32629979A36A3169 /* SideMenu.xcconfig */;
+			baseConfigurationReference = 3390A644106DE7543F27D85647CD8C23 /* Pods-HeyBook.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-HeyBook/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SideMenu;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HeyBook/Pods-HeyBook.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_HeyBook;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		AED8B5AD4CA9635652555E4FDAB27B7C /* Debug */ = {
+		7083B01102552BC732388159B98EC38A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7ED7F0B8FE28317D051D29CCD67B4C51 /* Pods-HeyBook.debug.xcconfig */;
 			buildSettings = {
@@ -469,6 +715,38 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		D328BF5AC7A27E80E5214F7E51F21B4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F910EEA870E8082CBC59022CE318CAE /* Cosmos.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Cosmos/Cosmos-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Cosmos/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Cosmos/Cosmos.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Cosmos;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -510,14 +788,121 @@
 			};
 			name = Release;
 		};
+		E8FFBAAF3F155FD16002C12A1DC0EF0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F910EEA870E8082CBC59022CE318CAE /* Cosmos.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Cosmos/Cosmos-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Cosmos/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Cosmos/Cosmos.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Cosmos;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EB17DAA9455C48841F4E7DE9D3276F23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 012BCF1798AAA982B2E76311B073B770 /* SideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EB9D8A6251E28204A87BFE3CBBC78D8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A72E13A490A7FB120110D5EDF99A1743 /* SearchTextField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SearchTextField/SearchTextField-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SearchTextField/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SearchTextField/SearchTextField.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SearchTextField;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		175AF5E6AE41C29C497B232FB7F4AB9F /* Build configuration list for PBXNativeTarget "Pods-HeyBook" */ = {
+		1E33B8984B4F574B56CA10D069D2F656 /* Build configuration list for PBXNativeTarget "SearchTextField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AED8B5AD4CA9635652555E4FDAB27B7C /* Debug */,
-				0935FB71C2D489600B1A370D797E0D40 /* Release */,
+				15DA3BE466ABA683BF5DDC3A0DF83B49 /* Debug */,
+				EB9D8A6251E28204A87BFE3CBBC78D8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		21C459141256E87D8A6F832EE388BB27 /* Build configuration list for PBXNativeTarget "Pods-HeyBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7083B01102552BC732388159B98EC38A /* Debug */,
+				34C5824EE976E6668974C486A4C6F90A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -531,11 +916,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA367529019CFAB79BC49DA4CC89DAC0 /* Build configuration list for PBXNativeTarget "SideMenu" */ = {
+		344D1F3B1D6E5E69F50EEA0E6D6288A7 /* Build configuration list for PBXNativeTarget "SideMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8E9A3979808D3A0C5AE171984E1E21D7 /* Debug */,
-				66D2E78DD1F2BBF77FBE601B39B25594 /* Release */,
+				EB17DAA9455C48841F4E7DE9D3276F23 /* Debug */,
+				2CAF27A35ED39D0EAA398749AE2A3296 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38CA41A3E689F135BAEECE91B63D9EA0 /* Build configuration list for PBXNativeTarget "Cosmos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8FFBAAF3F155FD16002C12A1DC0EF0E /* Debug */,
+				D328BF5AC7A27E80E5214F7E51F21B4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

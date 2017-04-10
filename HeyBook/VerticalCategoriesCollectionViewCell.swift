@@ -41,7 +41,10 @@ class VerticalCategoriesCollectionViewCell: UICollectionViewCell {
     var category_title = ""
     var author_title = ""
     var publisher_title = ""
+    
+    var section = ""
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
@@ -127,7 +130,7 @@ extension VerticalCategoriesCollectionViewCell: UICollectionViewDataSource, UISc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontallCellIdentifier", for: indexPath) as! HorizontalCategoriesCollectionViewCell
         
-        cell.categoriesBookName.text = records[indexPath.row].book_title
+        cell.categoriesBookName.text = section
         //Aschronized image loading !!!!
         URLSession.shared.dataTask(with: NSURL(string: records[indexPath.row].photo)! as URL, completionHandler: { (data, response, error) -> Void in
             if error != nil {

@@ -11,6 +11,7 @@ import SideMenu
 
 class SepetViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var totalPriceLabel: UILabel!
     var records: [Record] = []
     var book_id = ""
     var category_id = ""
@@ -30,6 +31,9 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     var category_title = ""
     var author_title = ""
     var publisher_title = ""
+    
+    
+    var totalPrice:Double = 0.0
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     
@@ -66,6 +70,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         myCollectionView!.collectionViewLayout = layout
+        
+        totalPriceLabel.text = "\(String(format: "%.2f", totalPrice)) TL"
     }
 
     @IBAction func menuButtonClick(_ sender: Any) {
@@ -123,8 +129,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                     print(records[index].duration)
                     print(records[index].photo)
                     
+                    totalPrice += Double(record.price)!
                 }
-                
             }
             else {
                 print("NSdata error")
@@ -176,7 +182,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 
                 cell.bookName.text = record.book_title
                 cell.bookImage.image = UIImage(data: data!)
-                cell.bookPrice.text = record.duration
+                cell.bookPrice.text = record.price
                
                 cell.deleteBookFromFav.tag = Int(record.book_id)!
             })
@@ -211,10 +217,12 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
           
                 for i in 0..<records.count {
                     if (Int(records[i].book_id) == index) {
+                        totalPrice -= Double(records[i].price)!
                         records.remove(at: i)
                         break
                     }
                 }
+                totalPriceLabel.text = "\(String(format: "%.2f", totalPrice)) TL"
                 myCollectionView.reloadData()
             }
         }
@@ -270,4 +278,12 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     */
 
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
 }

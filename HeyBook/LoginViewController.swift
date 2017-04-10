@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import SearchTextField
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
     
@@ -25,7 +26,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var btnMenu: UIBarButtonItem!
    
-    @IBOutlet weak var eMailTxt: UITextField!
+    @IBOutlet weak var eMailTxt: SearchTextField!
     @IBOutlet weak var passwordTxt: UITextField!
     
     override func viewDidLoad() {
@@ -71,8 +72,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         SideMenuManager.menuPresentMode = .menuSlideIn
         
         
-      
-    // Do any additional setup after loading the view.
+        // autocomplete: https://github.com/apasccon/SearchTextField
+        eMailTxt.inlineMode = true
+        let array:[String] = UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array") == nil ? [] : UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array")!
+        eMailTxt.filterStrings(array)
+        // Do any additional setup after loading the view.
     }
     
     
@@ -81,10 +85,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     //keyboard için
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    //bu method'u kaldırınca autocomplete çalışmıyor
+    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
-    }
+    }*/
     
     func keyboardWillShow(notification: NSNotification) {
         var translation:CGFloat = 0
@@ -181,6 +186,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             
             
             if(response == "success"){
+                // autocomplete string array
+                var array:[String] = UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array") == nil ? [] : UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array")!
+                array.append(mail)
+                UserDefaults.standard.set(array, forKey: "user_mail_autocomplete_array")
+                
                 UserDefaults.standard.setValue(mail, forKey: "user_mail")
                 UserDefaults.standard.setValue(userTitle, forKey: "user_title")
                 UserDefaults.standard.setValue(user_id, forKey: "user_id")
