@@ -120,53 +120,113 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
-            if let data = try? Data(contentsOf: mURL) {
-                let json = JSON(data: data)
-                //print(json)
-                
-                let total = json["data"].count
-                //print(total)
-                
-                for index in 0..<total {
-                    book_id = json["data"][index]["book_id"].string!
-                    category_id = json["data"][index]["category_id"].string!
-                    publisher_id = json["data"][index]["publisher_id"].string!
-                    author_id = json["data"][index]["author_id"].string!
-                    narrator_id = json["data"][index]["narrator_id"].string!
-                    book_title = json["data"][index]["book_title"].string!
-                    desc = json["data"][index]["description"].string!
-                    price = json["data"][index]["price"].string!
-                    photo = json["data"][index]["photo"].string!
-                    thumb = json["data"][index]["thumb"].string!
-                    audio = json["data"][index]["audio"].string!
-                    duration = json["data"][index]["duration"].string!
-                    size = json["data"][index]["size"].string!
-                    demo = json["data"][index]["demo"].string!
-                    star = json["data"][index]["star"].string!
-                    category_title = json["data"][index]["category_title"].string!
-                    author_title = json["data"][index]["author_title"].string!
-                    publisher_title = json["data"][index]["publisher_title"].string!
-                    //print(book_title)
-                    //print(author_title)
-                    //print(duration)
-                    //print(photo)
-                    let record: Record = Record(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title)
-                    
-                    
-                    
-                    records.append(record)
-                    
-                    
-                    
-                }
-                
+        
+        
+        var request = URLRequest(url: URL(string: "http://heybook.online/api.php")!)
+        request.httpMethod = "POST"
+        let postString = "request=books"
+        request.httpBody = postString.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(error)")
+                return
             }
-            else {
-                print("NSdata error")
-                
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
             }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString!)")
+            
+            
+            
         }
+        task.resume()
+
+        
+        
+        
+        
+        
+        
+        
+//        let myUrl = NSURL(string: "http://heybook.online/api.php");
+//        let session = URLSession.shared
+//        
+//        let request = NSMutableURLRequest(url: myUrl as! URL)
+//        
+//        request.httpMethod = "POST"// Compose a query string
+//        
+//        let postString = "request=books";
+//        
+//        request.httpBody = postString.data(using: String.Encoding.utf8);
+//        
+//        let task =  session.dataTask(with: request as URLRequest){( data,response,error) in
+//            guard  error == nil && data != nil else { return }
+//            
+//           
+//                let json = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+//                let posts = json["data"]["author_id"] as! String
+//                print(posts)
+//            
+//        
+//        }
+//                   task.resume()
+        
+        
+                    
+       
+        
+        
+        
+        
+//        if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
+//            if let data = try? Data(contentsOf: mURL) {
+//                let json = JSON(data: data)
+//                //print(json)
+//                
+//                let total = json["data"].count
+//                //print(total)
+//                
+//                for index in 0..<total {
+//                    book_id = json["data"][index]["book_id"].string!
+//                    category_id = json["data"][index]["category_id"].string!
+//                    publisher_id = json["data"][index]["publisher_id"].string!
+//                    author_id = json["data"][index]["author_id"].string!
+//                    narrator_id = json["data"][index]["narrator_id"].string!
+//                    book_title = json["data"][index]["book_title"].string!
+//                    desc = json["data"][index]["description"].string!
+//                    price = json["data"][index]["price"].string!
+//                    photo = json["data"][index]["photo"].string!
+//                    thumb = json["data"][index]["thumb"].string!
+//                    audio = json["data"][index]["audio"].string!
+//                    duration = json["data"][index]["duration"].string!
+//                    size = json["data"][index]["size"].string!
+//                    demo = json["data"][index]["demo"].string!
+//                    star = json["data"][index]["star"].string!
+//                    category_title = json["data"][index]["category_title"].string!
+//                    author_title = json["data"][index]["author_title"].string!
+//                    publisher_title = json["data"][index]["publisher_title"].string!
+//                    //print(book_title)
+//                    //print(author_title)
+//                    //print(duration)
+//                    //print(photo)
+//                    let record: Record = Record(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title)
+//                    
+//                    
+//                    
+//                    records.append(record)
+//                    
+//                    
+//                    
+//                }
+//                
+//            }
+//        
+//        }
         
         
     }
@@ -320,8 +380,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     }
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
-        animationBookName.text = records[carousel.currentItemIndex].book_title
-        animationAuthorName.text = records[carousel.currentItemIndex].author_title
+       // animationBookName.text = records[carousel.currentItemIndex].book_title
+      //  animationAuthorName.text = records[carousel.currentItemIndex].author_title
     }
     
     
