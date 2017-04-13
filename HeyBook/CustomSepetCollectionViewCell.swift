@@ -19,4 +19,7 @@ class CustomSepetCollectionViewCell: UICollectionViewCell {
     }
     
     
+    
+    
+    
 }
