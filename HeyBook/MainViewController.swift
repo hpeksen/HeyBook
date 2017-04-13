@@ -22,23 +22,6 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     @IBOutlet weak var animationBookName: UILabel!
     @IBOutlet weak var animationAuthorName: UILabel!
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("ŞİKLKJHGCHVHJHJK")
-        }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     @IBOutlet weak var myCollectionView: UICollectionView!
     var book_id = ""
     var category_id = ""
@@ -67,8 +50,6 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
         
         
         
