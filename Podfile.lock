@@ -1,18 +1,33 @@
 PODS:
+  - Alamofire (4.4.0)
   - Cosmos (9.0.0)
   - SearchTextField (1.1.0)
-  - SideMenu (2.2.0)
+  - SideMenu (2.3.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.4)
   - Cosmos (~> 9.0)
   - SearchTextField
   - SideMenu
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 74cda0fa5ae0be109b60a7dad396bcf92a9d5a13
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Cosmos: 33eee62b2a0418452aef470f711f83c3ea061b7b
   SearchTextField: 5daab6cecfd90e06f9b08b2814593656c0c99f3d
-  SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
+  SideMenu: 43d092cf615cf472f105c5b9867a21beff9fc269
+  SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
 
-PODFILE CHECKSUM: edeb7fd667630787ec3aa6834c406d7022b5f1a2
+PODFILE CHECKSUM: b193f0ffafbd9623df463cc28dd6b70a0cd3cb4d
 
 COCOAPODS: 1.1.1
