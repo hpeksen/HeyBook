@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import Alamofire
 
 class SettingsViewController: UIViewController,UITextFieldDelegate {
 
@@ -138,32 +139,52 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         self.newPassTxt.resignFirstResponder()
         self.newPassTxt2.resignFirstResponder()
         print(UserDefaults.standard.value(forKey: "user_title")!)
-        print(newPassTxt.text!)
-        print(newPassTxt2.text!)
+        print(subscribeSwitch.isOn)
+        print(disableSwitch.isOn)
         
         let originalString = userTitleLabel.text!
-        let escapedString = originalString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+       // let escapedString = originalString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
-        if let mURL = URL(string: "http://heybook.online/api.php?request=settings&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&user_title=\(escapedString!)&mail=\(emailLabel.text!)&password=\(PassTxt.text!)&new-password=\(newPassTxt.text!)&new-password-again=\(newPassTxt2.text!)&subscribe=\(subscribeSwitch.isOn)&disabled=\(disableSwitch.isOn)") {
-            print(mURL)
-            if let data = try? Data(contentsOf: mURL) {
-                let json = JSON(data: data)
-                print(json)
-                let registerResponse = json["response"].string!
-                print(registerResponse)
-                
-                
-                let tapAlert = UIAlertController(title: registerResponse, message: json["message"].string!, preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                self.present(tapAlert, animated: true, completion: nil)
-                
-                PassTxt.text = ""
-                newPassTxt.text = ""
-                newPassTxt2.text = ""
-                
-                UserDefaults.standard.setValue(emailLabel.text!, forKey: "user_mail")
-                UserDefaults.standard.setValue(userTitleLabel.text!, forKey: "user_title")
-            }
+        let subscribe:Int = subscribeSwitch.isOn == true ? 1 : 0
+        let disabled:Int = disableSwitch.isOn == true ? 1 : 0
+        
+        let urlString = "http://heybook.online/api.php"
+        let parameters = ["request": "settings",
+                          "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                        "user_title": "\(originalString)",
+                        "mail": "\(self.emailLabel.text!)",
+                        "password": "\(self.PassTxt.text!)",
+                        "new-password": "\(self.newPassTxt.text!)",
+                        "new-password-again": "\(self.newPassTxt2.text!)",
+                        "subscribe": "\(subscribe)",
+                        "disabled": "\(disabled)"]
+        
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil)
+            .responseJSON {
+                response in
+                switch response.result {
+                case .success:
+                    let json = JSON(data: response.data!)
+                    print(json)
+                    let registerResponse = json["response"].string!
+                    print(registerResponse)
+                    
+                    
+                    let tapAlert = UIAlertController(title: registerResponse, message: json["message"].string!, preferredStyle: UIAlertControllerStyle.alert)
+                    tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(tapAlert, animated: true, completion: nil)
+                    
+                    self.PassTxt.text = ""
+                    self.newPassTxt.text = ""
+                    self.newPassTxt2.text = ""
+                    
+                    UserDefaults.standard.setValue(self.emailLabel.text!, forKey: "user_mail")
+                    UserDefaults.standard.setValue(self.userTitleLabel.text!, forKey: "user_title")
+                    break
+                case .failure(let error):
+                    
+                    print("NABIYON: \(error)")
+                }
         }
     }
     

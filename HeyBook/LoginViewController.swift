@@ -9,6 +9,7 @@
 import UIKit
 import SideMenu
 import SearchTextField
+import Alamofire
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
     
@@ -22,10 +23,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     var parentView = ""
     
     @IBOutlet weak var myStackView: UIStackView!
-   
+    
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var btnMenu: UIBarButtonItem!
-   
+    
     @IBOutlet weak var eMailTxt: SearchTextField!
     @IBOutlet weak var passwordTxt: UITextField!
     
@@ -49,7 +50,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         
         print("parent")
- print(parentView)
+        print(parentView)
         
         
         if UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil {
@@ -57,11 +58,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "listenView") as! ListenViewController
             
-        
+            
             self.present(nextViewController, animated:true, completion:nil)
         }
         
-      
+        
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         menuLeftNavigationController.leftSide = true
         SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
@@ -87,9 +88,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     //bu method'u kaldırınca autocomplete çalışmıyor
     /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }*/
+     self.view.endEditing(true)
+     return false
+     }*/
     
     func keyboardWillShow(notification: NSNotification) {
         var translation:CGFloat = 0
@@ -116,7 +117,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     func keyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.2) {
             self.view.transform = CGAffineTransform(translationX: 0, y: 0)
-        } 
+        }
     }
     
     // Clicking the view (the container for UI components) removes the Keyboard
@@ -135,120 +136,97 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func loginBtn(_ sender: Any) {
-     
+        
         self.eMailTxt.resignFirstResponder()
         self.passwordTxt.resignFirstResponder()
         
+        let urlString = "http://heybook.online/api.php"
+        let parameters = ["request": "login",
+                          "mail": "\(eMailTxt.text!)",
+            "password": "\((passwordTxt.text!))"]
         
-        if(eMailTxt.text == "" || passwordTxt.text == "" ) {
-        
-            let tapAlert = UIAlertController(title: "Tapped", message: "Lütfen bütün alanları doldurunuz!", preferredStyle: UIAlertControllerStyle.alert)
-            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(tapAlert, animated: true, completion: nil)
-        
-        }
-            
-            
-            
-        else {
-        
-        
-        
-        if let mURL = URL(string: "http://heybook.online/api.php?request=login&mail=\(eMailTxt.text!)&password=\(passwordTxt.text!)") { //http://heybook.online/api.php?request=books
-            if let data = try? Data(contentsOf: mURL) {
-                let json = JSON(data: data)
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                let json = JSON(data: response.data!)
                 print("USER BİLGİLERİ")
                 print(json)
-                response = json["response"].string!
+                let  responses = json["response"].string!
                 let total = json["data"].count
-                mail = json["data"]["mail"].description
-                userTitle = json["data"]["user_title"].description
-                user_id = json["data"]["user_id"].description
-                print(total)
-                print(response)
-                print(mail)
-                print(userTitle)
-                print(user_id)
-                
-                
-
-            }
-        }
-            
-            if(response == "error"){
-                let tapAlert = UIAlertController(title: "Tapped", message: "Girilen e-mail ya da şifre yanlış! Lütfen tekrar deneyiniz. 3 hakkınız var :) ", preferredStyle: UIAlertControllerStyle.alert)
-                tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                self.present(tapAlert, animated: true, completion: nil)
-                
-            
-            
-            }
-            
-            
-            if(response == "success"){
-                // autocomplete string array
-                var array:[String] = UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array") == nil ? [] : UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array")!
-                array.append(mail)
-                UserDefaults.standard.set(array, forKey: "user_mail_autocomplete_array")
-                
-                UserDefaults.standard.setValue(mail, forKey: "user_mail")
-                UserDefaults.standard.setValue(userTitle, forKey: "user_title")
-                UserDefaults.standard.setValue(user_id, forKey: "user_id")
-                print("hebelehübele")
-                print(parentView)
-                if(parentView == ""){
-                
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                self.mail = json["data"]["mail"].description
+                self.userTitle = json["data"]["user_title"].description
+                self.user_id = json["data"]["user_id"].description
+               
+                if (json["response"].description == "error"){
+                    let tapAlert = UIAlertController(title: "", message: "\(json["message"].description)", preferredStyle: UIAlertControllerStyle.alert)
+                    tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(tapAlert, animated: true, completion: nil)
                 }
-                else if (parentView == "listen"){
-                
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "listenView")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                else {
+                    // autocomplete string array
+                    var array:[String] = UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array") == nil ? [] : UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array")!
+                    array.append(self.mail)
+                    UserDefaults.standard.set(array, forKey: "user_mail_autocomplete_array")
                     
-                
+                    UserDefaults.standard.setValue(self.mail, forKey: "user_mail")
+                    UserDefaults.standard.setValue(self.userTitle, forKey: "user_title")
+                    UserDefaults.standard.setValue(self.user_id, forKey: "user_id")
+                    print("hebelehübele")
+                    print(self.parentView)
+                    
+                    if(self.parentView == ""){
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else if (self.parentView == "listen"){
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "listenView")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                        
+                    }
+                    
                 }
                 
-            
+                break
+            case .failure(let error):
+                
+                print(error)
             }
-        
-            
         }
-   
-        
-        // self.performSegue(withIdentifier: "goMain", sender: self)
     }
-
- 
+    
+    
     
     @IBAction func unwindToLogin(_ sender: UIStoryboardSegue) {
         
     }
-
     
     
-
+    
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

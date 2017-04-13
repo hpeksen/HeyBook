@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import Alamofire
 
 class SepetViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -40,6 +41,66 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let urlString = "http://heybook.online/api.php"
+        let parameters = ["request": "user_cart",
+                          "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
+        
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil)
+            .responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                
+                
+                let json = JSON(data: response.data!)
+                print(json["data"][0]["book_title"].string!)
+                
+                
+                let total = json["data"].count
+                print("json \(total)")
+                //
+                for index in 0..<total {
+                    self.book_id = json["data"][index]["book_id"].string!
+                    self.category_id = json["data"][index]["category_id"].string!
+                    self.publisher_id = json["data"][index]["publisher_id"].string!
+                    self.author_id = json["data"][index]["author_id"].string!
+                    self.narrator_id = json["data"][index]["narrator_id"].string!
+                    self.book_title = json["data"][index]["book_title"].string!
+                    self.desc = json["data"][index]["description"].string!
+                    self.price = json["data"][index]["price"].string!
+                    self.photo = json["data"][index]["photo"].string!
+                    self.thumb = json["data"][index]["thumb"].string!
+                    self.audio = json["data"][index]["audio"].string!
+                    self.duration = json["data"][index]["duration"].string!
+                    self.size = json["data"][index]["size"].string!
+                    self.demo = json["data"][index]["demo"].string!
+                    self.star = json["data"][index]["star"].string!
+                    self.category_title = json["data"][index]["category_title"].string!
+                    self.author_title = json["data"][index]["author_title"].string!
+                    self.publisher_title = json["data"][index]["publisher_title"].string!
+                    
+                    let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title)
+                    
+                    
+                    self.records.append(record)
+                    
+                    self.totalPrice += Double(record.price)!
+                    
+                }
+                
+                self.myCollectionView.reloadData()
+                
+                
+                
+                
+                break
+            case .failure(let error):
+                
+                print("NABIYON: \(error)")
+            }
+        }
+
         // Do any additional setup after loading the view.
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -79,67 +140,6 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        if let mURL = URL(string: "http://heybook.online/api.php?request=user_cart&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)") { //http://heybook.online/api.php?request=books
-            if let data = try? Data(contentsOf: mURL) {
-                let json = JSON(data: data)
-                print(UserDefaults.standard.value(forKey: "user_title"))
-                print(UserDefaults.standard.value(forKey: "user_mail"))
-                print(UserDefaults.standard.value(forKey: "user_id")!)
-                print("SEPETİM")
-                print(json)
-                
-                let total = json["data"].count
-                //print(total)
-                
-                for index in 0..<total {
-                    book_id = json["data"][index]["book_id"].string!
-                    category_id = json["data"][index]["category_id"].string!
-                    publisher_id = json["data"][index]["publisher_id"].string!
-                    author_id = json["data"][index]["author_id"].string!
-                    narrator_id = json["data"][index]["narrator_id"].string!
-                    book_title = json["data"][index]["book_title"].string!
-                    desc = json["data"][index]["description"].string!
-                    price = json["data"][index]["price"].string!
-                    photo = json["data"][index]["photo"].string!
-                    thumb = json["data"][index]["thumb"].string!
-                    audio = json["data"][index]["audio"].string!
-                    duration = json["data"][index]["duration"].string!
-                    size = json["data"][index]["size"].string!
-                    demo = json["data"][index]["demo"].string!
-                    star = json["data"][index]["star"].string!
-                    category_title = json["data"][index]["category_title"].string!
-                    author_title = json["data"][index]["author_title"].string!
-                    publisher_title = json["data"][index]["publisher_title"].string!
-                    //print(book_title)
-                    //print(author_title)
-                    //print(duration)
-                    //print(photo)
-                    let record: Record = Record(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title)
-                    
-                    
-                    
-                    
-                    
-                    records.append(record)
-                    
-                    print("hoppala")
-                    print(records[index].book_title)
-                    print(records[index].duration)
-                    print(records[index].photo)
-                    
-                    totalPrice += Double(record.price)!
-                }
-            }
-            else {
-                print("NSdata error")
-                
-            }
-        }
-        
-        
-    }
     func getIndexPathForSelectedCell() -> IndexPath? {
         var indexPath: IndexPath?
         
@@ -153,7 +153,10 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("records.count")
         print(records.count)
-        return records.count
+        if !records.isEmpty {
+            return records.count
+        }
+        return 0
         
     }
     
@@ -210,33 +213,42 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         print("book Id sini bastırıyom: ")
         print(index)
         
-        if let mURL = URL(string: "http://heybook.online/api.php?request=user_cart-delete&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&book_id=\(index)") { //http://heybook.online/api.php?request=books
-            if let data = try? Data(contentsOf: mURL) {
-                let json = JSON(data: data)
+        
+        
+        let urlString = "http://heybook.online/api.php"
+        let parameters = ["request": "user_cart-delete",
+                          "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                        "book_id": "\(index)"]
+        
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                
+                
+                let json = JSON(data: response.data!)
                 print(json)
-          
-                for i in 0..<records.count {
-                    if (Int(records[i].book_id) == index) {
-                        totalPrice -= Double(records[i].price)!
-                        records.remove(at: i)
+                
+                for i in 0..<self.records.count {
+                    if (Int(self.records[i].book_id) == index) {
+                        self.totalPrice -= Double(self.records[i].price)!
+                        self.records.remove(at: i)
                         break
                     }
                 }
-                totalPriceLabel.text = "\(String(format: "%.2f", totalPrice)) TL"
-                myCollectionView.reloadData()
+                self.totalPriceLabel.text = "\(String(format: "%.2f", self.totalPrice)) TL"
+                self.myCollectionView.reloadData()
+                
+                
+                
+                
+                break
+            case .failure(let error):
+                
+                print(error)
             }
         }
     
-    }
-    
-    // For each header setting the data
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderKitaplarimCollectionReusableView
-        
-        headerView.header.text = records[indexPath.section].category_title
-        
-        return headerView
     }
     
 

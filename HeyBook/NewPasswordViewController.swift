@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Alamofire
+import SearchTextField
 
 class NewPasswordViewController: UIViewController,UITextFieldDelegate {
 
-    @IBOutlet weak var myTextField: UITextField!
+    @IBOutlet weak var myTextField: SearchTextField!
     var newPasswordResponse = ""
     var message = ""
     override func viewDidLoad() {
@@ -24,13 +26,18 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
                                                name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
               // Do any additional setup after loading the view.
+        // autocomplete: https://github.com/apasccon/SearchTextField
+        myTextField.inlineMode = true
+        let array:[String] = UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array") == nil ? [] : UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array")!
+        myTextField.filterStrings(array)
+
     }
 
     //keyboard için
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        self.view.endEditing(true)
+//        return false
+//    }
     
     func keyboardWillShow(notification: NSNotification) {
         var translation:CGFloat = 0
@@ -69,50 +76,39 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func newPasswordBtn(_ sender: Any) {
+        let urlString = "http://heybook.online/api.php"
+        let parameters = ["request": "forgot",
+                          "mail": "\(myTextField.text!)"]
         
-        if let mURL = URL(string: "http://heybook.online/api.php?request=forgot&mail=\(myTextField.text!)") { //http://heybook.online/api.php?request=books
-            if let data = try? Data(contentsOf: mURL) {
-                let json = JSON(data: data)
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                
+                
+                let json = JSON(data: response.data!)
                 print(json)
-                newPasswordResponse = json["response"].string!
-                message = json["message"].description
-                print(message)
-                print(newPasswordResponse)
+                self.newPasswordResponse = json["response"].string!
+                self.message = json["message"].description
+                print(self.message)
+                print(self.newPasswordResponse)
+                
+                let longPressAlert = UIAlertController(title: "\(json["response"].description)", message: "\(json["message"].description)", preferredStyle: UIAlertControllerStyle.alert)
+                longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(longPressAlert, animated: true, completion: nil)
                 
                 
+                
+                
+                break
+            case .failure(let error):
+                
+                print(error)
             }
         }
         
-        if (newPasswordResponse == "error" && message == "Error: Email address can not be blank."){
-        
-            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen e-mail adresinizi giriniz!", preferredStyle: UIAlertControllerStyle.alert)
-            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(longPressAlert, animated: true, completion: nil)
-            
-        
-        
-        }
-       else if (newPasswordResponse == "error"){
-            
-            let longPressAlert = UIAlertController(title: "", message: "\(message)", preferredStyle: UIAlertControllerStyle.alert)
-            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(longPressAlert, animated: true, completion: nil)
-            
-            
-            
-        }
-      
-        else if(newPasswordResponse == "success"){
-        
-        
-            let longPressAlert = UIAlertController(title: "Mesaj", message: "Yeni şifreniz mail adresinize gönderildi. Yeni şifreniz ile giriş yapabilirsiniz :)", preferredStyle: UIAlertControllerStyle.alert)
-            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(longPressAlert, animated: true, completion: nil)
-            
-        
-        
-        }
-      
+       
+   
         
     }
     override var prefersStatusBarHidden: Bool {

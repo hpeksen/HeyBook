@@ -1658,7 +1658,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="jmg-96-6Vu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTP-tH-7ci">
                                 <rect key="frame" x="16" y="629" width="53" height="30"/>
@@ -1678,7 +1678,7 @@
                                     <segue destination="zKy-e2-q97" kind="unwind" unwindAction="unwindToLogin:" id="a0s-Dh-eaz"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Lütfen e-mail adresinizi giriniz" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9x-vm-epT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Lütfen e-mail adresinizi giriniz" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9x-vm-epT" customClass="SearchTextField" customModule="SearchTextField">
                                 <rect key="frame" x="24" y="351.5" width="327" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2053,8 +2053,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">
-                                                    <rect key="frame" x="170" y="8" width="422" height="134"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">
+                                                    <rect key="frame" x="8" y="8" width="584" height="134"/>
                                                     <color key="backgroundColor" red="1" green="0.99078203903376194" blue="0.99227710316187123" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AMK-L5-6wD">
                                                         <size key="itemSize" width="100" height="120"/>
@@ -2679,9 +2679,9 @@
         <image name="yazar" width="18" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P6e-6F-lHX"/>
-        <segue reference="mYp-jS-djT"/>
-        <segue reference="MDA-31-8I5"/>
+        <segue reference="hGl-Z4-WYp"/>
+        <segue reference="2a9-6B-NpY"/>
+        <segue reference="d79-0k-Lpf"/>
         <segue reference="tt3-Kv-XbC"/>
     </inferredMetricsTieBreakers>
 </document>

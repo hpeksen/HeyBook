@@ -11,6 +11,7 @@ import AVFoundation
 import Speech
 import SideMenu
 import Cosmos
+import Alamofire
 
 class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
@@ -19,8 +20,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var priceLabel: UILabel!
- 
-
+    
+    
     @IBOutlet weak var bookListenImage: UIImageView!
     var book_id = ""
     var desc = ""
@@ -33,9 +34,9 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     var demo = ""
     
     @IBOutlet weak var starsView: CosmosView!
-  
     
-
+    
+    
     
     //voice
     @IBOutlet weak var textView: UITextView!
@@ -56,7 +57,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     @IBAction func menuButton(_ sender: UIBarButtonItem) {
-         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,20 +73,20 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-       if let dataa = UserDefaults.standard.data(forKey: "book_record"),
-        let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
+        if let dataa = UserDefaults.standard.data(forKey: "book_record"),
+            let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
             book_id = (record.book_id)
             desc = (record.desc)
             bookName = (record.book_title)
             authorName = (record.author_title)
             bookLink = (record.demo)
             bookImage = (record.thumb)
-        price = (record.price)
-        star = (record.star)
-        demo = (record.demo)
-       } else {
-        print("olmadi lan....")
-
+            price = (record.price)
+            star = (record.star)
+            demo = (record.demo)
+        } else {
+            print("olmadi lan....")
+            
         }
         
         //yan menu
@@ -131,12 +132,12 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.microphoneButton.isEnabled = isButtonEnabled
             }
         }
-
+        
         //voice
         
         
         
-     
+        
         descriptionLabel.text = desc
         bookNameLabel.text = bookName
         authorNameLabel.text = authorName
@@ -147,7 +148,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         print(bookImage)
         print("BOOOOKKİMAAAAJJJ")
-
+        
         bookListenImage.image = UIImage(data: data!)
         
         
@@ -157,22 +158,38 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         //Favori switch kontrol
         if UserDefaults.standard.value(forKey: "user_id") != nil {
-        if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)") { //http://heybook.online/api.php?request=books
-            if let data = try? Data(contentsOf: mURL) {
-                let json = JSON(data: data)
-                print(json)
-                registerResponse = json["response"].string!
-                let total = json["data"].count
-                print(total)
-                
-                for index in 0..<total {
-                    if (book_id == json["data"][index]["book_id"].string!){
-                        switchToAdd.setOn(true, animated: true)
+            let urlString = "http://heybook.online/api.php"
+            let parameters = ["request": "user_favorites",
+                              "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
+            
+            Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                response in
+                switch response.result {
+                case .success:
+                    
+                    
+                    let json = JSON(data: response.data!)
+                    print(json)
+                    self.registerResponse = json["response"].string!
+                    let total = json["data"].count
+                    print(total)
+                    
+                    for index in 0..<total {
+                        if (self.book_id == json["data"][index]["book_id"].string!){
+                            self.switchToAdd.setOn(true, animated: true)
+                        }
                     }
+                    
+                    print(self.registerResponse)
+                    
+                    
+                    
+                    
+                    break
+                case .failure(let error):
+                    
+                    print(error)
                 }
-                
-                print(registerResponse)
-            }
             }
             
             
@@ -182,15 +199,28 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 print("stars")
                 print(rating)
                 
-                if let mURL = URL(string: "http://heybook.online/api.php?request=user_stars-add&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&book_id=\(self.book_id)&star=\(rating)") { //http://heybook.online/api.php?request=books
-                    if let data = try? Data(contentsOf: mURL) {
+                let urlString = "http://heybook.online/api.php"
+                let parameters = ["request": "user_stars-add",
+                                  "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                                "book_id": "\(self.book_id)",
+                                "star": "\(rating)"]
+                
+                Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                    response in
+                    switch response.result {
+                    case .success:
                         var registerResponse = ""
-                        let json = JSON(data: data)
+                        let json = JSON(data: response.data!)
                         print(json)
                         registerResponse = json["response"].string!
                         let total = json["data"].count
                         print(total)
                         print(registerResponse)
+                        
+                        break
+                    case .failure(let error):
+                        
+                        print(error)
                     }
                 }
             }
@@ -219,44 +249,47 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
-            if let mVC1 = segue.destination as? LoginViewController {
-                
-                
-                mVC1.parentView = "listen"
-              
-            }
+        
+        if let mVC1 = segue.destination as? LoginViewController {
+            
+            
+            mVC1.parentView = "listen"
             
         }
         
+    }
+    
     
     //sepete ekle butonu
-
+    
     @IBAction func sepeteEkle(_ sender: Any) {
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
             
             
-            //Kitabı favorilerime ekle
-            if let mURL = URL(string: "http://heybook.online/api.php?request=user_cart-add&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&book_id=\(book_id)") { //http://heybook.online/api.php?request=books
-                if let data = try? Data(contentsOf: mURL) {
-                    let json = JSON(data: data)
-                    print("FAVORİLERİME EKLENDİ")
+            //Kitabı sepete ekle
+            let urlString = "http://heybook.online/api.php"
+            let parameters = ["request": "user_cart-add",
+                              "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                "book_id": "\(book_id)"]
+            
+            Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                response in
+                switch response.result {
+                case .success:
+                    let json = JSON(data: response.data!)
+                    print("SEPETE EKLENDİ")
                     print(json)
-                    registerResponse = json["response"].string!
+                    self.registerResponse = json["response"].string!
                     let total = json["data"].count
                     print(total)
-                    print(registerResponse)
+                    print(self.registerResponse)
                     
+                    break
+                case .failure(let error):
                     
+                    print(error)
                 }
             }
-            
-            
-            
-            
-            
-            
-            
             
             let tapAlert = UIAlertController(title: "Sepete Ekle", message: "Kitap sepete eklendi", preferredStyle: UIAlertControllerStyle.alert)
             tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
@@ -266,7 +299,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             
         }
         else {
-          
+            
             let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
             tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -277,11 +310,11 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             self.present(tapAlert, animated: true, completion: nil)
             
             
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
-//            self.navigationController?.pushViewController(controller, animated: true)
+            //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+            //            self.navigationController?.pushViewController(controller, animated: true)
         }
-
+        
     }
     
     
@@ -303,7 +336,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             microphoneButton.isEnabled = false
-           
+            
             
             
             microphoneButton.setTitle("Start Recording", for: .normal)
@@ -311,9 +344,9 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             startRecording()
             microphoneButton.setTitle("Stop Recording", for: .normal)
             
-           
+            
         }
-
+        
     }
     
     func startRecording() {
@@ -351,13 +384,13 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             if result != nil {
                 
                 self.textView.text = result?.bestTranscription.formattedString  //9
-            
-                if(self.textView.text == "Vitrin"){
                 
+                if(self.textView.text == "Vitrin"){
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
-                
+                    
                 }
                 if(self.textView.text == "Kategori"){
                     
@@ -384,19 +417,19 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 if(self.textView.text == "Giriş yap"){
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
                         
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                        self.navigationController?.pushViewController(controller, animated: true)
                     }
                     else {
-                    
+                        
                         
                         let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya  giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                         self.present(longPressAlert, animated: true, completion: nil)
-                    
-                    
-                    
+                        
+                        
+                        
                     }
                 }
                 
@@ -406,7 +439,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 isFinal = (result?.isFinal)!
                 
-               
+                
             }
             
             if error != nil || isFinal {  //10
@@ -417,7 +450,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.recognitionTask = nil
                 
                 self.microphoneButton.isEnabled = true
-               // self.listen(ses: (result?.bestTranscription.formattedString)!)
+                // self.listen(ses: (result?.bestTranscription.formattedString)!)
             }
         })
         
@@ -445,15 +478,15 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             microphoneButton.isEnabled = false
         }
     }
-
-  
+    
+    
     
     
     func  listen(){
         print("listen functionu")
-   
-       
-    
+        
+        
+        
         
         let url = bookLink
         let playerItem = AVPlayerItem( url:NSURL( string:url ) as! URL )
@@ -471,17 +504,17 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         print("çalıyo")
         print(bookLink)
-
         
-    
+        
+        
     }
     
-      //voice
+    //voice
     
     
     
     
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -504,7 +537,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     var playerLayer:AVPlayerLayer?
     
     @IBAction func listenBook(_ sender: UIButton) {
-
+        
         if((player.rate != 0) && (player.error == nil)) {
             player.pause()
             listesnBookImage.setImage(UIImage(named: "play.png"), for: UIControlState.normal)
@@ -518,8 +551,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             print("çalıyo")
             print(bookLink)
         }
-
-       
+        
+        
     }
     
     
@@ -529,7 +562,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         if(switchToAdd.isOn){
             if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
-            
+                
                 switchToAdd.setOn(false, animated: true)
                 let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
                 tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
@@ -541,28 +574,36 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.present(tapAlert, animated: true, completion: nil)
             }
             else if(UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
-
-            //Kitabı favorilerime ekle
-                if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites-add&user_id=\(UserDefaults.standard.value(forKey: "user_id")!)&book_id=\(book_id)") { //http://heybook.online/api.php?request=books
-                    if let data = try? Data(contentsOf: mURL) {
-                        let json = JSON(data: data)
+                
+                //Kitabı favorilerime ekle
+                let urlString = "http://heybook.online/api.php"
+                let parameters = ["request": "user_favorites-add",
+                                  "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                    "book_id": "\(book_id)"]
+                
+                Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                    response in
+                    switch response.result {
+                    case .success:
+                        let json = JSON(data: response.data!)
                         print("FAVORİLERİME EKLENDİ")
                         print(json)
-                        registerResponse = json["response"].string!
+                        self.registerResponse = json["response"].string!
                         let total = json["data"].count
                         print(total)
-                        print(registerResponse)
+                        print(self.registerResponse)
                         
+                        break
+                    case .failure(let error):
                         
+                        print(error)
                     }
                 }
-            
-            
             }
-        
+            
         }
         if(!switchToAdd.isOn){
-        
+            
             if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
                 
                 switchToAdd.setOn(false, animated: false)
@@ -582,42 +623,48 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 //Kitabı favorilerimden sil
                 //Kitabı favorilerime ekle
-                if let mURL = URL(string: "http://heybook.online/api.php?request=user_favorites-delete&user_id=30&book_id=\(book_id)") { //http://heybook.online/api.php?request=books
-                    if let data = try? Data(contentsOf: mURL) {
-                        let json = JSON(data: data)
-                        print("FAVORİLERİME EKLENDİ")
+                let urlString = "http://heybook.online/api.php"
+                let parameters = ["request": "user_favorites-delete",
+                                  "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                    "book_id": "\(book_id)"]
+                
+                Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                    response in
+                    switch response.result {
+                    case .success:
+                        let json = JSON(data: response.data!)
+                        print("FAVORİLERİMDEN ÇIKARILDI")
                         print(json)
-                        registerResponse = json["response"].string!
+                        self.registerResponse = json["response"].string!
                         let total = json["data"].count
                         print(total)
-                        print(registerResponse)
+                        print(self.registerResponse)
                         
+                        break
+                    case .failure(let error):
                         
+                        print(error)
                     }
                 }
-                
-                
-                
-                
             }
             
-        
-        
-        
-        
-        
+            
+            
+            
+            
+            
         }
         
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

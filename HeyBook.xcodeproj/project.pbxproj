@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8455BAB91E24F3FB0063200E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455BAB81E24F3FB0063200E /* LoginViewController.swift */; };
 		8455BABB1E24FD5B0063200E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455BABA1E24FD5B0063200E /* User.swift */; };
+		8456A7791E9E5C9200D1132F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8456A7781E9E5C9200D1132F /* SwiftyJSON.framework */; };
+		8456A77B1E9E600500D1132F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8456A77A1E9E600500D1132F /* Alamofire.framework */; };
 		846AC0881E66F03400C95001 /* VoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC0871E66F03400C95001 /* VoiceViewController.swift */; };
 		846AC0FF1E67582D00C95001 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AC0FE1E67582D00C95001 /* SWRevealViewController.m */; };
 		846AC1011E67594100C95001 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC1001E67594100C95001 /* MenuViewController.swift */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		8455BAB81E24F3FB0063200E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8455BABA1E24FD5B0063200E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8456A7781E9E5C9200D1132F /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/HeyBook-fdajdzwvwbtinqakovkthrsjstgj/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		8456A77A1E9E600500D1132F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/HeyBook-fdajdzwvwbtinqakovkthrsjstgj/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		846AC0871E66F03400C95001 /* VoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceViewController.swift; sourceTree = "<group>"; };
 		846AC0FC1E67582C00C95001 /* HeyBook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeyBook-Bridging-Header.h"; sourceTree = "<group>"; };
 		846AC0FD1E67582D00C95001 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8456A77B1E9E600500D1132F /* Alamofire.framework in Frameworks */,
+				8456A7791E9E5C9200D1132F /* SwiftyJSON.framework in Frameworks */,
 				C59E09A1FC10E9FB0ED40E59 /* Pods_HeyBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +177,8 @@
 		8AC9EFD661A6E92A27F01930 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8456A77A1E9E600500D1132F /* Alamofire.framework */,
+				8456A7781E9E5C9200D1132F /* SwiftyJSON.framework */,
 				ADA825331E59CE700051BE91 /* SideMenu.framework */,
 				C15298B32F56ACD156C6CE6C /* Pods_HeyBook.framework */,
 			);

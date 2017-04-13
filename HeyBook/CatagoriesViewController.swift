@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import Alamofire
 
 class CatagoriesViewController: UIViewController {
 
@@ -56,6 +57,62 @@ class CatagoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let urlString = "http://heybook.online/api.php"
+        
+        Alamofire.request(urlString, method: .post, parameters: ["request": "books"],encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                
+                
+                let json = JSON(data: response.data!)
+                print(json["data"][0]["book_title"].string!)
+                
+                
+                let total = json["data"].count
+                print(total)
+                //
+                for index in 0..<total {
+                    self.book_id = json["data"][index]["book_id"].string!
+                    self.category_id = json["data"][index]["category_id"].string!
+                    self.publisher_id = json["data"][index]["publisher_id"].string!
+                    self.author_id = json["data"][index]["author_id"].string!
+                    self.narrator_id = json["data"][index]["narrator_id"].string!
+                    self.book_title = json["data"][index]["book_title"].string!
+                    self.desc = json["data"][index]["description"].string!
+                    self.price = json["data"][index]["price"].string!
+                    self.photo = json["data"][index]["photo"].string!
+                    self.thumb = json["data"][index]["thumb"].string!
+                    self.audio = json["data"][index]["audio"].string!
+                    self.duration = json["data"][index]["duration"].string!
+                    self.size = json["data"][index]["size"].string!
+                    self.demo = json["data"][index]["demo"].string!
+                    self.star = json["data"][index]["star"].string!
+                    self.category_title = json["data"][index]["category_title"].string!
+                    self.author_title = json["data"][index]["author_title"].string!
+                    self.publisher_title = json["data"][index]["publisher_title"].string!
+                    
+                    let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title)
+                    
+                    
+                    self.records.append(record)
+                    if !self.categories.contains(record.category_title) {
+                        self.categories.append(record.category_title)
+                    }
+                    
+                }
+                self.catagoriesCollectionView.reloadData()
+                
+                
+                
+                
+                break
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -76,68 +133,6 @@ class CatagoriesViewController: UIViewController {
         self.catagoriesCollectionView.reloadData()
         // Do any additional setup after loading the view.
     }
-
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
-            if let data = try? Data(contentsOf: mURL) {
-                let json = JSON(data: data)
-                //print(json)
-                
-                let total = json["data"].count
-                //print(total)
-                
-                for index in 0..<total {
-                    book_id = json["data"][index]["book_id"].string!
-                    category_id = json["data"][index]["category_id"].string!
-                    publisher_id = json["data"][index]["publisher_id"].string!
-                    author_id = json["data"][index]["author_id"].string!
-                    narrator_id = json["data"][index]["narrator_id"].string!
-                    book_title = json["data"][index]["book_title"].string!
-                    desc = json["data"][index]["description"].string!
-                    price = json["data"][index]["price"].string!
-                    photo = json["data"][index]["photo"].string!
-                    thumb = json["data"][index]["thumb"].string!
-                    audio = json["data"][index]["audio"].string!
-                    duration = json["data"][index]["duration"].string!
-                    size = json["data"][index]["size"].string!
-                    demo = json["data"][index]["demo"].string!
-                    star = json["data"][index]["star"].string!
-                    category_title = json["data"][index]["category_title"].string!
-                    author_title = json["data"][index]["author_title"].string!
-                    publisher_title = json["data"][index]["publisher_title"].string!
-                    //print(book_title)
-                    //print(author_title)
-                    //print(duration)
-                    //print(photo)
-                    let record: Record = Record(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title)
-                    
-                    
-                    
-                    
-                    records.append(record)
-                    if !categories.contains(record.category_title) {
-                        categories.append(record.category_title)
-                    }
-                    
-                    
-                }
-                
-            }
-            else {
-                print("NSdata error")
-                
-            }
-        }
-        
-        
-    }
-    
- 
-    
-    
-    
     
     @IBAction func menuButtonClick(_ sender: Any) {
          present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
@@ -183,7 +178,14 @@ extension CatagoriesViewController: UICollectionViewDataSource {
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerticalCellIdentifier", for: indexPath) as! VerticalCategoriesCollectionViewCell
-        //cell.section = String(indexPath.section)
+        
+//        var array:[Record] = []
+//        for i in 0..<records.count {
+//            if records[i].category_title == categories[indexPath.section] {
+//                array.append(records[i])
+//            }
+//        }
+        cell.records = records
         return cell
         
     }
