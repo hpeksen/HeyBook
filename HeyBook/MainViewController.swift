@@ -23,6 +23,22 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     @IBOutlet weak var animationBookName: UILabel!
     @IBOutlet weak var animationAuthorName: UILabel!
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("ŞİKLKJHGCHVHJHJK")
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var myCollectionView: UICollectionView!
     var book_id = ""
     var category_id = ""
