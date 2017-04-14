@@ -2054,7 +2054,7 @@
                                         <rect key="frame" x="-112.5" y="50" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="601" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">
@@ -2431,7 +2431,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="btU-Eu-BTg" customClass="CustomSepetCollectionViewCell" customModule="HeyBook" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="btU-Eu-BTg" customClass="CustomFavoritesCollectionViewCell" customModule="HeyBook" customModuleProvider="target">
                                         <rect key="frame" x="3.5" y="42" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2491,6 +2491,10 @@
                                                         <constraint firstAttribute="height" constant="32" id="jfy-U7-qwo"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="sil"/>
+                                                    <connections>
+                                                        <action selector="deleteBookFromFavorites:" destination="LMU-Ws-vuR" eventType="touchUpInside" id="CIT-Dz-aQr"/>
+                                                        <action selector="deleteFavoritesBtn:" destination="btU-Eu-BTg" eventType="touchUpInside" id="lVa-xC-fof"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9M-8I-EtM">
                                                     <rect key="frame" x="264" y="9" width="60" height="63"/>
@@ -2528,11 +2532,12 @@
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
-                                            <outlet property="authorName" destination="d1R-dY-EWq" id="eAX-1B-JXB"/>
-                                            <outlet property="bookImage" destination="J9M-8I-EtM" id="rUc-Wo-Qye"/>
-                                            <outlet property="bookName" destination="caT-e0-TOq" id="L44-xI-dOH"/>
-                                            <outlet property="duration" destination="4Bw-Nf-ROk" id="EXw-VK-aML"/>
-                                            <outlet property="leftView" destination="Bjb-Sk-3th" id="6Rq-li-GBl"/>
+                                            <outlet property="bookAuthor" destination="d1R-dY-EWq" id="RJS-OW-GVq"/>
+                                            <outlet property="bookDuration" destination="4Bw-Nf-ROk" id="J2l-sz-izQ"/>
+                                            <outlet property="bookImage" destination="J9M-8I-EtM" id="LSq-0k-n17"/>
+                                            <outlet property="bookName" destination="caT-e0-TOq" id="EPn-J8-mPy"/>
+                                            <outlet property="deleteBookFromFav" destination="Yug-bs-kHN" id="mWe-NE-HDP"/>
+                                            <outlet property="leftView" destination="Bjb-Sk-3th" id="PDP-ZM-E1g"/>
                                             <segue destination="6dh-6Q-yIx" kind="presentation" id="aja-2y-HUU"/>
                                         </connections>
                                     </collectionViewCell>

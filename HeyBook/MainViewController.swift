@@ -8,7 +8,6 @@
 
 import UIKit
 import SideMenu
-import SwiftyJSON
 import Alamofire
 import SystemConfiguration
 class MainViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, iCarouselDelegate,iCarouselDataSource  {
@@ -53,67 +52,67 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         
         
-        
-        let urlString = "http://heybook.online/api.php"
-        
-        Alamofire.request(urlString, method: .post, parameters: ["request": "books"],encoding: URLEncoding.httpBody, headers: nil).responseJSON {
-            response in
-            switch response.result {
-            case .success:
-                
-                
-                let json = JSON(data: response.data!)
-                print(json["data"][0]["book_title"].string!)
-                
-                
-                let total = json["data"].count
-                print(total)
-                //
-                for index in 0..<total {
-                    self.book_id = json["data"][index]["book_id"].string!
-                    self.category_id = json["data"][index]["category_id"].string!
-                    self.publisher_id = json["data"][index]["publisher_id"].string!
-                    self.author_id = json["data"][index]["author_id"].string!
-                    self.narrator_id = json["data"][index]["narrator_id"].string!
-                    self.book_title = json["data"][index]["book_title"].string!
-                    self.desc = json["data"][index]["description"].string!
-                    self.price = json["data"][index]["price"].string!
-                    self.photo = json["data"][index]["photo"].string!
-                    self.thumb = json["data"][index]["thumb"].string!
-                    self.audio = json["data"][index]["audio"].string!
-                    self.duration = json["data"][index]["duration"].string!
-                    self.size = json["data"][index]["size"].string!
-                    self.demo = json["data"][index]["demo"].string!
-                    self.star = json["data"][index]["star"].string!
-                    self.category_title = json["data"][index]["category_title"].string!
-                    self.author_title = json["data"][index]["author_title"].string!
-                    self.publisher_title = json["data"][index]["publisher_title"].string!
-                    
-                    let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title)
+        if records.isEmpty {
+            let urlString = "http://heybook.online/api.php"
+            
+            Alamofire.request(urlString, method: .post, parameters: ["request": "books"],encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                response in
+                switch response.result {
+                case .success:
                     
                     
-                    self.records.append(record)
+                    let json = JSON(data: response.data!)
+                    print(json["data"][0]["book_title"].string!)
                     
-                    print("record: \(record.book_title)")
                     
+                    let total = json["data"].count
+                    print(total)
+                    //
+                    for index in 0..<total {
+                        self.book_id = json["data"][index]["book_id"].string!
+                        self.category_id = json["data"][index]["category_id"].string!
+                        self.publisher_id = json["data"][index]["publisher_id"].string!
+                        self.author_id = json["data"][index]["author_id"].string!
+                        self.narrator_id = json["data"][index]["narrator_id"].string!
+                        self.book_title = json["data"][index]["book_title"].string!
+                        self.desc = json["data"][index]["description"].string!
+                        self.price = json["data"][index]["price"].string!
+                        self.photo = json["data"][index]["photo"].string!
+                        self.thumb = json["data"][index]["thumb"].string!
+                        self.audio = json["data"][index]["audio"].string!
+                        self.duration = json["data"][index]["duration"].string!
+                        self.size = json["data"][index]["size"].string!
+                        self.demo = json["data"][index]["demo"].string!
+                        self.star = json["data"][index]["star"].string!
+                        self.category_title = json["data"][index]["category_title"].string!
+                        self.author_title = json["data"][index]["author_title"].string!
+                        self.publisher_title = json["data"][index]["publisher_title"].string!
+                        
+                        let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title)
+                        
+                        
+                        self.records.append(record)
+                        
+                        print("record: \(record.book_title)")
+                        
+                    }
+                    
+                    self.myCollectionView.reloadData()
+                    self.carouselView.reloadData()
+                    
+                    
+                    
+                    
+                    break
+                case .failure(let error):
+                    
+                    print(error)
                 }
-                
-                self.myCollectionView.reloadData()
-                self.carouselView.reloadData()
-                
-                
-                
-                
-                break
-            case .failure(let error):
-                
-                print(error)
             }
+            
+            
+            
         }
-        
-        
-        
-        
         
         
         
@@ -189,53 +188,53 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.awakeFromNib()
         
         
-    
         
-  
-//        if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
-//            if let data = try? Data(contentsOf: mURL) {
-//                let json = JSON(data: data)
-//                //print(json)
-//
-//                let total = json["data"].count
-//                //print(total)
-//                
-//                for index in 0..<total {
-//                    book_id = json["data"][index]["book_id"].string!
-//                    category_id = json["data"][index]["category_id"].string!
-//                    publisher_id = json["data"][index]["publisher_id"].string!
-//                    author_id = json["data"][index]["author_id"].string!
-//                    narrator_id = json["data"][index]["narrator_id"].string!
-//                    book_title = json["data"][index]["book_title"].string!
-//                    desc = json["data"][index]["description"].string!
-//                    price = json["data"][index]["price"].string!
-//                    photo = json["data"][index]["photo"].string!
-//                    thumb = json["data"][index]["thumb"].string!
-//                    audio = json["data"][index]["audio"].string!
-//                    duration = json["data"][index]["duration"].string!
-//                    size = json["data"][index]["size"].string!
-//                    demo = json["data"][index]["demo"].string!
-//                    star = json["data"][index]["star"].string!
-//                    category_title = json["data"][index]["category_title"].string!
-//                    author_title = json["data"][index]["author_title"].string!
-//                    publisher_title = json["data"][index]["publisher_title"].string!
-//                    //print(book_title)
-//                    //print(author_title)
-//                    //print(duration)
-//                    //print(photo)
-//                    let record: Record = Record(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title)
-//                    
-//                    
-//                    
-//                    records.append(record)
-//                    
-//                    
-//                    
-//                }
-//                
-//            }
-//        
-//        }
+        
+        
+        //        if let mURL = URL(string: "http://heybook.online/api.php?request=books") { //http://heybook.online/api.php?request=books
+        //            if let data = try? Data(contentsOf: mURL) {
+        //                let json = JSON(data: data)
+        //                //print(json)
+        //
+        //                let total = json["data"].count
+        //                //print(total)
+        //
+        //                for index in 0..<total {
+        //                    book_id = json["data"][index]["book_id"].string!
+        //                    category_id = json["data"][index]["category_id"].string!
+        //                    publisher_id = json["data"][index]["publisher_id"].string!
+        //                    author_id = json["data"][index]["author_id"].string!
+        //                    narrator_id = json["data"][index]["narrator_id"].string!
+        //                    book_title = json["data"][index]["book_title"].string!
+        //                    desc = json["data"][index]["description"].string!
+        //                    price = json["data"][index]["price"].string!
+        //                    photo = json["data"][index]["photo"].string!
+        //                    thumb = json["data"][index]["thumb"].string!
+        //                    audio = json["data"][index]["audio"].string!
+        //                    duration = json["data"][index]["duration"].string!
+        //                    size = json["data"][index]["size"].string!
+        //                    demo = json["data"][index]["demo"].string!
+        //                    star = json["data"][index]["star"].string!
+        //                    category_title = json["data"][index]["category_title"].string!
+        //                    author_title = json["data"][index]["author_title"].string!
+        //                    publisher_title = json["data"][index]["publisher_title"].string!
+        //                    //print(book_title)
+        //                    //print(author_title)
+        //                    //print(duration)
+        //                    //print(photo)
+        //                    let record: Record = Record(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title)
+        //
+        //
+        //
+        //                    records.append(record)
+        //
+        //
+        //
+        //                }
+        //
+        //            }
+        //
+        //        }
         
         
     }
@@ -390,12 +389,12 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
         if !records.isEmpty{
-        
-        animationBookName.text = records[carousel.currentItemIndex].book_title
-        animationAuthorName.text = records[carousel.currentItemIndex].author_title
-    
+            
+            animationBookName.text = records[carousel.currentItemIndex].book_title
+            animationAuthorName.text = records[carousel.currentItemIndex].author_title
+            
         }
-        }
+    }
     
     
     @IBAction func unwindToVitrin(_ sender: UIStoryboardSegue) {

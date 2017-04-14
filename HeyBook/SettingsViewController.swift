@@ -29,7 +29,6 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
     var mail = ""
     var userTitle = ""
     
-    var picker:UIImagePickerController?=UIImagePickerController()
     
     override func viewWillAppear(_ animated: Bool) {
         viewLoggedIn.isHidden = false
@@ -210,7 +209,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         profileImage.image = selectedImage
-        profileImage.layer.cornerRadius = profileImage.frame.size.width / 3;
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2;
         profileImage.clipsToBounds = true;
         
         dismiss(animated: true, completion: nil)

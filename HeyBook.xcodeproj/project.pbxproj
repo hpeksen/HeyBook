@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8455BAB91E24F3FB0063200E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455BAB81E24F3FB0063200E /* LoginViewController.swift */; };
 		8455BABB1E24FD5B0063200E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455BABA1E24FD5B0063200E /* User.swift */; };
-		8456A7791E9E5C9200D1132F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8456A7781E9E5C9200D1132F /* SwiftyJSON.framework */; };
 		8456A77B1E9E600500D1132F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8456A77A1E9E600500D1132F /* Alamofire.framework */; };
 		846AC0881E66F03400C95001 /* VoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846AC0871E66F03400C95001 /* VoiceViewController.swift */; };
 		846AC0FF1E67582D00C95001 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AC0FE1E67582D00C95001 /* SWRevealViewController.m */; };
@@ -33,6 +32,7 @@
 		849247551E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */; };
 		849247571E89A118009AD151 /* SepetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247561E89A118009AD151 /* SepetViewController.swift */; };
 		849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849611871E5628FD00E4B4B0 /* RegisterViewController.swift */; };
+		84B8626F1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8626E1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift */; };
 		84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B71E1D539D0025412C /* AppDelegate.swift */; };
 		84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B91E1D539D0025412C /* MainViewController.swift */; };
 		84B993BD1E1D539D0025412C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B993BB1E1D539D0025412C /* Main.storyboard */; };
@@ -77,6 +77,7 @@
 		849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		849247561E89A118009AD151 /* SepetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SepetViewController.swift; sourceTree = "<group>"; };
 		849611871E5628FD00E4B4B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		84B8626E1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		84B993B41E1D539D0025412C /* HeyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B993B71E1D539D0025412C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B993B91E1D539D0025412C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8456A77B1E9E600500D1132F /* Alamofire.framework in Frameworks */,
-				8456A7791E9E5C9200D1132F /* SwiftyJSON.framework in Frameworks */,
 				C59E09A1FC10E9FB0ED40E59 /* Pods_HeyBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +140,7 @@
 				84B993B91E1D539D0025412C /* MainViewController.swift */,
 				8492474C1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift */,
 				84BF20471E229974001E883E /* Record.swift */,
+				84B8626E1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift */,
 				849247521E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift */,
 				8492474E1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift */,
 				849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */,
@@ -332,6 +333,7 @@
 				846D80531E9272060025D4DB /* KitaplarimViewController.swift in Sources */,
 				84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */,
 				84B993D11E1D59E50025412C /* CustomCollectionViewCell.swift in Sources */,
+				84B8626F1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift in Sources */,
 				846AC1051E70665300C95001 /* SettingsViewController.swift in Sources */,
 				846AC0881E66F03400C95001 /* VoiceViewController.swift in Sources */,
 				849247461E816AB7009AD151 /* CustomCatagoriesCollectionViewCell.swift in Sources */,

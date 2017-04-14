@@ -11,9 +11,9 @@ import SideMenu
 import Alamofire
 
 class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     var records: [Record] = []
-     var categories: [String] = []
+    var categories: [String] = []
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     var book_id = ""
@@ -95,7 +95,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
                 print(error)
             }
         }
-
+        
         // Do any additional setup after loading the view.
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -127,7 +127,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
         layout.minimumLineSpacing = 0
         myCollectionView!.collectionViewLayout = layout
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -178,7 +178,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
     // For each cell setting the data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomKitaplarimCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomFavoritesCollectionViewCell
         
         //let records: [Record] = mDataSource.recordsInSection(indexPath.section)
         let record: Record
@@ -194,13 +194,13 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
             }
             DispatchQueue.main.async(execute: { () -> Void in
                 
-                cell.authorName.text = record.author_title
+                cell.bookAuthor.text = record.author_title
                 cell.bookName.text = record.book_title
                 
                 let (h,m,s) = self.secondsToHoursMinutesSeconds(seconds: (Int(record.duration)! * 60))
-                cell.duration.text = "\(h) sa \(m) dk"
+                cell.bookDuration.text = "\(h) sa \(m) dk"
                 
-                
+                cell.deleteBookFromFav.tag = Int(record.book_id)!
                 cell.bookImage.image = UIImage(data: data!)
                 
             })
@@ -221,6 +221,51 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
     }
     
     
+    @IBAction func deleteBookFromFavorites(_ sender: UIButton) {
+        let index = sender.tag
+        print("book Id sini bastırıyom: ")
+        print(index)
+        
+        
+        
+        let urlString = "http://heybook.online/api.php"
+        let parameters = ["request": "user_favorites-delete",
+                          "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+            "book_id": "\(index)"]
+        
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                
+                
+                let json = JSON(data: response.data!)
+                print(json)
+                
+                
+                for i in 0..<self.records.count {
+                    if (Int(self.records[i].book_id) == index) {
+                        self.records.remove(at: i)
+                        
+                        self.categories = []
+                        for j in 0..<self.records.count {
+                            self.categories.append(self.records[j].category_title)
+                        }
+                        
+                        break
+                    }
+                }
+
+                self.myCollectionView.reloadData()
+                
+                
+                break
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
     // For each header setting the data
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -245,15 +290,15 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
         return (hours, minutes, seconds)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
