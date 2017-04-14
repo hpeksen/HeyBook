@@ -10,13 +10,13 @@ import UIKit
 import SideMenu
 import Alamofire
 
-class SettingsViewController: UIViewController,UITextFieldDelegate {
-
+class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
     @IBOutlet weak var btnMenu: UIBarButtonItem!
     @IBOutlet weak var userTitleLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
-
- 
+    
+    
     @IBOutlet weak var PassTxt: UITextField!
     @IBOutlet weak var newPassTxt: UITextField!
     @IBOutlet weak var viewLoggedIn: UIView!
@@ -24,9 +24,12 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var newPassTxt2: UITextField!
     @IBOutlet weak var disableSwitch: UISwitch!
     @IBOutlet weak var subscribeSwitch: UISwitch!
+    @IBOutlet weak var profileImage: UIImageView!
     
     var mail = ""
     var userTitle = ""
+    
+    var picker:UIImagePickerController?=UIImagePickerController()
     
     override func viewWillAppear(_ animated: Bool) {
         viewLoggedIn.isHidden = false
@@ -62,7 +65,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
                                                name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-
+        
         
         
         //////keyboard
@@ -77,14 +80,14 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         
         SideMenuManager.menuPresentMode = .menuSlideIn
         
-
+        
         print("ayarlar ekranındayım")
         
         print(mail)
         print(userTitle)
         // Do any additional setup after loading the view.
     }
-
+    
     
     //keyboard için
     
@@ -130,7 +133,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
     
     ////////keyboard  oldPassTxt
     
-
+    
     
     
     
@@ -143,7 +146,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         print(disableSwitch.isOn)
         
         let originalString = userTitleLabel.text!
-       // let escapedString = originalString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        // let escapedString = originalString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
         let subscribe:Int = subscribeSwitch.isOn == true ? 1 : 0
         let disabled:Int = disableSwitch.isOn == true ? 1 : 0
@@ -151,13 +154,13 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         let urlString = "http://heybook.online/api.php"
         let parameters = ["request": "settings",
                           "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
-                        "user_title": "\(originalString)",
-                        "mail": "\(self.emailLabel.text!)",
-                        "password": "\(self.PassTxt.text!)",
-                        "new-password": "\(self.newPassTxt.text!)",
-                        "new-password-again": "\(self.newPassTxt2.text!)",
-                        "subscribe": "\(subscribe)",
-                        "disabled": "\(disabled)"]
+            "user_title": "\(originalString)",
+            "mail": "\(self.emailLabel.text!)",
+            "password": "\(self.PassTxt.text!)",
+            "new-password": "\(self.newPassTxt.text!)",
+            "new-password-again": "\(self.newPassTxt2.text!)",
+            "subscribe": "\(subscribe)",
+            "disabled": "\(disabled)"]
         
         Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil)
             .responseJSON {
@@ -200,26 +203,48 @@ class SettingsViewController: UIViewController,UITextFieldDelegate {
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        profileImage.image = selectedImage
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 3;
+        profileImage.clipsToBounds = true;
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func photoAddButton(_ sender: Any) {
+        let controller = UIImagePickerController()
+        controller.delegate = self
+        controller.sourceType = .photoLibrary
+        
+        present(controller, animated: true, completion: nil)
+    }
+    
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
