@@ -26,6 +26,13 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
     @IBOutlet weak var subscribeSwitch: UISwitch!
     @IBOutlet weak var profileImage: UIImageView!
     
+    
+    
+    var pickedImagePath: NSURL?
+    var pickedImageData: NSData?
+    
+    var localPath: String?
+    
     var mail = ""
     var userTitle = ""
     
@@ -188,8 +195,155 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
                     print("NABIYON: \(error)")
                 }
         }
+    
+        myImageUploadRequest()
+        
+//        
+//        //2
+//        let imageData = UIImageJPEGRepresentation(profileImage.image!, 1)
+//        if(imageData == nil ) { return }
+//        let uploadScriptUrl = NSURL(string:"http://heybook.online/api_test.php")
+//        var request = NSMutableURLRequest(url: uploadScriptUrl! as URL)
+//        request.httpMethod = "POST"
+//        request.setValue("Keep-Alive", forHTTPHeaderField: "Connection")
+//        var configuration = URLSessionConfiguration.default
+//        let session = URLSession(configuration: configuration, delegate: self as? URLSessionDelegate, delegateQueue: OperationQueue.main)
+//        let task = session.uploadTask(with: request as URLRequest, from: imageData!)
+//        task.resume()
+//        //2
+//        
+        
+        
+//        Alamofire.upload(multipartFormData: { (multipartFormData) in
+//            multipartFormData.append(UIImageJPEGRepresentation(self.profileImage.image!, 0.5)!, withName: "pic", fileName: "swift_file.jpeg", mimeType: "image/jpeg")
+//            for (key, value) in parameters {
+//                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+//            }
+//            
+//        }, to:"http://heybook.online/api_test.php")
+//        { (result) in
+//            switch result {
+//            case .success(let upload, _, _):
+//                
+//                upload.uploadProgress(closure: { (Progress) in
+//                    print("Upload Progress: \(Progress.fractionCompleted)")
+//                })
+//                
+//                upload.responseJSON { response in
+//                    //self.delegate?.showSuccessAlert()
+//                    print(response.request)  // original URL request
+//                    print(response.response) // URL response
+//                    print(response.data)     // server data
+//                    print(response.result)   // result of response serialization
+//                    //                        self.showSuccesAlert()
+//                    //self.removeImage("frame", fileExtension: "txt")
+//                    if let JSON = response.result.value {
+//                        print("JSON: \(JSON)")
+//                    }
+//                }
+//                
+//            case .failure(let encodingError):
+//                //self.delegate?.showFailAlert()
+//                print(encodingError)
+//            }
+//            
+//        }
+        
+    
     }
     
+    func myImageUploadRequest()
+    {
+        
+        let myUrl = NSURL(string: "http://heybook.online/api_test.php");
+        //let myUrl = NSURL(string: "http://www.boredwear.com/utils/postImage.php");
+        
+        let request = NSMutableURLRequest(url:myUrl! as URL);
+        request.httpMethod = "POST";
+        let originalString = userTitleLabel.text!
+        // let escapedString = originalString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        
+        let subscribe:Int = subscribeSwitch.isOn == true ? 1 : 0
+        let disabled:Int = disableSwitch.isOn == true ? 1 : 0
+        let param = [
+            "firstName"  : "Sergey",
+            "lastName"    : "Kargopolov",
+            "userId"    : "9"
+        ]
+        
+        let boundary = generateBoundaryString()
+        
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        
+        let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 1)
+        
+        if(imageData==nil)  { return; }
+        
+        request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey: imageData! as NSData, boundary: boundary) as Data
+        
+        
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            // You can print out response object
+            print("******* response = \(response)")
+            
+            // Print out reponse body
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("****** response data = \(responseString!)")
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
+                
+                print(json)
+                
+                DispatchQueue.main.async(execute: {
+                 print("aa")
+                });
+                
+            }catch
+            {
+                print(error)
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
+        let body = NSMutableData();
+        
+        if parameters != nil {
+            for (key, value) in parameters! {
+                body.appendString(string: "--\(boundary)\r\n")
+                body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+                body.appendString(string: "\(value)\r\n")
+            }
+        }
+        
+        let filename = "user-profile.jpg"
+        let mimetype = "image/jpg"
+        
+        body.appendString(string: "--\(boundary)\r\n")
+        body.appendString(string: "Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
+        body.appendString(string: "Content-Type: \(mimetype)\r\n\r\n")
+        body.append(imageDataKey as Data)
+        body.appendString(string: "\r\n")
+        
+        
+        
+        body.appendString(string: "--\(boundary)--\r\n")
+        
+        return body
+    }
     
     @IBAction func goLoginPage(_ sender: UIButton) {
         
@@ -210,6 +364,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         profileImage.image = selectedImage
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2;
+        profileImage.contentMode = .scaleAspectFill
         profileImage.clipsToBounds = true;
   
         
@@ -224,6 +379,30 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         controller.sourceType = .photoLibrary
         
         present(controller, animated: true, completion: nil)
+        
+      
+        
+        
+        
+//        guard let path = localPath else {
+//            return
+//        }
+//        
+//        Alamofire.upload(.POST, "http://heybook.online/api_test.php"
+//            , multipartFormData: { formData in
+//                let filePath = NSURL(fileURLWithPath: path)
+//                formData.appendBodyPart(fileURL: filePath, name: "upload")
+//                formData.appendBodyPart(data: "Alamofire".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name: "test")
+//        }, encodingCompletion: { encodingResult in
+//            switch encodingResult {
+//            case .Success:
+//                print("SUCCESS")
+//            case .Failure(let error):
+//                print(error)
+//            }
+//        })
+//    
+//    
     }
     
     
@@ -248,5 +427,55 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
      // Pass the selected object to the new view controller.
      }
      */
-    
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().uuidString)"
+    }
 }
+extension NSMutableData {
+    
+    func appendString(string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
+        append(data!)
+    }
+}
+//extension SettingsViewController{
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+//            return
+//        }
+//        
+//        
+//        
+//        profileImage.image = image
+//        
+//        
+//        let documentDirectory: NSString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
+//        
+//        let imageName = "temp"
+//        
+//        let imagePath = documentDirectory.appendingPathComponent(imageName)
+//        
+//        if let data = UIImageJPEGRepresentation(image, 80) {
+//            do {
+//                try data.write(to: URL(fileURLWithPath: imagePath), options: .atomic)
+//            } catch {
+//                print(error)
+//            }
+//        }
+//
+//        localPath = imagePath
+//        
+//        dismiss(animated: true, completion: {
+//            
+//        })
+//    }
+//    
+//    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+//        dismiss(animated: true, completion: nil)
+//    }
+//}
+
+
+
+
+
