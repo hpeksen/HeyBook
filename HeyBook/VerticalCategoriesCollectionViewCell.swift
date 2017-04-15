@@ -42,6 +42,7 @@ class VerticalCategoriesCollectionViewCell: UICollectionViewCell {
     var category_title = ""
     var author_title = ""
     var publisher_title = ""
+    var narrator_title = ""
     
     var section = ""
     

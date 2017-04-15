@@ -51,8 +51,8 @@ class PlayBookViewController: UIViewController {
             authorName = (record.author_title)
             bookLink = (record.audio)
             bookImage = (record.thumb)
-            narratorName = "Nimet Ceren Serim"
-            publisherName = "Can Yayınları"
+            narratorName = record.narrator_title
+            publisherName = record.publisher_title
             duration = (record.duration)
         } else {
             print("olmadi lan....")

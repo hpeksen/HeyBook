@@ -28,8 +28,9 @@ class Record : NSObject, NSCoding {
     var category_title: String
     var author_title: String
     var publisher_title: String
+    var narrator_title: String
     
-    init(book_id: String, category_id: String, publisher_id: String, author_id: String, narrator_id: String, book_title: String, desc: String, price: String, photo: String, thumb: String, audio: String, duration: String, size: String, demo: String, star: String, category_title: String, author_title: String, publisher_title: String) {
+    init(book_id: String, category_id: String, publisher_id: String, author_id: String, narrator_id: String, book_title: String, desc: String, price: String, photo: String, thumb: String, audio: String, duration: String, size: String, demo: String, star: String, category_title: String, author_title: String, publisher_title: String,narrator_title: String) {
         self.book_id = book_id
         self.category_id = category_id
         self.publisher_id = publisher_id
@@ -48,6 +49,7 @@ class Record : NSObject, NSCoding {
         self.category_title = category_title
         self.author_title = author_title
         self.publisher_title = publisher_title
+        self.narrator_title = narrator_title
     }
     
     required convenience init(coder aDecoder: NSCoder) {
@@ -69,8 +71,9 @@ class Record : NSObject, NSCoding {
         let category_title = aDecoder.decodeObject(forKey: "category_title") as! String
         let author_title = aDecoder.decodeObject(forKey: "author_title") as! String
         let publisher_title = aDecoder.decodeObject(forKey: "publisher_title") as! String
+        let narrator_title = aDecoder.decodeObject(forKey: "narrator_title") as! String
         
-        self.init(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title)
+        self.init(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title ,narrator_title: narrator_title)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -92,6 +95,7 @@ class Record : NSObject, NSCoding {
         aCoder.encode(category_title, forKey: "category_title")
         aCoder.encode(author_title, forKey: "author_title")
         aCoder.encode(publisher_title, forKey: "publisher_title")
+        aCoder.encode(narrator_title, forKey: "narrator_title")
     }
 
 }

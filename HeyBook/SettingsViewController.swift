@@ -211,6 +211,9 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         profileImage.image = selectedImage
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2;
         profileImage.clipsToBounds = true;
+  
+        
+        
         
         dismiss(animated: true, completion: nil)
     }

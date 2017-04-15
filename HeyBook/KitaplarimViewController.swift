@@ -33,6 +33,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     var category_title = ""
     var author_title = ""
     var publisher_title = ""
+    var narrator_title = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,8 +74,9 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                     self.category_title = json["data"][index]["category_title"].string!
                     self.author_title = json["data"][index]["author_title"].string!
                     self.publisher_title = json["data"][index]["publisher_title"].string!
+                    self.narrator_title = json["data"][index]["narrator_title"].string!
                     
-                    let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title)
+                    let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title, narrator_title: self.narrator_title)
                     
                     
                     self.records.append(record)
@@ -228,6 +230,8 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
+        
+    
         UserDefaults.standard.set(encodedData, forKey: "book_record_play")
         UserDefaults.standard.synchronize()
     }
