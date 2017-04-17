@@ -26,6 +26,10 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
         menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Kategoriler","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar"]
         
+        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil || UserDefaults.standard.value(forKey: "user_image") != nil){
+        //imgIcon.image = UserDefaults.standard.value(forKey: "user_image") as! UIImage
+        
+        }
         // Do any additional setup after loading the view.  LoginFromMenuViewController
     }
 
@@ -169,6 +173,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             UserDefaults.standard.setValue(nil, forKey: "user_mail")
             UserDefaults.standard.setValue(nil, forKey: "user_title")
             UserDefaults.standard.setValue(nil, forKey: "user_id")
+            UserDefaults.standard.setValue(nil, forKey: "user_image")
             
             let tapAlert = UIAlertController(title: "mesaj", message: "Çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
             tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
