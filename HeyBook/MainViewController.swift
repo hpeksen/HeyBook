@@ -51,6 +51,47 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+ 
+        if(isConnectedToNetwork()){
+            
+            let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz!!!", preferredStyle: .alert)
+            
+            let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                 //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                       print("Settings opened: \(success)") // Prints true
+                   })
+                }
+            }
+            alertController.addAction(settingsWifi)
+           
+            let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: "App-Prefs:root=General") else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            }
+            alertController.addAction(settingsCellular)
+            
+            present(alertController, animated: true, completion: nil)
+            
+            
+            
+            
+            
+        }
+        else {
         
         
         if records.isEmpty {
@@ -167,8 +208,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         
         
-        
-        
+        }
         
         
         
@@ -189,7 +229,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+       
         
         
         
