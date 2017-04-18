@@ -25,7 +25,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var myStackView: UIStackView!
     
     @IBOutlet weak var backBtn: UIButton!
-    @IBOutlet weak var btnMenu: UIBarButtonItem!
     
     @IBOutlet weak var eMailTxt: SearchTextField!
     @IBOutlet weak var passwordTxt: UITextField!

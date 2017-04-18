@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SideMenu
 
 class RegisterViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var nameField: UITextField!
@@ -128,6 +129,9 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
+    @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
+         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,6 +150,16 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
 
         
         
+        
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        menuLeftNavigationController.leftSide = true
+        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        SideMenuManager.menuPresentMode = .menuSlideIn
+
         ////klavye
 
         // Do any additional setup after loading the view.

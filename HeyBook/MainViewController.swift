@@ -52,8 +52,9 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         // Do any additional setup after loading the view, typically from a nib.
         
  
-        if(isConnectedToNetwork()){
-            
+        if(!isConnectedToNetwork()){
+            print("internett")
+            print(isConnectedToNetwork())
             let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz!!!", preferredStyle: .alert)
             
             let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in

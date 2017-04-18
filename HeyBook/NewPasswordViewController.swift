@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SearchTextField
+import SideMenu
 
 class NewPasswordViewController: UIViewController,UITextFieldDelegate {
 
@@ -30,6 +31,17 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
         myTextField.inlineMode = true
         let array:[String] = UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array") == nil ? [] : UserDefaults.standard.stringArray(forKey: "user_mail_autocomplete_array")!
         myTextField.filterStrings(array)
+        
+        
+        
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        menuLeftNavigationController.leftSide = true
+        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        SideMenuManager.menuPresentMode = .menuSlideIn
 
     }
 
@@ -39,6 +51,12 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
 //        return false
 //    }
     
+    @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
+        
+        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+       
+
+    }
     func keyboardWillShow(notification: NSNotification) {
         var translation:CGFloat = 0
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
