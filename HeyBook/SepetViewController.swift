@@ -59,7 +59,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 
                 
                 let total = json["data"].count
-                print("json \(total)")
+              //  print("json \(total)")
                 //
                 for index in 0..<total {
                     self.book_id = json["data"][index]["book_id"].string!
@@ -99,7 +99,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 break
             case .failure(let error):
                 
-                print("NABIYON: \(error)")
+                print("NABIYON:")
             }
         }
 
@@ -153,8 +153,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("records.count")
-        print(records.count)
+       // print("records.count")
+       // print(records.count)
         if !records.isEmpty {
             return records.count
         }
@@ -180,7 +180,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         //Aschronized image loading !!!!
         URLSession.shared.dataTask(with: NSURL(string: record.photo)! as URL, completionHandler: { (data, response, error) -> Void in
             if error != nil {
-                print(error)
+           //     print(error)
                 return
             }
             DispatchQueue.main.async(execute: { () -> Void in
@@ -213,7 +213,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     
     let index = sender.tag
         print("book Id sini bastırıyom: ")
-        print(index)
+       // print(index)
         
         
         

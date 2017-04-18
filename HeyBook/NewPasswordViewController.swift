@@ -111,8 +111,8 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate {
                 print(self.message)
                 print(self.newPasswordResponse)
                 
-                let longPressAlert = UIAlertController(title: "\(json["response"].description)", message: "\(json["message"].description)", preferredStyle: UIAlertControllerStyle.alert)
-                longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                let longPressAlert = UIAlertController(title: "", message: "\(json["message"].description)", preferredStyle: UIAlertControllerStyle.alert)
+                longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
                 self.present(longPressAlert, animated: true, completion: nil)
                 
                 

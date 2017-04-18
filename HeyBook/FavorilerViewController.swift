@@ -200,7 +200,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
                 cell.bookName.text = record.book_title
                 
                 let (h,m,s) = self.secondsToHoursMinutesSeconds(seconds: (Int(record.duration)! * 60))
-                cell.bookDuration.text = "\(h) sa \(m) dk"
+                cell.bookDuration.text = "\(h):\(m) dk"
                 
                 cell.deleteBookFromFav.tag = Int(record.book_id)!
                 cell.bookImage.image = UIImage(data: data!)

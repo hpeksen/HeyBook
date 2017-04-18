@@ -159,7 +159,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                
                 if (json["response"].description == "error"){
                     let tapAlert = UIAlertController(title: "", message: "\(json["message"].description)", preferredStyle: UIAlertControllerStyle.alert)
-                    tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                    tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
                     self.present(tapAlert, animated: true, completion: nil)
                 }
                 else {

@@ -590,7 +590,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 cell.bookName.text = record.book_title
                 
                 let (h,m,s) = self.secondsToHoursMinutesSeconds(seconds: (Int(record.duration)! * 60))
-                cell.duration.text = "\(h) sa \(m) dk"
+                cell.duration.text = "\(h):\(m) dk"
                 
                 
                 cell.bookImage.image = UIImage(data: data!)

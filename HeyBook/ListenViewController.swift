@@ -292,7 +292,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
             
             let tapAlert = UIAlertController(title: "Sepete Ekle", message: "Kitap sepete eklendi", preferredStyle: UIAlertControllerStyle.alert)
-            tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+            tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(tapAlert, animated: true, completion: nil)
             
             //satın alma ekranına gidecek
@@ -301,7 +301,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         else {
             
             let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
-            tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+            tapAlert.addAction(UIAlertAction(title: "Giriş Yap", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
                 self.navigationController?.pushViewController(controller, animated: true)
