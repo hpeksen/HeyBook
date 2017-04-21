@@ -12,6 +12,7 @@ import Speech
 import SideMenu
 import Cosmos
 import Alamofire
+import RNCryptor
 
 class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
@@ -41,6 +42,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     //voice
     @IBOutlet weak var textView: UITextView!
     
+    @IBOutlet weak var addToChartButton: UIButton!
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
     @IBOutlet weak var microphoneButton: UIButton!
     
@@ -48,7 +50,9 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     
-    
+    private var bookPassword = "Secret password"
+    private var ciphertext:Data? = nil
+    var audioPlayer = AVAudioPlayer()
     
     
     
@@ -158,8 +162,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         //Favori switch kontrol
         if UserDefaults.standard.value(forKey: "user_id") != nil {
-            let urlString = "http://heybook.online/api.php"
-            let parameters = ["request": "user_favorites",
+            var urlString = "http://heybook.online/api.php"
+            var parameters = ["request": "user_favorites",
                               "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
             
             Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
@@ -192,6 +196,39 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
             
+            urlString = "http://heybook.online/api.php"
+            parameters = ["request": "user_books",
+                          "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
+            
+            Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                response in
+                switch response.result {
+                case .success:
+                    
+                    
+                    let json = JSON(data: response.data!)
+                    print(json)
+                    self.registerResponse = json["response"].string!
+                    let total = json["data"].count
+                    print(total)
+                    
+                    for index in 0..<total {
+                        if (self.book_id == json["data"][index]["book_id"].string!){
+                            self.addToChartButton.setTitle("İNDİR", for: .normal)
+                        }
+                    }
+                    
+                    print(self.registerResponse)
+                    
+                    
+                    
+                    
+                    break
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
             
             starsView.isUserInteractionEnabled = true
             starsView.didFinishTouchingCosmos = {
@@ -202,8 +239,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 let urlString = "http://heybook.online/api.php"
                 let parameters = ["request": "user_stars-add",
                                   "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
-                                "book_id": "\(self.book_id)",
-                                "star": "\(rating)"]
+                    "book_id": "\(self.book_id)",
+                    "star": "\(rating)"]
                 
                 Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
                     response in
@@ -263,56 +300,105 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     //sepete ekle butonu
     
     @IBAction func sepeteEkle(_ sender: Any) {
-        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
-            
-            
-            //Kitabı sepete ekle
-            let urlString = "http://heybook.online/api.php"
-            let parameters = ["request": "user_cart-add",
-                              "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
-                "book_id": "\(book_id)"]
-            
-            Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
-                response in
-                switch response.result {
-                case .success:
-                    let json = JSON(data: response.data!)
-                    print("SEPETE EKLENDİ")
-                    print(json)
-                    self.registerResponse = json["response"].string!
-                    let total = json["data"].count
-                    print(total)
-                    print(self.registerResponse)
-                    
-                    break
-                case .failure(let error):
-                    
-                    print(error)
+        if addToChartButton.titleLabel?.text == "SEPETE EKLE" {
+            if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+                
+                
+                //Kitabı sepete ekle
+                let urlString = "http://heybook.online/api.php"
+                let parameters = ["request": "user_cart-add",
+                                  "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                    "book_id": "\(book_id)"]
+                
+                Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                    response in
+                    switch response.result {
+                    case .success:
+                        let json = JSON(data: response.data!)
+                        print("SEPETE EKLENDİ")
+                        print(json)
+                        self.registerResponse = json["response"].string!
+                        let total = json["data"].count
+                        print(total)
+                        print(self.registerResponse)
+                        
+                        break
+                    case .failure(let error):
+                        
+                        print(error)
+                    }
                 }
+                
+                let tapAlert = UIAlertController(title: "Sepete Ekle", message: "Kitap sepete eklendi", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+                //satın alma ekranına gidecek
+                
             }
-            
-            let tapAlert = UIAlertController(title: "Sepete Ekle", message: "Kitap sepete eklendi", preferredStyle: UIAlertControllerStyle.alert)
-            tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(tapAlert, animated: true, completion: nil)
-            
-            //satın alma ekranına gidecek
-            
+            else {
+                
+                let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Giriş Yap", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }))
+                tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+                
+                //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                //            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                //            self.navigationController?.pushViewController(controller, animated: true)
+            }
         }
-        else {
+        else if(addToChartButton.titleLabel?.text == "İNDİR") {
+            print("download kodları")
             
-            let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
-            tapAlert.addAction(UIAlertAction(title: "Giriş Yap", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
-                self.navigationController?.pushViewController(controller, animated: true)
-            }))
-            tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-            self.present(tapAlert, animated: true, completion: nil)
+            let url = NSURL(string: bookLink)
+            let data = NSData(contentsOf: url as! URL)
+            bookPassword = "Secret password"
+            ciphertext = RNCryptor.encrypt(data: data as! Data, withPassword: bookPassword)
             
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(bookName).file")
             
-            //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            //            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
-            //            self.navigationController?.pushViewController(controller, animated: true)
+            print(fileURL)
+            do {
+                try ciphertext?.write(to: fileURL, options: .atomic)
+                print(ciphertext)
+                addToChartButton.setTitle("İNDİRİLDİ", for: .normal)
+            } catch {
+                print(error)
+            }
+        }
+        else if(addToChartButton.titleLabel?.text == "İNDİRİLDİ") {
+            do {
+                let originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
+                
+                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
+                try originalData.write(to: fileURL, options: .atomic)
+                do {
+                    audioPlayer = try AVAudioPlayer(data: originalData)
+                    
+                    // https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html
+                    // Define how the application intends to use audio
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    
+                    // Activates or deactivates your app’s audio session.
+                    try AVAudioSession.sharedInstance().setActive(true)
+                }
+                catch {
+                    print("Error occurred")
+                }
+                
+                //audioPlayer.numberOfLoops = -1  // infinite loop
+                audioPlayer.prepareToPlay()
+                
+                audioPlayer.play()
+            } catch {
+                print(error)
+            }
         }
         
     }
