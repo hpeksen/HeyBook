@@ -49,8 +49,6 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 
                 
                 let json = JSON(data: response.data!)
-                print(json["data"][0]["book_title"].string!)
-                
                 
                 let total = json["data"].count
                 print(total)

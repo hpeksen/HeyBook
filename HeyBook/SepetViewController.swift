@@ -55,8 +55,6 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 
                 
                 let json = JSON(data: response.data!)
-                print(json["data"][0]["book_title"].string!)
-                
                 
                 let total = json["data"].count
               //  print("json \(total)")
@@ -90,7 +88,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                     self.totalPrice += Double(record.price)!
                     
                 }
-                
+                                
+                self.totalPriceLabel.text = "\(String(format: "%.2f", self.totalPrice)) TL"
                 self.myCollectionView.reloadData()
                 
                 
