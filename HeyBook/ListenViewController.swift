@@ -54,6 +54,11 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     private var ciphertext:Data? = nil
     var audioPlayer = AVAudioPlayer()
     
+    var mp3FileNames:[String] = []
+    var mp3Files:[URL] = []
+    
+    
+    
     
     
     @IBAction func unwindToListen(_ sender: UIStoryboardSegue) {
@@ -218,6 +223,30 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                         }
                     }
                     
+                    // Get the document directory url
+                    let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    
+                    do {
+                        // Get the directory contents urls (including subfolders urls)
+                        let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+                        print(directoryContents)
+                        
+                        // if you want to filter the directory contents you can do like this:
+                        self.mp3Files = directoryContents.filter{ $0.pathExtension == "file" }
+                        print("mp3 file urls:",self.mp3Files)
+                        self.mp3FileNames = self.mp3Files.map{ $0.deletingPathExtension().lastPathComponent }
+                        print("mp3 file list:", self.mp3FileNames)
+                        
+                        for i in 0..<self.mp3FileNames.count {
+                            if self.mp3FileNames[i] == self.bookName {
+                                self.addToChartButton.setTitle("İNDİRİLDİ", for: .normal)
+                            }
+                        }
+                        
+                    } catch let error as NSError {
+                        print(error.localizedDescription)
+                    }
+                    
                     print(self.registerResponse)
                     
                     
@@ -374,7 +403,14 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         else if(addToChartButton.titleLabel?.text == "İNDİRİLDİ") {
             do {
-                let originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
+                var originalData:Data
+                ciphertext = nil
+                for i in 0..<mp3FileNames.count {
+                    if mp3FileNames[i] == bookName {
+                        ciphertext = NSData(contentsOf: mp3Files[i]) as! Data
+                    }
+                }
+                originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
                 
                 let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
                 try originalData.write(to: fileURL, options: .atomic)
