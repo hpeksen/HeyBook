@@ -411,9 +411,9 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                     }
                 }
                 originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
-                
-                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
-                try originalData.write(to: fileURL, options: .atomic)
+//                
+//                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
+//                try originalData.write(to: fileURL, options: .atomic)
                 do {
                     audioPlayer = try AVAudioPlayer(data: originalData)
                     

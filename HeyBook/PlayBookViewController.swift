@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import SideMenu
+import RNCryptor
 
 class PlayBookViewController: UIViewController {
 
@@ -33,6 +34,15 @@ class PlayBookViewController: UIViewController {
     
     var player = AVPlayer()
     var playerLayer:AVPlayerLayer?
+    
+    var isDownloaded:Bool = false
+    private var bookPassword = "Secret password"
+    private var ciphertext:Data? = nil
+    var audioPlayer = AVAudioPlayer()
+    
+    var mp3FileNames:[String] = []
+    var mp3Files:[URL] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,16 +110,74 @@ class PlayBookViewController: UIViewController {
         
         SideMenuManager.menuPresentMode = .menuSlideIn
         
+        //Is Downloaded?
+        // Get the document directory url
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
-        let url = URL(string: bookLink)
-        let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
-        player = AVPlayer(playerItem: playerItem)
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+            print(directoryContents)
+            
+            // if you want to filter the directory contents you can do like this:
+            mp3Files = directoryContents.filter{ $0.pathExtension == "file" }
+            print("mp3 file urls:", mp3Files)
+            mp3FileNames = self.mp3Files.map{ $0.deletingPathExtension().lastPathComponent }
+            print("mp3 file list:", mp3FileNames)
+            
+            for i in 0..<mp3FileNames.count {
+                if mp3FileNames[i] == self.bookName {
+                    isDownloaded = true
+                }
+            }
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
         
-        
-        slider.maximumValue = Float(CMTimeGetSeconds((player.currentItem?.asset.duration)!))
+        if isDownloaded {
+            do {
+                var originalData:Data
+                ciphertext = nil
+                for i in 0..<mp3FileNames.count {
+                    if mp3FileNames[i] == bookName {
+                        ciphertext = NSData(contentsOf: mp3Files[i]) as! Data
+                    }
+                }
+                originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
+                //
+                //                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
+                //                try originalData.write(to: fileURL, options: .atomic)
+                do {
+                    audioPlayer = try AVAudioPlayer(data: originalData)
+                    
+                    // https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html
+                    // Define how the application intends to use audio
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    
+                    // Activates or deactivates your app’s audio session.
+                    try AVAudioSession.sharedInstance().setActive(true)
+                }
+                catch {
+                    print("Error occurred")
+                }
+                
+                //audioPlayer.numberOfLoops = -1  // infinite loop
+                audioPlayer.prepareToPlay()
+                slider.maximumValue = Float(audioPlayer.duration)
+            } catch {
+                print(error)
+            }
+        }
+        else {
+            let url = URL(string: bookLink)
+            let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
+            player = AVPlayer(playerItem: playerItem)
+            slider.maximumValue = Float(CMTimeGetSeconds((player.currentItem?.asset.duration)!))
+        }
         slider.value = 0.0
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
-        
+        timeLabel.text = "00:00"
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,45 +190,77 @@ class PlayBookViewController: UIViewController {
     }
     
     @IBAction func playButton(_ sender: UIButton) {
-        
-        if((player.rate != 0) && (player.error == nil)) {
-            player.pause()
-            playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+        if isDownloaded {
+            if audioPlayer.isPlaying {
+                audioPlayer.pause()
+                playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+            }
+            else {
+                audioPlayer.play()
+                playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
+            }
         }
         else {
-            
-            player.play()
-            
-            playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
-            
-            print("çalıyo")
-            print(bookLink)
+            if((player.rate != 0) && (player.error == nil)) {
+                player.pause()
+                playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+            }
+            else {
+                
+                player.play()
+                
+                playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
+                
+                print("çalıyo")
+                print(bookLink)
+            }
         }
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        player.seek(to: CMTimeMakeWithSeconds(Float64(sender.value), 10000))
-        
+        if isDownloaded {
+            audioPlayer.currentTime = TimeInterval(sender.value)
+        }
+        else {
+            player.seek(to: CMTimeMakeWithSeconds(Float64(sender.value), 10000))
+        }
     }
     
     func updateTime(_ timer: Timer) {
-        let time = Int(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+        var time:Int
+        if isDownloaded {
+            time = Int(audioPlayer.currentTime)
+            slider.value = Float(audioPlayer.currentTime)
+        }
+        else {
+            time = Int(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+            slider.value = Float(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+        }
         
         let (h,m,s) = secondsToHoursMinutesSeconds(seconds: time)
-        
-        slider.value = Float(CMTimeGetSeconds((player.currentItem?.currentTime())!))
         timeLabel.text = NSString(format: "%02d:%02d", m,s) as String
     }
     
     @IBAction func forwardButtonClicked(_ sender: AnyObject) {
-        let forwardTimeInSeconds = (Float(CMTimeGetSeconds((player.currentItem?.currentTime())!)) + 10)
-        
-        player.seek(to: CMTimeMakeWithSeconds(Float64(forwardTimeInSeconds), 10000))
+        if isDownloaded {
+            let forwardTimeInSeconds = (Float(audioPlayer.currentTime) + 10)
+            audioPlayer.currentTime = TimeInterval(forwardTimeInSeconds)
+        }
+        else {
+            let forwardTimeInSeconds = (Float(CMTimeGetSeconds((player.currentItem?.currentTime())!)) + 10)
+            player.seek(to: CMTimeMakeWithSeconds(Float64(forwardTimeInSeconds), 10000))
+        }
     }
     
     @IBAction func backwardButtonClicked(_ sender: AnyObject) {
-        let backwardTimeInSeconds = (Float(CMTimeGetSeconds((player.currentItem?.currentTime())!)) - 10)
-        player.seek(to: CMTimeMakeWithSeconds(Float64(backwardTimeInSeconds), 10000))
+        if isDownloaded {
+            let forwardTimeInSeconds = (Float(audioPlayer.currentTime) - 10)
+            audioPlayer.currentTime = TimeInterval(forwardTimeInSeconds)
+        }
+        else {
+            let forwardTimeInSeconds = (Float(CMTimeGetSeconds((player.currentItem?.currentTime())!)) - 10)
+            player.seek(to: CMTimeMakeWithSeconds(Float64(forwardTimeInSeconds), 10000))
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
