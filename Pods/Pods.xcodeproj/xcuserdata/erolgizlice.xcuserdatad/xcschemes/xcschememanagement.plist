@@ -4,7 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Cosmos.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HeyBook.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RNCryptor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SearchTextField.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>115735AE176CDF2B8BD481A5189F79BF</key>
+		<key>223FCD38B1650DB475C77455966041CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6351B14875AAF6061D822A6B1262302</key>
+		<key>4FDC533A4360A68ABDCE852F04B30927</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>66C41245A8EB21C166CE580B87781C2A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B364F37106D8B6EE83DD14FEA4B7338E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F67EE141615A15C9C426C9B601EBADC1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

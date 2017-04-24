@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F67EE141615A15C9C426C9B601EBADC1'
-               BlueprintName = 'SideMenu'
+               BlueprintIdentifier = '66C41245A8EB21C166CE580B87781C2A'
+               BlueprintName = 'RNCryptor'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SideMenu.framework'>
+               BuildableName = 'RNCryptor.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
