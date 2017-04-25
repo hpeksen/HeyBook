@@ -51,7 +51,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
- 
+        
         if(!isConnectedToNetwork()){
             print("internett")
             print(isConnectedToNetwork())
@@ -63,14 +63,14 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 }
                 
                 if UIApplication.shared.canOpenURL(settingsUrl) {
-                 //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
                     UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                       print("Settings opened: \(success)") // Prints true
-                   })
+                        print("Settings opened: \(success)") // Prints true
+                    })
                 }
             }
             alertController.addAction(settingsWifi)
-           
+            
             let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
                 guard let settingsUrl = URL(string: "App-Prefs:root=General") else {
                     return
@@ -93,136 +93,193 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             
         }
         else {
-        
-        
-        if records.isEmpty {
-            let urlString = "http://heybook.online/api.php"
             
-            Alamofire.request(urlString, method: .post, parameters: ["request": "books"],encoding: URLEncoding.httpBody, headers: nil).responseJSON {
-                response in
-                switch response.result {
-                case .success:
-                    
-                    
-                    let json = JSON(data: response.data!)
-                    print(json["data"][0]["book_title"].string!)
-                    
-                    
-                    let total = json["data"].count
-                    print(total)
-                    //
-                    for index in 0..<total {
-                        self.book_id = json["data"][index]["book_id"].string!
-                        self.category_id = json["data"][index]["category_id"].string!
-                        self.publisher_id = json["data"][index]["publisher_id"].string!
-                        self.author_id = json["data"][index]["author_id"].string!
-                        self.narrator_id = json["data"][index]["narrator_id"].string!
-                        self.book_title = json["data"][index]["book_title"].string!
-                        self.desc = json["data"][index]["description"].string!
-                        self.price = json["data"][index]["price"].string!
-                        self.photo = json["data"][index]["photo"].string!
-                        self.thumb = json["data"][index]["thumb"].string!
-                        self.audio = json["data"][index]["audio"].string!
-                        self.duration = json["data"][index]["duration"].string!
-                        self.size = json["data"][index]["size"].string!
-                        self.demo = json["data"][index]["demo"].string!
-                        self.star = json["data"][index]["star"].string!
-                        self.category_title = json["data"][index]["category_title"].string!
-                        self.author_title = json["data"][index]["author_title"].string!
-                        self.publisher_title = json["data"][index]["publisher_title"].string!
-                        self.narrator_title = json["data"][index]["narrator_title"].string!
-                        
-                        let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title, narrator_title: self.narrator_title)
+            
+            if records.isEmpty {
+                let urlString = "http://heybook.online/api.php"
+                
+                Alamofire.request(urlString, method: .post, parameters: ["request": "books"],encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                    response in
+                    switch response.result {
+                    case .success:
                         
                         
-                        self.records.append(record)
+                        let json = JSON(data: response.data!)
+                        print(json["data"][0]["book_title"].string!)
                         
-                        print("record: \(record.book_title)")
                         
+                        let total = json["data"].count
+                        print(total)
+                        //
+                        for index in 0..<total {
+                            self.book_id = json["data"][index]["book_id"].string!
+                            self.category_id = json["data"][index]["category_id"].string!
+                            self.publisher_id = json["data"][index]["publisher_id"].string!
+                            self.author_id = json["data"][index]["author_id"].string!
+                            self.narrator_id = json["data"][index]["narrator_id"].string!
+                            self.book_title = json["data"][index]["book_title"].string!
+                            self.desc = json["data"][index]["description"].string!
+                            self.price = json["data"][index]["price"].string!
+                            self.photo = json["data"][index]["photo"].string!
+                            self.thumb = json["data"][index]["thumb"].string!
+                            self.audio = json["data"][index]["audio"].string!
+                            self.duration = json["data"][index]["duration"].string!
+                            self.size = json["data"][index]["size"].string!
+                            self.demo = json["data"][index]["demo"].string!
+                            self.star = json["data"][index]["star"].string!
+                            self.category_title = json["data"][index]["category_title"].string!
+                            self.author_title = json["data"][index]["author_title"].string!
+                            self.publisher_title = json["data"][index]["publisher_title"].string!
+                            self.narrator_title = json["data"][index]["narrator_title"].string!
+                            
+                            let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title, narrator_title: self.narrator_title)
+                            
+                            
+                            self.records.append(record)
+                            
+                            print("record: \(record.book_title)")
+                            
+                        }
+                        
+                        self.myCollectionView.reloadData()
+                        self.carouselView.reloadData()
+                        
+                        
+                        
+                        
+                        break
+                    case .failure(let error):
+                        
+                        print(error)
                     }
-                    
-                    self.myCollectionView.reloadData()
-                    self.carouselView.reloadData()
-                    
-                    
-                    
-                    
-                    break
-                case .failure(let error):
-                    
-                    print(error)
                 }
+                
+                
+                
             }
             
             
             
+            
+            
+            
+            
+            
+            
+            /*self.view.backgroundColor = UIColor(patternImage: UIImage(named: "register_bg.png")!)*/
+            //image animation
+            carouselView.type = .rotary
+            
+            let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+            menuLeftNavigationController.leftSide = true
+            SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
+            
+            SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+            SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+            
+            SideMenuManager.menuPresentMode = .menuSlideIn
+            
+            
+            
+            //
+            //        //Background Image
+            //        let bgImage = UIImageView();
+            //        bgImage.image = UIImage(named: "register_bg.png");
+            //        bgImage.contentMode = .scaleToFill
+            //
+            //
+            //        self.myCollectionView?.backgroundView = bgImage
+            //
+            self.myCollectionView.backgroundColor = UIColor.clear
+            
+            
+            //cell spacing in collection view
+            let screenSize = UIScreen.main.bounds
+            let screenWidth = screenSize.width
+            //let screenHeight = screenSize.height
+            
+            var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+            layout = myCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.itemSize = CGSize(width: screenWidth, height: 80)
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+            myCollectionView!.collectionViewLayout = layout
+            
+            
+            
+            
         }
         
         
+        //Bar Buttonları
+        
+        let btn2 = UIButton(type: .custom)
+        btn2.setImage(UIImage(named: "mikrofon"), for: .normal)
+        btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
+        btn2.addTarget(self, action: #selector(MainViewController.btnVoice), for: .touchUpInside)
+        let item2 = UIBarButtonItem(customView: btn2)
         
         
+        let btnSearch = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MainViewController.btnSearch))
+        btnSearch.tintColor = UIColor.black
         
         
+        self.navigationItem.setRightBarButtonItems([item2,btnSearch], animated: true)
         
-        
-        
-        /*self.view.backgroundColor = UIColor(patternImage: UIImage(named: "register_bg.png")!)*/
-        //image animation
-        carouselView.type = .rotary
-        
-        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
-        menuLeftNavigationController.leftSide = true
-        SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
-        
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        SideMenuManager.menuPresentMode = .menuSlideIn
-        
-        
-        
-        //
-        //        //Background Image
-        //        let bgImage = UIImageView();
-        //        bgImage.image = UIImage(named: "register_bg.png");
-        //        bgImage.contentMode = .scaleToFill
-        //
-        //
-        //        self.myCollectionView?.backgroundView = bgImage
-        //
-        self.myCollectionView.backgroundColor = UIColor.clear
-        
-        
-        //cell spacing in collection view
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        //let screenHeight = screenSize.height
-        
-        var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout = myCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: screenWidth, height: 80)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        myCollectionView!.collectionViewLayout = layout
-        
-        
-        
-        
-        }
-        
-        
-        
-        
+        let btn3 = UIButton(type: .custom)
+        btn3.setImage(UIImage(named: "hamburger"), for: .normal)
+        btn3.frame = CGRect(x: 0, y: 0, width: 35, height: 25)
+        btn3.addTarget(self, action: #selector(MainViewController.btnMenu), for: .touchUpInside)
+        btn3.tintColor = UIColor.black
+        let item3 = UIBarButtonItem(customView: btn3)
+        self.navigationItem.setLeftBarButton(item3, animated: true)
         
         
     }
     
     
     
-    @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
+    func btnSearch(){
+        print("search button")
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+        //        self.navigationController?.pushViewController(controller, animated: true)
+        //
+        
+        if(isSearch){
+            self.navigationItem.titleView = originalNavigationView
+        } else {
+            originalNavigationView = self.navigationItem.titleView
+            
+            mSearchController.searchResultsUpdater = self
+            self.navigationItem.titleView = mSearchController.searchBar
+            mSearchController.searchBar.delegate = self
+            
+            definesPresentationContext = true
+            
+            mSearchController.dimsBackgroundDuringPresentation = false
+            mSearchController.hidesNavigationBarDuringPresentation = false
+            
+            mSearchController.searchBar.placeholder = "Search books"
+            mSearchController.searchBar.tintColor = UIColor.white
+            mSearchController.searchBar.barTintColor = UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+        }
+        isSearch = !isSearch
+    }
+    func btnMenu(){
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+        
     }
+    
+    func btnVoice(){
+        print("voice")
+        
+    }
+    
+    
+    
+    
     
     
     
@@ -230,7 +287,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     override func awakeFromNib() {
         super.awakeFromNib()
         
-       
+        
         
         
         
@@ -330,99 +387,22 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         // record = records[indexPath.row]
         
         
-        
-        
-        if((sender.titleLabel?.text)! == "Vurun Kahpeye"){
-            let record: Record
-            record = records[0]
-            
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-            
-            
-            
+        for i in 0..<records.count {
+            if((sender.titleLabel?.text)! == records[i].book_title){
+                let record: Record
+                record = records[i]
+                
+                let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
+                UserDefaults.standard.set(encodedData, forKey: "book_record")
+                UserDefaults.standard.synchronize()
+            }
         }
-            
-        else if((sender.titleLabel?.text)! == "Serenad"){
-            let record: Record
-            record = records[1]
-            
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-            
-            
-            
-        }
-            
-        else if((sender.titleLabel?.text)! == "Bakele"){
-            let record: Record
-            record = records[2]
-            
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-            
-            
-            
-        }
-            
-        else if((sender.titleLabel?.text)! == "Aşk"){
-            let record: Record
-            record = records[3]
-            
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-            
-            
-            
-        }
-            
-        else if((sender.titleLabel?.text)! == "Dahi Diktatör"){
-            let record: Record
-            record = records[4]
-            
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-            
-            
-            
-        }
-            
-        else if((sender.titleLabel?.text)! == "Kadın Olmak"){
-            let record: Record
-            record = records[5]
-            
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-            
-            
-            
-        }
-            
-        else if((sender.titleLabel?.text)! == "Engereğin Gözü"){
-            let record: Record
-            record = records[6]
-            
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: record)
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-            
-            
-        }
-        
-        
-        
-        
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "listenView")
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         if option == iCarouselOption.spacing{
             return 1
@@ -464,25 +444,6 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     @IBAction func clickSearchButton(_ sender: UIBarButtonItem) {
         
-        if(isSearch){
-            self.navigationItem.titleView = originalNavigationView
-        } else {
-            originalNavigationView = self.navigationItem.titleView
-            
-            mSearchController.searchResultsUpdater = self
-            self.navigationItem.titleView = mSearchController.searchBar
-            mSearchController.searchBar.delegate = self
-            
-            definesPresentationContext = true
-            
-            mSearchController.dimsBackgroundDuringPresentation = false
-            mSearchController.hidesNavigationBarDuringPresentation = false
-            
-            mSearchController.searchBar.placeholder = "Search books"
-            mSearchController.searchBar.tintColor = UIColor.white
-            mSearchController.searchBar.barTintColor = UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
-        }
-        isSearch = !isSearch
     }
     
     

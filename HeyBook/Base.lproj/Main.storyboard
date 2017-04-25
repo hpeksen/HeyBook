@@ -205,12 +205,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HeyBook Vitrin" id="wIf-S2-Scu">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="0ZQ-Cf-H0Y">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="BYZ-38-t0r" id="ACr-IL-1wY"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="rNv-h8-LSv">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -544,23 +538,9 @@
                             <constraint firstItem="XYd-XC-ep7" firstAttribute="leading" secondItem="ngC-Q0-k4m" secondAttribute="leadingMargin" id="yqg-Yl-rc3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Ayarlar" id="tKC-Gx-ZlI">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="hamburger" style="done" id="rkO-td-9ix">
-                            <color key="tintColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="kxq-es-MRb" id="bO8-Pf-39f"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="go7-Kh-n38">
-                            <color key="tintColor" red="0.4941176471" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="Xap-Bt-zCB" kind="presentation" id="bme-iz-oNi"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Ayarlar" id="tKC-Gx-ZlI"/>
                     <connections>
                         <outlet property="PassTxt" destination="G5u-6S-yXl" id="ien-B3-Fe8"/>
-                        <outlet property="btnMenu" destination="rkO-td-9ix" id="LSs-c0-cvf"/>
                         <outlet property="disableSwitch" destination="nAN-39-q0U" id="wHx-ur-dxk"/>
                         <outlet property="emailLabel" destination="tmj-pQ-3lu" id="TrR-zN-Zz1"/>
                         <outlet property="newPassTxt" destination="Pzh-hm-t8a" id="1IM-xw-nAT"/>
@@ -767,22 +747,8 @@
                             <constraint firstItem="zjW-ds-MT8" firstAttribute="leading" secondItem="Mhh-nQ-Gyc" secondAttribute="leadingMargin" constant="8" id="xWm-X9-ssm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oou-RE-jLX">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="AVA-E2-H7r">
-                            <color key="tintColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="fah-Bo-lry" id="kRa-89-eXQ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="jfZ-5J-pk1">
-                            <color key="tintColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="Xap-Bt-zCB" kind="presentation" id="e6i-ec-cSa"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="oou-RE-jLX"/>
                     <connections>
-                        <outlet property="btnMenu" destination="AVA-E2-H7r" id="wpW-gP-l7T"/>
                         <outlet property="myCollectionView" destination="A2u-VU-HiL" id="FGT-bB-L7z"/>
                         <outlet property="totalPriceLabel" destination="SOU-Rv-fpb" id="3gI-vc-zy2"/>
                     </connections>
@@ -1009,14 +975,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="lYy-z1-6Mg">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="qic-7c-I5b">
-                            <color key="tintColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="menuButton:" destination="kEl-qy-EIS" id="LnL-jk-EGP"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="lYy-z1-6Mg"/>
                     <connections>
                         <outlet property="addToChartButton" destination="TB1-4f-b4T" id="fze-Sc-V6k"/>
                         <outlet property="authorNameLabel" destination="Z4c-2Q-9At" id="7dU-lW-bfH"/>
@@ -1035,7 +994,7 @@
             </objects>
             <point key="canvasLocation" x="3752.8000000000002" y="138.98050974512745"/>
         </scene>
-        <!--Kitaplarim View Controller-->
+        <!--Kitaplarım-->
         <scene sceneID="vD7-oD-mw4">
             <objects>
                 <viewController storyboardIdentifier="KitaplarimViewController" automaticallyAdjustsScrollViewInsets="NO" id="cOj-px-TNs" customClass="KitaplarimViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -1204,20 +1163,7 @@
                             <constraint firstItem="YNZ-If-Esi" firstAttribute="top" secondItem="xZZ-V9-dCJ" secondAttribute="bottom" constant="25" id="oGl-lH-iyc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dB5-Z7-87r">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="Adu-H7-30g">
-                            <color key="tintColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="cOj-px-TNs" id="dF9-y5-gcM"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="keO-Qc-6rd">
-                            <color key="tintColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="Xap-Bt-zCB" kind="presentation" id="7UF-yk-6Rr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Kitaplarım" id="dB5-Z7-87r"/>
                     <connections>
                         <outlet property="myCollectionView" destination="YNZ-If-Esi" id="9JG-jK-oEc"/>
                     </connections>
@@ -1490,20 +1436,7 @@
                             <constraint firstItem="Gby-IP-wiT" firstAttribute="leading" secondItem="40g-Nc-iEl" secondAttribute="leading" id="wur-Xx-Ee8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IFt-OO-zOl">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="Szh-BI-Oe9">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="VyV-fT-TV4" id="kln-YO-ugm"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="8ru-WP-7cf">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="Xap-Bt-zCB" kind="presentation" id="GjC-yt-ryj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="IFt-OO-zOl"/>
                     <connections>
                         <outlet property="bookAuthorLabel" destination="C1D-Qa-JNo" id="01Q-GY-plJ"/>
                         <outlet property="bookAuthorLabel2" destination="6SI-w3-aJJ" id="HI4-ox-2AN"/>
@@ -1521,10 +1454,10 @@
             </objects>
             <point key="canvasLocation" x="7436" y="-530.28485757121439"/>
         </scene>
-        <!--Giriş Yap-->
+        <!--Login View Controller-->
         <scene sceneID="se5-4F-kvP">
             <objects>
-                <viewController storyboardIdentifier="loginView" id="8qr-Qr-Y9u" customClass="LoginViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" automaticallyAdjustsScrollViewInsets="NO" id="8qr-Qr-Y9u" customClass="LoginViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fl6-5n-euh"/>
                         <viewControllerLayoutGuide type="bottom" id="Dse-jk-PQV"/>
@@ -1534,7 +1467,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="5FU-rz-gEp">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0Z-VT-bbN">
                                 <rect key="frame" x="192" y="633" width="167" height="30"/>
@@ -1644,8 +1577,8 @@
                             <constraint firstItem="gmB-mK-mdN" firstAttribute="leading" secondItem="gM8-lh-q1K" secondAttribute="leadingMargin" id="Af9-0h-fr5"/>
                             <constraint firstItem="Dse-jk-PQV" firstAttribute="top" secondItem="5FU-rz-gEp" secondAttribute="bottom" id="GSi-Mr-F4s"/>
                             <constraint firstAttribute="trailing" secondItem="5FU-rz-gEp" secondAttribute="trailing" id="JIC-su-g1l"/>
-                            <constraint firstItem="5FU-rz-gEp" firstAttribute="top" secondItem="Fl6-5n-euh" secondAttribute="bottom" id="KWA-lG-ZK1"/>
                             <constraint firstItem="Dse-jk-PQV" firstAttribute="top" secondItem="o0Z-VT-bbN" secondAttribute="bottom" constant="4" id="LFg-Wc-H56"/>
+                            <constraint firstItem="5FU-rz-gEp" firstAttribute="top" secondItem="gM8-lh-q1K" secondAttribute="top" id="M2h-rc-9EN"/>
                             <constraint firstItem="ikY-2N-aQh" firstAttribute="centerY" secondItem="gM8-lh-q1K" secondAttribute="centerY" constant="120" id="MnB-z0-ciU"/>
                             <constraint firstItem="o0Z-VT-bbN" firstAttribute="trailing" secondItem="gM8-lh-q1K" secondAttribute="trailingMargin" id="WLe-EM-gEn"/>
                             <constraint firstItem="ikY-2N-aQh" firstAttribute="trailing" secondItem="gM8-lh-q1K" secondAttribute="trailingMargin" id="XWf-HY-Wmb"/>
@@ -1655,20 +1588,7 @@
                             <constraint firstItem="ikY-2N-aQh" firstAttribute="leading" secondItem="gM8-lh-q1K" secondAttribute="leadingMargin" id="xTT-IS-yUf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Giriş Yap" id="qSk-FI-ckX">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="o7J-2Q-2bd">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="8qr-Qr-Y9u" id="MuY-UV-4Ap"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="search" id="5cv-tP-oRr">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="Xap-Bt-zCB" kind="presentation" id="2QV-87-I8A"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="qSk-FI-ckX"/>
                     <connections>
                         <outlet property="eMailTxt" destination="p9q-Qm-uGL" id="YIM-h6-IQf"/>
                         <outlet property="myStackView" destination="ikY-2N-aQh" id="Tga-NS-q7H"/>
@@ -1679,7 +1599,7 @@
             </objects>
             <point key="canvasLocation" x="5500" y="138.98050974512745"/>
         </scene>
-        <!--Parolamı Sıfırla-->
+        <!--New Password View Controller-->
         <scene sceneID="8hG-4w-tVU">
             <objects>
                 <viewController id="hgk-PL-VnZ" customClass="NewPasswordViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -1692,7 +1612,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="jmg-96-6Vu">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTP-tH-7ci">
                                 <rect key="frame" x="16" y="629" width="53" height="30"/>
@@ -1742,10 +1662,10 @@
                             <constraint firstItem="b9x-vm-epT" firstAttribute="leading" secondItem="3Hb-aH-Le0" secondAttribute="leadingMargin" constant="8" id="1as-hk-EHm"/>
                             <constraint firstItem="FyT-Wc-t8a" firstAttribute="trailing" secondItem="3Hb-aH-Le0" secondAttribute="trailingMargin" id="34E-OQ-jTl"/>
                             <constraint firstItem="otP-Ns-ZSd" firstAttribute="centerY" secondItem="3Hb-aH-Le0" secondAttribute="centerY" constant="140" id="3A5-oz-Ord"/>
-                            <constraint firstItem="jmg-96-6Vu" firstAttribute="top" secondItem="1Xt-ew-pTG" secondAttribute="bottom" id="98R-pR-KUf"/>
                             <constraint firstItem="b9x-vm-epT" firstAttribute="centerY" secondItem="3Hb-aH-Le0" secondAttribute="centerY" constant="76" id="Epr-by-Ro4"/>
                             <constraint firstAttribute="trailing" secondItem="jmg-96-6Vu" secondAttribute="trailing" id="NuQ-CT-HGY"/>
                             <constraint firstItem="jmg-96-6Vu" firstAttribute="leading" secondItem="3Hb-aH-Le0" secondAttribute="leading" id="Usu-U4-gkU"/>
+                            <constraint firstItem="jmg-96-6Vu" firstAttribute="top" secondItem="3Hb-aH-Le0" secondAttribute="top" id="WVx-hY-gY4"/>
                             <constraint firstItem="ivV-ww-7yr" firstAttribute="top" secondItem="FyT-Wc-t8a" secondAttribute="bottom" constant="8" id="Wke-ZU-9AW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="b9x-vm-epT" secondAttribute="trailing" constant="8" id="gb5-Ob-7db"/>
                             <constraint firstItem="ivV-ww-7yr" firstAttribute="top" secondItem="jmg-96-6Vu" secondAttribute="bottom" id="joh-4H-8SM"/>
@@ -1755,20 +1675,7 @@
                             <constraint firstItem="ivV-ww-7yr" firstAttribute="top" secondItem="PTP-tH-7ci" secondAttribute="bottom" constant="8" id="vG3-aI-E6O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Parolamı Sıfırla" id="A59-zR-zws">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="sM4-l3-6jv">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="hgk-PL-VnZ" id="Z9V-7a-qjm"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="fap-0z-Gnc">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="Xap-Bt-zCB" kind="presentation" id="Wyj-lF-h3C"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="A59-zR-zws"/>
                     <connections>
                         <outlet property="myTextField" destination="b9x-vm-epT" id="wHJ-jX-NNH"/>
                     </connections>
@@ -1776,9 +1683,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIb-hE-xQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zKy-e2-q97" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7436" y="139"/>
+            <point key="canvasLocation" x="7436" y="138.98050974512745"/>
         </scene>
-        <!--Kayıt Ol-->
+        <!--Register View Controller-->
         <scene sceneID="zjX-vj-M8I">
             <objects>
                 <viewController id="KWD-gG-kZq" customClass="RegisterViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -1791,7 +1698,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vAK-C8-cDD">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlc-NV-GYg">
                                 <rect key="frame" x="16" y="631" width="56" height="28"/>
@@ -1941,8 +1848,8 @@
                             <constraint firstItem="VFs-LY-TS8" firstAttribute="leading" secondItem="8wb-p6-jSd" secondAttribute="leadingMargin" constant="8" id="0Zx-9e-ap0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VFs-LY-TS8" secondAttribute="trailing" constant="8" id="4Gj-vg-quO"/>
                             <constraint firstItem="iy5-tZ-HkO" firstAttribute="trailing" secondItem="8wb-p6-jSd" secondAttribute="trailingMargin" id="Blk-BG-Ggg"/>
+                            <constraint firstItem="vAK-C8-cDD" firstAttribute="top" secondItem="8wb-p6-jSd" secondAttribute="top" id="FD8-YA-3nF"/>
                             <constraint firstItem="mJS-M5-Pyw" firstAttribute="top" secondItem="iy5-tZ-HkO" secondAttribute="bottom" constant="8" id="Iqo-7q-Aot"/>
-                            <constraint firstItem="vAK-C8-cDD" firstAttribute="top" secondItem="aPB-Mn-mZP" secondAttribute="bottom" id="Rhi-CC-AK5"/>
                             <constraint firstAttribute="trailing" secondItem="vAK-C8-cDD" secondAttribute="trailing" id="UpB-Am-vsG"/>
                             <constraint firstItem="vAK-C8-cDD" firstAttribute="leading" secondItem="8wb-p6-jSd" secondAttribute="leading" id="gcK-C9-ISX"/>
                             <constraint firstItem="Xlc-NV-GYg" firstAttribute="leading" secondItem="8wb-p6-jSd" secondAttribute="leadingMargin" id="nR9-l5-438"/>
@@ -1951,20 +1858,7 @@
                             <constraint firstItem="mJS-M5-Pyw" firstAttribute="top" secondItem="vAK-C8-cDD" secondAttribute="bottom" id="sxo-sK-sPg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Kayıt Ol" id="uJk-FN-RT0">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="HTI-nG-cIW">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="KWD-gG-kZq" id="jBw-2p-m3h"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="SOM-OD-8QF">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="Xap-Bt-zCB" kind="presentation" id="yro-56-OAP"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="uJk-FN-RT0"/>
                     <connections>
                         <outlet property="mailField" destination="txC-bL-te0" id="s8a-QV-rb0"/>
                         <outlet property="nameField" destination="u2a-So-zdE" id="wNY-ep-5Ym"/>
@@ -1976,7 +1870,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npw-Ib-GVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hE8-7I-0pU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6497" y="920"/>
+            <point key="canvasLocation" x="6496.8000000000002" y="919.79010494752629"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="4Ne-yK-sHb">
@@ -2089,7 +1983,7 @@
         <!--HeyBook Arama-->
         <scene sceneID="dDQ-0U-ZL7">
             <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="HCB-gL-WNV" customClass="SearchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="HCB-gL-WNV" customClass="SearchViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w6C-jE-AhK"/>
                         <viewControllerLayoutGuide type="bottom" id="7zs-PH-Dat"/>
@@ -2099,20 +1993,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="HeyBook Arama" id="PfX-W2-y1o">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="jPv-KP-66K">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="HCB-gL-WNV" id="i9f-gN-T6o"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="z6t-4H-4UO">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="searchButton:" destination="HCB-gL-WNV" id="hmN-8p-aF2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="HeyBook Arama" id="PfX-W2-y1o"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIw-Ed-1mu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2369,22 +2250,8 @@
                             <constraint firstItem="hpx-JE-RGY" firstAttribute="top" secondItem="8yV-Eo-1TZ" secondAttribute="top" id="lrR-Nd-B2j"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ve3-vh-3UL">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="PPv-8L-ywJ">
-                            <color key="tintColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="menuButtonClick:" destination="6jr-JY-qdL" id="QTP-z5-zvz"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="4jO-XN-Qxh">
-                            <color key="tintColor" red="0.64705882349999999" green="0.64705882349999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="Xap-Bt-zCB" kind="presentation" id="H8V-8M-1ma"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Ve3-vh-3UL"/>
                     <connections>
-                        <outlet property="btnMenu" destination="PPv-8L-ywJ" id="9Mj-gI-MuK"/>
                         <outlet property="catagoriesCollectionView" destination="ewP-VJ-P8q" id="hi9-zM-umt"/>
                     </connections>
                 </viewController>
@@ -2815,17 +2682,14 @@
         <image name="bg_favori" width="930" height="478"/>
         <image name="bg_sepet" width="1000" height="523"/>
         <image name="foto-ekle" width="60" height="60"/>
-        <image name="hamburger" width="42" height="34"/>
         <image name="kitap_bg" width="2000" height="750"/>
         <image name="kullanici" width="40" height="38"/>
         <image name="login_bg" width="750" height="1334"/>
         <image name="logo" width="390" height="400"/>
-        <image name="menu" width="42" height="34"/>
         <image name="parola" width="40" height="44"/>
         <image name="play" width="512" height="512"/>
         <image name="play-1" width="600" height="600"/>
         <image name="profile-circle" width="501" height="501"/>
-        <image name="search" width="44" height="44"/>
         <image name="sepet2" width="512" height="512"/>
         <image name="sil" width="512" height="512"/>
         <image name="sure" width="30" height="30"/>
@@ -2833,10 +2697,9 @@
         <image name="yazar" width="18" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d79-0k-Lpf"/>
-        <segue reference="hGl-Z4-WYp"/>
-        <segue reference="2a9-6B-NpY"/>
-        <segue reference="yro-56-OAP"/>
-        <segue reference="aja-2y-HUU"/>
+        <segue reference="mYp-jS-djT"/>
+        <segue reference="P6e-6F-lHX"/>
+        <segue reference="tt3-Kv-XbC"/>
+        <segue reference="MDA-31-8I5"/>
     </inferredMetricsTieBreakers>
 </document>
