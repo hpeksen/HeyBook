@@ -34,9 +34,16 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
     
     var mail = ""
     var userTitle = ""
+    var photo = ""
+    var profileImageTransform:CGAffineTransform?
     
     
     override func viewWillAppear(_ animated: Bool) {
+       }
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         viewLoggedIn.isHidden = false
         viewNotLoggedIn.isHidden = false
         
@@ -50,15 +57,29 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
             viewLoggedIn.isHidden = false
             viewNotLoggedIn.isHidden = true
             
+            
+            
             userTitleLabel.text =  UserDefaults.standard.value(forKey: "user_title") as? String
             emailLabel.text = UserDefaults.standard.value(forKey: "user_mail") as? String
-            
+            photo = "http://heybook.online/\((UserDefaults.standard.value(forKey: "user_photo") as? String)!)"
+            //Aschronized image loading !!!!
+            URLSession.shared.dataTask(with: NSURL(string: photo)! as URL, completionHandler: { (data, response, error) -> Void in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.profileImage.image = UIImage(data: data!)
+                    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
+                    self.profileImage.contentMode = .scaleAspectFill
+                    self.profileImage.clipsToBounds = true
+                    self.profileImageTransform = self.profileImage.transform
+                    self.profileImage.transform = self.profileImage.transform.rotated(by: CGFloat(M_PI_2))
+                })
+                
+            }).resume()
         }
-    }
-  
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+
         
         //keyboard için
         newPassTxt.delegate = self
@@ -372,7 +393,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
                 
                 UserDefaults.standard.setValue(self.emailLabel.text!, forKey: "user_mail")
                 UserDefaults.standard.setValue(self.userTitleLabel.text!, forKey: "user_title")
-                 //UserDefaults.standard.setValue(self.profileImage.image, forKey: "user_image")
+                //UserDefaults.standard.setValue(self.photo, forKey: "user_photo")
                 
                 
                 DispatchQueue.main.async(execute: {
@@ -423,9 +444,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
-        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
-    }
+ 
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -436,10 +455,8 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         profileImage.image = selectedImage
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2;
         profileImage.contentMode = .scaleAspectFill
-        profileImage.clipsToBounds = true;
-  
-        
-        
+        profileImage.clipsToBounds = true
+        profileImage.transform = profileImageTransform!
         
         dismiss(animated: true, completion: nil)
     }

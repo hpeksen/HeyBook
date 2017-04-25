@@ -1955,6 +1955,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="imgIcon" destination="Pgx-2y-TWh" id="jng-5j-TY8"/>
                         <outlet property="myTableView" destination="tnE-ZG-fts" id="Izc-S1-Pmn"/>
                     </connections>
                 </viewController>

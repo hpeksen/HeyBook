@@ -16,6 +16,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     var iconImage: Array = [UIImage]()
     var isLogin:Bool=false
     var menu = ""
+    var photo = ""
     @IBOutlet weak var myTableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,7 +28,22 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Kategoriler","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar"]
         
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil || UserDefaults.standard.value(forKey: "user_image") != nil){
-        //imgIcon.image = UserDefaults.standard.value(forKey: "user_image") as! UIImage
+            photo = "http://heybook.online/\((UserDefaults.standard.value(forKey: "user_photo") as? String)!)"
+            //Aschronized image loading !!!!
+            URLSession.shared.dataTask(with: NSURL(string: photo)! as URL, completionHandler: { (data, response, error) -> Void in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.imgIcon.image = UIImage(data: data!)
+                    self.imgIcon.layer.cornerRadius = self.imgIcon.frame.size.width / 2;
+                    self.imgIcon.contentMode = .scaleAspectFill
+                    self.imgIcon.clipsToBounds = true
+                    self.imgIcon.transform = self.imgIcon.transform.rotated(by: CGFloat(M_PI_2))
+                })
+                
+            }).resume()
         
         }
         // Do any additional setup after loading the view.  LoginFromMenuViewController
@@ -173,7 +189,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             UserDefaults.standard.setValue(nil, forKey: "user_mail")
             UserDefaults.standard.setValue(nil, forKey: "user_title")
             UserDefaults.standard.setValue(nil, forKey: "user_id")
-            UserDefaults.standard.setValue(nil, forKey: "user_image")
+            UserDefaults.standard.setValue(nil, forKey: "user_photo")
             
             let tapAlert = UIAlertController(title: "mesaj", message: "Çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
             tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in

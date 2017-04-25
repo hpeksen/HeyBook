@@ -19,6 +19,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     var mail = ""
     var userTitle = ""
     var user_id = ""
+    var user_photo = ""
     
     var parentView = ""
     
@@ -213,6 +214,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 self.mail = json["data"]["mail"].description
                 self.userTitle = json["data"]["user_title"].description
                 self.user_id = json["data"]["user_id"].description
+                self.user_photo = json["data"]["photo"].description
                
                 if (json["response"].description == "error"){
                     let tapAlert = UIAlertController(title: "", message: "\(json["message"].description)", preferredStyle: UIAlertControllerStyle.alert)
@@ -228,6 +230,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                     UserDefaults.standard.setValue(self.mail, forKey: "user_mail")
                     UserDefaults.standard.setValue(self.userTitle, forKey: "user_title")
                     UserDefaults.standard.setValue(self.user_id, forKey: "user_id")
+                    UserDefaults.standard.setValue(self.user_photo, forKey: "user_photo")
                     print("hebelehübele")
                     print(self.parentView)
                     
