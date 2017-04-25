@@ -126,6 +126,51 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         myCollectionView!.collectionViewLayout = layout
+        
+        
+        //Bar Buttonları
+    
+        let btn2 = UIButton(type: .custom)
+        btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
+        btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
+        btn2.addTarget(self, action: #selector(FavorilerViewController.btnVoice), for: .touchUpInside)
+        let item2 = UIBarButtonItem(customView: btn2)
+        
+    
+        let btnSearch = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(FavorilerViewController.btnSearch))
+        btnSearch.tintColor = UIColor.white
+
+        
+        self.navigationItem.setRightBarButtonItems([item2,btnSearch], animated: true)
+        
+        let btn3 = UIButton(type: .custom)
+        btn3.setImage(UIImage(named: "hamburger"), for: .normal)
+        btn3.frame = CGRect(x: 0, y: 0, width: 35, height: 25)
+        btn3.addTarget(self, action: #selector(FavorilerViewController.btnMenu), for: .touchUpInside)
+        btn3.tintColor = UIColor.white
+        let item3 = UIBarButtonItem(customView: btn3)
+        self.navigationItem.setLeftBarButton(item3, animated: true)
+        
+        
+    }
+    
+    
+    
+    func btnSearch(){
+    print("search button")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
+    
+    }
+    func btnMenu(){
+          present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+        
+    }
+    
+    func btnVoice(){
+    print("voice")
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -137,9 +182,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
         return true
     }
     
-    @IBAction func menuButtonClick(_ sender: UIBarButtonItem) {
-        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
-    }
+ 
     
     func getIndexPathForSelectedCell() -> IndexPath? {
         var indexPath: IndexPath?
