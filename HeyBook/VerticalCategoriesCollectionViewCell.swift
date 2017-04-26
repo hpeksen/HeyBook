@@ -71,14 +71,14 @@ class VerticalCategoriesCollectionViewCell: UICollectionViewCell {
 extension VerticalCategoriesCollectionViewCell: UICollectionViewDataSource, UIScrollViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfCells
+        return records.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontallCellIdentifier", for: indexPath) as! HorizontalCategoriesCollectionViewCell
         
-        cell.categoriesBookName.text = records[indexPath.row].book_title
+        cell.categoriesBookName.text = "\(indexPath.section)"
         cell.categoriesBookRating.rating = Double(records[indexPath.row].star)!
         cell.categoriesBookPrice.text = "\(records[indexPath.row].price) TL"
         cell.categoriesBookAuthor.text = records[indexPath.row].author_title

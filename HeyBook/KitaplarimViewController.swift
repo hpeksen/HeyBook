@@ -133,7 +133,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         
         
         let btnSearch = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(KitaplarimViewController.btnSearch))
-        btnSearch.tintColor = UIColor.black
+        btnSearch.tintColor = UIColor.white
         
         
         self.navigationItem.setRightBarButtonItems([item2,btnSearch], animated: true)
@@ -142,7 +142,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         btn3.setImage(UIImage(named: "hamburger"), for: .normal)
         btn3.frame = CGRect(x: 0, y: 0, width: 35, height: 25)
         btn3.addTarget(self, action: #selector(KitaplarimViewController.btnMenu), for: .touchUpInside)
-        btn3.tintColor = UIColor.black
+        btn3.tintColor = UIColor.white
         let item3 = UIBarButtonItem(customView: btn3)
         self.navigationItem.setLeftBarButton(item3, animated: true)
         

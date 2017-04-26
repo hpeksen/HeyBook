@@ -252,9 +252,7 @@ class PlayBookViewController: UIViewController {
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
             }
             else {
-                
                 player.play()
-                
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
                 
                 print("çalıyo")

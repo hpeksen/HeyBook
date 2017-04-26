@@ -222,13 +222,13 @@ extension CatagoriesViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerticalCellIdentifier", for: indexPath) as! VerticalCategoriesCollectionViewCell
         
-//        var array:[Record] = []
-//        for i in 0..<records.count {
-//            if records[i].category_title == categories[indexPath.section] {
-//                array.append(records[i])
-//            }
-//        }
-        cell.records = records
+        var array:[Record] = []
+        for i in 0..<records.count {
+            if records[i].category_title == categories[indexPath.section] {
+                array.append(records[i])
+            }
+        }
+        cell.records = array
         return cell
         
     }
