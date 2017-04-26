@@ -43,6 +43,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var addToChartButton: UIButton!
+    
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -541,30 +542,51 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             if result != nil {
                 
-                self.textView.text = result?.bestTranscription.formattedString  //9
+                print(result?.bestTranscription.formattedString)  //9
                 
-                if(self.textView.text == "Vitrin"){
+                if(result?.bestTranscription.formattedString == "Vitrin"){
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
-                if(self.textView.text == "Kategori"){
+                if(result?.bestTranscription.formattedString == "Kitaplarım"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
+                if(result?.bestTranscription.formattedString == "Kategoriler"){
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
-                if(self.textView.text == "Ayarlar"){
+                if(result?.bestTranscription.formattedString == "Favorilerim"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
+                if(result?.bestTranscription.formattedString == "Ayarlar"){
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
-                if(self.textView.text == "Sepet"){
+                if(result?.bestTranscription.formattedString == "Sepet"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
+                if(result?.bestTranscription.formattedString == "Satınalma geçmişi"){
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
@@ -572,7 +594,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                     
                 }
                 
-                if(self.textView.text == "Giriş yap"){
+                if(result?.bestTranscription.formattedString == "Giriş yap"){
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
                         
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -582,14 +604,37 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                     else {
                         
                         
-                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya  giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                         self.present(longPressAlert, animated: true, completion: nil)
                         
                         
                         
                     }
+                    if(result?.bestTranscription.formattedString == "Çıkış yap"){
+                        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+                            
+                            let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamadan çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                            self.present(longPressAlert, animated: true, completion: nil)
+                            
+                            
+                        }
+                        else {
+                            
+                            
+                            let longPressAlert = UIAlertController(title: "Mesaj", message: "Zaten çıkış yapmışsınız", preferredStyle: UIAlertControllerStyle.alert)
+                            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                            self.present(longPressAlert, animated: true, completion: nil)
+                            
+                            
+                            
+                        }
+                    }
+                    
                 }
+                
+                
                 
                 
                 

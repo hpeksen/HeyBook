@@ -1992,7 +1992,7 @@
                                         <rect key="frame" x="-112.5" y="50" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="601" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">
@@ -2667,7 +2667,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="mYp-jS-djT"/>
         <segue reference="P6e-6F-lHX"/>
-        <segue reference="MDA-31-8I5"/>
+        <segue reference="d79-0k-Lpf"/>
         <segue reference="tt3-Kv-XbC"/>
     </inferredMetricsTieBreakers>
 </document>

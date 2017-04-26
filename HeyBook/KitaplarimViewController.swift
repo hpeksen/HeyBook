@@ -223,6 +223,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
             
             //  microphoneButton.setTitle("Start Recording", for: .normal)
         } else {
+        
             startRecording()
             // microphoneButton.setTitle("Stop Recording", for: .normal)
             
@@ -232,7 +233,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     }
     
     func startRecording() {
-        
+
         if recognitionTask != nil {  //1
             recognitionTask?.cancel()
             recognitionTask = nil
@@ -265,7 +266,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
             
             if result != nil {
                 
-             //   self.textView.text = result?.bestTranscription.formattedString  //9
+                print(result?.bestTranscription.formattedString)  //9
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
                     
@@ -274,10 +275,24 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
-                if(result?.bestTranscription.formattedString == "Kategori"){
+                if(result?.bestTranscription.formattedString == "Kitaplarım"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
+                if(result?.bestTranscription.formattedString == "Kategoriler"){
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
+                if(result?.bestTranscription.formattedString == "Favorilerim"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
@@ -295,6 +310,13 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
+                if(result?.bestTranscription.formattedString == "Satınalma geçmişi"){
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    
+                }
                 
                 if(result?.bestTranscription.formattedString == "Giriş yap"){
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
@@ -306,13 +328,34 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                     else {
                         
                         
-                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya  giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                         self.present(longPressAlert, animated: true, completion: nil)
                         
                         
                         
                     }
+                    if(result?.bestTranscription.formattedString == "Çıkış yap"){
+                        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+                            
+                            let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamadan çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                            self.present(longPressAlert, animated: true, completion: nil)
+                            
+                            
+                        }
+                        else {
+                            
+                            
+                            let longPressAlert = UIAlertController(title: "Mesaj", message: "Zaten çıkış yapmışsınız", preferredStyle: UIAlertControllerStyle.alert)
+                            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                            self.present(longPressAlert, animated: true, completion: nil)
+                            
+                            
+                            
+                        }
+                    }
+                    
                 }
                 
                 
