@@ -44,7 +44,6 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var addToChartButton: UIButton!
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
-    @IBOutlet weak var microphoneButton: UIButton!
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -110,7 +109,6 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         
         //voice
-        microphoneButton.isEnabled = false
         
         speechRecognizer.delegate = self
         
@@ -136,7 +134,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
             
             OperationQueue.main.addOperation() {
-                self.microphoneButton.isEnabled = isButtonEnabled
+               // self.microphoneButton.isEnabled = isButtonEnabled
             }
         }
         
@@ -314,7 +312,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         let btn2 = UIButton(type: .custom)
         btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
         btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
-        btn2.addTarget(self, action: #selector(ListenViewController.buttonVoice), for: .touchUpInside)
+        btn2.addTarget(self, action: #selector(ListenViewController.btnVoice), for: .touchUpInside)
         let item2 = UIBarButtonItem(customView: btn2)
         
         
@@ -349,10 +347,6 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
     }
     
-    func buttonVoice(){
-        print("voice")
-        
-    }
     
     
 
@@ -495,18 +489,18 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     
-    @IBAction func btnVoice(_ sender: Any) {
+     func btnVoice(_ sender: Any) {
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
-            microphoneButton.isEnabled = false
+          //  microphoneButton.isEnabled = false
             
             
             
-            microphoneButton.setTitle("Start Recording", for: .normal)
+          //  microphoneButton.setTitle("Start Recording", for: .normal)
         } else {
             startRecording()
-            microphoneButton.setTitle("Stop Recording", for: .normal)
+           // microphoneButton.setTitle("Stop Recording", for: .normal)
             
             
         }
@@ -613,7 +607,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-                self.microphoneButton.isEnabled = true
+            //    self.microphoneButton.isEnabled = true
                 // self.listen(ses: (result?.bestTranscription.formattedString)!)
             }
         })
@@ -637,9 +631,9 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
-            microphoneButton.isEnabled = true
+        //    microphoneButton.isEnabled = true
         } else {
-            microphoneButton.isEnabled = false
+        //    microphoneButton.isEnabled = false
         }
     }
     

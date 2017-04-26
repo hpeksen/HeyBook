@@ -806,9 +806,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lof-5b-PKX">
                                 <rect key="frame" x="209" y="238" width="166" height="30"/>
                                 <state key="normal" title="Start recording"/>
-                                <connections>
-                                    <action selector="btnVoice:" destination="kEl-qy-EIS" eventType="touchUpInside" id="KJ9-gB-P2G"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8,90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kep-9y-JKv">
                                 <rect key="frame" x="16" y="616" width="75.5" height="43"/>
@@ -953,7 +950,6 @@
                         <outlet property="bookNameLabel" destination="BUo-zZ-0Oi" id="FBr-Ia-6Zj"/>
                         <outlet property="descriptionLabel" destination="p3M-i1-Iku" id="K1r-zB-Irl"/>
                         <outlet property="listesnBookImage" destination="7F1-AR-25f" id="sbx-6S-zxb"/>
-                        <outlet property="microphoneButton" destination="Lof-5b-PKX" id="2sv-e4-Fox"/>
                         <outlet property="priceLabel" destination="Kep-9y-JKv" id="41k-VJ-8Ud"/>
                         <outlet property="starsView" destination="3fD-ra-d3J" id="NH8-bj-rBe"/>
                         <outlet property="switchToAdd" destination="N3m-Iu-PT3" id="m9K-RP-uyH"/>
@@ -1996,7 +1992,7 @@
                                         <rect key="frame" x="-112.5" y="50" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="601" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">

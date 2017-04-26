@@ -11,7 +11,7 @@ import Speech
 
 class VoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
 
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))!
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
