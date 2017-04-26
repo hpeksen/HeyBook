@@ -283,49 +283,49 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                 print(result?.bestTranscription.formattedString)  //9
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
-                    
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Kitaplarım"){
-                    
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Kategoriler"){
-                    
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Favorilerim"){
-                    
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Ayarlar"){
-                    
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Sepet"){
-                    
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Satınalma geçmişi"){
-                    
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
@@ -334,14 +334,14 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 if(result?.bestTranscription.formattedString == "Giriş yap"){
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
-                        
+                        self.audioEngine.stop()
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                     else {
                         
-                        
+                        self.audioEngine.stop()
                         let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                         self.present(longPressAlert, animated: true, completion: nil)
@@ -349,30 +349,30 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                         
                         
                     }
-                    if(result?.bestTranscription.formattedString == "Çıkış yap"){
-                        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
-                            
-                            let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamadan çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
-                            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                            self.present(longPressAlert, animated: true, completion: nil)
-                            
-                            
-                        }
-                        else {
-                            
-                            
-                            let longPressAlert = UIAlertController(title: "Mesaj", message: "Zaten çıkış yapmışsınız", preferredStyle: UIAlertControllerStyle.alert)
-                            longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                            self.present(longPressAlert, animated: true, completion: nil)
-                            
-                            
-                            
-                        }
-                    }
+                 
                     
                 }
                 
-                
+                if(result?.bestTranscription.formattedString == "Çıkış yap"){
+                    if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
+                        self.audioEngine.stop()
+                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamadan çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                        longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                        self.present(longPressAlert, animated: true, completion: nil)
+                        
+                        
+                    }
+                    else {
+                        
+                        self.audioEngine.stop()
+                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Zaten çıkış yapmışsınız", preferredStyle: UIAlertControllerStyle.alert)
+                        longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                        self.present(longPressAlert, animated: true, completion: nil)
+                        
+                        
+                        
+                    }
+                }
                 
                 
                 
