@@ -262,6 +262,8 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in  //7
             
+            
+            
             var isFinal = false  //8
             
             if result != nil {

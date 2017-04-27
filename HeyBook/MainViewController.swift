@@ -160,7 +160,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz!!!", preferredStyle: .alert)
                         
                         let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
-                            guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
+                            guard let settingsUrl = URL(string: "App-Prefs:root=Wifi") else {
                                 return
                             }
                             
@@ -174,7 +174,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         alertController.addAction(settingsWifi)
                         
                         let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
-                            guard let settingsUrl = URL(string: "App-Prefs:root=General") else {
+                            guard let settingsUrl = URL(string: "App-Prefs:root=Mobile Data") else {
                                 return
                             }
                             
