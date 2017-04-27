@@ -25,7 +25,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuNameArr = ["HeyBook! Vitrin","Kitaplarım","Kategoriler","Favorilerim","Sepet","Satınalma Geçmişi","Giriş Yap","Ayarlar"]
+        menuNameArr = ["HeyBook! Vitrin","Kategoriler","HeyBook'ta Ara","Kitaplarım","Favorilerim","Sepet","Ayarlar","Giriş Yap"]
         
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil || UserDefaults.standard.value(forKey: "user_image") != nil){
             photo = "http://heybook.online/\((UserDefaults.standard.value(forKey: "user_photo") as? String)!)"
@@ -139,6 +139,12 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
             self.navigationController?.pushViewController(controller, animated: true)
         }
+        if ( cell.lblMenuButton.text  == "HeyBook'ta Ara")
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
         if ( cell.lblMenuButton.text  == "Sepet")
         {
             if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
@@ -221,11 +227,11 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     func loginOrNot(){
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
             isLogin=true
-            menuNameArr[6]="Çıkış Yap"
+            menuNameArr[7]="Çıkış Yap"
         }
         else {
             isLogin=false
-            menuNameArr[6]="Giriş Yap"
+            menuNameArr[7]="Giriş Yap"
         }
         myTableView.reloadData()
     }

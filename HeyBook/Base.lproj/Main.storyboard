@@ -35,7 +35,7 @@
                                         <rect key="frame" x="3.5" y="42" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T00-wQ-JYy">
@@ -573,7 +573,7 @@
                                         <rect key="frame" x="3.5" y="0.0" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biq-Oi-5In">
@@ -985,7 +985,7 @@
                                         <rect key="frame" x="3.5" y="42" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeA-IX-rws">
@@ -1859,7 +1859,7 @@
                                         <rect key="frame" x="0.0" y="1" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="byQ-Ld-EZW" id="3Td-G8-1iZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcY-PL-RNs">
@@ -1898,7 +1898,7 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Pgx-2y-TWh">
-                                <rect key="frame" x="46" y="8" width="78" height="78"/>
+                                <rect key="frame" x="82" y="8" width="78" height="78"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="78" id="arl-L9-NE2"/>
                                     <constraint firstAttribute="height" constant="78" id="avq-sh-6xf"/>
@@ -1911,7 +1911,7 @@
                             <constraint firstItem="tnE-ZG-fts" firstAttribute="top" secondItem="Pgx-2y-TWh" secondAttribute="bottom" constant="13" id="Imz-cn-m8p"/>
                             <constraint firstItem="tnE-ZG-fts" firstAttribute="bottom" secondItem="aHn-ZO-ZsS" secondAttribute="top" id="N7c-36-5Jc"/>
                             <constraint firstAttribute="trailing" secondItem="tnE-ZG-fts" secondAttribute="trailing" id="NBx-Qv-ooy"/>
-                            <constraint firstItem="Pgx-2y-TWh" firstAttribute="leading" secondItem="oPY-6u-q17" secondAttribute="leadingMargin" constant="30" id="fxa-pr-L8n"/>
+                            <constraint firstItem="Pgx-2y-TWh" firstAttribute="leading" secondItem="oPY-6u-q17" secondAttribute="leadingMargin" constant="66" id="fxa-pr-L8n"/>
                             <constraint firstItem="Pgx-2y-TWh" firstAttribute="top" secondItem="o0h-cf-G2X" secondAttribute="bottom" constant="8" id="jQN-Cx-Twi"/>
                         </constraints>
                     </view>
@@ -1991,7 +1991,7 @@
                                         <rect key="frame" x="-112.5" y="50" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="601" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">
@@ -2361,7 +2361,7 @@
                                         <rect key="frame" x="3.5" y="42" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caT-e0-TOq">
