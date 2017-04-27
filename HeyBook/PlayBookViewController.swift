@@ -485,6 +485,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             else {
                 audioPlayer.play()
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
+                UserDefaults.standard.setValue(bookName, forKey: "playing_book")
             }
         }
         else {
@@ -495,7 +496,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             else {
                 player.play()
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
-                
+                UserDefaults.standard.setValue(bookName, forKey: "playing_book")
                 print("çalıyo")
                 print(bookLink)
             }
@@ -550,6 +551,11 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    
+    @IBAction func unwindToPlay(_ sender: UIStoryboardSegue) {
+        
     }
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {

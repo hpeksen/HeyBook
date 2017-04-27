@@ -510,11 +510,25 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
-        
-    
-        UserDefaults.standard.set(encodedData, forKey: "book_record_play")
-        UserDefaults.standard.synchronize()
+        if UserDefaults.standard.value(forKey: "playing_book") != nil && UserDefaults.standard.value(forKey: "playing_book") as! String == records[indexPath.row].book_title {
+            print("BOOKNAME: \(UserDefaults.standard.value(forKey: "playing_book") as! String) - \(records[indexPath.row].book_title)")
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers
+            for i in 0..<viewControllers.count {
+                print("BOOKNAME: \(NSStringFromClass(viewControllers[i].classForCoder))")
+                if viewControllers[i] is PlayBookViewController {
+                    self.navigationController!.popToViewController(viewControllers[i], animated: true)
+                }
+            }
+        }
+        else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "PlayBookViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
+            UserDefaults.standard.set(encodedData, forKey: "book_record_play")
+            UserDefaults.standard.synchronize()
+        }
     }
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {

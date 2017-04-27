@@ -60,47 +60,45 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        if(!isConnectedToNetwork()){
-            print("internett")
-            print(isConnectedToNetwork())
-            let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz!!!", preferredStyle: .alert)
-            
-            let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
-                guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
-                    return
-                }
-                
-                if UIApplication.shared.canOpenURL(settingsUrl) {
-                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
-                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        print("Settings opened: \(success)") // Prints true
-                    })
-                }
-            }
-            alertController.addAction(settingsWifi)
-            
-            let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
-                guard let settingsUrl = URL(string: "App-Prefs:root=General") else {
-                    return
-                }
-                
-                if UIApplication.shared.canOpenURL(settingsUrl) {
-                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
-                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        print("Settings opened: \(success)") // Prints true
-                    })
-                }
-            }
-            alertController.addAction(settingsCellular)
-            
-            present(alertController, animated: true, completion: nil)
-            
-            
+     
+//            print("internett")
+//            print(isConnectedToNetwork())
+//            let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz!!!", preferredStyle: .alert)
+//            
+//            let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
+//                guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
+//                    return
+//                }
+//                
+//                if UIApplication.shared.canOpenURL(settingsUrl) {
+//                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+//                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+//                        print("Settings opened: \(success)") // Prints true
+//                    })
+//                }
+//            }
+//            alertController.addAction(settingsWifi)
+//            
+//            let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
+//                guard let settingsUrl = URL(string: "App-Prefs:root=General") else {
+//                    return
+//                }
+//                
+//                if UIApplication.shared.canOpenURL(settingsUrl) {
+//                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+//                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+//                        print("Settings opened: \(success)") // Prints true
+//                    })
+//                }
+//            }
+//            alertController.addAction(settingsCellular)
+//            
+//            present(alertController, animated: true, completion: nil)
             
             
             
-        }
-        else {
+            
+        
             
             
             if records.isEmpty {
@@ -157,16 +155,43 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         
                         break
                     case .failure(let error):
+                        print("internett")
+                    //    print(isConnectedToNetwork())
+                        let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz!!!", preferredStyle: .alert)
                         
-                        print(error)
+                        let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
+                            guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
+                                return
+                            }
+                            
+                            if UIApplication.shared.canOpenURL(settingsUrl) {
+                                //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                    print("Settings opened: \(success)") // Prints true
+                                })
+                            }
+                        }
+                        alertController.addAction(settingsWifi)
+                        
+                        let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
+                            guard let settingsUrl = URL(string: "App-Prefs:root=General") else {
+                                return
+                            }
+                            
+                            if UIApplication.shared.canOpenURL(settingsUrl) {
+                                //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                    print("Settings opened: \(success)") // Prints true
+                                })
+                            }
+                        }
+                        alertController.addAction(settingsCellular)
+                        
+                        self.present(alertController, animated: true, completion: nil)
                     }
                 }
                 
-                
-                
-            }
-            
-            
+             
             
             //voice
             
