@@ -8,46 +8,41 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>Cosmos.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
+		</dict>
+		<key>DLRadioButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-HeyBook.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>RNCryptor.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SearchTextField.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>SideMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>223FCD38B1650DB475C77455966041CA</key>
+		<key>2D5BE9B7B30F6F65F805EA008472C27A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>66C41245A8EB21C166CE580B87781C2A</key>
+		<key>68BC1AEE0C56C33EA003B55123205A06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,27 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>947EFA6045A4E9B3D92712EA36428A87</key>
+		<key>AD2BD43A57809BF1D1194CA82476BE5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC1753E4F5B61D2820578A33EDE3B503</key>
+		<key>DCF5C1E9C79D5F5342DF03F922855682</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B364F37106D8B6EE83DD14FEA4B7338E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BC26B1F516B497D7E9BB6CBE37077D91</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F67EE141615A15C9C426C9B601EBADC1</key>
+		<key>F6A77E2753C279F67F70C5C21D6FAE15</key>
 		<dict>
 			<key>primary</key>
 			<true/>

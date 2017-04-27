@@ -1,45 +1,149 @@
 //
-//  SearchViewController.swift
+//  SearchResultViewController.swift
 //  HeyBook
 //
-//  Created by Admin on 25/04/2017.
+//  Created by Admin on 27/04/2017.
 //  Copyright © 2017 Team1. All rights reserved.
 //
 
 import UIKit
-import SideMenu
 import Speech
+import SideMenu
+import Alamofire
 
-var check = 0
-class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecognizerDelegate {
+class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,UICollectionViewDataSource, UICollectionViewDelegate {
 
-    @IBOutlet weak var searchTextField: UITextField!
+    var message1 = 0
+    var message2 = ""
     
+    var records: [Record] = []
+    
+    @IBOutlet weak var myCollectionView: UICollectionView!
     //voice
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    
+    var book_id = ""
+    var category_id = ""
+    var publisher_id = ""
+    var author_id = ""
+    var narrator_id = ""
+    var book_title = ""
+    var desc = ""
+    var price = ""
+    var photo = ""
+    var thumb = ""
+    var audio = ""
+    var duration = ""
+    var size = ""
+    var demo = ""
+    var star = ""
+    var category_title = ""
+    var author_title = ""
+    var publisher_title = ""
+    var narrator_title = ""
 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchTextField.delegate = self
+        print(message1)
+        print(message2)
+        
+        
+        let urlString = "http://heybook.online/api.php"
+        
+        Alamofire.request(urlString, method: .post, parameters: ["request": "books"],encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                
+                
+                let json = JSON(data: response.data!)
+               // print(json["data"][0]["book_title"].string!)
+                
+                
+                let total = json["data"].count
+                print(total)
+                //
+                for index in 0..<total {
+                    self.book_id = json["data"][index]["book_id"].string!
+                    self.category_id = json["data"][index]["category_id"].string!
+                    self.publisher_id = json["data"][index]["publisher_id"].string!
+                    self.author_id = json["data"][index]["author_id"].string!
+                    self.narrator_id = json["data"][index]["narrator_id"].string!
+                    self.book_title = json["data"][index]["book_title"].string!
+                    self.desc = json["data"][index]["description"].string!
+                    self.price = json["data"][index]["price"].string!
+                    self.photo = json["data"][index]["photo"].string!
+                    self.thumb = json["data"][index]["thumb"].string!
+                    self.audio = json["data"][index]["audio"].string!
+                    self.duration = json["data"][index]["duration"].string!
+                    self.size = json["data"][index]["size"].string!
+                    self.demo = json["data"][index]["demo"].string!
+                    self.star = json["data"][index]["star"].string!
+                    self.category_title = json["data"][index]["category_title"].string!
+                    self.author_title = json["data"][index]["author_title"].string!
+                    self.publisher_title = json["data"][index]["publisher_title"].string!
+                    self.narrator_title = json["data"][index]["narrator_title"].string!
+                    
+                    let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title, narrator_title: self.narrator_title)
+                    
+                    
+                    if (self.message1 == 1) {
+                    if(record.book_title.lowercased() == self.message2.lowercased()){
+                    
+                    self.records.append(record)
+                    
+                    print("record: \(record.book_title)")
+                    }
+                    }
+                    else if (self.message1 == 2) {
+                        if(record.author_title.lowercased() == self.message2.lowercased()){
+                            
+                            self.records.append(record)
+                            
+                            print("record: \(record.book_title)")
+                        }
+                    }
+                    if (self.message1 == 3) {
+                        if(record.narrator_title.lowercased() == self.message2.lowercased()){
+                            
+                            self.records.append(record)
+                            
+                            print("record: \(record.book_title)")
+                        }
+                    }
+                    
+                }
+                
+                self.myCollectionView.reloadData()
+         
+                
+                
+                
+                break
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+        
+
+        
+        
+        
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
-                                               name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        
-       
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         menuLeftNavigationController.leftSide = true
@@ -49,9 +153,23 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
         SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         SideMenuManager.menuPresentMode = .menuSlideIn
+        
+        self.myCollectionView.backgroundColor = UIColor.clear
+        
+        //cell spacing in collection view
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        //let screenHeight = screenSize.height
+        
+        var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout = myCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: screenWidth, height: 80)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        myCollectionView!.collectionViewLayout = layout
+        
 
-        
-        
         
         //voice
         
@@ -85,21 +203,17 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
         
         //voice
         
-        
-
-        
-        
         //Bar Buttonları
         
         let btn2 = UIButton(type: .custom)
-        btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
+        btn2.setImage(UIImage(named: "mikrofon"), for: .normal)
         btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
-        btn2.addTarget(self, action: #selector(SearchViewController.btnVoice), for: .touchUpInside)
+        btn2.addTarget(self, action: #selector(SearchResultViewController.btnVoice), for: .touchUpInside)
         let item2 = UIBarButtonItem(customView: btn2)
         
         
-        let btnSearch = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(SearchViewController.btnSearch))
-        btnSearch.tintColor = UIColor.white
+        let btnSearch = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(SearchResultViewController.btnSearch))
+        btnSearch.tintColor = UIColor.black
         
         
         self.navigationItem.setRightBarButtonItems([item2,btnSearch], animated: true)
@@ -107,19 +221,24 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
         let btn3 = UIButton(type: .custom)
         btn3.setImage(UIImage(named: "hamburger"), for: .normal)
         btn3.frame = CGRect(x: 0, y: 0, width: 35, height: 25)
-        btn3.addTarget(self, action: #selector(SearchViewController.btnMenu), for: .touchUpInside)
-        btn3.tintColor = UIColor.white
+        btn3.addTarget(self, action: #selector(SearchResultViewController.btnMenu), for: .touchUpInside)
+        btn3.tintColor = UIColor.black
         let item3 = UIBarButtonItem(customView: btn3)
         self.navigationItem.setLeftBarButton(item3, animated: true)
         
         
+      
+        
+        
     }
-    
+
     
     
     func btnSearch(){
         print("search button")
-      
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
         
     }
     func btnMenu(){
@@ -256,9 +375,10 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
                         
                         
                     }
-                   
+                    
                     
                 }
+                
                 if(result?.bestTranscription.formattedString == "Çıkış yap"){
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                         self.audioEngine.stop()
@@ -279,6 +399,8 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
                         
                     }
                 }
+                
+                
                 
                 
                 
@@ -325,102 +447,92 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
         }
     }
     
-    @IBAction func buttonAramaYap(_ sender: UIButton) {
-        if (searchTextField.text?.isEmpty)!{
-            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen ne istediğinizi yazınız.", preferredStyle: UIAlertControllerStyle.alert)
-            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(longPressAlert, animated: true, completion: nil)
-            
-        }
-        else{
-        if check == 0{
+    
+    
+    func getIndexPathForSelectedCell() -> IndexPath? {
+        var indexPath: IndexPath?
         
-            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen neye göre arama yapmak istediğinizi belirtiniz.", preferredStyle: UIAlertControllerStyle.alert)
-            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(longPressAlert, animated: true, completion: nil)
-            
-        }
-        else {
-        
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let myVC = storyboard.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
-            myVC.message1 = check
-            myVC.message2 = searchTextField.text!
-            check = 0
-            navigationController?.pushViewController(myVC, animated: true)
-            
-        
-        }
+        if myCollectionView.indexPathsForSelectedItems!.count > 0 {
+            indexPath = myCollectionView.indexPathsForSelectedItems![0] as IndexPath
         }
         
-       
+        return indexPath
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+        return records.count
+    
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-       
+        //return mDataSource.groups.count
+        return 1
+    }
+    
+    // For each cell setting the data
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomKitaplarimCollectionViewCell
+        
+        //let records: [Record] = mDataSource.recordsInSection(indexPath.section)
+        let record: Record
+    
         
         
-    }
-    
-    @IBAction func kitapAdıRadioButton(_ sender: Any) {
-        check = 1
-    }
-  
-    @IBAction func yazarAdıRadioButton(_ sender: Any) {
-        check = 2
-    }
-    @IBAction func seslendirenAdıRadioButton(_ sender: Any) {
-        check = 3
-    }
-    
-    // To pass parameter(s) to the other Scenes
-  
-    
-    
-    //keyboard için
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //        self.view.endEditing(true)
-    //        return false
-    //    }
-    
-    
-    func keyboardWillShow(notification: NSNotification) {
-        var translation:CGFloat = 0
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if searchTextField.isEditing{
-                translation = CGFloat(-keyboardSize.height)
-            }else if searchTextField.isEditing{
-                translation = CGFloat(-keyboardSize.height / 3.8)
+        record = records[indexPath.row]
+        
+        //Aschronized image loading !!!!
+        URLSession.shared.dataTask(with: NSURL(string: record.photo)! as URL, completionHandler: { (data, response, error) -> Void in
+            if error != nil {
+                print(error)
+                return
             }
-        }
-        UIView.animate(withDuration: 0.2) {
-            self.view.transform = CGAffineTransform(translationX: 0, y: translation)
-        }
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                cell.authorName.text = record.author_title
+                cell.bookName.text = record.book_title
+                cell.duration.text = "\(record.price) TL"
+                
+                cell.bookImage.image = UIImage(data: data!)
+                cell.leftView.backgroundColor = UIColor(hex: "50D2C2")
+                
+            })
+            
+        }).resume()
+   
         
+        
+        return cell
     }
     
-    
-    func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.2) {
-            self.view.transform = CGAffineTransform(translationX: 0, y: 0)
-        }
+ 
+ 
+
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "PlayBookViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
+            UserDefaults.standard.set(encodedData, forKey: "book_record")
+            UserDefaults.standard.synchronize()
+       
     }
-    // Clicking the view (the container for UI components) removes the Keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        self.view.endEditing(true)
-        
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
-    
-    //keyboard için
-    
 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    
 
     /*
     // MARK: - Navigation

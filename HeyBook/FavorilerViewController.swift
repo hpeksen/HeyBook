@@ -564,7 +564,7 @@ class FavorilerViewController: UIViewController,UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
-        UserDefaults.standard.set(encodedData, forKey: "book_record_play")
+        UserDefaults.standard.set(encodedData, forKey: "book_record")
         UserDefaults.standard.synchronize()
     }
     

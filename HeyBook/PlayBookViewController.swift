@@ -11,7 +11,8 @@ import AVFoundation
 import SideMenu
 import RNCryptor
 import Speech
-
+var playerPlaying = AVPlayer()
+var audioPlayerPlaying = AVAudioPlayer()
 class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet weak var bookPhoto: UIImageView!
@@ -483,7 +484,9 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
             }
             else {
+                audioPlayerPlaying.stop()
                 audioPlayer.play()
+                audioPlayerPlaying = audioPlayer
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
                 UserDefaults.standard.setValue(bookName, forKey: "playing_book")
             }
@@ -494,7 +497,9 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
             }
             else {
+                playerPlaying.pause()
                 player.play()
+                playerPlaying = player
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
                 UserDefaults.standard.setValue(bookName, forKey: "playing_book")
                 print("çalıyo")

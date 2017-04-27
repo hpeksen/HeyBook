@@ -32,6 +32,8 @@
 		849247571E89A118009AD151 /* SepetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849247561E89A118009AD151 /* SepetViewController.swift */; };
 		849611881E5628FD00E4B4B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849611871E5628FD00E4B4B0 /* RegisterViewController.swift */; };
 		84AE9AEA1EAFB9AF000B6CEF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE9AE91EAFB9AF000B6CEF /* SearchViewController.swift */; };
+		84AE9AEE1EB21BE4000B6CEF /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE9AED1EB21BE3000B6CEF /* SearchResultViewController.swift */; };
+		84AE9AF01EB237C0000B6CEF /* CustomSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE9AEF1EB237C0000B6CEF /* CustomSearchCollectionViewCell.swift */; };
 		84B8626F1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8626E1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift */; };
 		84B993B81E1D539D0025412C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B71E1D539D0025412C /* AppDelegate.swift */; };
 		84B993BA1E1D539D0025412C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993B91E1D539D0025412C /* MainViewController.swift */; };
@@ -77,6 +79,8 @@
 		849247561E89A118009AD151 /* SepetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SepetViewController.swift; sourceTree = "<group>"; };
 		849611871E5628FD00E4B4B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		84AE9AE91EAFB9AF000B6CEF /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		84AE9AED1EB21BE3000B6CEF /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		84AE9AEF1EB237C0000B6CEF /* CustomSearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		84B8626E1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		84B993B41E1D539D0025412C /* HeyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B993B71E1D539D0025412C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,11 +146,13 @@
 				84BF20471E229974001E883E /* Record.swift */,
 				84B8626E1EA1134400ACBDDF /* CustomFavoritesCollectionViewCell.swift */,
 				849247521E841C2D009AD151 /* VerticalCategoriesCollectionViewCell.swift */,
+				84AE9AED1EB21BE3000B6CEF /* SearchResultViewController.swift */,
 				8492474E1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift */,
 				849247541E841C50009AD151 /* HorizontalCategoriesCollectionViewCell.swift */,
 				846D805C1E94DB800025D4DB /* CustomSepetCollectionViewCell.swift */,
 				84B993D41E1D5EC30025412C /* SwiftyJSON.swift */,
 				84B993BB1E1D539D0025412C /* Main.storyboard */,
+				84AE9AEF1EB237C0000B6CEF /* CustomSearchCollectionViewCell.swift */,
 				846AC1001E67594100C95001 /* MenuViewController.swift */,
 				846AC1021E67595C00C95001 /* MenuTableViewCell.swift */,
 				84AE9AE91EAFB9AF000B6CEF /* SearchViewController.swift */,
@@ -350,7 +356,9 @@
 				8492474F1E841BA3009AD151 /* LoadMoreCollectionReusableView.swift in Sources */,
 				84B993CD1E1D59120025412C /* ListenViewController.swift in Sources */,
 				849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */,
+				84AE9AEE1EB21BE4000B6CEF /* SearchResultViewController.swift in Sources */,
 				8492474D1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift in Sources */,
+				84AE9AF01EB237C0000B6CEF /* CustomSearchCollectionViewCell.swift in Sources */,
 				846AC1031E67595C00C95001 /* MenuTableViewCell.swift in Sources */,
 				846D80591E9284BB0025D4DB /* PlayBookViewController.swift in Sources */,
 			);

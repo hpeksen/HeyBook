@@ -78,7 +78,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
         let cell = tableView.cellForRow(at: indexPath!)! as! MenuTableViewCell
         
-        SideMenuManager.menuPushStyle = .popWhenPossible
+       // SideMenuManager.menuPushStyle = .popWhenPossible
     
         
         if ( cell.lblMenuButton.text  == "HeyBook! Vitrin")
