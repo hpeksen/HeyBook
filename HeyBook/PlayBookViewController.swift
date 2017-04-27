@@ -135,7 +135,8 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             print("mp3 file list:", mp3FileNames)
             
             for i in 0..<mp3FileNames.count {
-                if mp3FileNames[i] == self.bookName {
+                let fileNameArr = mp3FileNames[i].characters.split{$0 == "_"}.map(String.init)
+                if fileNameArr[1] == self.bookName {
                     isDownloaded = true
                 }
             }
@@ -149,7 +150,8 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 var originalData:Data
                 ciphertext = nil
                 for i in 0..<mp3FileNames.count {
-                    if mp3FileNames[i] == bookName {
+                    let fileNameArr = mp3FileNames[i].characters.split{$0 == "_"}.map(String.init)
+                    if fileNameArr[1] == bookName {
                         ciphertext = NSData(contentsOf: mp3Files[i]) as! Data
                     }
                 }
@@ -483,8 +485,10 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 audioPlayer.pause()
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
             }
-            else {
-                audioPlayerPlaying.stop()
+           else {
+//                if audioPlayerPlaying != audioPlayer {
+//                    audioPlayerPlaying.stop()
+//                }
                 audioPlayer.play()
                 audioPlayerPlaying = audioPlayer
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
@@ -497,7 +501,9 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
             }
             else {
-                playerPlaying.pause()
+//                if playerPlaying != player {
+//                    playerPlaying.pause()
+//                }
                 player.play()
                 playerPlaying = player
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)

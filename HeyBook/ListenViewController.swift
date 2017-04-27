@@ -56,6 +56,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var mp3FileNames:[String] = []
     var mp3Files:[URL] = []
+    var downloadedBooks:[Record] = []
     
     
     
@@ -65,7 +66,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
     }
     
-   
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -135,7 +136,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
             
             OperationQueue.main.addOperation() {
-               // self.microphoneButton.isEnabled = isButtonEnabled
+                // self.microphoneButton.isEnabled = isButtonEnabled
             }
         }
         
@@ -350,7 +351,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let mVC1 = segue.destination as? LoginViewController {
@@ -427,11 +428,28 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             bookPassword = "Secret password"
             ciphertext = RNCryptor.encrypt(data: data as! Data, withPassword: bookPassword)
             
-            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(bookName).file")
+            let fileName = "\(UserDefaults.standard.value(forKey: "user_id")!)_\(bookName)"
+            
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(fileName).file")
             
             print(fileURL)
             do {
                 try ciphertext?.write(to: fileURL, options: .atomic)
+                
+                if let dataa = UserDefaults.standard.data(forKey: "book_record"),
+                    let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
+                    
+                    if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded"),
+                        let decodedBooks = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [Record] {
+                        downloadedBooks = decodedBooks
+                    }
+                    
+                    downloadedBooks.append(record)
+                    let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: downloadedBooks)
+                    UserDefaults.standard.set(encodedData, forKey: "book_record_downloaded")
+                    UserDefaults.standard.synchronize()
+                }
+                
                 print(ciphertext)
                 addToChartButton.setTitle("İNDİRİLDİ", for: .normal)
             } catch {
@@ -448,9 +466,9 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                     }
                 }
                 originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
-//                
-//                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
-//                try originalData.write(to: fileURL, options: .atomic)
+                //
+                //                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
+                //                try originalData.write(to: fileURL, options: .atomic)
                 do {
                     audioPlayer = try AVAudioPlayer(data: originalData)
                     
@@ -490,18 +508,18 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     
-     func btnVoice(_ sender: Any) {
+    func btnVoice(_ sender: Any) {
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
-          //  microphoneButton.isEnabled = false
+            //  microphoneButton.isEnabled = false
             
             
             
-          //  microphoneButton.setTitle("Start Recording", for: .normal)
+            //  microphoneButton.setTitle("Start Recording", for: .normal)
         } else {
             startRecording()
-           // microphoneButton.setTitle("Stop Recording", for: .normal)
+            // microphoneButton.setTitle("Stop Recording", for: .normal)
             
             
         }
@@ -545,49 +563,49 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 print(result?.bestTranscription.formattedString)  //9
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
-                     self.audioEngine.stop()
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Kitaplarım"){
-                     self.audioEngine.stop()
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Kategoriler"){
-                     self.audioEngine.stop()
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Favorilerim"){
-                     self.audioEngine.stop()
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Ayarlar"){
-                     self.audioEngine.stop()
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Sepet"){
-                     self.audioEngine.stop()
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Satınalma geçmişi"){
-                     self.audioEngine.stop()
+                    self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
@@ -596,13 +614,13 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 if(result?.bestTranscription.formattedString == "Giriş yap"){
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
-                         self.audioEngine.stop()
+                        self.audioEngine.stop()
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                     else {
-                         self.audioEngine.stop()
+                        self.audioEngine.stop()
                         
                         let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
@@ -611,7 +629,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                         
                         
                     }
-                   
+                    
                     
                 }
                 
@@ -652,7 +670,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-            //    self.microphoneButton.isEnabled = true
+                //    self.microphoneButton.isEnabled = true
                 // self.listen(ses: (result?.bestTranscription.formattedString)!)
             }
         })
@@ -676,9 +694,9 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
-        //    microphoneButton.isEnabled = true
+            //    microphoneButton.isEnabled = true
         } else {
-        //    microphoneButton.isEnabled = false
+            //    microphoneButton.isEnabled = false
         }
     }
     

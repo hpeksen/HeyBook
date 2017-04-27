@@ -10,10 +10,13 @@ import UIKit
 import SideMenu
 import Alamofire
 import Speech
+import Foundation
 
 class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, SFSpeechRecognizerDelegate  {
-
+    
     var records: [Record] = []
+    var downloadedBooks: [Record] = []
+    var downloadedBooksIndexes: [Int] = []
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     var book_id = ""
@@ -36,8 +39,11 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     var publisher_title = ""
     var narrator_title = ""
     
+    var mp3FileNames:[String] = []
+    var mp3Files:[URL] = []
     
-    //voice 
+    
+    //voice
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
     
@@ -91,6 +97,23 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                     self.records.append(record)
                     
                 }
+                
+                
+                
+                
+                if !self.records.isEmpty {
+                    let index:Int = 0
+                    for i in 0..<self.records.count {
+                        for j in 0..<self.downloadedBooks.count {
+                            if self.records[i].book_id == self.downloadedBooks[j].book_id {
+                                self.downloadedBooksIndexes.append(i)
+                            }
+                        }
+                    }
+                }
+                
+                
+                
                 self.myCollectionView.reloadData()
                 
                 
@@ -98,11 +121,21 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 
                 break
             case .failure(let error):
-                
-                print(error)
+                self.records = self.downloadedBooks
+                print("ERRORRR!!!! \(error)")
             }
         }
-
+        
+        if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded"),
+            let decodedBooks = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [Record] {
+            self.downloadedBooks = decodedBooks
+        }
+        
+        if self.records.isEmpty {
+            self.records = self.downloadedBooks
+        }
+        print("downloaded \(self.downloadedBooks[0].book_title)")
+        
         // Do any additional setup after loading the view.
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -167,7 +200,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         }
         
         //voice
-
+        
         
         
         
@@ -210,7 +243,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
         
     }
-   
+    
     
     
     func btnVoice(_ sender: Any) {
@@ -223,7 +256,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
             
             //  microphoneButton.setTitle("Start Recording", for: .normal)
         } else {
-        
+            
             startRecording()
             // microphoneButton.setTitle("Stop Recording", for: .normal)
             
@@ -233,7 +266,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     }
     
     func startRecording() {
-
+        
         if recognitionTask != nil {  //1
             recognitionTask?.cancel()
             recognitionTask = nil
@@ -261,8 +294,6 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         recognitionRequest.shouldReportPartialResults = true  //6
         
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in  //7
-            
-            
             
             var isFinal = false  //8
             
@@ -337,7 +368,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                         
                         
                     }
-                 
+                    
                     
                 }
                 if(result?.bestTranscription.formattedString == "Çıkış yap"){
@@ -394,7 +425,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
             print("audioEngine couldn't start because of an error.")
         }
         
-       // textView.text = "Say something, I'm listening!"
+        // textView.text = "Say something, I'm listening!"
         
     }
     
@@ -407,7 +438,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     }
     
     
-
+    
     
     
     
@@ -420,7 +451,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     override var prefersStatusBarHidden: Bool {
         return true
     }
-  
+    
     
     func getIndexPathForSelectedCell() -> IndexPath? {
         var indexPath: IndexPath?
@@ -450,8 +481,12 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomKitaplarimCollectionViewCell
         
         //let records: [Record] = mDataSource.recordsInSection(indexPath.section)
-        let record: Record
-            record = records[indexPath.row]
+        var record: Record
+        record = records[indexPath.row]
+        
+        //        if !downloadedBooks.isEmpty && downloadedBooks.count > indexPath.row && downloadedBooks[indexPath.row].book_id == record.book_id {
+        //            record = downloadedBooks[indexPath.row]
+        //        }
         
         //Aschronized image loading !!!!
         URLSession.shared.dataTask(with: NSURL(string: record.photo)! as URL, completionHandler: { (data, response, error) -> Void in
@@ -512,6 +547,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        print("DOWNLOADED!!!!! \(self.records[indexPath.row].book_title)")
         if UserDefaults.standard.value(forKey: "playing_book") != nil && UserDefaults.standard.value(forKey: "playing_book") as! String == records[indexPath.row].book_title {
             print("BOOKNAME: \(UserDefaults.standard.value(forKey: "playing_book") as! String) - \(records[indexPath.row].book_title)")
             let viewControllers: [UIViewController] = self.navigationController!.viewControllers
@@ -540,15 +576,15 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         return (hours, minutes, seconds)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
