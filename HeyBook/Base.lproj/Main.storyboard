@@ -567,65 +567,6 @@
                                     <constraint firstAttribute="height" constant="21" id="h7I-2Z-9gP"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFq-Mw-2cY" userLabel="3DOnayView">
-                                <rect key="frame" x="0.0" y="209" width="375" height="458"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lütfen kredi kartınıza tanımlı olan cep telefonunuza gelen tek kullanımlık şifreyi giriniz." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj3-wY-gOe">
-                                        <rect key="frame" x="8" y="8" width="359" height="60"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="EF9-sj-W1E"/>
-                                            <constraint firstAttribute="width" constant="359" id="RQy-mC-o6X"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3D TEK KULLANIMLIK ŞİFRE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M69-ms-8S9">
-                                        <rect key="frame" x="8" y="118" width="359" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4A-mf-U4T">
-                                        <rect key="frame" x="0.0" y="428" width="375" height="30"/>
-                                        <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="3D ONAY">
-                                            <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dOnaylamaButton:" destination="fah-Bo-lry" eventType="touchUpInside" id="2mo-VG-U2E"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CD4-tG-BHH">
-                                        <rect key="frame" x="141" y="144" width="93" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="IEb-UB-sBS"/>
-                                            <constraint firstAttribute="width" constant="93" id="kJO-fc-Iaz"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="M69-ms-8S9" firstAttribute="top" secondItem="fj3-wY-gOe" secondAttribute="bottom" constant="50" id="6VQ-iZ-acP"/>
-                                    <constraint firstItem="m4A-mf-U4T" firstAttribute="leading" secondItem="bFq-Mw-2cY" secondAttribute="leading" id="7fn-HR-VMP"/>
-                                    <constraint firstAttribute="trailing" secondItem="fj3-wY-gOe" secondAttribute="trailing" constant="8" id="BDP-VJ-6pA"/>
-                                    <constraint firstItem="fj3-wY-gOe" firstAttribute="leading" secondItem="bFq-Mw-2cY" secondAttribute="leading" constant="8" id="ITJ-eN-WaI"/>
-                                    <constraint firstAttribute="trailing" secondItem="fj3-wY-gOe" secondAttribute="trailing" constant="8" id="Mcm-JE-H3l"/>
-                                    <constraint firstItem="fj3-wY-gOe" firstAttribute="top" secondItem="bFq-Mw-2cY" secondAttribute="top" constant="8" id="PqI-ym-NXy"/>
-                                    <constraint firstAttribute="trailing" secondItem="m4A-mf-U4T" secondAttribute="trailing" id="U3G-aB-Qhw"/>
-                                    <constraint firstItem="CD4-tG-BHH" firstAttribute="centerX" secondItem="bFq-Mw-2cY" secondAttribute="centerX" id="WmO-Kq-e5m"/>
-                                    <constraint firstItem="M69-ms-8S9" firstAttribute="leading" secondItem="bFq-Mw-2cY" secondAttribute="leading" constant="8" id="ZWK-3H-bcp"/>
-                                    <constraint firstItem="CD4-tG-BHH" firstAttribute="top" secondItem="M69-ms-8S9" secondAttribute="bottom" constant="8" id="anX-O1-Qpd"/>
-                                    <constraint firstItem="fj3-wY-gOe" firstAttribute="top" secondItem="bFq-Mw-2cY" secondAttribute="top" constant="8" id="dBf-OW-act"/>
-                                    <constraint firstAttribute="bottom" secondItem="m4A-mf-U4T" secondAttribute="bottom" id="iMo-hy-Syo"/>
-                                    <constraint firstAttribute="trailing" secondItem="M69-ms-8S9" secondAttribute="trailing" constant="8" id="xCH-u8-cQZ"/>
-                                    <constraint firstItem="fj3-wY-gOe" firstAttribute="leading" secondItem="bFq-Mw-2cY" secondAttribute="leading" constant="8" id="xV6-Ce-mnr"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXj-Fw-DxI" userLabel="SepetView">
                                 <rect key="frame" x="0.0" y="209" width="375" height="458"/>
                                 <subviews>
@@ -753,6 +694,49 @@
                                     <constraint firstItem="x7G-IQ-kHB" firstAttribute="top" secondItem="A2u-VU-HiL" secondAttribute="bottom" constant="8" id="xJP-va-c9q"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whz-6Y-JRo" userLabel="OnaylandıView">
+                                <rect key="frame" x="0.0" y="209" width="375" height="458"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrE-g1-1UT">
+                                        <rect key="frame" x="0.0" y="428" width="375" height="30"/>
+                                        <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="KİTAPLARIM'A GİT">
+                                            <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToKitaplarim:" destination="fah-Bo-lry" eventType="touchUpInside" id="S6G-cS-8Ud"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onay" translatesAutoresizingMaskIntoConstraints="NO" id="IPC-ws-g9C">
+                                        <rect key="frame" x="123" y="73" width="128" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="Gnq-DX-E3s"/>
+                                            <constraint firstAttribute="width" constant="128" id="sNh-tC-Xqd"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ödemeniz Onaylandı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ia-gQ-2Nb">
+                                        <rect key="frame" x="105" y="209" width="165" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="JVG-Tl-ULR"/>
+                                            <constraint firstAttribute="width" constant="165" id="TWy-bd-I71"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6ia-gQ-2Nb" firstAttribute="top" secondItem="IPC-ws-g9C" secondAttribute="bottom" constant="8" id="0W1-ya-kMy"/>
+                                    <constraint firstItem="IPC-ws-g9C" firstAttribute="top" secondItem="whz-6Y-JRo" secondAttribute="top" constant="73" id="2Fe-2q-KiQ"/>
+                                    <constraint firstItem="nrE-g1-1UT" firstAttribute="leading" secondItem="whz-6Y-JRo" secondAttribute="leading" id="Cb7-eG-8xN"/>
+                                    <constraint firstAttribute="bottom" secondItem="nrE-g1-1UT" secondAttribute="bottom" id="EPI-Cz-Otq"/>
+                                    <constraint firstItem="IPC-ws-g9C" firstAttribute="centerX" secondItem="whz-6Y-JRo" secondAttribute="centerX" id="Ibr-1n-83n"/>
+                                    <constraint firstAttribute="trailing" secondItem="nrE-g1-1UT" secondAttribute="trailing" id="cA5-jc-eJR"/>
+                                    <constraint firstItem="6ia-gQ-2Nb" firstAttribute="centerX" secondItem="whz-6Y-JRo" secondAttribute="centerX" id="gMT-VR-qeG"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMR-1V-Cwa" userLabel="Ödemeyi Onayla View">
                                 <rect key="frame" x="0.0" y="209" width="375" height="458"/>
                                 <subviews>
@@ -798,7 +782,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TrP-lt-def">
                                         <rect key="frame" x="37" y="255" width="97" height="30"/>
@@ -808,7 +792,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJy-Pc-oMq">
                                         <rect key="frame" x="53" y="157" width="100" height="66"/>
@@ -900,47 +884,75 @@
                                     <constraint firstAttribute="trailing" secondItem="nS1-3A-VIF" secondAttribute="trailing" id="zot-Rg-M4l"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whz-6Y-JRo" userLabel="OnaylandıView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFq-Mw-2cY" userLabel="3DOnayView">
                                 <rect key="frame" x="0.0" y="209" width="375" height="458"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrE-g1-1UT">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lütfen kredi kartınıza tanımlı olan cep telefonunuza gelen tek kullanımlık şifreyi giriniz." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj3-wY-gOe">
+                                        <rect key="frame" x="8" y="8" width="359" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="EF9-sj-W1E"/>
+                                            <constraint firstAttribute="width" constant="359" id="RQy-mC-o6X"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3D TEK KULLANIMLIK ŞİFRE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M69-ms-8S9">
+                                        <rect key="frame" x="8" y="118" width="359" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4A-mf-U4T">
                                         <rect key="frame" x="0.0" y="428" width="375" height="30"/>
                                         <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="KİTAPLARIM'A GİT">
+                                        <state key="normal" title="3D ONAY">
                                             <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="goToKitaplarim:" destination="fah-Bo-lry" eventType="touchUpInside" id="S6G-cS-8Ud"/>
+                                            <action selector="dOnaylamaButton:" destination="fah-Bo-lry" eventType="touchUpInside" id="2mo-VG-U2E"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onay" translatesAutoresizingMaskIntoConstraints="NO" id="IPC-ws-g9C">
-                                        <rect key="frame" x="123" y="73" width="128" height="128"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CD4-tG-BHH">
+                                        <rect key="frame" x="141" y="144" width="93" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="Gnq-DX-E3s"/>
-                                            <constraint firstAttribute="width" constant="128" id="sNh-tC-Xqd"/>
+                                            <constraint firstAttribute="height" constant="30" id="IEb-UB-sBS"/>
+                                            <constraint firstAttribute="width" constant="93" id="kJO-fc-Iaz"/>
                                         </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ödemeniz Onaylandı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ia-gQ-2Nb">
-                                        <rect key="frame" x="105" y="209" width="165" height="40"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xi-Q3-HzE">
+                                        <rect key="frame" x="242" y="149" width="81" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="JVG-Tl-ULR"/>
-                                            <constraint firstAttribute="width" constant="165" id="TWy-bd-I71"/>
+                                            <constraint firstAttribute="width" constant="81" id="E7v-ey-OoY"/>
+                                            <constraint firstAttribute="height" constant="21" id="UsK-Gm-4rD"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="6ia-gQ-2Nb" firstAttribute="top" secondItem="IPC-ws-g9C" secondAttribute="bottom" constant="8" id="0W1-ya-kMy"/>
-                                    <constraint firstItem="IPC-ws-g9C" firstAttribute="top" secondItem="whz-6Y-JRo" secondAttribute="top" constant="73" id="2Fe-2q-KiQ"/>
-                                    <constraint firstItem="nrE-g1-1UT" firstAttribute="leading" secondItem="whz-6Y-JRo" secondAttribute="leading" id="Cb7-eG-8xN"/>
-                                    <constraint firstAttribute="bottom" secondItem="nrE-g1-1UT" secondAttribute="bottom" id="EPI-Cz-Otq"/>
-                                    <constraint firstItem="IPC-ws-g9C" firstAttribute="centerX" secondItem="whz-6Y-JRo" secondAttribute="centerX" id="Ibr-1n-83n"/>
-                                    <constraint firstAttribute="trailing" secondItem="nrE-g1-1UT" secondAttribute="trailing" id="cA5-jc-eJR"/>
-                                    <constraint firstItem="6ia-gQ-2Nb" firstAttribute="centerX" secondItem="whz-6Y-JRo" secondAttribute="centerX" id="gMT-VR-qeG"/>
+                                    <constraint firstItem="M69-ms-8S9" firstAttribute="top" secondItem="fj3-wY-gOe" secondAttribute="bottom" constant="50" id="6VQ-iZ-acP"/>
+                                    <constraint firstItem="m4A-mf-U4T" firstAttribute="leading" secondItem="bFq-Mw-2cY" secondAttribute="leading" id="7fn-HR-VMP"/>
+                                    <constraint firstAttribute="trailing" secondItem="fj3-wY-gOe" secondAttribute="trailing" constant="8" id="BDP-VJ-6pA"/>
+                                    <constraint firstItem="fj3-wY-gOe" firstAttribute="leading" secondItem="bFq-Mw-2cY" secondAttribute="leading" constant="8" id="ITJ-eN-WaI"/>
+                                    <constraint firstAttribute="trailing" secondItem="fj3-wY-gOe" secondAttribute="trailing" constant="8" id="Mcm-JE-H3l"/>
+                                    <constraint firstItem="fj3-wY-gOe" firstAttribute="top" secondItem="bFq-Mw-2cY" secondAttribute="top" constant="8" id="PqI-ym-NXy"/>
+                                    <constraint firstItem="4Xi-Q3-HzE" firstAttribute="top" secondItem="M69-ms-8S9" secondAttribute="bottom" constant="13" id="Q2X-Uk-5cA"/>
+                                    <constraint firstAttribute="trailing" secondItem="m4A-mf-U4T" secondAttribute="trailing" id="U3G-aB-Qhw"/>
+                                    <constraint firstItem="CD4-tG-BHH" firstAttribute="centerX" secondItem="bFq-Mw-2cY" secondAttribute="centerX" id="WmO-Kq-e5m"/>
+                                    <constraint firstItem="M69-ms-8S9" firstAttribute="leading" secondItem="bFq-Mw-2cY" secondAttribute="leading" constant="8" id="ZWK-3H-bcp"/>
+                                    <constraint firstItem="CD4-tG-BHH" firstAttribute="top" secondItem="M69-ms-8S9" secondAttribute="bottom" constant="8" id="anX-O1-Qpd"/>
+                                    <constraint firstItem="fj3-wY-gOe" firstAttribute="top" secondItem="bFq-Mw-2cY" secondAttribute="top" constant="8" id="dBf-OW-act"/>
+                                    <constraint firstAttribute="bottom" secondItem="m4A-mf-U4T" secondAttribute="bottom" id="iMo-hy-Syo"/>
+                                    <constraint firstItem="4Xi-Q3-HzE" firstAttribute="leading" secondItem="CD4-tG-BHH" secondAttribute="trailing" constant="8" id="tjr-d4-mRH"/>
+                                    <constraint firstAttribute="trailing" secondItem="M69-ms-8S9" secondAttribute="trailing" constant="8" id="xCH-u8-cQZ"/>
+                                    <constraint firstItem="fj3-wY-gOe" firstAttribute="leading" secondItem="bFq-Mw-2cY" secondAttribute="leading" constant="8" id="xV6-Ce-mnr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -981,12 +993,16 @@
                     <connections>
                         <outlet property="CreditCardNameSurname" destination="5vm-TE-Wq2" id="KZL-c4-WsL"/>
                         <outlet property="CreditCardNo" destination="mfg-Xx-TT3" id="EV5-tI-Zm0"/>
+                        <outlet property="cvcNumarası" destination="TrP-lt-def" id="vl2-Lw-sFu"/>
                         <outlet property="kartBilgileriView" destination="PMR-1V-Cwa" id="VbH-Xj-0o9"/>
+                        <outlet property="kartNameSurname" destination="5vm-TE-Wq2" id="xhf-uk-CHD"/>
+                        <outlet property="kartNumarası" destination="mfg-Xx-TT3" id="drZ-by-TbD"/>
                         <outlet property="monthPickerView" destination="fJy-Pc-oMq" id="LWF-DF-Q10"/>
                         <outlet property="myCollectionView" destination="A2u-VU-HiL" id="FGT-bB-L7z"/>
                         <outlet property="onayView" destination="bFq-Mw-2cY" id="MWd-GJ-xP7"/>
                         <outlet property="onaylandıView" destination="whz-6Y-JRo" id="vFY-tM-IOr"/>
                         <outlet property="sepetView" destination="RXj-Fw-DxI" id="TzB-UL-mho"/>
+                        <outlet property="timeLabel" destination="4Xi-Q3-HzE" id="yvG-Xp-PRW"/>
                         <outlet property="totalPriceLabel" destination="SOU-Rv-fpb" id="3gI-vc-zy2"/>
                         <outlet property="yearPickerView" destination="B7j-tq-J4j" id="BGH-by-BKD"/>
                     </connections>

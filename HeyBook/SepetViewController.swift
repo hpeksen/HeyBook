@@ -18,6 +18,19 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     @IBOutlet weak var onayView: UIView!
     @IBOutlet weak var onaylandıView: UIView!
     
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var kartNameSurname: UITextField!
+    @IBOutlet weak var kartNumarası: UITextField!
+    @IBOutlet weak var cvcNumarası: UITextField!
+    
+    
+    var timer = Timer()
+    let timeInterval : TimeInterval = 0.1
+     var timeCount : TimeInterval = 180.0
+    
+     var odemeWait : TimeInterval = 3.0
+    
     @IBOutlet weak var totalPriceLabel: UILabel!
     var records: [Record] = []
     var book_id = ""
@@ -69,6 +82,14 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         onayView.isHidden = true
         kartBilgileriView.isHidden = true
         onaylandıView.isHidden = true
+        
+        self.kartNameSurname.resignFirstResponder()
+        self.kartNumarası.resignFirstResponder()
+         self.cvcNumarası.resignFirstResponder()
+        
+        
+        
+        
         let urlString = "http://heybook.online/api.php"
         let parameters = ["request": "user_cart",
                           "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
@@ -607,17 +628,102 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
 
     @IBAction func odemeyiOnaylaButton(_ sender: Any) {
-         onayView.isHidden = false
-        kartBilgileriView.isHidden = true
-        sepetView.isHidden = true
-        onaylandıView.isHidden = true
+      
+        if((kartNameSurname.text?.isEmpty)! || (kartNumarası.text?.isEmpty)! || (cvcNumarası.text?.isEmpty)! || mounth.isEmpty || year.isEmpty){
+            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen bütün alanları doldurunuz!", preferredStyle: UIAlertControllerStyle.alert)
+            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(longPressAlert, animated: true, completion: nil)
+            
+        }
+        else {
+            onayView.isHidden = false
+            kartBilgileriView.isHidden = true
+            sepetView.isHidden = true
+            onaylandıView.isHidden = true
+            
+            if !timer.isValid { // Prevent more than one timer on the thread
+                timeLabel.text = timeToString(timeCount) // Change to show clock instead of message
+                timer = Timer.scheduledTimer(timeInterval: timeInterval,
+                                             target: self,
+                                             selector: #selector(SepetViewController.timerDidEnd),
+                                             userInfo: nil,
+                                             repeats: true) // Repeating timer
+                
+                
+            }
+            
+        
+        }
     }
-
+    func timeToString(_ time: TimeInterval) -> String {
+        let minutes = Int(time) / 60
+        let seconds = time - Double(minutes) * 60
+        return String(format:"%02d:%02d", minutes, Int(seconds))
+    }
+    func timerDidEnd(){
+        timeCount -= timeInterval
+        odemeWait -= timeInterval
+        if (timeCount <= 0 &&  onayView.isHidden == false){  // Test for target time reached
+            let longPressAlert = UIAlertController(title: "Hata", message: "Süreniz doldu", preferredStyle: UIAlertControllerStyle.alert)
+            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(longPressAlert, animated: true, completion: nil)
+            timer.invalidate()
+        }
+        else {
+            timeLabel.text = timeToString(timeCount)
+    
+        }
+    }
     @IBAction func dOnaylamaButton(_ sender: Any) {
+        
+        if (!(cvcNumarası.text?.isEmpty)!){
         onaylandıView.isHidden = false
         onayView.isHidden = true
         kartBilgileriView.isHidden = true
         sepetView.isHidden = true
+            print("user id:")
+            print(UserDefaults.standard.value(forKey: "user_id")!)
+            let urlString = "http://heybook.online/api.php"
+            let parameters = ["request": "user_cart-pay",
+                              "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                                "payment_hash": "ok"]
+            
+            Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                response in
+                switch response.result {
+                case .success:
+             
+                    print(response)
+                    
+                    
+                    break
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+//            
+//            var alert: UIAlertView = UIAlertView(title: "Meaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
+//            
+//            
+//            var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+//            loadingIndicator.center = self.view.center;
+//            loadingIndicator.hidesWhenStopped = true
+//            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+//            loadingIndicator.startAnimating();
+//            
+//            alert.setValue(loadingIndicator, forKey: "accessoryView")
+//            loadingIndicator.startAnimating()
+//            
+//            alert.show();
+
+            
+        }
+        else {
+            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen 3D güvenlik şifrenizi giriniz!", preferredStyle: UIAlertControllerStyle.alert)
+            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(longPressAlert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func goToKitaplarim(_ sender: Any) {
@@ -636,6 +742,11 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
     }
     
 
