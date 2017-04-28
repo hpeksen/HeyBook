@@ -621,10 +621,21 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     
     @IBAction func odemeYapButton(_ sender: Any) {
+        
+        if(records.isEmpty) {
+            let longPressAlert = UIAlertController(title: "Mesaj", message: "Sepetinizde kitap bulunmamaktadır.", preferredStyle: UIAlertControllerStyle.alert)
+            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(longPressAlert, animated: true, completion: nil)
+        
+        }
+        else {
+        
         kartBilgileriView.isHidden = false
         sepetView.isHidden = true
          onayView.isHidden = true
         onaylandıView.isHidden = true
+        }
+        
     }
 
     @IBAction func odemeyiOnaylaButton(_ sender: Any) {
