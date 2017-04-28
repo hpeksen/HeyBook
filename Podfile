@@ -9,5 +9,4 @@ pod 'Cosmos', '~> 9.0'
 pod 'Alamofire', '~> 4.4'
 pod 'RNCryptor', '~> 5.0'
 pod 'DLRadioButton', '~> 1.4'
-pod 'DropDown'
 end

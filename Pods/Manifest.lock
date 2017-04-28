@@ -2,7 +2,6 @@ PODS:
   - Alamofire (4.4.0)
   - Cosmos (9.0.0)
   - DLRadioButton (1.4.9)
-  - DropDown (2)
   - RNCryptor (5.0.1)
   - SearchTextField (1.1.0)
   - SideMenu (2.3.0)
@@ -11,7 +10,6 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - Cosmos (~> 9.0)
   - DLRadioButton (~> 1.4)
-  - DropDown
   - RNCryptor (~> 5.0)
   - SearchTextField
   - SideMenu
@@ -20,11 +18,10 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Cosmos: 33eee62b2a0418452aef470f711f83c3ea061b7b
   DLRadioButton: 7bb8a6e3768b572469ace553391ab4d2af6f9c19
-  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   RNCryptor: 2e352a488779d1a9184ab629be22a7c5bc84acb5
   SearchTextField: 5daab6cecfd90e06f9b08b2814593656c0c99f3d
   SideMenu: 43d092cf615cf472f105c5b9867a21beff9fc269
 
-PODFILE CHECKSUM: 59b08430488abd3718acea2b5be981b959595a07
+PODFILE CHECKSUM: 0e3b2977f2b9c405ada40d9f78adeb23c05ad470
 
 COCOAPODS: 1.1.1

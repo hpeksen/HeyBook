@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>DropDown.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-HeyBook.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>30CAF13CF1E455CBCCCF86E28501A0E0</key>
+		<key>2D5BE9B7B30F6F65F805EA008472C27A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5168099F2EBFC99A707C03C9EADE01A5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>80D65B7D6F82D0B010A359268F277537</key>
+		<key>68BC1AEE0C56C33EA003B55123205A06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +62,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A8A366507C7F8DCDE67E7D8019B0527C</key>
+		<key>AD2BD43A57809BF1D1194CA82476BE5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BEC5EC3AB671B025B7505A9A49D7F2A5</key>
+		<key>DCF5C1E9C79D5F5342DF03F922855682</key>
 		<dict>
 			<key>primary</key>
 			<true/>
