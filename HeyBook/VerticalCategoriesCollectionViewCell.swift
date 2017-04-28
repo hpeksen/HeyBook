@@ -78,7 +78,7 @@ extension VerticalCategoriesCollectionViewCell: UICollectionViewDataSource, UISc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontallCellIdentifier", for: indexPath) as! HorizontalCategoriesCollectionViewCell
         
-        cell.categoriesBookName.text = "\(indexPath.section)"
+        cell.categoriesBookName.text = records[indexPath.row].book_title
         cell.categoriesBookRating.rating = Double(records[indexPath.row].star)!
         cell.categoriesBookPrice.text = "\(records[indexPath.row].price) TL"
         cell.categoriesBookAuthor.text = records[indexPath.row].author_title

@@ -7,215 +7,262 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		002CF4A60DF91BF8A2A2B5A380DC34D4 /* RNCryptor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A1067883BCD2C6795CFA2010577401F /* RNCryptor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		015C902B9C0E63DA0519A0D34E10F739 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1172666E6B4D2B7FD474DFF0FC3B6399 /* CosmosSettings.swift */; };
-		03872A302AF60C09654876440ED1CF4E /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168DC0DF1AE6B0AB2F5AC0E4850E9C9 /* SideMenuManager.swift */; };
-		0EC88D04EAE0CD3EFD3C3C89C1B9F45F /* CosmosLocalizedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6144F32E76C70E612FE0563D485BE0C9 /* CosmosLocalizedRating.swift */; };
-		10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DACB990FE314B196F004BC38780398 /* Timeline.swift */; };
-		119F38D4A07BB3B5DBBFD025770CC1CA /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A852425C699950274DCD3FB75CD476 /* SearchTextField.swift */; };
-		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 89E86838528F30EE41AEA9A42C2E0C30 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		25DFA72039CBA011EBA738AA73084A8E /* CosmosSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F1DDFE8FCB9A82D2EDC38DE9B691C /* CosmosSize.swift */; };
-		274042C809FEF3B6BED90AA99C44664F /* Pods-HeyBook-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CFEC1CDB40FA5FEBADDB56C1701FB6 /* Pods-HeyBook-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		28DF26E349A81C3F15C09815D8079E8C /* RNCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 670AC8FF8CA4D54A41F9CB0F9B8DB0FA /* RNCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2629D60F1B863B394E96B7C13C32BB /* TaskDelegate.swift */; };
-		371F422D050761A63F0156F537B8902D /* CosmosDefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216697B7ABD3F5DD32D9A4214108C489 /* CosmosDefaultSettings.swift */; };
-		3DF6ECF23D38E7DA5B5B2B43707F2F4D /* Cosmos-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FA24D42968F1C556921765BC1E1167 /* Cosmos-dummy.m */; };
-		424AD9605CBDCD867083B9820784E0AC /* CosmosText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43920E470881761F34FEBB44D711F9DC /* CosmosText.swift */; };
-		45F546D14166EDEE46371951EC705C03 /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF3FE07E4B503D9A379FD6D0999E1F7 /* CosmosView.swift */; };
-		4F40A9CBB316E7100828F0C6F5714946 /* CosmosTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D1E001739D7C42BDBDE140A9A04022 /* CosmosTouch.swift */; };
-		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F61D6404945CD37D192E18C4C3F44B /* Request.swift */; };
-		553BD1708C0ACED77EA7F663D5C6185D /* RNCryptor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B46546B354857390D7FC86E3ECBA93F6 /* RNCryptor-dummy.m */; };
-		5E7E0B70C0D1CCD0AC694A99E8324ECD /* DLRadioButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2824C920EFC88D6361F1B974F3398061 /* DLRadioButton-dummy.m */; };
-		61200D01A1855D7920CEF835C8BE00B0 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4DAEFB6BEED9B170EBCE7EA9B57BCA /* DispatchQueue+Alamofire.swift */; };
-		62F65AD8DC4F0F9610F4B8B4738EC094 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B23EBCC3AB55A72DB647FC4E9B3956 /* ServerTrustPolicy.swift */; };
-		6AB59189959821052FC03A44024EC73C /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0E2146FD34B1BD78514CB8313F7E2 /* RNCryptor.swift */; };
-		733C6843C06500CD10C287FFCEACAB4A /* Pods-HeyBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EBEB4605B47C15B700B2B28937733F /* Pods-HeyBook-dummy.m */; };
-		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63E97C760CCE466D34FACE6A3E97AE2 /* SessionDelegate.swift */; };
-		7CC5A43D7E1372EB6292FCBC0151A36E /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE6F5C521590A184B34FC3C9001DACE /* CosmosAccessibility.swift */; };
-		7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D92D7186B8C7BA1AE1694C42DAA71C /* Result.swift */; };
-		84116DD709725E60919846D7B1AF714B /* DLRadioButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E1A6E211E228107A0CCE82A5759D56 /* DLRadioButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		870445E17AF25C58A5BDA953151B4096 /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C3EF633B5F3EDFE2D94C1AC0855099D6 /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88BA9FFC474BD7B995A0CEA06FF431F7 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21931876FCBE34B0FEDBB3006CBAD367 /* StarFillMode.swift */; };
-		8D46534F28AA99F2C72604DB13D6FB61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		8F2D8EC348F59816CFDEA65538E3E532 /* DLRadioButton.h in Headers */ = {isa = PBXBuildFile; fileRef = F4454593FAC46BFE0574FBAE5B493CDB /* DLRadioButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		93C6D499A589F8C3548CE94DC14B2DB3 /* SearchTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0203899655B2ADF562930005B91F44 /* SearchTextField-dummy.m */; };
-		99F08F6FE2B165EEBD5E01EDDA176620 /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053F653803F45A9F80F22EABEBA3A30 /* CosmosRating.swift */; };
-		9CBBFEFECD2782A660165F2B3C80AB31 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7AC383C8C659A3B03A89AE9DCB877 /* SideMenuTransition.swift */; };
-		9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2694F2BE7A5EB2EE1296B5CB194C1D /* AFError.swift */; };
+		015C902B9C0E63DA0519A0D34E10F739 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFCE299FBAA093C6005EE4E1AB2E7FF /* CosmosSettings.swift */; };
+		02207C9F6C9A5F0C245BD0CBAA4956BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		02CAE638EF1CEEBD6F5740498F9CA3F8 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E640C4F2873875EAEF51AA751A34B /* DropDown.swift */; };
+		098F056D90AF9CD3FD60D8A81DF043B6 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1F4CB57C9FD06898A42833BAB56AE /* DropDownCell.swift */; };
+		0EC88D04EAE0CD3EFD3C3C89C1B9F45F /* CosmosLocalizedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC676AE5F0C35050E31BC29C08BC7 /* CosmosLocalizedRating.swift */; };
+		10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40BAA281F1B3BEEF13F8BDEE7F44C07 /* Timeline.swift */; };
+		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1791DCDAF747EC796872FE14C5B38A98 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25DFA72039CBA011EBA738AA73084A8E /* CosmosSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209ACFA48FFFB014731E1FAF3C0259AD /* CosmosSize.swift */; };
+		2E7E74DF0C455B0BC43BFDD1D0163E64 /* DropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 25316B5DE81E2D293F9D10412CCB666A /* DropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		349745122E154762C9A54386F4748D7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FE25492FFD91112773F9D622BC110D /* TaskDelegate.swift */; };
+		371F422D050761A63F0156F537B8902D /* CosmosDefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A253D4C8A63CFCFFD95F70FFDBF96 /* CosmosDefaultSettings.swift */; };
+		37C293AEA575D6E5186739D1B07805F2 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90E3D2BE48B6C86CFEBC46B64359C2BD /* DropDownCell.xib */; };
+		3A3D21540CAB58D66BA3AD1B6193AE1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		3DF6ECF23D38E7DA5B5B2B43707F2F4D /* Cosmos-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E02766CFB9392BCA23F000055B75AC95 /* Cosmos-dummy.m */; };
+		424AD9605CBDCD867083B9820784E0AC /* CosmosText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CB79377546124914DC1C66B394442 /* CosmosText.swift */; };
+		442ADADA3215E1E5CA1557E708D4228C /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC191BBF46052448FFB25D7A3DB5255 /* DropDown+Appearance.swift */; };
+		45F546D14166EDEE46371951EC705C03 /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF6BAC5C4C6772906835D26BF1824F4 /* CosmosView.swift */; };
+		4F40A9CBB316E7100828F0C6F5714946 /* CosmosTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA6852411174C513679EE1B46015F7 /* CosmosTouch.swift */; };
+		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCF7C5287B89BFC65D3BD6B8E3EEDF /* Request.swift */; };
+		5E7E0B70C0D1CCD0AC694A99E8324ECD /* DLRadioButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C13F9C6F109EBD2DF89778D7AFB20D5 /* DLRadioButton-dummy.m */; };
+		61200D01A1855D7920CEF835C8BE00B0 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADD3917E665F6224852998D27D1E5C /* DispatchQueue+Alamofire.swift */; };
+		62F65AD8DC4F0F9610F4B8B4738EC094 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD36805D2DDAB6DF9FF210D1E59A759C /* ServerTrustPolicy.swift */; };
+		6C95F9AEA0879ED7D92252B95F266D83 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85F84B152F461709A8C90372C7923E7 /* UITableViewVibrantCell.swift */; };
+		7012D634BAC78EDB0B77E21736C5ABA0 /* Pods-HeyBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EBEB4605B47C15B700B2B28937733F /* Pods-HeyBook-dummy.m */; };
+		782E1C2E18F1AF1B32815A6649714A13 /* RNCryptor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B0F872F52B665FCCD7008664074463 /* RNCryptor-dummy.m */; };
+		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793E77B3B2344D054DAF0FB59CFAD086 /* SessionDelegate.swift */; };
+		7C6BD8B5CC0D4B5D6301CEC108F5F3B6 /* RNCryptor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C84783A9A01F131F0A97BD9AEC8C4902 /* RNCryptor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CC5A43D7E1372EB6292FCBC0151A36E /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DF83A8549906EB0A6F03733E2D4F0 /* CosmosAccessibility.swift */; };
+		7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A89F86ECCBFFAD2409607C4821D17 /* Result.swift */; };
+		84116DD709725E60919846D7B1AF714B /* DLRadioButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1924591C46B3747FD5B616AB3367ADEC /* DLRadioButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88BA9FFC474BD7B995A0CEA06FF431F7 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE63EEB3E5C2E2D2C9D5EF22764CF654 /* StarFillMode.swift */; };
+		8B8B1300CB491EE2A88599719B02EF2E /* SearchTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EE6F276DCC4EA66376EB5FDFC59701 /* SearchTextField-dummy.m */; };
+		8BE0FBCA5C61852DC022E4C506DCA49E /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C73E84C64A4C5CF40E2996D5874B553 /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F2D8EC348F59816CFDEA65538E3E532 /* DLRadioButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F6F3301521D97BC12D9AA2A8BA79F19 /* DLRadioButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		963A358446D41F5A19CFCD92D61ACC11 /* RNCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = BF26028D2D6BFE1FEA011803956051B9 /* RNCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99F08F6FE2B165EEBD5E01EDDA176620 /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE3AC452D7B7DE0F494A92B14C95400 /* CosmosRating.swift */; };
+		9D0221E27E37CDA9DF26DD3CFA56D75B /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF2654D795706A2ED35EBD095D58715 /* DPDKeyboardListener.swift */; };
+		9DAA4939B8EADFC46CD301E82D16D378 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6130DE7EA938D4E4AC4515C14B624A31 /* AFError.swift */; };
 		9F5F331FE1FCE98CADFDD30166D6EE22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		A04BFC558D69E7DBB68023C80A9CFE4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		A16FF63A0423389761415CEBC970C09E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B940BBEBCE7FA891D17FD650A98F90 /* NetworkReachabilityManager.swift */; };
-		A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BC6F25372C66F168FF0A3522673D11 /* Alamofire-dummy.m */; };
-		AA971D9492DD9B9E288045C2C0CC9A99 /* CosmosLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D930BAFF1FAF72700338279DAF693F0 /* CosmosLayers.swift */; };
-		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F31006F9AAAC7F813D8F1244CA54B /* SessionManager.swift */; };
-		B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3783C5B41AC21F58352F4557FEA53 /* MultipartFormData.swift */; };
-		BABC743F7CC6CFC8464230DAB8A0965D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A369315B1BE83324BCA56E7963B54BD /* Validation.swift */; };
-		BD200E86879931952F130C57272C52B1 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087E4EBE8E33155AEBBC11612174D6C /* UITableViewVibrantCell.swift */; };
-		BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E585F50BCF208AC3F7BEA0F03AD9A48 /* ParameterEncoding.swift */; };
-		C79D2F2FCE3EF9B31D1222E0C4A59DC5 /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642590193A378D927DF340B652017B9 /* RightToLeft.swift */; };
-		C95B658D689425ED9DAA95EB479B44A6 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05B1909F6E1810AB20A5EFD2DE7FD9 /* StarLayer.swift */; };
-		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E115293DE91A08D271AF22E0333EA5 /* Response.swift */; };
-		D550F321DDFC0A15F9F876BDB5FA3DB5 /* SearchTextField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 37DB42F406ECA65FE93E8E9DF9B693C4 /* SearchTextField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD24846FC55F1E04E3FDC8330EC152A2 /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD729C1BA83855CDCC5C3DEB39B8556 /* SideMenu-dummy.m */; };
-		DE5E91A47C1BF6869DF17747D61C2FF1 /* Cosmos-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D86B78E7B73A7EF0835A089F3258A824 /* Cosmos-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2D8D1AA0D41C73C4B570DE682C05D72 /* CosmosTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD2B6D4121532E223B1FF730376531 /* CosmosTouchTarget.swift */; };
-		E72E889339CF2309C666E96E66F1370C /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFF5413526EDDFD994B8A9328CB076 /* UISideMenuNavigationController.swift */; };
-		E8CD88A3C3195403E6B2A63F700FC44D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		EF2F59EEA3194DFCFB39352F4DA16D76 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 524B6DDF0C4B63543A310BFEDFF50398 /* DLRadioButton.m */; };
-		EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F0C3FC02BADEA30395D48958CF18 /* Notifications.swift */; };
+		A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3087FF536661BD6517A1A70E43F98 /* NetworkReachabilityManager.swift */; };
+		A401CF18D15DF246F40FAC4E8F06CBC7 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC0118AB49561EE87F93507F73895E7 /* DPDUIView+Extension.swift */; };
+		A614AD31D619058072FE10F4DBBF586B /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D1C2DC0CF487FCCE2C2AA6BA7CD18E /* SideMenu-dummy.m */; };
+		A812E7811821F66B3B7499F6F1B513BA /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96A9C8AF95B03930D94BC45D828813 /* DPDConstants.swift */; };
+		A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E39A067E1B5A8B200A58A64984B2BC /* Alamofire-dummy.m */; };
+		AA971D9492DD9B9E288045C2C0CC9A99 /* CosmosLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADCE38660AC6DB20C8E7B4434F34EE2 /* CosmosLayers.swift */; };
+		AC6581D9387744158B44BE683403C3BC /* DropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5A067EB69CD294F4D67E72DF78B2D3 /* DropDown-dummy.m */; };
+		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE180C6EE6697C90E229ABADD45E007F /* SessionManager.swift */; };
+		AFB9836C73D533C4A4A3D6CCB4E35EE5 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50FDC29443A3472621C20BCB5A9138 /* SideMenuManager.swift */; };
+		B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FCA29131D89447474D52D2F541339 /* MultipartFormData.swift */; };
+		BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EEEAEDD520EB47C84FCF632125C5C0 /* Validation.swift */; };
+		BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93097FE9B525F2AF4257385784901C12 /* ParameterEncoding.swift */; };
+		C1646F62AE955B450E46FB04E857FB7F /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE87C7E70CA117629D60EB69EA05FA /* SearchTextField.swift */; };
+		C79D2F2FCE3EF9B31D1222E0C4A59DC5 /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B892788209977EF54B8C6731980F5 /* RightToLeft.swift */; };
+		C95B658D689425ED9DAA95EB479B44A6 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5612BDFC4F6A4EDA6D59C1E13A76A /* StarLayer.swift */; };
+		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E3D5EEF7FF5E9A58406A5C960F21E /* Response.swift */; };
+		CDE00A642B9DD02414A3E681CAC277AE /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7E0F588243671680CBA64CDEFB4E71 /* SideMenuTransition.swift */; };
+		D5C2C8EA34898BCA96747148537B1446 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		DAA28D789CA46821FD6B6E95AB3F9AC5 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F531AEC0617D45976BE9ED4244C500B /* UISideMenuNavigationController.swift */; };
+		DE5E91A47C1BF6869DF17747D61C2FF1 /* Cosmos-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A8F60D20DE3CC0AB5CB470697A7A0F8A /* Cosmos-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2D8D1AA0D41C73C4B570DE682C05D72 /* CosmosTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD5D5D1DD7ED28478A8F1A84A7863A9 /* CosmosTouchTarget.swift */; };
+		EC73BB1E9CA315078483FBD6A56B4E23 /* SearchTextField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 77AA551A6012DCC1F52B823B806497F7 /* SearchTextField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF2F59EEA3194DFCFB39352F4DA16D76 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE32955598F4A385D80FE2DBFC9CF5D /* DLRadioButton.m */; };
+		EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B973DB77FF186515B5B58DE3FEA9AE /* Notifications.swift */; };
+		F23C18944AD122465EC2DDB9A417AFCF /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96466CF5792615D3CBF9929BC6402D2 /* RNCryptor.swift */; };
 		F37DDDC2660EB17E1BE35429C1C58AD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		F66DE3EF01408C42C115587B201CB541 /* CosmosLayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6489F9D0FFFE35DB6E429AEBB55F5C76 /* CosmosLayerHelper.swift */; };
-		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BA86A07256B4DD768B9F8DF6A6767 /* ResponseSerialization.swift */; };
-		F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C2AB13EFADF9A73D8A368DEA0395F /* Alamofire.swift */; };
+		F66DE3EF01408C42C115587B201CB541 /* CosmosLayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475714D4E05CE0DC23C4199F61A6A499 /* CosmosLayerHelper.swift */; };
+		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D30B182CDF3EE110A868615DAF26DEB /* ResponseSerialization.swift */; };
+		F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB52C88B9AB80731ABEBD77B35DD0A03 /* Alamofire.swift */; };
+		FB7712E3A48265317124616185873033 /* Pods-HeyBook-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CFEC1CDB40FA5FEBADDB56C1701FB6 /* Pods-HeyBook-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		04093E5B125A059F42E0AACDB5375D02 /* PBXContainerItemProxy */ = {
+		0959BB0E319BABCAE59D30455A17F6D9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F6A77E2753C279F67F70C5C21D6FAE15;
 			remoteInfo = DLRadioButton;
 		};
-		044AD5974AAB28E1C72A7334FE38E14E /* PBXContainerItemProxy */ = {
+		21DAE861E9BFA4973E26814C7AD74780 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30CAF13CF1E455CBCCCF86E28501A0E0;
+			remoteInfo = RNCryptor;
+		};
+		6E1C058900404F64117CF0669DB32893 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 88E9EC28B8B46C3631E6B242B50F4442;
 			remoteInfo = Alamofire;
 		};
-		268BB2B553095FC5C9F98F1E0EBE5E35 /* PBXContainerItemProxy */ = {
+		855979C1C3C53CFB2580C5230CAF0FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEC5EC3AB671B025B7505A9A49D7F2A5;
+			remoteInfo = SearchTextField;
+		};
+		9025D70F58536C8C816C3CA447EBA5FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5168099F2EBFC99A707C03C9EADE01A5;
+			remoteInfo = DropDown;
+		};
+		B24152A31B6EDD3E3E98B1B5E3CBE80B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4FDC533A4360A68ABDCE852F04B30927;
 			remoteInfo = Cosmos;
 		};
-		77A730F66AC778B785A9CD25F283E198 /* PBXContainerItemProxy */ = {
+		F6B2CAD87217BCC8161C2AA17383F435 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2D5BE9B7B30F6F65F805EA008472C27A;
-			remoteInfo = RNCryptor;
-		};
-		790BF5267C115D37A49DB5BD665156A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68BC1AEE0C56C33EA003B55123205A06;
+			remoteGlobalIDString = 80D65B7D6F82D0B010A359268F277537;
 			remoteInfo = SideMenu;
-		};
-		C88603917B474E0F74AFFD6A84E3D7D3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD2BD43A57809BF1D1194CA82476BE5E;
-			remoteInfo = SearchTextField;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0087E4EBE8E33155AEBBC11612174D6C /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITableViewVibrantCell.swift; path = Pod/Classes/UITableViewVibrantCell.swift; sourceTree = "<group>"; };
-		02525892F4446A021DD9D45885C30514 /* Cosmos.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Cosmos.modulemap; sourceTree = "<group>"; };
-		06D153F859856692E61DB8D61E0D80CD /* SideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SideMenu.modulemap; sourceTree = "<group>"; };
-		09E5BF6B9D0EDD4CDC37190A1260A01B /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1053F653803F45A9F80F22EABEBA3A30 /* CosmosRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosRating.swift; path = Cosmos/CosmosRating.swift; sourceTree = "<group>"; };
-		1172666E6B4D2B7FD474DFF0FC3B6399 /* CosmosSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosSettings.swift; path = Cosmos/CosmosSettings.swift; sourceTree = "<group>"; };
-		1E585F50BCF208AC3F7BEA0F03AD9A48 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
-		216697B7ABD3F5DD32D9A4214108C489 /* CosmosDefaultSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosDefaultSettings.swift; path = Cosmos/CosmosDefaultSettings.swift; sourceTree = "<group>"; };
+		0935A3C427F757282E8BDCDED0367323 /* RNCryptor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-prefix.pch"; sourceTree = "<group>"; };
+		0A5F1BCB3E2CBA6AEDB5AEBDE4B9E6FE /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		0CA9A7EF4EB6CCC054F8503076BF0635 /* Cosmos.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Cosmos.modulemap; sourceTree = "<group>"; };
+		0D30B182CDF3EE110A868615DAF26DEB /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		0DEBC1A513CCA83E8C02FA67678AD485 /* DropDown.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.xcconfig; sourceTree = "<group>"; };
+		1791DCDAF747EC796872FE14C5B38A98 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		17C3F9AED35D527B7662954AFEECFFE4 /* Cosmos-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-prefix.pch"; sourceTree = "<group>"; };
+		1924591C46B3747FD5B616AB3367ADEC /* DLRadioButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DLRadioButton-umbrella.h"; sourceTree = "<group>"; };
+		1AB14D1AA5B6B8712D2BEB2D28435819 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CFA6852411174C513679EE1B46015F7 /* CosmosTouch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouch.swift; path = Cosmos/CosmosTouch.swift; sourceTree = "<group>"; };
+		209ACFA48FFFB014731E1FAF3C0259AD /* CosmosSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosSize.swift; path = Cosmos/CosmosSize.swift; sourceTree = "<group>"; };
+		20EE6F276DCC4EA66376EB5FDFC59701 /* SearchTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SearchTextField-dummy.m"; sourceTree = "<group>"; };
 		2178E95FF813667177FEFCEB4A52D49F /* Pods-HeyBook-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HeyBook-resources.sh"; sourceTree = "<group>"; };
-		21931876FCBE34B0FEDBB3006CBAD367 /* StarFillMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarFillMode.swift; path = Cosmos/StarFillMode.swift; sourceTree = "<group>"; };
-		21BC6F25372C66F168FF0A3522673D11 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		22D0E2146FD34B1BD78514CB8313F7E2 /* RNCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
-		2824C920EFC88D6361F1B974F3398061 /* DLRadioButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DLRadioButton-dummy.m"; sourceTree = "<group>"; };
-		2A13AA37B2129D79B22C232D55C49157 /* DLRadioButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DLRadioButton-prefix.pch"; sourceTree = "<group>"; };
+		25316B5DE81E2D293F9D10412CCB666A /* DropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-umbrella.h"; sourceTree = "<group>"; };
+		26E3FB8934492E6CC0EC41F7565E4EBC /* DLRadioButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DLRadioButton.framework; path = DLRadioButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		26EEEAEDD520EB47C84FCF632125C5C0 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		2C13F9C6F109EBD2DF89778D7AFB20D5 /* DLRadioButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DLRadioButton-dummy.m"; sourceTree = "<group>"; };
+		2C872442059706E1416E3EB1B06119FE /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		2DFCE299FBAA093C6005EE4E1AB2E7FF /* CosmosSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosSettings.swift; path = Cosmos/CosmosSettings.swift; sourceTree = "<group>"; };
+		2F96A9C8AF95B03930D94BC45D828813 /* DPDConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDConstants.swift; path = DropDown/helpers/DPDConstants.swift; sourceTree = "<group>"; };
 		3390A644106DE7543F27D85647CD8C23 /* Pods-HeyBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HeyBook.release.xcconfig"; sourceTree = "<group>"; };
+		349403A463B268042FA88D21127028DF /* SideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-prefix.pch"; sourceTree = "<group>"; };
 		361D7B7522E20ACA54395EFEAADB17C3 /* Pods-HeyBook.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-HeyBook.modulemap"; sourceTree = "<group>"; };
-		37DB42F406ECA65FE93E8E9DF9B693C4 /* SearchTextField-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SearchTextField-umbrella.h"; sourceTree = "<group>"; };
-		3A369315B1BE83324BCA56E7963B54BD /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		40FA24D42968F1C556921765BC1E1167 /* Cosmos-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cosmos-dummy.m"; sourceTree = "<group>"; };
-		43920E470881761F34FEBB44D711F9DC /* CosmosText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosText.swift; path = Cosmos/CosmosText.swift; sourceTree = "<group>"; };
-		43B7AC383C8C659A3B03A89AE9DCB877 /* SideMenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuTransition.swift; path = Pod/Classes/SideMenuTransition.swift; sourceTree = "<group>"; };
-		43C3BE99F0792159EA2E17DE2736C055 /* Cosmos-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-prefix.pch"; sourceTree = "<group>"; };
-		463707B86D5A146F9BC2C4ED0F060FF5 /* DLRadioButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DLRadioButton.framework; path = DLRadioButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AE6F5C521590A184B34FC3C9001DACE /* CosmosAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosAccessibility.swift; path = Cosmos/CosmosAccessibility.swift; sourceTree = "<group>"; };
-		4D930BAFF1FAF72700338279DAF693F0 /* CosmosLayers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayers.swift; path = Cosmos/CosmosLayers.swift; sourceTree = "<group>"; };
-		4DC3783C5B41AC21F58352F4557FEA53 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
-		4DFDFB6F45F4CD536BBEC05330270199 /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SideMenu.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FCF03AB2CDCC86E1581E98544EC0E23 /* RNCryptor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RNCryptor.framework; path = RNCryptor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		50BD2B6D4121532E223B1FF730376531 /* CosmosTouchTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouchTarget.swift; path = Cosmos/Helpers/CosmosTouchTarget.swift; sourceTree = "<group>"; };
-		524B6DDF0C4B63543A310BFEDFF50398 /* DLRadioButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DLRadioButton.m; path = DLRadioButton/DLRadioButton.m; sourceTree = "<group>"; };
-		57D1E001739D7C42BDBDE140A9A04022 /* CosmosTouch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouch.swift; path = Cosmos/CosmosTouch.swift; sourceTree = "<group>"; };
-		5A4DAEFB6BEED9B170EBCE7EA9B57BCA /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		607F97903CAE82088F40DEAF07782F39 /* DLRadioButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DLRadioButton.modulemap; sourceTree = "<group>"; };
-		61135AA48F85E7A66D6795643C55C8AF /* Cosmos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cosmos.xcconfig; sourceTree = "<group>"; };
-		6144F32E76C70E612FE0563D485BE0C9 /* CosmosLocalizedRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLocalizedRating.swift; path = Cosmos/CosmosLocalizedRating.swift; sourceTree = "<group>"; };
-		642A95579801D5222AF3B6326F7373A3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6489F9D0FFFE35DB6E429AEBB55F5C76 /* CosmosLayerHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayerHelper.swift; path = Cosmos/CosmosLayerHelper.swift; sourceTree = "<group>"; };
-		670AC8FF8CA4D54A41F9CB0F9B8DB0FA /* RNCryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
-		678D2D4316FAD288986F80323DC77071 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CB5612BDFC4F6A4EDA6D59C1E13A76A /* StarLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarLayer.swift; path = Cosmos/StarLayer.swift; sourceTree = "<group>"; };
+		3CD63FC4F2B758CDD23A997A932DF7E4 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cosmos.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D0F8D85AC3F1DDF1354347D819F8196 /* DropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-prefix.pch"; sourceTree = "<group>"; };
+		3D5A067EB69CD294F4D67E72DF78B2D3 /* DropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DropDown-dummy.m"; sourceTree = "<group>"; };
+		3E50FDC29443A3472621C20BCB5A9138 /* SideMenuManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
+		4616A6D04632AC60D229630825EE8A1E /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SideMenu.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		475714D4E05CE0DC23C4199F61A6A499 /* CosmosLayerHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayerHelper.swift; path = Cosmos/CosmosLayerHelper.swift; sourceTree = "<group>"; };
+		477E640C4F2873875EAEF51AA751A34B /* DropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDown.swift; path = DropDown/src/DropDown.swift; sourceTree = "<group>"; };
+		490B892788209977EF54B8C6731980F5 /* RightToLeft.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RightToLeft.swift; path = Cosmos/Helpers/RightToLeft.swift; sourceTree = "<group>"; };
+		4B99D1F10D43B65D5B2E5B7D491EB86C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BC0118AB49561EE87F93507F73895E7 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DPDUIView+Extension.swift"; path = "DropDown/helpers/DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		4ED3087FF536661BD6517A1A70E43F98 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		4F6F3301521D97BC12D9AA2A8BA79F19 /* DLRadioButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DLRadioButton.h; path = DLRadioButton/DLRadioButton.h; sourceTree = "<group>"; };
+		54EA69DD7C4BA057DFDA07B468978A68 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		550401BD90DD661C11F380CA2714F5C5 /* RNCryptor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RNCryptor.framework; path = RNCryptor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58535E433B7986313302632B2428A740 /* SideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SideMenu.modulemap; sourceTree = "<group>"; };
+		5BA870D52371B39B83431CE8BAF0022D /* SearchTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SearchTextField.xcconfig; sourceTree = "<group>"; };
+		5BFCC676AE5F0C35050E31BC29C08BC7 /* CosmosLocalizedRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLocalizedRating.swift; path = Cosmos/CosmosLocalizedRating.swift; sourceTree = "<group>"; };
+		5D5F8B10543223C2013DF03DE70AB396 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		602CB79377546124914DC1C66B394442 /* CosmosText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosText.swift; path = Cosmos/CosmosText.swift; sourceTree = "<group>"; };
+		6130DE7EA938D4E4AC4515C14B624A31 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
+		62B0F872F52B665FCCD7008664074463 /* RNCryptor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RNCryptor-dummy.m"; sourceTree = "<group>"; };
 		683CE8EDEC9184B5DF42876D0BFE1765 /* Pods-HeyBook-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HeyBook-frameworks.sh"; sourceTree = "<group>"; };
-		68B475FAFD25DE5EF35C398D50B84111 /* RNCryptor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-prefix.pch"; sourceTree = "<group>"; };
+		697E3D5EEF7FF5E9A58406A5C960F21E /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		69B873C278930DA6CC80F371417A4C9D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E67E2E2A87F808FBD9DB570A5796598 /* RNCryptor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RNCryptor.xcconfig; sourceTree = "<group>"; };
+		6B750E67E4B9C007181744C3169C9C23 /* DLRadioButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DLRadioButton.modulemap; sourceTree = "<group>"; };
+		6C0FCA29131D89447474D52D2F541339 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		6F497D221BF3ABE953583B5DEE6D8008 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71A6E860E4F8E6898D9FCE06762A6950 /* Pods-HeyBook-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HeyBook-acknowledgements.plist"; sourceTree = "<group>"; };
 		71CFEC1CDB40FA5FEBADDB56C1701FB6 /* Pods-HeyBook-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HeyBook-umbrella.h"; sourceTree = "<group>"; };
-		7642590193A378D927DF340B652017B9 /* RightToLeft.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RightToLeft.swift; path = Cosmos/Helpers/RightToLeft.swift; sourceTree = "<group>"; };
-		7963BD2D6361CDF7A574126D817DCF53 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cosmos.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D59DA2864EF8F985F6C7511B9FD8C37 /* SearchTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SearchTextField-prefix.pch"; sourceTree = "<group>"; };
+		77383FCAA113BB3D9C03EDB265722E15 /* SearchTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SearchTextField.framework; path = SearchTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77AA551A6012DCC1F52B823B806497F7 /* SearchTextField-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SearchTextField-umbrella.h"; sourceTree = "<group>"; };
+		793E77B3B2344D054DAF0FB59CFAD086 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
+		7A5573949819E20D6F6B5092B314D4E5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D07B6F6895897A0A64ADFF7882CF98F /* Pods_HeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HeyBook.framework; path = "Pods-HeyBook.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED7F0B8FE28317D051D29CCD67B4C51 /* Pods-HeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HeyBook.debug.xcconfig"; sourceTree = "<group>"; };
-		80E23455876A5C644C780B91E0D3809E /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		846A0C503632FE24908DDEC19F723670 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		84B940BBEBCE7FA891D17FD650A98F90 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		84EEE4444E0F2D11C11952B2A694E6A2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89E86838528F30EE41AEA9A42C2E0C30 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
-		8A1067883BCD2C6795CFA2010577401F /* RNCryptor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-umbrella.h"; sourceTree = "<group>"; };
-		9168DC0DF1AE6B0AB2F5AC0E4850E9C9 /* SideMenuManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
+		7FEE87C7E70CA117629D60EB69EA05FA /* SearchTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SearchTextField.swift; path = SearchTextField/Classes/SearchTextField.swift; sourceTree = "<group>"; };
+		85519A7693B1D245FE4DE3DED5CFBAA1 /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DropDown.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87AE295D891844050322679680910936 /* RNCryptor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RNCryptor.modulemap; sourceTree = "<group>"; };
+		88E39A067E1B5A8B200A58A64984B2BC /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		8F9A253D4C8A63CFCFFD95F70FFDBF96 /* CosmosDefaultSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosDefaultSettings.swift; path = Cosmos/CosmosDefaultSettings.swift; sourceTree = "<group>"; };
+		9059B8560329643A7CAC3CF6D037CC66 /* DLRadioButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DLRadioButton.xcconfig; sourceTree = "<group>"; };
+		90E3D2BE48B6C86CFEBC46B64359C2BD /* DropDownCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DropDownCell.xib; path = DropDown/resources/DropDownCell.xib; sourceTree = "<group>"; };
+		93097FE9B525F2AF4257385784901C12 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		947250F3E222A98CC705E30B654E8D5D /* Pods_HeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HeyBook.framework; path = "Pods-HeyBook.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9636A3A39E169B27C328223DC7910FED /* SideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.xcconfig; sourceTree = "<group>"; };
 		96EBEB4605B47C15B700B2B28937733F /* Pods-HeyBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HeyBook-dummy.m"; sourceTree = "<group>"; };
-		98B23EBCC3AB55A72DB647FC4E9B3956 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		9B874A7703BF863D713734A4CB01A435 /* RNCryptor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RNCryptor.modulemap; sourceTree = "<group>"; };
-		9F7BD7ADEB05097B85E73DAE38442971 /* SearchTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SearchTextField.xcconfig; sourceTree = "<group>"; };
-		A0EFF5413526EDDFD994B8A9328CB076 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UISideMenuNavigationController.swift; path = Pod/Classes/UISideMenuNavigationController.swift; sourceTree = "<group>"; };
-		A3E1A6E211E228107A0CCE82A5759D56 /* DLRadioButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DLRadioButton-umbrella.h"; sourceTree = "<group>"; };
-		AC2629D60F1B863B394E96B7C13C32BB /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
+		9C73E84C64A4C5CF40E2996D5874B553 /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
+		9F531AEC0617D45976BE9ED4244C500B /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UISideMenuNavigationController.swift; path = Pod/Classes/UISideMenuNavigationController.swift; sourceTree = "<group>"; };
+		A1579FD47B6619953BD93409864E1912 /* SearchTextField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SearchTextField.modulemap; sourceTree = "<group>"; };
+		A7CA871361701DD1833854E1D446C82A /* DLRadioButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DLRadioButton-prefix.pch"; sourceTree = "<group>"; };
+		A8F60D20DE3CC0AB5CB470697A7A0F8A /* Cosmos-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-umbrella.h"; sourceTree = "<group>"; };
+		A96466CF5792615D3CBF9929BC6402D2 /* RNCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
+		A9B3788DF27D6BB45F0A50187D6E02F8 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		AAA1F4CB57C9FD06898A42833BAB56AE /* DropDownCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDownCell.swift; path = DropDown/src/DropDownCell.swift; sourceTree = "<group>"; };
+		AADCE38660AC6DB20C8E7B4434F34EE2 /* CosmosLayers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayers.swift; path = Cosmos/CosmosLayers.swift; sourceTree = "<group>"; };
+		ABF2654D795706A2ED35EBD095D58715 /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDKeyboardListener.swift; path = DropDown/helpers/DPDKeyboardListener.swift; sourceTree = "<group>"; };
 		AC40E5D772F4C78ACDF1728A47F78CC2 /* Pods-HeyBook-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HeyBook-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B06AEC524688BB1F415E4AFED3D02AC2 /* SearchTextField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SearchTextField.modulemap; sourceTree = "<group>"; };
-		B3A852425C699950274DCD3FB75CD476 /* SearchTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SearchTextField.swift; path = SearchTextField/Classes/SearchTextField.swift; sourceTree = "<group>"; };
-		B46546B354857390D7FC86E3ECBA93F6 /* RNCryptor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RNCryptor-dummy.m"; sourceTree = "<group>"; };
-		B4FD4FCF6A53B2525789B3324054A67A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8E115293DE91A08D271AF22E0333EA5 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
-		BC5BA86A07256B4DD768B9F8DF6A6767 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		BEEABBCCE46277EC7F66228E00D917E6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C208477A8D0D3AFD357B9C5017433C7F /* SearchTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SearchTextField.framework; path = SearchTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3EF633B5F3EDFE2D94C1AC0855099D6 /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
-		C53F31006F9AAAC7F813D8F1244CA54B /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
-		C7D92D7186B8C7BA1AE1694C42DAA71C /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
-		C8DACB990FE314B196F004BC38780398 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		AE63EEB3E5C2E2D2C9D5EF22764CF654 /* StarFillMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarFillMode.swift; path = Cosmos/StarFillMode.swift; sourceTree = "<group>"; };
+		AF49E18C7B8CD16BAC1940A4DBDAC6F3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B52DF83A8549906EB0A6F03733E2D4F0 /* CosmosAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosAccessibility.swift; path = Cosmos/CosmosAccessibility.swift; sourceTree = "<group>"; };
+		B7D1C2DC0CF487FCCE2C2AA6BA7CD18E /* SideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SideMenu-dummy.m"; sourceTree = "<group>"; };
+		BAE3AC452D7B7DE0F494A92B14C95400 /* CosmosRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosRating.swift; path = Cosmos/CosmosRating.swift; sourceTree = "<group>"; };
+		BDC191BBF46052448FFB25D7A3DB5255 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DropDown+Appearance.swift"; path = "DropDown/src/DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		BE7E0F588243671680CBA64CDEFB4E71 /* SideMenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuTransition.swift; path = Pod/Classes/SideMenuTransition.swift; sourceTree = "<group>"; };
+		BF26028D2D6BFE1FEA011803956051B9 /* RNCryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
+		C474CB41B639D6D5BFF7C62FC0E6CDBA /* SideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.xcconfig; sourceTree = "<group>"; };
+		C49EB0473E317A08A48C5BC76BE1E0B1 /* Cosmos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cosmos.xcconfig; sourceTree = "<group>"; };
+		C84783A9A01F131F0A97BD9AEC8C4902 /* RNCryptor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-umbrella.h"; sourceTree = "<group>"; };
+		CB52C88B9AB80731ABEBD77B35DD0A03 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CEF3FE07E4B503D9A379FD6D0999E1F7 /* CosmosView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosView.swift; path = Cosmos/CosmosView.swift; sourceTree = "<group>"; };
-		D41C2AB13EFADF9A73D8A368DEA0395F /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		D782F0C3FC02BADEA30395D48958CF18 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		D86B78E7B73A7EF0835A089F3258A824 /* Cosmos-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-umbrella.h"; sourceTree = "<group>"; };
-		DBDE1D84149B95B505CEA0CF5C45044B /* SideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-prefix.pch"; sourceTree = "<group>"; };
-		E0A9F43A3E54D8BF80473DB9AC1EDE3C /* DLRadioButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DLRadioButton.xcconfig; sourceTree = "<group>"; };
-		E6F61D6404945CD37D192E18C4C3F44B /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		EAD729C1BA83855CDCC5C3DEB39B8556 /* SideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SideMenu-dummy.m"; sourceTree = "<group>"; };
-		EC027F3E132087BBDB9163F7804AE37A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC05B1909F6E1810AB20A5EFD2DE7FD9 /* StarLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarLayer.swift; path = Cosmos/StarLayer.swift; sourceTree = "<group>"; };
-		ED0203899655B2ADF562930005B91F44 /* SearchTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SearchTextField-dummy.m"; sourceTree = "<group>"; };
-		F4454593FAC46BFE0574FBAE5B493CDB /* DLRadioButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DLRadioButton.h; path = DLRadioButton/DLRadioButton.h; sourceTree = "<group>"; };
-		F47F1DDFE8FCB9A82D2EDC38DE9B691C /* CosmosSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosSize.swift; path = Cosmos/CosmosSize.swift; sourceTree = "<group>"; };
-		F63E97C760CCE466D34FACE6A3E97AE2 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		F93F1FB9DDD218D694945670EE6E74FD /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
-		FF2694F2BE7A5EB2EE1296B5CB194C1D /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
+		D00A89F86ECCBFFAD2409607C4821D17 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		D6BCF7C5287B89BFC65D3BD6B8E3EEDF /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		D85F84B152F461709A8C90372C7923E7 /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITableViewVibrantCell.swift; path = Pod/Classes/UITableViewVibrantCell.swift; sourceTree = "<group>"; };
+		E02766CFB9392BCA23F000055B75AC95 /* Cosmos-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cosmos-dummy.m"; sourceTree = "<group>"; };
+		E40BAA281F1B3BEEF13F8BDEE7F44C07 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		E6ADD3917E665F6224852998D27D1E5C /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		E7B973DB77FF186515B5B58DE3FEA9AE /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		EDE32955598F4A385D80FE2DBFC9CF5D /* DLRadioButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DLRadioButton.m; path = DLRadioButton/DLRadioButton.m; sourceTree = "<group>"; };
+		EDF6BAC5C4C6772906835D26BF1824F4 /* CosmosView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosView.swift; path = Cosmos/CosmosView.swift; sourceTree = "<group>"; };
+		EF9DADB122E118B20CFA7BC867980F06 /* RNCryptor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RNCryptor.xcconfig; sourceTree = "<group>"; };
+		F2A81BA16F27EDD2BA1D87950292F45C /* DropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DropDown.modulemap; sourceTree = "<group>"; };
+		F7FE25492FFD91112773F9D622BC110D /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
+		F95DA2C34360C383E3560E53B41ADA8E /* SearchTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SearchTextField-prefix.pch"; sourceTree = "<group>"; };
+		FB5850AB3CCD1B6CDBEAE7FA3E36C566 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCD5D5D1DD7ED28478A8F1A84A7863A9 /* CosmosTouchTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouchTarget.swift; path = Cosmos/Helpers/CosmosTouchTarget.swift; sourceTree = "<group>"; };
+		FD36805D2DDAB6DF9FF210D1E59A759C /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		FE180C6EE6697C90E229ABADD45E007F /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0569123D889AED3A967C9DBE196D31F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A3D21540CAB58D66BA3AD1B6193AE1D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B2A54E7F1CDAD18FE86B5467C1EBB28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02207C9F6C9A5F0C245BD0CBAA4956BE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23E1D2C8911A1F4127AF93A478D985B5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,19 +271,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA9E906A0F15A1F0FA1E63879EF5CE0 /* Frameworks */ = {
+		3FE28484C632D94C9779E4E74AE0BD29 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8CD88A3C3195403E6B2A63F700FC44D /* Foundation.framework in Frameworks */,
+				9DAA4939B8EADFC46CD301E82D16D378 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5E49AF8A2122D649291A0C0FB66F029C /* Frameworks */ = {
+		79F06BD6227D1C6656375338E860A226 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A16FF63A0423389761415CEBC970C09E /* Foundation.framework in Frameworks */,
+				D5C2C8EA34898BCA96747148537B1446 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,101 +303,142 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB8550B6D23260C8F9A6440E7EB5F4C5 /* Frameworks */ = {
+		B9D306933C53FADA014C6409689D33F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D46534F28AA99F2C72604DB13D6FB61 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA61DD4D7E8FB4CDED1E21F989DAF181 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BABC743F7CC6CFC8464230DAB8A0965D /* Foundation.framework in Frameworks */,
+				349745122E154762C9A54386F4748D7D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		17DE732FB1B52820929511E29C52AB45 /* SideMenu */ = {
+		0585E8B3657B5FA09C8D8479CEE30E76 /* DropDown */ = {
 			isa = PBXGroup;
 			children = (
-				9168DC0DF1AE6B0AB2F5AC0E4850E9C9 /* SideMenuManager.swift */,
-				43B7AC383C8C659A3B03A89AE9DCB877 /* SideMenuTransition.swift */,
-				A0EFF5413526EDDFD994B8A9328CB076 /* UISideMenuNavigationController.swift */,
-				0087E4EBE8E33155AEBBC11612174D6C /* UITableViewVibrantCell.swift */,
-				CEF18E46A4C3B6677E2D5D0CFFEF9749 /* Support Files */,
+				2F96A9C8AF95B03930D94BC45D828813 /* DPDConstants.swift */,
+				ABF2654D795706A2ED35EBD095D58715 /* DPDKeyboardListener.swift */,
+				4BC0118AB49561EE87F93507F73895E7 /* DPDUIView+Extension.swift */,
+				477E640C4F2873875EAEF51AA751A34B /* DropDown.swift */,
+				BDC191BBF46052448FFB25D7A3DB5255 /* DropDown+Appearance.swift */,
+				AAA1F4CB57C9FD06898A42833BAB56AE /* DropDownCell.swift */,
+				3FB14DF2B8AF3326E40DB81BAB7695FD /* Resources */,
+				93C62DA44E75F82B27BB6D54730E6094 /* Support Files */,
 			);
-			name = SideMenu;
-			path = SideMenu;
+			name = DropDown;
+			path = DropDown;
 			sourceTree = "<group>";
 		};
-		4263E23C8F753BAC0802F79A6AE82BC4 /* Support Files */ = {
+		23CBEF33D1E80A3E3D920081CBEA73D8 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EC027F3E132087BBDB9163F7804AE37A /* Info.plist */,
-				B06AEC524688BB1F415E4AFED3D02AC2 /* SearchTextField.modulemap */,
-				9F7BD7ADEB05097B85E73DAE38442971 /* SearchTextField.xcconfig */,
-				ED0203899655B2ADF562930005B91F44 /* SearchTextField-dummy.m */,
-				7D59DA2864EF8F985F6C7511B9FD8C37 /* SearchTextField-prefix.pch */,
-				37DB42F406ECA65FE93E8E9DF9B693C4 /* SearchTextField-umbrella.h */,
+				7A5573949819E20D6F6B5092B314D4E5 /* Info.plist */,
+				A1579FD47B6619953BD93409864E1912 /* SearchTextField.modulemap */,
+				5BA870D52371B39B83431CE8BAF0022D /* SearchTextField.xcconfig */,
+				20EE6F276DCC4EA66376EB5FDFC59701 /* SearchTextField-dummy.m */,
+				F95DA2C34360C383E3560E53B41ADA8E /* SearchTextField-prefix.pch */,
+				77AA551A6012DCC1F52B823B806497F7 /* SearchTextField-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SearchTextField";
 			sourceTree = "<group>";
 		};
-		47433906EDC3B7C5913B3B9B29B18D42 /* Support Files */ = {
+		35281BFF34F45D9F714B9CEDCC392690 /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
-				F93F1FB9DDD218D694945670EE6E74FD /* Alamofire.modulemap */,
-				846A0C503632FE24908DDEC19F723670 /* Alamofire.xcconfig */,
-				21BC6F25372C66F168FF0A3522673D11 /* Alamofire-dummy.m */,
-				80E23455876A5C644C780B91E0D3809E /* Alamofire-prefix.pch */,
-				89E86838528F30EE41AEA9A42C2E0C30 /* Alamofire-umbrella.h */,
-				642A95579801D5222AF3B6326F7373A3 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
-			sourceTree = "<group>";
-		};
-		52C8D0310874702C9729FA7394BA65D7 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				FF2694F2BE7A5EB2EE1296B5CB194C1D /* AFError.swift */,
-				D41C2AB13EFADF9A73D8A368DEA0395F /* Alamofire.swift */,
-				5A4DAEFB6BEED9B170EBCE7EA9B57BCA /* DispatchQueue+Alamofire.swift */,
-				4DC3783C5B41AC21F58352F4557FEA53 /* MultipartFormData.swift */,
-				84B940BBEBCE7FA891D17FD650A98F90 /* NetworkReachabilityManager.swift */,
-				D782F0C3FC02BADEA30395D48958CF18 /* Notifications.swift */,
-				1E585F50BCF208AC3F7BEA0F03AD9A48 /* ParameterEncoding.swift */,
-				E6F61D6404945CD37D192E18C4C3F44B /* Request.swift */,
-				B8E115293DE91A08D271AF22E0333EA5 /* Response.swift */,
-				BC5BA86A07256B4DD768B9F8DF6A6767 /* ResponseSerialization.swift */,
-				C7D92D7186B8C7BA1AE1694C42DAA71C /* Result.swift */,
-				98B23EBCC3AB55A72DB647FC4E9B3956 /* ServerTrustPolicy.swift */,
-				F63E97C760CCE466D34FACE6A3E97AE2 /* SessionDelegate.swift */,
-				C53F31006F9AAAC7F813D8F1244CA54B /* SessionManager.swift */,
-				AC2629D60F1B863B394E96B7C13C32BB /* TaskDelegate.swift */,
-				C8DACB990FE314B196F004BC38780398 /* Timeline.swift */,
-				3A369315B1BE83324BCA56E7963B54BD /* Validation.swift */,
-				47433906EDC3B7C5913B3B9B29B18D42 /* Support Files */,
+				6130DE7EA938D4E4AC4515C14B624A31 /* AFError.swift */,
+				CB52C88B9AB80731ABEBD77B35DD0A03 /* Alamofire.swift */,
+				E6ADD3917E665F6224852998D27D1E5C /* DispatchQueue+Alamofire.swift */,
+				6C0FCA29131D89447474D52D2F541339 /* MultipartFormData.swift */,
+				4ED3087FF536661BD6517A1A70E43F98 /* NetworkReachabilityManager.swift */,
+				E7B973DB77FF186515B5B58DE3FEA9AE /* Notifications.swift */,
+				93097FE9B525F2AF4257385784901C12 /* ParameterEncoding.swift */,
+				D6BCF7C5287B89BFC65D3BD6B8E3EEDF /* Request.swift */,
+				697E3D5EEF7FF5E9A58406A5C960F21E /* Response.swift */,
+				0D30B182CDF3EE110A868615DAF26DEB /* ResponseSerialization.swift */,
+				D00A89F86ECCBFFAD2409607C4821D17 /* Result.swift */,
+				FD36805D2DDAB6DF9FF210D1E59A759C /* ServerTrustPolicy.swift */,
+				793E77B3B2344D054DAF0FB59CFAD086 /* SessionDelegate.swift */,
+				FE180C6EE6697C90E229ABADD45E007F /* SessionManager.swift */,
+				F7FE25492FFD91112773F9D622BC110D /* TaskDelegate.swift */,
+				E40BAA281F1B3BEEF13F8BDEE7F44C07 /* Timeline.swift */,
+				26EEEAEDD520EB47C84FCF632125C5C0 /* Validation.swift */,
+				3742F6C21715E482E0B2DB9A7B743C15 /* Support Files */,
 			);
 			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
-		5816D551B47479AFE44B5A61584BC9ED /* RNCryptor */ = {
+		3742F6C21715E482E0B2DB9A7B743C15 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				670AC8FF8CA4D54A41F9CB0F9B8DB0FA /* RNCryptor.h */,
-				22D0E2146FD34B1BD78514CB8313F7E2 /* RNCryptor.swift */,
-				D35FD7A7FB7438ABB92C0544D8A6E468 /* Support Files */,
+				A9B3788DF27D6BB45F0A50187D6E02F8 /* Alamofire.modulemap */,
+				0A5F1BCB3E2CBA6AEDB5AEBDE4B9E6FE /* Alamofire.xcconfig */,
+				88E39A067E1B5A8B200A58A64984B2BC /* Alamofire-dummy.m */,
+				2C872442059706E1416E3EB1B06119FE /* Alamofire-prefix.pch */,
+				1791DCDAF747EC796872FE14C5B38A98 /* Alamofire-umbrella.h */,
+				AF49E18C7B8CD16BAC1940A4DBDAC6F3 /* Info.plist */,
 			);
-			name = RNCryptor;
-			path = RNCryptor;
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
+		3F0B57871A66C5E667DB296B4FDB6F8A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0CA9A7EF4EB6CCC054F8503076BF0635 /* Cosmos.modulemap */,
+				C49EB0473E317A08A48C5BC76BE1E0B1 /* Cosmos.xcconfig */,
+				E02766CFB9392BCA23F000055B75AC95 /* Cosmos-dummy.m */,
+				17C3F9AED35D527B7662954AFEECFFE4 /* Cosmos-prefix.pch */,
+				A8F60D20DE3CC0AB5CB470697A7A0F8A /* Cosmos-umbrella.h */,
+				6F497D221BF3ABE953583B5DEE6D8008 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Cosmos";
+			sourceTree = "<group>";
+		};
+		3FB14DF2B8AF3326E40DB81BAB7695FD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				90E3D2BE48B6C86CFEBC46B64359C2BD /* DropDownCell.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		486F0BAA35DED91AA8B8653163710421 /* DLRadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				4F6F3301521D97BC12D9AA2A8BA79F19 /* DLRadioButton.h */,
+				EDE32955598F4A385D80FE2DBFC9CF5D /* DLRadioButton.m */,
+				A5CB06642FDD5245A417104A92FE6F02 /* Support Files */,
+			);
+			name = DLRadioButton;
+			path = DLRadioButton;
+			sourceTree = "<group>";
+		};
+		5A8633405DAE9B4480BFE6354E2BE3C1 /* Cosmos */ = {
+			isa = PBXGroup;
+			children = (
+				B52DF83A8549906EB0A6F03733E2D4F0 /* CosmosAccessibility.swift */,
+				8F9A253D4C8A63CFCFFD95F70FFDBF96 /* CosmosDefaultSettings.swift */,
+				475714D4E05CE0DC23C4199F61A6A499 /* CosmosLayerHelper.swift */,
+				AADCE38660AC6DB20C8E7B4434F34EE2 /* CosmosLayers.swift */,
+				5BFCC676AE5F0C35050E31BC29C08BC7 /* CosmosLocalizedRating.swift */,
+				BAE3AC452D7B7DE0F494A92B14C95400 /* CosmosRating.swift */,
+				2DFCE299FBAA093C6005EE4E1AB2E7FF /* CosmosSettings.swift */,
+				209ACFA48FFFB014731E1FAF3C0259AD /* CosmosSize.swift */,
+				602CB79377546124914DC1C66B394442 /* CosmosText.swift */,
+				1CFA6852411174C513679EE1B46015F7 /* CosmosTouch.swift */,
+				FCD5D5D1DD7ED28478A8F1A84A7863A9 /* CosmosTouchTarget.swift */,
+				EDF6BAC5C4C6772906835D26BF1824F4 /* CosmosView.swift */,
+				490B892788209977EF54B8C6731980F5 /* RightToLeft.swift */,
+				AE63EEB3E5C2E2D2C9D5EF22764CF654 /* StarFillMode.swift */,
+				3CB5612BDFC4F6A4EDA6D59C1E13A76A /* StarLayer.swift */,
+				3F0B57871A66C5E667DB296B4FDB6F8A /* Support Files */,
+			);
+			name = Cosmos;
+			path = Cosmos;
 			sourceTree = "<group>";
 		};
 		5B2E0E7EFA39B22E97C9DCCFE82C616D /* Pods-HeyBook */ = {
@@ -371,14 +459,28 @@
 			path = "Target Support Files/Pods-HeyBook";
 			sourceTree = "<group>";
 		};
-		6017A789C7E14707B019D115E3898471 /* SearchTextField */ = {
+		5B7B8B797BD390B7586EC92597930F6B /* SearchTextField */ = {
 			isa = PBXGroup;
 			children = (
-				B3A852425C699950274DCD3FB75CD476 /* SearchTextField.swift */,
-				4263E23C8F753BAC0802F79A6AE82BC4 /* Support Files */,
+				7FEE87C7E70CA117629D60EB69EA05FA /* SearchTextField.swift */,
+				23CBEF33D1E80A3E3D920081CBEA73D8 /* Support Files */,
 			);
 			name = SearchTextField;
 			path = SearchTextField;
+			sourceTree = "<group>";
+		};
+		5F903935786A6EDFCC410CE0F6D6DE46 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1AB14D1AA5B6B8712D2BEB2D28435819 /* Info.plist */,
+				87AE295D891844050322679680910936 /* RNCryptor.modulemap */,
+				EF9DADB122E118B20CFA7BC867980F06 /* RNCryptor.xcconfig */,
+				62B0F872F52B665FCCD7008664074463 /* RNCryptor-dummy.m */,
+				0935A3C427F757282E8BDCDED0367323 /* RNCryptor-prefix.pch */,
+				C84783A9A01F131F0A97BD9AEC8C4902 /* RNCryptor-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RNCryptor";
 			sourceTree = "<group>";
 		};
 		663CFA0D844B8A3B5B3F186CB8684CA5 /* Targets Support Files */ = {
@@ -397,91 +499,67 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		76504B916A26E59171445869CEFE5B5C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				35281BFF34F45D9F714B9CEDCC392690 /* Alamofire */,
+				5A8633405DAE9B4480BFE6354E2BE3C1 /* Cosmos */,
+				486F0BAA35DED91AA8B8653163710421 /* DLRadioButton */,
+				0585E8B3657B5FA09C8D8479CEE30E76 /* DropDown */,
+				D790CFA14F2085FC09295A80B26F4B2B /* RNCryptor */,
+				5B7B8B797BD390B7586EC92597930F6B /* SearchTextField */,
+				79F55AE69FE45FC4B8F9EF341E884000 /* SideMenu */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		79F55AE69FE45FC4B8F9EF341E884000 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				3E50FDC29443A3472621C20BCB5A9138 /* SideMenuManager.swift */,
+				BE7E0F588243671680CBA64CDEFB4E71 /* SideMenuTransition.swift */,
+				9F531AEC0617D45976BE9ED4244C500B /* UISideMenuNavigationController.swift */,
+				D85F84B152F461709A8C90372C7923E7 /* UITableViewVibrantCell.swift */,
+				EC25A099EBD12E73DFB4F2BA58009F2D /* Support Files */,
+			);
+			name = SideMenu;
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				8761601DE0925F245D96D25492B7A572 /* Pods */,
-				840D8ADD1B64ED2E30E6AB3B40331019 /* Products */,
+				76504B916A26E59171445869CEFE5B5C /* Pods */,
+				F19BB26969737AA6322531FA8EB6F650 /* Products */,
 				663CFA0D844B8A3B5B3F186CB8684CA5 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		7E3EE95742B2682F31746FFDEA46DC00 /* Cosmos */ = {
+		93C62DA44E75F82B27BB6D54730E6094 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4AE6F5C521590A184B34FC3C9001DACE /* CosmosAccessibility.swift */,
-				216697B7ABD3F5DD32D9A4214108C489 /* CosmosDefaultSettings.swift */,
-				6489F9D0FFFE35DB6E429AEBB55F5C76 /* CosmosLayerHelper.swift */,
-				4D930BAFF1FAF72700338279DAF693F0 /* CosmosLayers.swift */,
-				6144F32E76C70E612FE0563D485BE0C9 /* CosmosLocalizedRating.swift */,
-				1053F653803F45A9F80F22EABEBA3A30 /* CosmosRating.swift */,
-				1172666E6B4D2B7FD474DFF0FC3B6399 /* CosmosSettings.swift */,
-				F47F1DDFE8FCB9A82D2EDC38DE9B691C /* CosmosSize.swift */,
-				43920E470881761F34FEBB44D711F9DC /* CosmosText.swift */,
-				57D1E001739D7C42BDBDE140A9A04022 /* CosmosTouch.swift */,
-				50BD2B6D4121532E223B1FF730376531 /* CosmosTouchTarget.swift */,
-				CEF3FE07E4B503D9A379FD6D0999E1F7 /* CosmosView.swift */,
-				7642590193A378D927DF340B652017B9 /* RightToLeft.swift */,
-				21931876FCBE34B0FEDBB3006CBAD367 /* StarFillMode.swift */,
-				EC05B1909F6E1810AB20A5EFD2DE7FD9 /* StarLayer.swift */,
-				8CC351D9B500A0F8BC2B025BAAF28205 /* Support Files */,
-			);
-			name = Cosmos;
-			path = Cosmos;
-			sourceTree = "<group>";
-		};
-		840D8ADD1B64ED2E30E6AB3B40331019 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				09E5BF6B9D0EDD4CDC37190A1260A01B /* Alamofire.framework */,
-				7963BD2D6361CDF7A574126D817DCF53 /* Cosmos.framework */,
-				463707B86D5A146F9BC2C4ED0F060FF5 /* DLRadioButton.framework */,
-				947250F3E222A98CC705E30B654E8D5D /* Pods_HeyBook.framework */,
-				4FCF03AB2CDCC86E1581E98544EC0E23 /* RNCryptor.framework */,
-				C208477A8D0D3AFD357B9C5017433C7F /* SearchTextField.framework */,
-				4DFDFB6F45F4CD536BBEC05330270199 /* SideMenu.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		8761601DE0925F245D96D25492B7A572 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				52C8D0310874702C9729FA7394BA65D7 /* Alamofire */,
-				7E3EE95742B2682F31746FFDEA46DC00 /* Cosmos */,
-				EFB87EE7D2B837A885D92BEA585D60A5 /* DLRadioButton */,
-				5816D551B47479AFE44B5A61584BC9ED /* RNCryptor */,
-				6017A789C7E14707B019D115E3898471 /* SearchTextField */,
-				17DE732FB1B52820929511E29C52AB45 /* SideMenu */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		8CC351D9B500A0F8BC2B025BAAF28205 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				02525892F4446A021DD9D45885C30514 /* Cosmos.modulemap */,
-				61135AA48F85E7A66D6795643C55C8AF /* Cosmos.xcconfig */,
-				40FA24D42968F1C556921765BC1E1167 /* Cosmos-dummy.m */,
-				43C3BE99F0792159EA2E17DE2736C055 /* Cosmos-prefix.pch */,
-				D86B78E7B73A7EF0835A089F3258A824 /* Cosmos-umbrella.h */,
-				678D2D4316FAD288986F80323DC77071 /* Info.plist */,
+				F2A81BA16F27EDD2BA1D87950292F45C /* DropDown.modulemap */,
+				0DEBC1A513CCA83E8C02FA67678AD485 /* DropDown.xcconfig */,
+				3D5A067EB69CD294F4D67E72DF78B2D3 /* DropDown-dummy.m */,
+				3D0F8D85AC3F1DDF1354347D819F8196 /* DropDown-prefix.pch */,
+				25316B5DE81E2D293F9D10412CCB666A /* DropDown-umbrella.h */,
+				FB5850AB3CCD1B6CDBEAE7FA3E36C566 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Cosmos";
+			path = "../Target Support Files/DropDown";
 			sourceTree = "<group>";
 		};
-		9CD5AF05B950CE48F2244D0428E81CBC /* Support Files */ = {
+		A5CB06642FDD5245A417104A92FE6F02 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				607F97903CAE82088F40DEAF07782F39 /* DLRadioButton.modulemap */,
-				E0A9F43A3E54D8BF80473DB9AC1EDE3C /* DLRadioButton.xcconfig */,
-				2824C920EFC88D6361F1B974F3398061 /* DLRadioButton-dummy.m */,
-				2A13AA37B2129D79B22C232D55C49157 /* DLRadioButton-prefix.pch */,
-				A3E1A6E211E228107A0CCE82A5759D56 /* DLRadioButton-umbrella.h */,
-				BEEABBCCE46277EC7F66228E00D917E6 /* Info.plist */,
+				6B750E67E4B9C007181744C3169C9C23 /* DLRadioButton.modulemap */,
+				9059B8560329643A7CAC3CF6D037CC66 /* DLRadioButton.xcconfig */,
+				2C13F9C6F109EBD2DF89778D7AFB20D5 /* DLRadioButton-dummy.m */,
+				A7CA871361701DD1833854E1D446C82A /* DLRadioButton-prefix.pch */,
+				1924591C46B3747FD5B616AB3367ADEC /* DLRadioButton-umbrella.h */,
+				4B99D1F10D43B65D5B2E5B7D491EB86C /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/DLRadioButton";
@@ -495,48 +573,57 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CEF18E46A4C3B6677E2D5D0CFFEF9749 /* Support Files */ = {
+		D790CFA14F2085FC09295A80B26F4B2B /* RNCryptor */ = {
 			isa = PBXGroup;
 			children = (
-				B4FD4FCF6A53B2525789B3324054A67A /* Info.plist */,
-				06D153F859856692E61DB8D61E0D80CD /* SideMenu.modulemap */,
-				9636A3A39E169B27C328223DC7910FED /* SideMenu.xcconfig */,
-				EAD729C1BA83855CDCC5C3DEB39B8556 /* SideMenu-dummy.m */,
-				DBDE1D84149B95B505CEA0CF5C45044B /* SideMenu-prefix.pch */,
-				C3EF633B5F3EDFE2D94C1AC0855099D6 /* SideMenu-umbrella.h */,
+				BF26028D2D6BFE1FEA011803956051B9 /* RNCryptor.h */,
+				A96466CF5792615D3CBF9929BC6402D2 /* RNCryptor.swift */,
+				5F903935786A6EDFCC410CE0F6D6DE46 /* Support Files */,
+			);
+			name = RNCryptor;
+			path = RNCryptor;
+			sourceTree = "<group>";
+		};
+		EC25A099EBD12E73DFB4F2BA58009F2D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D5F8B10543223C2013DF03DE70AB396 /* Info.plist */,
+				58535E433B7986313302632B2428A740 /* SideMenu.modulemap */,
+				C474CB41B639D6D5BFF7C62FC0E6CDBA /* SideMenu.xcconfig */,
+				B7D1C2DC0CF487FCCE2C2AA6BA7CD18E /* SideMenu-dummy.m */,
+				349403A463B268042FA88D21127028DF /* SideMenu-prefix.pch */,
+				9C73E84C64A4C5CF40E2996D5874B553 /* SideMenu-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SideMenu";
 			sourceTree = "<group>";
 		};
-		D35FD7A7FB7438ABB92C0544D8A6E468 /* Support Files */ = {
+		F19BB26969737AA6322531FA8EB6F650 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84EEE4444E0F2D11C11952B2A694E6A2 /* Info.plist */,
-				9B874A7703BF863D713734A4CB01A435 /* RNCryptor.modulemap */,
-				6E67E2E2A87F808FBD9DB570A5796598 /* RNCryptor.xcconfig */,
-				B46546B354857390D7FC86E3ECBA93F6 /* RNCryptor-dummy.m */,
-				68B475FAFD25DE5EF35C398D50B84111 /* RNCryptor-prefix.pch */,
-				8A1067883BCD2C6795CFA2010577401F /* RNCryptor-umbrella.h */,
+				54EA69DD7C4BA057DFDA07B468978A68 /* Alamofire.framework */,
+				3CD63FC4F2B758CDD23A997A932DF7E4 /* Cosmos.framework */,
+				26E3FB8934492E6CC0EC41F7565E4EBC /* DLRadioButton.framework */,
+				85519A7693B1D245FE4DE3DED5CFBAA1 /* DropDown.framework */,
+				7D07B6F6895897A0A64ADFF7882CF98F /* Pods_HeyBook.framework */,
+				550401BD90DD661C11F380CA2714F5C5 /* RNCryptor.framework */,
+				77383FCAA113BB3D9C03EDB265722E15 /* SearchTextField.framework */,
+				4616A6D04632AC60D229630825EE8A1E /* SideMenu.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/RNCryptor";
-			sourceTree = "<group>";
-		};
-		EFB87EE7D2B837A885D92BEA585D60A5 /* DLRadioButton */ = {
-			isa = PBXGroup;
-			children = (
-				F4454593FAC46BFE0574FBAE5B493CDB /* DLRadioButton.h */,
-				524B6DDF0C4B63543A310BFEDFF50398 /* DLRadioButton.m */,
-				9CD5AF05B950CE48F2244D0428E81CBC /* Support Files */,
-			);
-			name = DLRadioButton;
-			path = DLRadioButton;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		1904CD5E5CEA9226AFC355E19C3EB159 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E7E74DF0C455B0BC43BFDD1D0163E64 /* DropDown-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		220E61F93FBE49E9C3EBBEE5E9331C18 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -546,36 +633,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		224DA8F50C5FDCF503C20425E1620F0C /* Headers */ = {
+		54004C0951DAEB2830592FBAB43A2C5C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				002CF4A60DF91BF8A2A2B5A380DC34D4 /* RNCryptor-umbrella.h in Headers */,
-				28DF26E349A81C3F15C09815D8079E8C /* RNCryptor.h in Headers */,
+				7C6BD8B5CC0D4B5D6301CEC108F5F3B6 /* RNCryptor-umbrella.h in Headers */,
+				963A358446D41F5A19CFCD92D61ACC11 /* RNCryptor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3927A62CACEEB1F5DBEB1F6484476CDF /* Headers */ = {
+		A8B917AC325AAAAB08FBD79540D61C85 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D550F321DDFC0A15F9F876BDB5FA3DB5 /* SearchTextField-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		499500F52E1BC8793B06DF120BFB879B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				274042C809FEF3B6BED90AA99C44664F /* Pods-HeyBook-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		936404E5F5202657D811DA0DDD04C497 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				870445E17AF25C58A5BDA953151B4096 /* SideMenu-umbrella.h in Headers */,
+				FB7712E3A48265317124616185873033 /* Pods-HeyBook-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,16 +666,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB49DC7C921E9AA9FC3018E9B19CAB0D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC73BB1E9CA315078483FBD6A56B4E23 /* SearchTextField-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0ECDBEB482DF73080A9798CFAA9167F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BE0FBCA5C61852DC022E4C506DCA49E /* SideMenu-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2D5BE9B7B30F6F65F805EA008472C27A /* RNCryptor */ = {
+		30CAF13CF1E455CBCCCF86E28501A0E0 /* RNCryptor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 97E5562F5EA05065DA512162BBF2F761 /* Build configuration list for PBXNativeTarget "RNCryptor" */;
+			buildConfigurationList = 336D359867870352412A1032EE8E3F1E /* Build configuration list for PBXNativeTarget "RNCryptor" */;
 			buildPhases = (
-				2E04B7A9643CE9D4A056CE3F0D4A34E7 /* Sources */,
-				5E49AF8A2122D649291A0C0FB66F029C /* Frameworks */,
-				224DA8F50C5FDCF503C20425E1620F0C /* Headers */,
+				7C9C8418D4980D27FC36116B7FE6F1D9 /* Sources */,
+				79F06BD6227D1C6656375338E860A226 /* Frameworks */,
+				54004C0951DAEB2830592FBAB43A2C5C /* Headers */,
 			);
 			buildRules = (
 			);
@@ -612,7 +699,7 @@
 			);
 			name = RNCryptor;
 			productName = RNCryptor;
-			productReference = 4FCF03AB2CDCC86E1581E98544EC0E23 /* RNCryptor.framework */;
+			productReference = 550401BD90DD661C11F380CA2714F5C5 /* RNCryptor.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */ = {
@@ -629,16 +716,34 @@
 			);
 			name = Cosmos;
 			productName = Cosmos;
-			productReference = 7963BD2D6361CDF7A574126D817DCF53 /* Cosmos.framework */;
+			productReference = 3CD63FC4F2B758CDD23A997A932DF7E4 /* Cosmos.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		68BC1AEE0C56C33EA003B55123205A06 /* SideMenu */ = {
+		5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE916301CA51224217457B691FB33290 /* Build configuration list for PBXNativeTarget "SideMenu" */;
+			buildConfigurationList = 45143614893062803984DA50AB90C1D5 /* Build configuration list for PBXNativeTarget "DropDown" */;
 			buildPhases = (
-				F50F98B28E134D09416521053FA03058 /* Sources */,
-				4FA9E906A0F15A1F0FA1E63879EF5CE0 /* Frameworks */,
-				936404E5F5202657D811DA0DDD04C497 /* Headers */,
+				ED45CA897A4B81CB8204042001D7AEE8 /* Sources */,
+				3FE28484C632D94C9779E4E74AE0BD29 /* Frameworks */,
+				D7D924A57BC65B5D41E46B156A8DCF2B /* Resources */,
+				1904CD5E5CEA9226AFC355E19C3EB159 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DropDown;
+			productName = DropDown;
+			productReference = 85519A7693B1D245FE4DE3DED5CFBAA1 /* DropDown.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		80D65B7D6F82D0B010A359268F277537 /* SideMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B2342EB05CE62FA6816D63000B61244 /* Build configuration list for PBXNativeTarget "SideMenu" */;
+			buildPhases = (
+				2EAC5D6619F4440FF00F0CBDB4FBD713 /* Sources */,
+				B9D306933C53FADA014C6409689D33F2 /* Frameworks */,
+				D0ECDBEB482DF73080A9798CFAA9167F /* Headers */,
 			);
 			buildRules = (
 			);
@@ -646,7 +751,7 @@
 			);
 			name = SideMenu;
 			productName = SideMenu;
-			productReference = 4DFDFB6F45F4CD536BBEC05330270199 /* SideMenu.framework */;
+			productReference = 4616A6D04632AC60D229630825EE8A1E /* SideMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */ = {
@@ -663,16 +768,40 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = 09E5BF6B9D0EDD4CDC37190A1260A01B /* Alamofire.framework */;
+			productReference = 54EA69DD7C4BA057DFDA07B468978A68 /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		AD2BD43A57809BF1D1194CA82476BE5E /* SearchTextField */ = {
+		A8A366507C7F8DCDE67E7D8019B0527C /* Pods-HeyBook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4013FB58DBB7793F9DBD93986CAF5962 /* Build configuration list for PBXNativeTarget "SearchTextField" */;
+			buildConfigurationList = FFA165A1BA5CC7B3984EEC651BCE6684 /* Build configuration list for PBXNativeTarget "Pods-HeyBook" */;
 			buildPhases = (
-				7060064610411A3D3133BBAB954A6ABB /* Sources */,
-				CB8550B6D23260C8F9A6440E7EB5F4C5 /* Frameworks */,
-				3927A62CACEEB1F5DBEB1F6484476CDF /* Headers */,
+				A4514D2C9226F93AD696B872F2551AFD /* Sources */,
+				0B2A54E7F1CDAD18FE86B5467C1EBB28 /* Frameworks */,
+				A8B917AC325AAAAB08FBD79540D61C85 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D740D8F1515569E74FE5319C64843042 /* PBXTargetDependency */,
+				2B308F5E98FAF52602088F658332EF1C /* PBXTargetDependency */,
+				D0E03717F55842541F058B88B940DC29 /* PBXTargetDependency */,
+				8F45DAEA7E8851B9D565FF3F0F67B25F /* PBXTargetDependency */,
+				18732A31CD1DBBC0888B94AAA569823C /* PBXTargetDependency */,
+				3861D9BB96B369D98B10D03692A8C105 /* PBXTargetDependency */,
+				30573E036CE58E77143321EE1677251D /* PBXTargetDependency */,
+			);
+			name = "Pods-HeyBook";
+			productName = "Pods-HeyBook";
+			productReference = 7D07B6F6895897A0A64ADFF7882CF98F /* Pods_HeyBook.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BEC5EC3AB671B025B7505A9A49D7F2A5 /* SearchTextField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A57E23C5F22D2EC96BF033EFB8DEE041 /* Build configuration list for PBXNativeTarget "SearchTextField" */;
+			buildPhases = (
+				59C2036838D30279237B1B94FC4B8100 /* Sources */,
+				0569123D889AED3A967C9DBE196D31F1 /* Frameworks */,
+				CB49DC7C921E9AA9FC3018E9B19CAB0D /* Headers */,
 			);
 			buildRules = (
 			);
@@ -680,30 +809,7 @@
 			);
 			name = SearchTextField;
 			productName = SearchTextField;
-			productReference = C208477A8D0D3AFD357B9C5017433C7F /* SearchTextField.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		DCF5C1E9C79D5F5342DF03F922855682 /* Pods-HeyBook */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BB6C34AA6341E2BE6DFFCEE43B581B4E /* Build configuration list for PBXNativeTarget "Pods-HeyBook" */;
-			buildPhases = (
-				6F569D501F4D715B4009DCBC0ACEA482 /* Sources */,
-				DA61DD4D7E8FB4CDED1E21F989DAF181 /* Frameworks */,
-				499500F52E1BC8793B06DF120BFB879B /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C254095254DD090A7347DB07EDF8CB8D /* PBXTargetDependency */,
-				D979025F32FDEA37BA12A1A94EC73DD4 /* PBXTargetDependency */,
-				3876A855DCDD3FB0C7BFB4100B4CD362 /* PBXTargetDependency */,
-				3519CFC0631E376BA732C7CE53080AA3 /* PBXTargetDependency */,
-				A4D979105A0B7BEE2BCAC913A90C012A /* PBXTargetDependency */,
-				E3EA88E0DA5EF11768B039A09A6067DE /* PBXTargetDependency */,
-			);
-			name = "Pods-HeyBook";
-			productName = "Pods-HeyBook";
-			productReference = 947250F3E222A98CC705E30B654E8D5D /* Pods_HeyBook.framework */;
+			productReference = 77383FCAA113BB3D9C03EDB265722E15 /* SearchTextField.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F6A77E2753C279F67F70C5C21D6FAE15 /* DLRadioButton */ = {
@@ -720,7 +826,7 @@
 			);
 			name = DLRadioButton;
 			productName = DLRadioButton;
-			productReference = 463707B86D5A146F9BC2C4ED0F060FF5 /* DLRadioButton.framework */;
+			productReference = 26E3FB8934492E6CC0EC41F7565E4EBC /* DLRadioButton.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -740,28 +846,43 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 840D8ADD1B64ED2E30E6AB3B40331019 /* Products */;
+			productRefGroup = F19BB26969737AA6322531FA8EB6F650 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */,
 				4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */,
 				F6A77E2753C279F67F70C5C21D6FAE15 /* DLRadioButton */,
-				DCF5C1E9C79D5F5342DF03F922855682 /* Pods-HeyBook */,
-				2D5BE9B7B30F6F65F805EA008472C27A /* RNCryptor */,
-				AD2BD43A57809BF1D1194CA82476BE5E /* SearchTextField */,
-				68BC1AEE0C56C33EA003B55123205A06 /* SideMenu */,
+				5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */,
+				A8A366507C7F8DCDE67E7D8019B0527C /* Pods-HeyBook */,
+				30CAF13CF1E455CBCCCF86E28501A0E0 /* RNCryptor */,
+				BEC5EC3AB671B025B7505A9A49D7F2A5 /* SearchTextField */,
+				80D65B7D6F82D0B010A359268F277537 /* SideMenu */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		D7D924A57BC65B5D41E46B156A8DCF2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C293AEA575D6E5186739D1B07805F2 /* DropDownCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		2E04B7A9643CE9D4A056CE3F0D4A34E7 /* Sources */ = {
+		2EAC5D6619F4440FF00F0CBDB4FBD713 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553BD1708C0ACED77EA7F663D5C6185D /* RNCryptor-dummy.m in Sources */,
-				6AB59189959821052FC03A44024EC73C /* RNCryptor.swift in Sources */,
+				A614AD31D619058072FE10F4DBBF586B /* SideMenu-dummy.m in Sources */,
+				AFB9836C73D533C4A4A3D6CCB4E35EE5 /* SideMenuManager.swift in Sources */,
+				CDE00A642B9DD02414A3E681CAC277AE /* SideMenuTransition.swift in Sources */,
+				DAA28D789CA46821FD6B6E95AB3F9AC5 /* UISideMenuNavigationController.swift in Sources */,
+				6C95F9AEA0879ED7D92252B95F266D83 /* UITableViewVibrantCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,6 +911,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59C2036838D30279237B1B94FC4B8100 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B8B1300CB491EE2A88599719B02EF2E /* SearchTextField-dummy.m in Sources */,
+				C1646F62AE955B450E46FB04E857FB7F /* SearchTextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		64A8AA816E108F31E7CEE1A683E42839 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -813,20 +943,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F569D501F4D715B4009DCBC0ACEA482 /* Sources */ = {
+		7C9C8418D4980D27FC36116B7FE6F1D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				733C6843C06500CD10C287FFCEACAB4A /* Pods-HeyBook-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7060064610411A3D3133BBAB954A6ABB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				93C6D499A589F8C3548CE94DC14B2DB3 /* SearchTextField-dummy.m in Sources */,
-				119F38D4A07BB3B5DBBFD025770CC1CA /* SearchTextField.swift in Sources */,
+				782E1C2E18F1AF1B32815A6649714A13 /* RNCryptor-dummy.m in Sources */,
+				F23C18944AD122465EC2DDB9A417AFCF /* RNCryptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,63 +961,144 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F50F98B28E134D09416521053FA03058 /* Sources */ = {
+		A4514D2C9226F93AD696B872F2551AFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD24846FC55F1E04E3FDC8330EC152A2 /* SideMenu-dummy.m in Sources */,
-				03872A302AF60C09654876440ED1CF4E /* SideMenuManager.swift in Sources */,
-				9CBBFEFECD2782A660165F2B3C80AB31 /* SideMenuTransition.swift in Sources */,
-				E72E889339CF2309C666E96E66F1370C /* UISideMenuNavigationController.swift in Sources */,
-				BD200E86879931952F130C57272C52B1 /* UITableViewVibrantCell.swift in Sources */,
+				7012D634BAC78EDB0B77E21736C5ABA0 /* Pods-HeyBook-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED45CA897A4B81CB8204042001D7AEE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A812E7811821F66B3B7499F6F1B513BA /* DPDConstants.swift in Sources */,
+				9D0221E27E37CDA9DF26DD3CFA56D75B /* DPDKeyboardListener.swift in Sources */,
+				A401CF18D15DF246F40FAC4E8F06CBC7 /* DPDUIView+Extension.swift in Sources */,
+				442ADADA3215E1E5CA1557E708D4228C /* DropDown+Appearance.swift in Sources */,
+				AC6581D9387744158B44BE683403C3BC /* DropDown-dummy.m in Sources */,
+				02CAE638EF1CEEBD6F5740498F9CA3F8 /* DropDown.swift in Sources */,
+				098F056D90AF9CD3FD60D8A81DF043B6 /* DropDownCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3519CFC0631E376BA732C7CE53080AA3 /* PBXTargetDependency */ = {
+		18732A31CD1DBBC0888B94AAA569823C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RNCryptor;
-			target = 2D5BE9B7B30F6F65F805EA008472C27A /* RNCryptor */;
-			targetProxy = 77A730F66AC778B785A9CD25F283E198 /* PBXContainerItemProxy */;
+			target = 30CAF13CF1E455CBCCCF86E28501A0E0 /* RNCryptor */;
+			targetProxy = 21DAE861E9BFA4973E26814C7AD74780 /* PBXContainerItemProxy */;
 		};
-		3876A855DCDD3FB0C7BFB4100B4CD362 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DLRadioButton;
-			target = F6A77E2753C279F67F70C5C21D6FAE15 /* DLRadioButton */;
-			targetProxy = 04093E5B125A059F42E0AACDB5375D02 /* PBXContainerItemProxy */;
-		};
-		A4D979105A0B7BEE2BCAC913A90C012A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SearchTextField;
-			target = AD2BD43A57809BF1D1194CA82476BE5E /* SearchTextField */;
-			targetProxy = C88603917B474E0F74AFFD6A84E3D7D3 /* PBXContainerItemProxy */;
-		};
-		C254095254DD090A7347DB07EDF8CB8D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
-			targetProxy = 044AD5974AAB28E1C72A7334FE38E14E /* PBXContainerItemProxy */;
-		};
-		D979025F32FDEA37BA12A1A94EC73DD4 /* PBXTargetDependency */ = {
+		2B308F5E98FAF52602088F658332EF1C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Cosmos;
 			target = 4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */;
-			targetProxy = 268BB2B553095FC5C9F98F1E0EBE5E35 /* PBXContainerItemProxy */;
+			targetProxy = B24152A31B6EDD3E3E98B1B5E3CBE80B /* PBXContainerItemProxy */;
 		};
-		E3EA88E0DA5EF11768B039A09A6067DE /* PBXTargetDependency */ = {
+		30573E036CE58E77143321EE1677251D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SideMenu;
-			target = 68BC1AEE0C56C33EA003B55123205A06 /* SideMenu */;
-			targetProxy = 790BF5267C115D37A49DB5BD665156A7 /* PBXContainerItemProxy */;
+			target = 80D65B7D6F82D0B010A359268F277537 /* SideMenu */;
+			targetProxy = F6B2CAD87217BCC8161C2AA17383F435 /* PBXContainerItemProxy */;
+		};
+		3861D9BB96B369D98B10D03692A8C105 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SearchTextField;
+			target = BEC5EC3AB671B025B7505A9A49D7F2A5 /* SearchTextField */;
+			targetProxy = 855979C1C3C53CFB2580C5230CAF0FCE /* PBXContainerItemProxy */;
+		};
+		8F45DAEA7E8851B9D565FF3F0F67B25F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DropDown;
+			target = 5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */;
+			targetProxy = 9025D70F58536C8C816C3CA447EBA5FA /* PBXContainerItemProxy */;
+		};
+		D0E03717F55842541F058B88B940DC29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DLRadioButton;
+			target = F6A77E2753C279F67F70C5C21D6FAE15 /* DLRadioButton */;
+			targetProxy = 0959BB0E319BABCAE59D30455A17F6D9 /* PBXContainerItemProxy */;
+		};
+		D740D8F1515569E74FE5319C64843042 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
+			targetProxy = 6E1C058900404F64117CF0669DB32893 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		024C4B748960098B120931A3BD2F6A31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C474CB41B639D6D5BFF7C62FC0E6CDBA /* SideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		04ADDA48259B854054D5CA01F6EC9D67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DEBC1A513CCA83E8C02FA67678AD485 /* DropDown.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DropDown/DropDown-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DropDown/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DropDown/DropDown.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = DropDown;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		0A29B6F510198AF64EFD762EF6FA97A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 846A0C503632FE24908DDEC19F723670 /* Alamofire.xcconfig */;
+			baseConfigurationReference = 0A5F1BCB3E2CBA6AEDB5AEBDE4B9E6FE /* Alamofire.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -969,9 +1172,9 @@
 			};
 			name = Debug;
 		};
-		358C8224CB9E1C64A524ECAAAB205D2C /* Release */ = {
+		166E640816FD8016FF291BD935B20736 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F7BD7ADEB05097B85E73DAE38442971 /* SearchTextField.xcconfig */;
+			baseConfigurationReference = 0DEBC1A513CCA83E8C02FA67678AD485 /* DropDown.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -984,14 +1187,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SearchTextField/SearchTextField-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SearchTextField/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/DropDown/DropDown-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DropDown/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SearchTextField/SearchTextField.modulemap";
+				MODULEMAP_FILE = "Target Support Files/DropDown/DropDown.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SearchTextField;
+				PRODUCT_NAME = DropDown;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -1003,7 +1206,7 @@
 		};
 		3BCE0805F247CD432444A5A7155C5686 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0A9F43A3E54D8BF80473DB9AC1EDE3C /* DLRadioButton.xcconfig */;
+			baseConfigurationReference = 9059B8560329643A7CAC3CF6D037CC66 /* DLRadioButton.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1033,9 +1236,206 @@
 			};
 			name = Release;
 		};
-		5B96321391CE71CED5485060D6E2A59B /* Debug */ = {
+		6D108CB0DF1B5B681AEAAE9D269D71DE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E67E2E2A87F808FBD9DB570A5796598 /* RNCryptor.xcconfig */;
+			baseConfigurationReference = 5BA870D52371B39B83431CE8BAF0022D /* SearchTextField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SearchTextField/SearchTextField-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SearchTextField/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SearchTextField/SearchTextField.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SearchTextField;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8AAA9E77A095DA5CEB8AEEB6C49DF400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9059B8560329643A7CAC3CF6D037CC66 /* DLRadioButton.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DLRadioButton/DLRadioButton-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DLRadioButton/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DLRadioButton/DLRadioButton.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = DLRadioButton;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8DC713E42368DB8E77EC624129A924E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C474CB41B639D6D5BFF7C62FC0E6CDBA /* SideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		919CF5ED4E1ED2E1354AF71EADD1AF81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BA870D52371B39B83431CE8BAF0022D /* SearchTextField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SearchTextField/SearchTextField-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SearchTextField/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SearchTextField/SearchTextField.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SearchTextField;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AF54D6A38E2A84491417E05136DA8DC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3390A644106DE7543F27D85647CD8C23 /* Pods-HeyBook.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-HeyBook/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-HeyBook/Pods-HeyBook.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_HeyBook;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B6A0090A928CAEA6742378DDA2A2E64E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF9DADB122E118B20CFA7BC867980F06 /* RNCryptor.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RNCryptor/RNCryptor-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RNCryptor/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RNCryptor/RNCryptor.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = RNCryptor;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C1F48726F37B570E02A926E94A971954 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF9DADB122E118B20CFA7BC867980F06 /* RNCryptor.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1066,106 +1466,9 @@
 			};
 			name = Debug;
 		};
-		7708F5E6997F7E2626BDFFEF8205857A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9636A3A39E169B27C328223DC7910FED /* SideMenu.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SideMenu;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		78A5966BAAB0B44F475C6F87010126EF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9636A3A39E169B27C328223DC7910FED /* SideMenu.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SideMenu;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		8AAA9E77A095DA5CEB8AEEB6C49DF400 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0A9F43A3E54D8BF80473DB9AC1EDE3C /* DLRadioButton.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DLRadioButton/DLRadioButton-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DLRadioButton/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DLRadioButton/DLRadioButton.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = DLRadioButton;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		D328BF5AC7A27E80E5214F7E51F21B4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61135AA48F85E7A66D6795643C55C8AF /* Cosmos.xcconfig */;
+			baseConfigurationReference = C49EB0473E317A08A48C5BC76BE1E0B1 /* Cosmos.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1195,7 +1498,7 @@
 			};
 			name = Release;
 		};
-		D94B8D95A2580978261EB2461FDC7439 /* Debug */ = {
+		D7CB74C47D4C99F108973F4B2EDE7965 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7ED7F0B8FE28317D051D29CCD67B4C51 /* Pods-HeyBook.debug.xcconfig */;
 			buildSettings = {
@@ -1230,38 +1533,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		E46A76829E56618A7F1ACC6F6F2A7798 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E67E2E2A87F808FBD9DB570A5796598 /* RNCryptor.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RNCryptor/RNCryptor-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RNCryptor/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RNCryptor/RNCryptor.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = RNCryptor;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1305,7 +1576,7 @@
 		};
 		E8FFBAAF3F155FD16002C12A1DC0EF0E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61135AA48F85E7A66D6795643C55C8AF /* Cosmos.xcconfig */;
+			baseConfigurationReference = C49EB0473E317A08A48C5BC76BE1E0B1 /* Cosmos.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1336,44 +1607,9 @@
 			};
 			name = Debug;
 		};
-		ED06BE66E4AC6AFAD8158C7EF764C5B6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3390A644106DE7543F27D85647CD8C23 /* Pods-HeyBook.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-HeyBook/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-HeyBook/Pods-HeyBook.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_HeyBook;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		F383079BFBF927813EA3613CFB679FDE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 846A0C503632FE24908DDEC19F723670 /* Alamofire.xcconfig */;
+			baseConfigurationReference = 0A5F1BCB3E2CBA6AEDB5AEBDE4B9E6FE /* Alamofire.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1404,42 +1640,18 @@
 			};
 			name = Debug;
 		};
-		FD134307F903FBF2C42149C09E0AFBB2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F7BD7ADEB05097B85E73DAE38442971 /* SearchTextField.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SearchTextField/SearchTextField-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SearchTextField/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SearchTextField/SearchTextField.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SearchTextField;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0B2342EB05CE62FA6816D63000B61244 /* Build configuration list for PBXNativeTarget "SideMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DC713E42368DB8E77EC624129A924E1 /* Debug */,
+				024C4B748960098B120931A3BD2F6A31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		118FCC60066EF1D7DD17E50B82C12AA4 /* Build configuration list for PBXNativeTarget "DLRadioButton" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1458,20 +1670,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		336D359867870352412A1032EE8E3F1E /* Build configuration list for PBXNativeTarget "RNCryptor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1F48726F37B570E02A926E94A971954 /* Debug */,
+				B6A0090A928CAEA6742378DDA2A2E64E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		38CA41A3E689F135BAEECE91B63D9EA0 /* Build configuration list for PBXNativeTarget "Cosmos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8FFBAAF3F155FD16002C12A1DC0EF0E /* Debug */,
 				D328BF5AC7A27E80E5214F7E51F21B4A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4013FB58DBB7793F9DBD93986CAF5962 /* Build configuration list for PBXNativeTarget "SearchTextField" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FD134307F903FBF2C42149C09E0AFBB2 /* Debug */,
-				358C8224CB9E1C64A524ECAAAB205D2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1485,29 +1697,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		97E5562F5EA05065DA512162BBF2F761 /* Build configuration list for PBXNativeTarget "RNCryptor" */ = {
+		45143614893062803984DA50AB90C1D5 /* Build configuration list for PBXNativeTarget "DropDown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5B96321391CE71CED5485060D6E2A59B /* Debug */,
-				E46A76829E56618A7F1ACC6F6F2A7798 /* Release */,
+				04ADDA48259B854054D5CA01F6EC9D67 /* Debug */,
+				166E640816FD8016FF291BD935B20736 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB6C34AA6341E2BE6DFFCEE43B581B4E /* Build configuration list for PBXNativeTarget "Pods-HeyBook" */ = {
+		A57E23C5F22D2EC96BF033EFB8DEE041 /* Build configuration list for PBXNativeTarget "SearchTextField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D94B8D95A2580978261EB2461FDC7439 /* Debug */,
-				ED06BE66E4AC6AFAD8158C7EF764C5B6 /* Release */,
+				919CF5ED4E1ED2E1354AF71EADD1AF81 /* Debug */,
+				6D108CB0DF1B5B681AEAAE9D269D71DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE916301CA51224217457B691FB33290 /* Build configuration list for PBXNativeTarget "SideMenu" */ = {
+		FFA165A1BA5CC7B3984EEC651BCE6684 /* Build configuration list for PBXNativeTarget "Pods-HeyBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				78A5966BAAB0B44F475C6F87010126EF /* Debug */,
-				7708F5E6997F7E2626BDFFEF8205857A /* Release */,
+				D7CB74C47D4C99F108973F4B2EDE7965 /* Debug */,
+				AF54D6A38E2A84491417E05136DA8DC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -11,8 +11,13 @@ import SideMenu
 import Alamofire
 import Speech
 
-class SepetViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, SFSpeechRecognizerDelegate {
+class SepetViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, SFSpeechRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var kartBilgileriView: UIView!
+    @IBOutlet weak var sepetView: UIView!
+    @IBOutlet weak var onayView: UIView!
+    @IBOutlet weak var onaylandıView: UIView!
+    
     @IBOutlet weak var totalPriceLabel: UILabel!
     var records: [Record] = []
     var book_id = ""
@@ -45,6 +50,14 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     private let audioEngine = AVAudioEngine()
 
     
+   var mounth = ""
+    var year = ""
+    @IBOutlet weak var monthPickerView: UIPickerView!
+    @IBOutlet weak var yearPickerView: UIPickerView!
+    @IBOutlet weak var CreditCardNameSurname: UITextField!
+    @IBOutlet weak var CreditCardNo: UITextField!
+    var monthArr = ["01","02","03", "04","05","06","07","08", "09","10","11","12"]
+    var yearArr = ["2017","2018", "2019", "2020"]
     
     var totalPrice:Double = 0.0
     
@@ -52,7 +65,10 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        sepetView.isHidden = false
+        onayView.isHidden = true
+        kartBilgileriView.isHidden = true
+        onaylandıView.isHidden = true
         let urlString = "http://heybook.online/api.php"
         let parameters = ["request": "user_cart",
                           "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
@@ -208,7 +224,50 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         
     }
     
+  
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        var countrows : Int = monthArr.count
+        if pickerView == yearPickerView {
+            
+            countrows = self.yearArr.count
+        }
+        
+        return countrows
+    }
     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == monthPickerView {
+            
+            let titleRow = monthArr[row]
+            
+            return titleRow
+            
+        }
+            
+        else if pickerView == yearPickerView{
+            let titleRow = yearArr[row]
+            
+            return titleRow
+        }
+        
+        return ""
+    }
+    
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == monthPickerView {
+            mounth = self.monthArr[row]
+        }
+            
+        else if pickerView == yearPickerView{
+            year = self.yearArr[row]
+            
+        }
+    }
     
     func btnSearch(){
         print("search button")
@@ -540,9 +599,32 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     
     }
     
+    @IBAction func odemeYapButton(_ sender: Any) {
+        kartBilgileriView.isHidden = false
+        sepetView.isHidden = true
+         onayView.isHidden = true
+        onaylandıView.isHidden = true
+    }
 
+    @IBAction func odemeyiOnaylaButton(_ sender: Any) {
+         onayView.isHidden = false
+        kartBilgileriView.isHidden = true
+        sepetView.isHidden = true
+        onaylandıView.isHidden = true
+    }
 
+    @IBAction func dOnaylamaButton(_ sender: Any) {
+        onaylandıView.isHidden = false
+        onayView.isHidden = true
+        kartBilgileriView.isHidden = true
+        sepetView.isHidden = true
+    }
     
+    @IBAction func goToKitaplarim(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     
     
