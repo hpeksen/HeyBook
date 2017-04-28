@@ -100,20 +100,6 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 
                 
                 
-                
-                if !self.records.isEmpty {
-                    let index:Int = 0
-                    for i in 0..<self.records.count {
-                        for j in 0..<self.downloadedBooks.count {
-                            if self.records[i].book_id == self.downloadedBooks[j].book_id {
-                                self.downloadedBooksIndexes.append(i)
-                            }
-                        }
-                    }
-                }
-                
-                
-                
                 self.myCollectionView.reloadData()
                 
                 
@@ -124,17 +110,33 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 self.records = self.downloadedBooks
                 print("ERRORRR!!!! \(error)")
             }
+            
+            
+            
+            
+            
+            if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded"),
+                let decodedBooks = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [Record] {
+                self.downloadedBooks = decodedBooks
+            }
+            if !self.downloadedBooks.isEmpty {
+                if self.records.isEmpty {
+                    self.records = self.downloadedBooks
+                }
+                else {
+                    let index:Int = 0
+                    for i in 0..<self.records.count {
+                        for j in 0..<self.downloadedBooks.count {
+                            if self.records[i].book_id == self.downloadedBooks[j].book_id {
+                                self.downloadedBooksIndexes.append(i)
+                            }
+                        }
+                    }
+                }
+                print("downloaded \(self.downloadedBooks[0].book_title)")
+                self.myCollectionView.reloadData()
+            }
         }
-        
-        if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded"),
-            let decodedBooks = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [Record] {
-            self.downloadedBooks = decodedBooks
-        }
-        
-        if self.records.isEmpty {
-            self.records = self.downloadedBooks
-        }
-        print("downloaded \(self.downloadedBooks[0].book_title)")
         
         // Do any additional setup after loading the view.
         
@@ -484,9 +486,14 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         var record: Record
         record = records[indexPath.row]
         
-        //        if !downloadedBooks.isEmpty && downloadedBooks.count > indexPath.row && downloadedBooks[indexPath.row].book_id == record.book_id {
-        //            record = downloadedBooks[indexPath.row]
-        //        }
+//        if !downloadedBooks.isEmpty && downloadedBooks.count > indexPath.row && downloadedBooks[indexPath.row].book_id == record.book_id {
+//            record = downloadedBooks[indexPath.row]
+//        }
+        
+        if downloadedBooksIndexes.contains(indexPath.row) {
+            //record.book_title = "downloaded"
+            //indirilmiş göstergesi
+        }
         
         //Aschronized image loading !!!!
         URLSession.shared.dataTask(with: NSURL(string: record.photo)! as URL, completionHandler: { (data, response, error) -> Void in

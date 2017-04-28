@@ -538,22 +538,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjW-ds-MT8">
-                                <rect key="frame" x="24" y="629" width="60" height="30"/>
-                                <color key="backgroundColor" red="0.4941176471" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="cao-E1-Y4B"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="X">
-                                    <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7G-IQ-kHB">
-                                <rect key="frame" x="92" y="629" width="259" height="30"/>
+                                <rect key="frame" x="20" y="629" width="331" height="30"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="259" id="cXA-Jw-vxn"/>
+                                    <constraint firstAttribute="width" constant="331" id="cXA-Jw-vxn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="ÖDEME YAP">
@@ -698,23 +687,19 @@
                             <constraint firstAttribute="trailingMargin" secondItem="x7G-IQ-kHB" secondAttribute="trailing" constant="8" id="CDN-NA-v21"/>
                             <constraint firstAttribute="trailing" secondItem="A2u-VU-HiL" secondAttribute="trailing" id="Gf9-vh-NSl"/>
                             <constraint firstItem="A2u-VU-HiL" firstAttribute="top" secondItem="O6v-B6-ndC" secondAttribute="bottom" id="Li6-iV-0kv"/>
-                            <constraint firstItem="x7G-IQ-kHB" firstAttribute="leading" secondItem="zjW-ds-MT8" secondAttribute="trailing" constant="8" id="T23-mG-Htr"/>
                             <constraint firstItem="O6v-B6-ndC" firstAttribute="top" secondItem="Mhh-nQ-Gyc" secondAttribute="top" id="Wsz-Yt-sbw"/>
                             <constraint firstItem="A2u-VU-HiL" firstAttribute="top" secondItem="O6v-B6-ndC" secondAttribute="bottom" id="Y5w-df-hur"/>
-                            <constraint firstItem="x7G-IQ-kHB" firstAttribute="leading" secondItem="zjW-ds-MT8" secondAttribute="trailing" constant="8" id="Ybu-Zi-kjq"/>
                             <constraint firstItem="x7G-IQ-kHB" firstAttribute="top" secondItem="A2u-VU-HiL" secondAttribute="bottom" constant="8" id="Yrq-UH-g41"/>
                             <constraint firstItem="O6v-B6-ndC" firstAttribute="leading" secondItem="Mhh-nQ-Gyc" secondAttribute="leading" id="a8L-lw-d91"/>
                             <constraint firstItem="A2u-VU-HiL" firstAttribute="leading" secondItem="Mhh-nQ-Gyc" secondAttribute="leading" id="eAG-cb-luG"/>
                             <constraint firstItem="GuW-kU-XQd" firstAttribute="top" secondItem="x7G-IQ-kHB" secondAttribute="bottom" constant="8" id="g9c-Gy-1WW"/>
                             <constraint firstItem="A2u-VU-HiL" firstAttribute="top" secondItem="SOU-Rv-fpb" secondAttribute="bottom" constant="35" id="jpb-tA-xbK"/>
-                            <constraint firstItem="GuW-kU-XQd" firstAttribute="top" secondItem="zjW-ds-MT8" secondAttribute="bottom" constant="8" id="noD-J1-mW6"/>
                             <constraint firstAttribute="trailing" secondItem="O6v-B6-ndC" secondAttribute="trailing" id="ohh-OY-gYp"/>
                             <constraint firstItem="A2u-VU-HiL" firstAttribute="top" secondItem="O6v-B6-ndC" secondAttribute="bottom" id="om2-Tf-uQx"/>
                             <constraint firstAttribute="trailing" secondItem="A2u-VU-HiL" secondAttribute="trailing" id="qSx-sI-1zx"/>
                             <constraint firstAttribute="trailing" secondItem="SOU-Rv-fpb" secondAttribute="trailing" id="rJy-fe-Use"/>
                             <constraint firstItem="A2u-VU-HiL" firstAttribute="top" secondItem="ZZt-Ye-NFp" secondAttribute="bottom" constant="35" id="tcz-8z-cJc"/>
                             <constraint firstItem="ZZt-Ye-NFp" firstAttribute="leading" secondItem="Mhh-nQ-Gyc" secondAttribute="leading" constant="20" id="vx8-Yb-O5n"/>
-                            <constraint firstItem="zjW-ds-MT8" firstAttribute="leading" secondItem="Mhh-nQ-Gyc" secondAttribute="leadingMargin" constant="8" id="xWm-X9-ssm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oou-RE-jLX"/>
@@ -725,7 +710,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKc-c4-wJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3753" y="920"/>
+            <point key="canvasLocation" x="3752.8000000000002" y="919.79010494752629"/>
         </scene>
         <!--Listen View Controller-->
         <scene sceneID="k8R-Kk-Voy">
