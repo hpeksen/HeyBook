@@ -11,6 +11,7 @@ import SideMenu
 import SearchTextField
 import Alamofire
 import Speech
+import Foundation
 
 class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecognizerDelegate {
     
@@ -471,6 +472,109 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
                     UserDefaults.standard.setValue(self.userTitle, forKey: "user_title")
                     UserDefaults.standard.setValue(self.user_id, forKey: "user_id")
                     UserDefaults.standard.setValue(self.user_photo, forKey: "user_photo")
+                    
+                    //get downloaded books
+                    // Get the document directory url
+                    var mp3FileNames:[String] = []
+                    var mp3Files:[URL] = []
+                    var downloadedBooks:[Record] = []
+                    let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    
+                    do {
+                        // Get the directory contents urls (including subfolders urls)
+                        let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+                        print(directoryContents)
+                        
+                        // if you want to filter the directory contents you can do like this:
+                        mp3Files = directoryContents.filter{ $0.pathExtension == "file" }
+                        print("mp3 file urls:",mp3Files)
+                        mp3FileNames = mp3Files.map{ $0.deletingPathExtension().lastPathComponent }
+                        print("mp3 file list:", mp3FileNames)
+                        
+                        for i in 0..<mp3FileNames.count {
+                            var fileNameArr = mp3FileNames[i].components(separatedBy: "_")
+                            if fileNameArr[0] == self.user_id {
+                                
+                                print("BOOKID \(fileNameArr[0]) \(fileNameArr[1])")
+                                
+                                var book_id = ""
+                                var category_id = ""
+                                var publisher_id = ""
+                                var author_id = ""
+                                var narrator_id = ""
+                                var book_title = ""
+                                var desc = ""
+                                var price = ""
+                                var photo = ""
+                                var thumb = ""
+                                var audio = ""
+                                var duration = ""
+                                var size = ""
+                                var demo = ""
+                                var star = ""
+                                var category_title = ""
+                                var author_title = ""
+                                var publisher_title = ""
+                                var narrator_title = ""
+                                
+                                let urlString = "http://heybook.online/api.php"
+                                let parameters = ["request": "book",
+                                                  "book_id": "\(fileNameArr[1])"]
+                                
+                                Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                                    response in
+                                    switch response.result {
+                                    case .success:
+                                        
+                                        
+                                        let json = JSON(data: response.data!)
+                                        
+                                        let total = json["data"].count
+                                        print(total)
+                                            book_id = json["data"]["book_id"].string!
+                                            category_id = json["data"]["category_id"].string!
+                                            publisher_id = json["data"]["publisher_id"].string!
+                                            author_id = json["data"]["author_id"].string!
+                                            narrator_id = json["data"]["narrator_id"].string!
+                                            book_title = json["data"]["book_title"].string!
+                                            desc = json["data"]["description"].string!
+                                            price = json["data"]["price"].string!
+                                            photo = json["data"]["photo"].string!
+                                            thumb = json["data"]["thumb"].string!
+                                            audio = json["data"]["audio"].string!
+                                            duration = json["data"]["duration"].string!
+                                            size = json["data"]["size"].string!
+                                            demo = json["data"]["demo"].string!
+                                            star = json["data"]["star"].string!
+                                            category_title = json["data"]["category_title"].string!
+                                            author_title = json["data"]["author_title"].string!
+                                            publisher_title = json["data"]["publisher_title"].string!
+                                            narrator_title = json["data"]["narrator_title"].string!
+                                            
+                                            let record = Record(book_id: book_id, category_id: category_id, publisher_id: publisher_id, author_id: author_id, narrator_id: narrator_id, book_title: book_title, desc: desc, price: price,  photo: photo, thumb: thumb, audio: audio, duration: duration, size: size,  demo: demo, star: star, category_title: category_title, author_title: author_title, publisher_title: publisher_title, narrator_title: narrator_title)
+                                            
+                                            downloadedBooks.append(record)
+                                        
+                                        print("downloaded! \(downloadedBooks[0].book_title)")
+                                        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: downloadedBooks)
+                                        UserDefaults.standard.set(encodedData, forKey: "book_record_downloaded")
+                                        UserDefaults.standard.synchronize()
+                                        
+                                        print("RESPONSEBOOK \(response)")
+                                        
+                                        break
+                                    case .failure(let error):
+                                        print("ERRORRR!!!! \(error)")
+                                        break
+                                    }
+                                }
+                            }
+                        }
+                        
+                    } catch let error as NSError {
+                        print(error.localizedDescription)
+                    }
+                    
                     print("hebelehübele")
                     print(self.parentView)
                     
@@ -498,7 +602,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
         }
     }
     
-    
+    func getBooksFromDatabase(mp3FileNames: [String]) -> [Record] {
+        var downloadedBooks:[Record] = []
+        
+        
+        return downloadedBooks
+    }
     
     @IBAction func unwindToLogin(_ sender: UIStoryboardSegue) {
         

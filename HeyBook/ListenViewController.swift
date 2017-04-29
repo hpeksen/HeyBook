@@ -158,7 +158,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         bookListenImage.image = UIImage(data: data!)
         
-        
+        let userID:String = UserDefaults.standard.value(forKey: "user_id")! as! String
         
         //Favori yıldızları: https://github.com/marketplacer/Cosmos
         starsView.rating = Double(star)!
@@ -167,7 +167,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         if UserDefaults.standard.value(forKey: "user_id") != nil {
             var urlString = "http://heybook.online/api.php"
             var parameters = ["request": "user_favorites",
-                              "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
+                              "user_id": "\(userID)"]
             
             Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
                 response in
@@ -201,7 +201,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             urlString = "http://heybook.online/api.php"
             parameters = ["request": "user_books",
-                          "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
+                          "user_id": "\(userID)"]
             
             Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
                 response in
@@ -236,7 +236,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                         print("mp3 file list:", self.mp3FileNames)
                         
                         for i in 0..<self.mp3FileNames.count {
-                            if self.mp3FileNames[i] == self.bookName {
+                            var fileNameArr = self.mp3FileNames[i].components(separatedBy: "_")
+                            if fileNameArr[0] == userID && fileNameArr[1] == self.book_id {
                                 self.addToChartButton.setTitle("İNDİRİLDİ", for: .normal)
                             }
                         }
@@ -265,7 +266,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 let urlString = "http://heybook.online/api.php"
                 let parameters = ["request": "user_stars-add",
-                                  "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
+                                  "user_id": "\(userID)",
                     "book_id": "\(self.book_id)",
                     "star": "\(rating)"]
                 
@@ -428,7 +429,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             bookPassword = "Secret password"
             ciphertext = RNCryptor.encrypt(data: data as! Data, withPassword: bookPassword)
             
-            let fileName = "\(UserDefaults.standard.value(forKey: "user_id")!)_\(bookName)"
+            let fileName = "\(UserDefaults.standard.value(forKey: "user_id")!)_\(book_id)"
             
             let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(fileName).file")
             

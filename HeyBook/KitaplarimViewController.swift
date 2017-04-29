@@ -111,10 +111,6 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 print("ERRORRR!!!! \(error)")
             }
             
-            
-            
-            
-            
             if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded"),
                 let decodedBooks = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [Record] {
                 self.downloadedBooks = decodedBooks
@@ -490,8 +486,11 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
 //        }
         
         if downloadedBooksIndexes.contains(indexPath.row) {
-            //record.book_title = "downloaded"
+            cell.bookName.textColor = UIColor.green
             //indirilmiş göstergesi
+        }
+        else {
+            cell.bookName.textColor = UIColor.black
         }
         
         //Aschronized image loading !!!!
@@ -553,26 +552,26 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("DOWNLOADED!!!!! \(self.records[indexPath.row].book_title)")
-        if UserDefaults.standard.value(forKey: "playing_book") != nil && UserDefaults.standard.value(forKey: "playing_book") as! String == records[indexPath.row].book_title {
-            print("BOOKNAME: \(UserDefaults.standard.value(forKey: "playing_book") as! String) - \(records[indexPath.row].book_title)")
-            let viewControllers: [UIViewController] = self.navigationController!.viewControllers
-            for i in 0..<viewControllers.count {
-                print("BOOKNAME: \(NSStringFromClass(viewControllers[i].classForCoder))")
-                if viewControllers[i] is PlayBookViewController {
-                    self.navigationController!.popToViewController(viewControllers[i], animated: true)
-                }
-            }
-        }
-        else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "PlayBookViewController")
-            self.navigationController?.pushViewController(controller, animated: true)
-            
+//        print("DOWNLOADED!!!!! \(self.records[indexPath.row].book_title)")
+//        if UserDefaults.standard.value(forKey: "playing_book") != nil && UserDefaults.standard.value(forKey: "playing_book") as! String == records[indexPath.row].book_title {
+//            print("BOOKNAME: \(UserDefaults.standard.value(forKey: "playing_book") as! String) - \(records[indexPath.row].book_title)")
+//            let viewControllers: [UIViewController] = self.navigationController!.viewControllers
+//            for i in 0..<viewControllers.count {
+//                print("BOOKNAME: \(NSStringFromClass(viewControllers[i].classForCoder))")
+//                if viewControllers[i] is PlayBookViewController {
+//                    self.navigationController!.popToViewController(viewControllers[i], animated: true)
+//                }
+//            }
+//        }
+//        else {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controller = storyboard.instantiateViewController(withIdentifier: "PlayBookViewController")
+//            self.navigationController?.pushViewController(controller, animated: true)
+//            
             let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
             UserDefaults.standard.set(encodedData, forKey: "book_record_play")
             UserDefaults.standard.synchronize()
-        }
+        //}
     }
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
