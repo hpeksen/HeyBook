@@ -111,10 +111,6 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 print("ERRORRR!!!! \(error)")
             }
             
-            
-            
-            
-            
             if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded"),
                 let decodedBooks = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [Record] {
                 self.downloadedBooks = decodedBooks
@@ -491,8 +487,11 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
 //        }
         
         if downloadedBooksIndexes.contains(indexPath.row) {
-            //record.book_title = "downloaded"
+            cell.bookName.textColor = UIColor.green
             //indirilmiş göstergesi
+        }
+        else {
+            cell.bookName.textColor = UIColor.black
         }
         
         //Aschronized image loading !!!!
