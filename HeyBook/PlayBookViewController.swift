@@ -1,4 +1,3 @@
-//
 //  PlayBookViewController.swift
 //  HeyBook
 //
@@ -13,12 +12,14 @@ import RNCryptor
 import Speech
 
 var playerPlaying = AVPlayer()
+var isPlayerPlaying = false
 var audioPlayerPlaying = AVAudioPlayer()
-var isDownloaded = Bool()
+var isAudioPlayerPlaying = false
+var isDownloadedPlaying = Bool()
 var playingBookID = String()
 
 class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
-
+    
     @IBOutlet weak var bookPhoto: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
@@ -60,7 +61,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -139,15 +140,24 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             mp3FileNames = self.mp3Files.map{ $0.deletingPathExtension().lastPathComponent }
             print("mp3 file list:", mp3FileNames)
             
+            let user_id:String = UserDefaults.standard.value(forKey: "user_id") as! String
             for i in 0..<mp3FileNames.count {
                 let fileNameArr = mp3FileNames[i].characters.split{$0 == "_"}.map(String.init)
-                if fileNameArr[1] == self.bookName {
+                if fileNameArr[0] == user_id && fileNameArr[1] == self.book_id {
                     isDownloaded = true
                 }
             }
             
         } catch let error as NSError {
             print(error.localizedDescription)
+        }
+        
+        var userDefaultsBookID:String = ""
+        var userDefaultsLastPosition:String = ""
+        if let id = UserDefaults.standard.value(forKey: "playing_book_id"),
+            let pos = UserDefaults.standard.value(forKey: "playing_book_duration") {
+            userDefaultsBookID = id as! String
+            userDefaultsLastPosition = pos as! String
         }
         
         if playingBookID != book_id {
@@ -157,7 +167,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                     ciphertext = nil
                     for i in 0..<mp3FileNames.count {
                         let fileNameArr = mp3FileNames[i].characters.split{$0 == "_"}.map(String.init)
-                        if fileNameArr[1] == bookName {
+                        if fileNameArr[1] == book_id {
                             ciphertext = NSData(contentsOf: mp3Files[i]) as! Data
                         }
                     }
@@ -182,6 +192,15 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                     //audioPlayer.numberOfLoops = -1  // infinite loop
                     audioPlayer.prepareToPlay()
                     slider.maximumValue = Float(audioPlayer.duration)
+                    
+                    if userDefaultsBookID == book_id {
+                        audioPlayer.currentTime = TimeInterval(Float(userDefaultsLastPosition)!)
+                        slider.value = Float(audioPlayer.currentTime)
+                        let time = Int(audioPlayer.currentTime)
+                        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: time)
+                        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+                        timeLabel.text = NSString(format: "%02d:%02d", m,s) as String
+                    }
                 } catch {
                     print(error)
                 }
@@ -191,10 +210,21 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
                 player = AVPlayer(playerItem: playerItem)
                 slider.maximumValue = Float(CMTimeGetSeconds((player.currentItem?.asset.duration)!))
+                
+                if userDefaultsBookID == book_id {
+                    player.seek(to: CMTimeMakeWithSeconds(Float64(Float(userDefaultsLastPosition)!), 10000))
+                    let time = Int(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+                    slider.value = Float(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+                    let (h,m,s) = secondsToHoursMinutesSeconds(seconds: time)
+                    Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+                    timeLabel.text = NSString(format: "%02d:%02d", m,s) as String
+                }
             }
-            slider.value = 0.0
-            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
-            timeLabel.text = "00:00"
+            if userDefaultsBookID != book_id {
+                slider.value = 0.0
+                Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+                timeLabel.text = "00:00"
+            }
         }
         else {
             var time:Int
@@ -260,7 +290,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
         //voice
         
         
-
+        
         
         //Bar Buttonları
         
@@ -503,56 +533,81 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     
-
     
     
     
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     
     @IBAction func playButton(_ sender: UIButton) {
         if isDownloaded {
             if audioPlayer.isPlaying {
                 audioPlayer.pause()
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
-                UserDefaults.standard.setValue("\(audioPlayer.currentTime)", forKey: "playing_book_duration")
             }
-           else {
-                if audioPlayerPlaying != audioPlayer {
-                    print("AVPLAYER \(audioPlayer.url)")
-                    audioPlayerPlaying.stop()
-                    audioPlayerPlaying = AVAudioPlayer()
-                    print("AVPLAYER \(audioPlayer.url)")
+            else {
+                print("AVPLAYERPLAYING \(audioPlayerPlaying)")
+                if let id = UserDefaults.standard.value(forKey: "playing_book_id"),
+                    let pos = UserDefaults.standard.value(forKey: "playing_book_duration") {
+                    if id as! String != book_id {
+                        if isAudioPlayerPlaying {
+                            audioPlayerPlaying.pause()
+                            audioPlayerPlaying = AVAudioPlayer()
+                            isAudioPlayerPlaying = false
+                        }
+                        else if isPlayerPlaying {
+                            playerPlaying.pause()
+                            playerPlaying = AVPlayer()
+                            isPlayerPlaying = false
+                        }
+                    }
                 }
                 audioPlayer.play()
                 audioPlayerPlaying = audioPlayer
+                isAudioPlayerPlaying = true
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
-                UserDefaults.standard.setValue(bookName, forKey: "playing_book")
             }
+            UserDefaults.standard.setValue(book_id, forKey: "playing_book_id")
+            UserDefaults.standard.setValue("\(audioPlayer.currentTime)", forKey: "playing_book_duration")
+            isDownloadedPlaying = true
         }
         else {
             if((player.rate != 0) && (player.error == nil)) {
                 player.pause()
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
-                UserDefaults.standard.setValue("\(CMTimeGetSeconds((player.currentItem?.currentTime())!))", forKey: "playing_book_duration")
             }
             else {
-                if playerPlaying != player {
-                    playerPlaying.pause()
-                    playerPlaying = AVPlayer()
+                if let id = UserDefaults.standard.value(forKey: "playing_book_id"),
+                    let pos = UserDefaults.standard.value(forKey: "playing_book_duration") {
+                    if id as! String != book_id {
+                        if isPlayerPlaying {
+                            playerPlaying.pause()
+                            playerPlaying = AVPlayer()
+                            isPlayerPlaying = false
+                        }
+                        else if isAudioPlayerPlaying {
+                            audioPlayerPlaying.pause()
+                            audioPlayerPlaying = AVAudioPlayer()
+                            isAudioPlayerPlaying = false
+                        }
+                    }
                 }
                 player.play()
                 playerPlaying = player
+                isPlayerPlaying = true
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
-                UserDefaults.standard.setValue(bookName, forKey: "playing_book")
                 print("çalıyo")
                 print(bookLink)
             }
+            UserDefaults.standard.setValue(book_id, forKey: "playing_book_id")
+            UserDefaults.standard.setValue("\(CMTimeGetSeconds((player.currentItem?.currentTime())!))", forKey: "playing_book_duration")
+            isDownloadedPlaying = false
         }
         playingBookID = book_id
     }
@@ -618,17 +673,17 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
         let seconds = Int(seconds) % 60
         return (hours, minutes, seconds)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension AVPlayer {

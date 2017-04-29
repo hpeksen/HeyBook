@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import AVFoundation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -41,7 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        UserDefaults.standard.setValue(nil, forKey: "playing_book")
+        UserDefaults.standard.setValue(playingBookID, forKey: "playing_book_id")
+        if isDownloadedPlaying {
+            UserDefaults.standard.setValue("\(audioPlayerPlaying.currentTime)", forKey: "playing_book_duration")
+        }
+        else {
+            UserDefaults.standard.setValue("\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))", forKey: "playing_book_duration")
+        }
         self.saveContext()
     }
 

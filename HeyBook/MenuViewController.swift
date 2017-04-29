@@ -26,7 +26,10 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         menuNameArr = ["HeyBook! Vitrin","Kategoriler","HeyBook'ta Ara","Kitaplarım","Favorilerim","Sepet","Ayarlar","Giriş Yap"]
-        
+        if UserDefaults.standard.value(forKey: "user_photo") == nil{
+            self.imgIcon.image = UIImage(named: "logo")
+            
+        }
         if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil || UserDefaults.standard.value(forKey: "user_image") != nil){
             photo = "http://heybook.online/\((UserDefaults.standard.value(forKey: "user_photo") as? String)!)"
             //Aschronized image loading !!!!

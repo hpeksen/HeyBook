@@ -1,4 +1,3 @@
-//
 //  ListenViewController.swift
 //  HeyBook
 //
@@ -165,7 +164,6 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         //Favori switch kontrol
         if UserDefaults.standard.value(forKey: "user_id") != nil {
             let userID:String = UserDefaults.standard.value(forKey: "user_id")! as! String
-            
             var urlString = "http://heybook.online/api.php"
             var parameters = ["request": "user_favorites",
                               "user_id": "\(userID)"]
@@ -457,40 +455,27 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             } catch {
                 print(error)
             }
-        }
-        else if(addToChartButton.titleLabel?.text == "İNDİRİLDİ") {
-            do {
-                var originalData:Data
-                ciphertext = nil
-                for i in 0..<mp3FileNames.count {
-                    if mp3FileNames[i] == bookName {
-                        ciphertext = NSData(contentsOf: mp3Files[i]) as! Data
+            
+            if let id = UserDefaults.standard.value(forKey: "playing_book_id") {
+                if book_id == id as! String {
+                    UserDefaults.standard.setValue(book_id, forKey: "playing_book_id")
+                    let position:String = "\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))"
+                    UserDefaults.standard.setValue(position, forKey: "playing_book_duration")
+                    
+                    playerPlaying.pause()
+                    playerPlaying = AVPlayer()
+                    do {
+                        let originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
+                        audioPlayerPlaying = try AVAudioPlayer(data: originalData)
+                        audioPlayerPlaying.prepareToPlay()
+                        audioPlayerPlaying.currentTime = TimeInterval(Float(position)!)
+                        audioPlayerPlaying.play()
+                        isDownloadedPlaying = true
+                    }
+                    catch {
+                        print("Error")
                     }
                 }
-                originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
-                //
-                //                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
-                //                try originalData.write(to: fileURL, options: .atomic)
-                do {
-                    audioPlayer = try AVAudioPlayer(data: originalData)
-                    
-                    // https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html
-                    // Define how the application intends to use audio
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-                    
-                    // Activates or deactivates your app’s audio session.
-                    try AVAudioSession.sharedInstance().setActive(true)
-                }
-                catch {
-                    print("Error occurred")
-                }
-                
-                //audioPlayer.numberOfLoops = -1  // infinite loop
-                audioPlayer.prepareToPlay()
-                
-                audioPlayer.play()
-            } catch {
-                print(error)
             }
         }
         

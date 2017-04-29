@@ -177,7 +177,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         let item3 = UIBarButtonItem(customView: btn3)
         self.navigationItem.setLeftBarButton(item3, animated: true)
         
-        
+    
     }
     
     
@@ -554,7 +554,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
 //            
 //        }
         
-    
+   
     }
     
     func myImageUploadRequest()

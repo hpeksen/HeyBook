@@ -46,7 +46,6 @@
 		84B993D31E1D5A540025412C /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993D21E1D5A540025412C /* HeaderCollectionReusableView.swift */; };
 		84B993D51E1D5EC30025412C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B993D41E1D5EC30025412C /* SwiftyJSON.swift */; };
 		84BF20481E229974001E883E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF20471E229974001E883E /* Record.swift */; };
-		AD964B171EB4A10700820A7C /* PlayingBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD964B161EB4A10700820A7C /* PlayingBook.swift */; };
 		C59E09A1FC10E9FB0ED40E59 /* Pods_HeyBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15298B32F56ACD156C6CE6C /* Pods_HeyBook.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,7 +95,6 @@
 		84B993D21E1D5A540025412C /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		84B993D41E1D5EC30025412C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		84BF20471E229974001E883E /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		AD964B161EB4A10700820A7C /* PlayingBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingBook.swift; sourceTree = "<group>"; };
 		ADA825331E59CE700051BE91 /* SideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SideMenu.framework; path = "Pods/../build/Release-iphoneos/SideMenu/SideMenu.framework"; sourceTree = "<group>"; };
 		C15298B32F56ACD156C6CE6C /* Pods_HeyBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeyBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59386519FD572BD8E335A4B /* Pods-HeyBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeyBook/Pods-HeyBook.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				84B993D21E1D5A540025412C /* HeaderCollectionReusableView.swift */,
 				8455BAB81E24F3FB0063200E /* LoginViewController.swift */,
 				8455BABA1E24FD5B0063200E /* User.swift */,
-				AD964B161EB4A10700820A7C /* PlayingBook.swift */,
 				846AC0FC1E67582C00C95001 /* HeyBook-Bridging-Header.h */,
 				846AC1041E70665300C95001 /* SettingsViewController.swift */,
 				846AC1071E77141300C95001 /* NewPasswordViewController.swift */,
@@ -242,6 +239,11 @@
 						DevelopmentTeam = V58HAM7S33;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -360,7 +362,6 @@
 				84B993CD1E1D59120025412C /* ListenViewController.swift in Sources */,
 				849247441E814CF3009AD151 /* CatagoriesViewController.swift in Sources */,
 				84AE9AEE1EB21BE4000B6CEF /* SearchResultViewController.swift in Sources */,
-				AD964B171EB4A10700820A7C /* PlayingBook.swift in Sources */,
 				8492474D1E841B91009AD151 /* HeaderCategoriesCollectionReusableView.swift in Sources */,
 				84AE9AF01EB237C0000B6CEF /* CustomSearchCollectionViewCell.swift in Sources */,
 				846AC1031E67595C00C95001 /* MenuTableViewCell.swift in Sources */,
