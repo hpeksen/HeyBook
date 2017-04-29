@@ -11,8 +11,12 @@ import AVFoundation
 import SideMenu
 import RNCryptor
 import Speech
+
 var playerPlaying = AVPlayer()
 var audioPlayerPlaying = AVAudioPlayer()
+var isDownloaded = Bool()
+var playingBookID = String()
+
 class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet weak var bookPhoto: UIImageView!
@@ -26,6 +30,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var publisherNameLabel: UILabel!
     @IBOutlet weak var narratorNameLabel: UILabel!
     
+    var book_id = ""
     var bookName = ""
     var authorName = ""
     var bookLink = ""
@@ -65,7 +70,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         if let dataa = UserDefaults.standard.data(forKey: "book_record_play"),
             let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
-            
+            book_id = (record.book_id)
             bookName = (record.book_title)
             authorName = (record.author_title)
             bookLink = (record.audio)
@@ -145,51 +150,82 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             print(error.localizedDescription)
         }
         
-        if isDownloaded {
-            do {
-                var originalData:Data
-                ciphertext = nil
-                for i in 0..<mp3FileNames.count {
-                    let fileNameArr = mp3FileNames[i].characters.split{$0 == "_"}.map(String.init)
-                    if fileNameArr[1] == bookName {
-                        ciphertext = NSData(contentsOf: mp3Files[i]) as! Data
-                    }
-                }
-                originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
-                //
-                //                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
-                //                try originalData.write(to: fileURL, options: .atomic)
+        if playingBookID != book_id {
+            if isDownloaded {
                 do {
-                    audioPlayer = try AVAudioPlayer(data: originalData)
+                    var originalData:Data
+                    ciphertext = nil
+                    for i in 0..<mp3FileNames.count {
+                        let fileNameArr = mp3FileNames[i].characters.split{$0 == "_"}.map(String.init)
+                        if fileNameArr[1] == bookName {
+                            ciphertext = NSData(contentsOf: mp3Files[i]) as! Data
+                        }
+                    }
+                    originalData = try RNCryptor.decrypt(data: ciphertext!, withPassword: bookPassword)
+                    //
+                    //                let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("decrypted.mp3")
+                    //                try originalData.write(to: fileURL, options: .atomic)
+                    do {
+                        audioPlayer = try AVAudioPlayer(data: originalData)
+                        
+                        // https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html
+                        // Define how the application intends to use audio
+                        try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                        
+                        // Activates or deactivates your app’s audio session.
+                        try AVAudioSession.sharedInstance().setActive(true)
+                    }
+                    catch {
+                        print("Error occurred")
+                    }
                     
-                    // https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html
-                    // Define how the application intends to use audio
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-                    
-                    // Activates or deactivates your app’s audio session.
-                    try AVAudioSession.sharedInstance().setActive(true)
+                    //audioPlayer.numberOfLoops = -1  // infinite loop
+                    audioPlayer.prepareToPlay()
+                    slider.maximumValue = Float(audioPlayer.duration)
+                } catch {
+                    print(error)
                 }
-                catch {
-                    print("Error occurred")
-                }
-                
-                //audioPlayer.numberOfLoops = -1  // infinite loop
-                audioPlayer.prepareToPlay()
-                slider.maximumValue = Float(audioPlayer.duration)
-            } catch {
-                print(error)
             }
+            else {
+                let url = URL(string: bookLink)
+                let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
+                player = AVPlayer(playerItem: playerItem)
+                slider.maximumValue = Float(CMTimeGetSeconds((player.currentItem?.asset.duration)!))
+            }
+            slider.value = 0.0
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+            timeLabel.text = "00:00"
         }
         else {
-            let url = URL(string: bookLink)
-            let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
-            player = AVPlayer(playerItem: playerItem)
-            slider.maximumValue = Float(CMTimeGetSeconds((player.currentItem?.asset.duration)!))
+            var time:Int
+            if isDownloaded {
+                audioPlayer = audioPlayerPlaying
+                slider.maximumValue = Float(audioPlayer.duration)
+                time = Int(audioPlayer.currentTime)
+                slider.value = Float(audioPlayer.currentTime)
+                if audioPlayer.isPlaying {
+                    playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
+                }
+                else {
+                    playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+                }
+            }
+            else {
+                player = playerPlaying
+                time = Int(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+                slider.value = Float(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+                if((player.rate != 0) && (player.error == nil)) {
+                    playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
+                }
+                else {
+                    playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+                }
+            }
+            
+            let (h,m,s) = secondsToHoursMinutesSeconds(seconds: time)
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+            timeLabel.text = NSString(format: "%02d:%02d", m,s) as String
         }
-        slider.value = 0.0
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
-        timeLabel.text = "00:00"
-        
         
         //voice
         
@@ -484,11 +520,15 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             if audioPlayer.isPlaying {
                 audioPlayer.pause()
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+                UserDefaults.standard.setValue("\(audioPlayer.currentTime)", forKey: "playing_book_duration")
             }
            else {
-//                if audioPlayerPlaying != audioPlayer {
-//                    audioPlayerPlaying.stop()
-//                }
+                if audioPlayerPlaying != audioPlayer {
+                    print("AVPLAYER \(audioPlayer.url)")
+                    audioPlayerPlaying.stop()
+                    audioPlayerPlaying = AVAudioPlayer()
+                    print("AVPLAYER \(audioPlayer.url)")
+                }
                 audioPlayer.play()
                 audioPlayerPlaying = audioPlayer
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
@@ -499,11 +539,13 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             if((player.rate != 0) && (player.error == nil)) {
                 player.pause()
                 playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+                UserDefaults.standard.setValue("\(CMTimeGetSeconds((player.currentItem?.currentTime())!))", forKey: "playing_book_duration")
             }
             else {
-//                if playerPlaying != player {
-//                    playerPlaying.pause()
-//                }
+                if playerPlaying != player {
+                    playerPlaying.pause()
+                    playerPlaying = AVPlayer()
+                }
                 player.play()
                 playerPlaying = player
                 playButtonImage.setImage(UIImage(named: "pause-1.png"), for: UIControlState.normal)
@@ -512,6 +554,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 print(bookLink)
             }
         }
+        playingBookID = book_id
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
