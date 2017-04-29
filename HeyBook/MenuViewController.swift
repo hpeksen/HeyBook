@@ -46,7 +46,6 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             }).resume()
         
         }
-        self.imgIcon.reloadInputViews()
         // Do any additional setup after loading the view.  LoginFromMenuViewController
     }
 
@@ -169,9 +168,26 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             }
         if ( cell.lblMenuButton.text  == "Ayarlar")
         {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
-            self.navigationController?.pushViewController(controller, animated: true)
+            
+            if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            else {
+                let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }))
+                tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
+                
+                
+            }
         }
         if ( cell.lblMenuButton.text  == "Giriş Yap")
             
@@ -197,6 +213,10 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             UserDefaults.standard.setValue(nil, forKey: "user_title")
             UserDefaults.standard.setValue(nil, forKey: "user_id")
             UserDefaults.standard.setValue(nil, forKey: "user_photo")
+            
+            self.imgIcon.image = UIImage(named: "logo.png")
+            self.imgIcon.transform = self.imgIcon.transform.rotated(by: CGFloat(M_PI_2))
+            self.imgIcon.transform = self.imgIcon.transform.rotated(by: CGFloat(M_PI))
             
             let tapAlert = UIAlertController(title: "mesaj", message: "Çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
             tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in

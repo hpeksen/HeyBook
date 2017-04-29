@@ -447,6 +447,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
             response in
             switch response.result {
             case .success:
+                
+                self.eMailTxt.text = ""
+                self.passwordTxt.text = ""
                 let json = JSON(data: response.data!)
                 print("USER BİLGİLERİ")
                 print(json)

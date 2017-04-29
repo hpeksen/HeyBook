@@ -158,13 +158,14 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         bookListenImage.image = UIImage(data: data!)
         
-        let userID:String = UserDefaults.standard.value(forKey: "user_id")! as! String
         
         //Favori yıldızları: https://github.com/marketplacer/Cosmos
         starsView.rating = Double(star)!
         
         //Favori switch kontrol
         if UserDefaults.standard.value(forKey: "user_id") != nil {
+            let userID:String = UserDefaults.standard.value(forKey: "user_id")! as! String
+            
             var urlString = "http://heybook.online/api.php"
             var parameters = ["request": "user_favorites",
                               "user_id": "\(userID)"]
