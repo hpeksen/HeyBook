@@ -50,6 +50,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     //voice
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
+     var btn2 = UIButton(type: .custom)
+    var alert = UIAlertView()
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -104,6 +106,20 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             if records.isEmpty {
                 let urlString = "http://heybook.online/api.php"
                 
+                alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
+                
+                var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+                loadingIndicator.center = self.view.center;
+                loadingIndicator.hidesWhenStopped = true
+                loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+                loadingIndicator.startAnimating();
+                
+                alert.setValue(loadingIndicator, forKey: "accessoryView")
+                
+                loadingIndicator.startAnimating()
+                
+                alert.show();
+                
                 Alamofire.request(urlString, method: .post, parameters: ["request": "books"],encoding: URLEncoding.httpBody, headers: nil).responseJSON {
                     response in
                     switch response.result {
@@ -146,18 +162,19 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                             print("record: \(record.book_title)")
                             
                         }
-                        
                         self.myCollectionView.reloadData()
                         self.carouselView.reloadData()
-                        
+                         self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                         
                         
                         
                         break
                     case .failure(let error):
+                        
+                        self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                         print("internett")
                     //    print(isConnectedToNetwork())
-                        let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz!!!", preferredStyle: .alert)
+                        let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
                         
                         let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
                             guard let settingsUrl = URL(string: "App-Prefs:root=Wifi") else {
@@ -174,7 +191,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         alertController.addAction(settingsWifi)
                         
                         let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
-                            guard let settingsUrl = URL(string: "App-Prefs:root=Mobile Data") else {
+                            guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
                                 return
                             }
                             
@@ -186,6 +203,20 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                             }
                         }
                         alertController.addAction(settingsCellular)
+                        
+                        let okAction = UIAlertAction(title: "Kitaplarım'a Git", style: UIAlertActionStyle.default) {
+                            UIAlertAction in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }
+                       
+                        
+                        // Add the actions
+                        alertController.addAction(okAction)
+                        
+                        
+                        
                         
                         self.present(alertController, animated: true, completion: nil)
                     }
@@ -282,7 +313,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         
         //Bar Buttonları
         
-        let btn2 = UIButton(type: .custom)
+       
         btn2.setImage(UIImage(named: "mikrofon"), for: .normal)
         btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
         btn2.addTarget(self, action: #selector(MainViewController.btnVoice), for: .touchUpInside)
@@ -358,6 +389,22 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             
             //  microphoneButton.setTitle("Start Recording", for: .normal)
         } else {
+            
+            
+                         alert = UIAlertView(title: "Mesaj", message: "Dinleniyor...", delegate: nil, cancelButtonTitle: nil);
+            
+                        var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+                        loadingIndicator.center = self.view.center;
+                        loadingIndicator.hidesWhenStopped = true
+                        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+                        loadingIndicator.startAnimating();
+            
+                        alert.setValue(loadingIndicator, forKey: "accessoryView")
+            
+                        loadingIndicator.startAnimating()
+                        
+                        alert.show();
+            
             startRecording()
             // microphoneButton.setTitle("Stop Recording", for: .normal)
             
@@ -404,9 +451,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
                    self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     
                 }
                 if(result?.bestTranscription.formattedString == "Kitaplarım"){

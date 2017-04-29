@@ -556,9 +556,23 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         
    
     }
-    
+    var alert = UIAlertView()
     func myImageUploadRequest()
     {
+        
+      alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
+        
+        var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+        loadingIndicator.center = self.view.center;
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        
+        alert.setValue(loadingIndicator, forKey: "accessoryView")
+        
+        loadingIndicator.startAnimating()
+        
+        alert.show();
         
         let myUrl = NSURL(string: "http://heybook.online/api.php");
         //let myUrl = NSURL(string: "http://www.boredwear.com/utils/postImage.php");
@@ -619,7 +633,7 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
                 print(jsonMessage["message"].description)
                
                
-                
+                self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 let tapAlert = UIAlertController(title: "Mesaj", message: jsonMessage["message"].description, preferredStyle: UIAlertControllerStyle.alert)
                 tapAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                 self.present(tapAlert, animated: true, completion: nil)

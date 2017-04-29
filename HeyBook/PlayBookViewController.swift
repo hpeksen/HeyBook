@@ -51,6 +51,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
     var mp3FileNames:[String] = []
     var mp3Files:[URL] = []
     
+    var btn2 = UIButton(type: .custom)
     
     //voice
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
@@ -160,6 +161,15 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             userDefaultsLastPosition = pos as! String
         }
         
+        do {
+        try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        
+        // Activates or deactivates your app’s audio session.
+        try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error occurred")
+        }
+        
         if playingBookID != book_id {
             if isDownloaded {
                 do {
@@ -180,10 +190,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                         
                         // https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html
                         // Define how the application intends to use audio
-                        try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
                         
-                        // Activates or deactivates your app’s audio session.
-                        try AVAudioSession.sharedInstance().setActive(true)
                     }
                     catch {
                         print("Error occurred")
@@ -294,7 +301,6 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         //Bar Buttonları
         
-        let btn2 = UIButton(type: .custom)
         btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
         btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
         btn2.addTarget(self, action: #selector(PlayBookViewController.btnVoice), for: .touchUpInside)
@@ -341,7 +347,17 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     func btnVoice(_ sender: Any) {
-        if audioEngine.isRunning {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            
+            // Activates or deactivates your app’s audio session.
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error occurred")
+        }
+        
+        if audioEngine.isRunning && (isAudioPlayerPlaying || isPlayerPlaying){
+            btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
             audioEngine.stop()
             recognitionRequest?.endAudio()
             //  microphoneButton.isEnabled = false
@@ -350,6 +366,8 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             //  microphoneButton.setTitle("Start Recording", for: .normal)
         } else {
+            
+            btn2.setImage(UIImage(named: "mikrofon"), for: .normal)
             startRecording()
             // microphoneButton.setTitle("Stop Recording", for: .normal)
             
@@ -394,6 +412,13 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 print(result?.bestTranscription.formattedString)  //9
                 
+                if(result?.bestTranscription.formattedString == "Oynat"){
+                    self.audioEngine.stop()
+                    recognitionRequest.endAudio()
+
+                    self.playBookFunction()
+                    
+                }
                 if(result?.bestTranscription.formattedString == "Vitrin"){
                     self.audioEngine.stop()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -486,7 +511,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 
                 
-                
+              
                 
                 
                 isFinal = (result?.isFinal)!
@@ -543,9 +568,8 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func playBookFunction(){
     
-    
-    @IBAction func playButton(_ sender: UIButton) {
         if isDownloaded {
             if audioPlayer.isPlaying {
                 audioPlayer.pause()
@@ -610,6 +634,11 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             isDownloadedPlaying = false
         }
         playingBookID = book_id
+    
+    }
+    
+    @IBAction func playButton(_ sender: UIButton) {
+       playBookFunction()
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {

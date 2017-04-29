@@ -43,10 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         UserDefaults.standard.setValue(playingBookID, forKey: "playing_book_id")
         if isDownloadedPlaying {
-            UserDefaults.standard.setValue("\(audioPlayerPlaying.currentTime)", forKey: "playing_book_duration")
+            if isPlayerPlaying {
+                UserDefaults.standard.setValue("\(audioPlayerPlaying.currentTime)", forKey: "playing_book_duration")
+            }
         }
         else {
-            UserDefaults.standard.setValue("\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))", forKey: "playing_book_duration")
+            if isAudioPlayerPlaying{
+                UserDefaults.standard.setValue("\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))", forKey: "playing_book_duration")
+            }
         }
         self.saveContext()
     }
