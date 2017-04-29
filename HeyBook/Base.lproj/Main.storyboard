@@ -610,153 +610,6 @@
                                     <constraint firstItem="6ia-gQ-2Nb" firstAttribute="centerX" secondItem="whz-6Y-JRo" secondAttribute="centerX" id="gMT-VR-qeG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMR-1V-Cwa" userLabel="Ödemeyi Onayla View">
-                                <rect key="frame" x="0.0" y="209" width="375" height="458"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kart Üzerindeki İsim ve Soyisim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hL-T7-KbY">
-                                        <rect key="frame" x="31" y="8" width="190" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-TE-Wq2">
-                                        <rect key="frame" x="31" y="26" width="240" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="9Ks-wY-ZOe"/>
-                                            <constraint firstAttribute="height" constant="30" id="Ucu-93-yhH"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kart Numarası" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-2p-OM7">
-                                        <rect key="frame" x="31" y="64" width="86.5" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Son Kullanma Tarihi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSK-Dd-fwS">
-                                        <rect key="frame" x="31" y="126" width="119" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVC2 Numarası" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqV-uh-a8l">
-                                        <rect key="frame" x="38" y="231" width="95.5" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfg-Xx-TT3">
-                                        <rect key="frame" x="31" y="88" width="240" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="NQC-8g-IP6"/>
-                                            <constraint firstAttribute="width" constant="240" id="kIb-wE-cIl"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TrP-lt-def">
-                                        <rect key="frame" x="37" y="255" width="97" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="97" id="5oX-ob-9ZH"/>
-                                            <constraint firstAttribute="height" constant="30" id="iWG-di-5dY"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                    </textField>
-                                    <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJy-Pc-oMq">
-                                        <rect key="frame" x="52.5" y="157" width="100" height="66"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="LPK-dm-ajQ"/>
-                                            <constraint firstAttribute="height" constant="66" id="mRt-pi-x3M"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="fah-Bo-lry" id="5W3-6p-FPR"/>
-                                            <outlet property="delegate" destination="fah-Bo-lry" id="Nfk-xp-dMh"/>
-                                        </connections>
-                                    </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nS1-3A-VIF">
-                                        <rect key="frame" x="0.0" y="428" width="375" height="30"/>
-                                        <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="ÖDEMEYİ ONAYLA">
-                                            <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="odemeyiOnaylaButton:" destination="fah-Bo-lry" eventType="touchUpInside" id="Mfs-y6-2lZ"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ay:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwn-lp-drO">
-                                        <rect key="frame" x="15" y="180" width="23.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Yıl:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCo-xr-q40">
-                                        <rect key="frame" x="171.5" y="180" width="24.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7j-tq-J4j">
-                                        <rect key="frame" x="210" y="157" width="100" height="66"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="66" id="WVB-BW-1W1"/>
-                                            <constraint firstAttribute="width" constant="100" id="ehE-Bh-5kb"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="fah-Bo-lry" id="e6f-Xl-D5q"/>
-                                            <outlet property="delegate" destination="fah-Bo-lry" id="Vmz-aw-IdZ"/>
-                                        </connections>
-                                    </pickerView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Bu ödeme hesap hareketlerinizde HEYBOOK-3DPOS olarak görünecektir." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cew-bQ-QeG">
-                                        <rect key="frame" x="6" y="290" width="361" height="37"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="361" id="kQ8-Gw-nxL"/>
-                                            <constraint firstAttribute="height" constant="37" id="tkI-VV-OsZ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="LSK-Dd-fwS" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="1an-Lb-7XW"/>
-                                    <constraint firstItem="TrP-lt-def" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="37" id="21w-zP-LWp"/>
-                                    <constraint firstAttribute="trailing" secondItem="cew-bQ-QeG" secondAttribute="trailing" constant="8" id="2as-WX-nNQ"/>
-                                    <constraint firstItem="nS1-3A-VIF" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" id="5oR-km-7av"/>
-                                    <constraint firstItem="VDI-2p-OM7" firstAttribute="top" secondItem="5vm-TE-Wq2" secondAttribute="bottom" constant="8" id="66e-IO-Wiw"/>
-                                    <constraint firstItem="cew-bQ-QeG" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="6" id="6Cu-6J-rQO"/>
-                                    <constraint firstItem="lCo-xr-q40" firstAttribute="top" secondItem="mfg-Xx-TT3" secondAttribute="bottom" constant="62" id="7or-hc-zdR"/>
-                                    <constraint firstItem="5vm-TE-Wq2" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="8PH-Ek-arR"/>
-                                    <constraint firstItem="5vm-TE-Wq2" firstAttribute="top" secondItem="9hL-T7-KbY" secondAttribute="bottom" constant="2" id="9Uh-2J-fgT"/>
-                                    <constraint firstItem="B7j-tq-J4j" firstAttribute="leading" secondItem="lCo-xr-q40" secondAttribute="trailing" constant="14" id="BNv-Wf-puf"/>
-                                    <constraint firstItem="lCo-xr-q40" firstAttribute="leading" secondItem="fJy-Pc-oMq" secondAttribute="trailing" constant="19" id="CCC-7J-7yN"/>
-                                    <constraint firstItem="VDI-2p-OM7" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="HbH-ZT-9pI"/>
-                                    <constraint firstItem="TrP-lt-def" firstAttribute="top" secondItem="pqV-uh-a8l" secondAttribute="bottom" constant="8" id="N1w-za-b2i"/>
-                                    <constraint firstItem="lCo-xr-q40" firstAttribute="leading" secondItem="fJy-Pc-oMq" secondAttribute="trailing" constant="19" id="YFw-gD-cUv"/>
-                                    <constraint firstItem="cew-bQ-QeG" firstAttribute="top" secondItem="TrP-lt-def" secondAttribute="bottom" constant="5" id="ah7-x5-cp2"/>
-                                    <constraint firstItem="fJy-Pc-oMq" firstAttribute="top" secondItem="LSK-Dd-fwS" secondAttribute="bottom" constant="15" id="amg-Xe-9Gx"/>
-                                    <constraint firstItem="Vwn-lp-drO" firstAttribute="top" secondItem="LSK-Dd-fwS" secondAttribute="bottom" constant="38" id="d1e-bY-Rdu"/>
-                                    <constraint firstItem="Vwn-lp-drO" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="15" id="ezC-Up-o5X"/>
-                                    <constraint firstItem="pqV-uh-a8l" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="38" id="g5t-9N-XoH"/>
-                                    <constraint firstItem="mfg-Xx-TT3" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="hRW-NA-c1o"/>
-                                    <constraint firstItem="mfg-Xx-TT3" firstAttribute="top" secondItem="VDI-2p-OM7" secondAttribute="bottom" constant="8" id="i5A-K5-NaO"/>
-                                    <constraint firstItem="B7j-tq-J4j" firstAttribute="top" secondItem="mfg-Xx-TT3" secondAttribute="bottom" constant="39" id="mMf-7l-Yh0"/>
-                                    <constraint firstItem="9hL-T7-KbY" firstAttribute="top" secondItem="PMR-1V-Cwa" secondAttribute="top" constant="8" id="nFa-ZF-CZf"/>
-                                    <constraint firstAttribute="bottom" secondItem="nS1-3A-VIF" secondAttribute="bottom" id="qtO-X1-QNN"/>
-                                    <constraint firstItem="pqV-uh-a8l" firstAttribute="top" secondItem="fJy-Pc-oMq" secondAttribute="bottom" constant="8" id="sq5-xq-Rzk"/>
-                                    <constraint firstItem="fJy-Pc-oMq" firstAttribute="leading" secondItem="Vwn-lp-drO" secondAttribute="trailing" constant="14" id="tu1-Wa-i1O"/>
-                                    <constraint firstAttribute="trailing" secondItem="B7j-tq-J4j" secondAttribute="trailing" constant="65" id="yFi-eu-idg"/>
-                                    <constraint firstItem="LSK-Dd-fwS" firstAttribute="top" secondItem="mfg-Xx-TT3" secondAttribute="bottom" constant="8" id="yec-KQ-LpK"/>
-                                    <constraint firstItem="9hL-T7-KbY" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="yyr-LR-oeA"/>
-                                    <constraint firstAttribute="trailing" secondItem="nS1-3A-VIF" secondAttribute="trailing" id="zot-Rg-M4l"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFq-Mw-2cY" userLabel="3DOnayView">
                                 <rect key="frame" x="0.0" y="209" width="375" height="458"/>
                                 <subviews>
@@ -953,6 +806,152 @@
                                     <constraint firstAttribute="bottom" secondItem="x7G-IQ-kHB" secondAttribute="bottom" id="P33-hH-Wxt"/>
                                     <constraint firstItem="A2u-VU-HiL" firstAttribute="leading" secondItem="RXj-Fw-DxI" secondAttribute="leading" id="cJN-fr-a3M"/>
                                     <constraint firstItem="x7G-IQ-kHB" firstAttribute="top" secondItem="A2u-VU-HiL" secondAttribute="bottom" constant="8" id="xJP-va-c9q"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMR-1V-Cwa" userLabel="Ödemeyi Onayla View">
+                                <rect key="frame" x="0.0" y="209" width="375" height="458"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kart Üzerindeki İsim ve Soyisim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hL-T7-KbY">
+                                        <rect key="frame" x="31" y="8" width="190" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-TE-Wq2">
+                                        <rect key="frame" x="31" y="26" width="240" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="wP7-T2-dES"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kart Numarası" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-2p-OM7">
+                                        <rect key="frame" x="31" y="64" width="86.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Son Kullanma Tarihi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSK-Dd-fwS">
+                                        <rect key="frame" x="31" y="126" width="119" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVC2 Numarası" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqV-uh-a8l">
+                                        <rect key="frame" x="38" y="231" width="95.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfg-Xx-TT3">
+                                        <rect key="frame" x="31" y="88" width="240" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="R48-KL-Wvb"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TrP-lt-def">
+                                        <rect key="frame" x="37" y="255" width="97" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Czr-8t-acq"/>
+                                            <constraint firstAttribute="width" constant="97" id="KSe-ri-HKB"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJy-Pc-oMq">
+                                        <rect key="frame" x="53.5" y="157" width="80" height="66"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="1EV-O0-zxO"/>
+                                            <constraint firstAttribute="height" constant="66" id="gP5-Rg-KIo"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="fah-Bo-lry" id="5W3-6p-FPR"/>
+                                            <outlet property="delegate" destination="fah-Bo-lry" id="Nfk-xp-dMh"/>
+                                        </connections>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nS1-3A-VIF">
+                                        <rect key="frame" x="0.0" y="428" width="375" height="30"/>
+                                        <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="ÖDEMEYİ ONAYLA">
+                                            <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="odemeyiOnaylaButton:" destination="fah-Bo-lry" eventType="touchUpInside" id="Mfs-y6-2lZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ay:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwn-lp-drO">
+                                        <rect key="frame" x="15" y="180" width="23.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Yıl:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCo-xr-q40">
+                                        <rect key="frame" x="158.5" y="180" width="23.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7j-tq-J4j">
+                                        <rect key="frame" x="197" y="157" width="80" height="66"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="8yw-Nn-VQd"/>
+                                            <constraint firstAttribute="height" constant="66" id="zsc-rH-02z"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="fah-Bo-lry" id="e6f-Xl-D5q"/>
+                                            <outlet property="delegate" destination="fah-Bo-lry" id="Vmz-aw-IdZ"/>
+                                        </connections>
+                                    </pickerView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Bu ödeme hesap hareketlerinizde HEYBOOK-3DPOS olarak görünecektir." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cew-bQ-QeG">
+                                        <rect key="frame" x="6" y="290" width="361" height="37"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="361" id="B77-mU-GeI"/>
+                                            <constraint firstAttribute="height" constant="37" id="a05-wr-Mnr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="9hL-T7-KbY" firstAttribute="top" secondItem="PMR-1V-Cwa" secondAttribute="top" constant="8" id="0tR-i1-ONk"/>
+                                    <constraint firstItem="mfg-Xx-TT3" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="34x-Y6-E9n"/>
+                                    <constraint firstItem="5vm-TE-Wq2" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="62q-9x-jqp"/>
+                                    <constraint firstItem="lCo-xr-q40" firstAttribute="leading" secondItem="fJy-Pc-oMq" secondAttribute="trailing" constant="25" id="7XQ-g7-bgK"/>
+                                    <constraint firstItem="9hL-T7-KbY" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="9oF-YX-Rnu"/>
+                                    <constraint firstItem="LSK-Dd-fwS" firstAttribute="top" secondItem="mfg-Xx-TT3" secondAttribute="bottom" constant="8" id="BhX-Fn-mZA"/>
+                                    <constraint firstItem="VDI-2p-OM7" firstAttribute="top" secondItem="5vm-TE-Wq2" secondAttribute="bottom" constant="8" id="Bn5-uw-zR4"/>
+                                    <constraint firstItem="B7j-tq-J4j" firstAttribute="top" secondItem="mfg-Xx-TT3" secondAttribute="bottom" constant="39" id="CIt-lh-zsE"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="B7j-tq-J4j" secondAttribute="trailing" constant="15" id="IEx-QE-Poh"/>
+                                    <constraint firstItem="fJy-Pc-oMq" firstAttribute="leading" secondItem="Vwn-lp-drO" secondAttribute="trailing" constant="15" id="Jea-Yg-yFa"/>
+                                    <constraint firstAttribute="bottom" secondItem="nS1-3A-VIF" secondAttribute="bottom" id="KFI-rG-VcW"/>
+                                    <constraint firstItem="nS1-3A-VIF" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" id="N6B-pc-v9Q"/>
+                                    <constraint firstItem="mfg-Xx-TT3" firstAttribute="top" secondItem="VDI-2p-OM7" secondAttribute="bottom" constant="8" id="Pku-jX-bdN"/>
+                                    <constraint firstItem="B7j-tq-J4j" firstAttribute="leading" secondItem="lCo-xr-q40" secondAttribute="trailing" constant="15" id="SVp-v4-EaX"/>
+                                    <constraint firstAttribute="trailing" secondItem="5vm-TE-Wq2" secondAttribute="trailing" constant="104" id="X7b-jR-ITM"/>
+                                    <constraint firstItem="Vwn-lp-drO" firstAttribute="top" secondItem="LSK-Dd-fwS" secondAttribute="bottom" constant="38" id="XTd-YA-apR"/>
+                                    <constraint firstAttribute="trailing" secondItem="mfg-Xx-TT3" secondAttribute="trailing" constant="104" id="ZC9-hs-SYE"/>
+                                    <constraint firstItem="5vm-TE-Wq2" firstAttribute="top" secondItem="9hL-T7-KbY" secondAttribute="bottom" constant="2" id="aNK-75-uTd"/>
+                                    <constraint firstAttribute="trailing" secondItem="nS1-3A-VIF" secondAttribute="trailing" id="aks-5F-hpI"/>
+                                    <constraint firstItem="pqV-uh-a8l" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="38" id="hIo-hw-tDp"/>
+                                    <constraint firstItem="fJy-Pc-oMq" firstAttribute="top" secondItem="LSK-Dd-fwS" secondAttribute="bottom" constant="15" id="mfZ-22-ezZ"/>
+                                    <constraint firstItem="Vwn-lp-drO" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="15" id="nfF-wT-zvB"/>
+                                    <constraint firstItem="TrP-lt-def" firstAttribute="top" secondItem="pqV-uh-a8l" secondAttribute="bottom" constant="8" id="pjY-l9-eNj"/>
+                                    <constraint firstAttribute="trailing" secondItem="cew-bQ-QeG" secondAttribute="trailing" constant="8" id="q5Z-Hy-vvN"/>
+                                    <constraint firstItem="LSK-Dd-fwS" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="tPn-xs-k2B"/>
+                                    <constraint firstItem="cew-bQ-QeG" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="6" id="teP-Wy-KQh"/>
+                                    <constraint firstItem="pqV-uh-a8l" firstAttribute="top" secondItem="fJy-Pc-oMq" secondAttribute="bottom" constant="8" id="tfS-qo-EFM"/>
+                                    <constraint firstItem="lCo-xr-q40" firstAttribute="top" secondItem="mfg-Xx-TT3" secondAttribute="bottom" constant="62" id="vcj-Xp-x8D"/>
+                                    <constraint firstItem="cew-bQ-QeG" firstAttribute="top" secondItem="TrP-lt-def" secondAttribute="bottom" constant="5" id="wz5-gX-Xjb"/>
+                                    <constraint firstItem="VDI-2p-OM7" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="31" id="xdb-0D-xk3"/>
+                                    <constraint firstItem="TrP-lt-def" firstAttribute="leading" secondItem="PMR-1V-Cwa" secondAttribute="leading" constant="37" id="zz4-fG-r42"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3232,6 +3231,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="hGl-Z4-WYp"/>
         <segue reference="2a9-6B-NpY"/>
-        <segue reference="LgL-61-w54"/>
+        <segue reference="f7d-jf-ysr"/>
     </inferredMetricsTieBreakers>
 </document>

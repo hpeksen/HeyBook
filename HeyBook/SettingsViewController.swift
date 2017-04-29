@@ -38,6 +38,8 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
     var pickedImagePath: NSURL?
     var pickedImageData: NSData?
     
+    var isImageFromLibrary:Bool = false
+    
     var localPath: String?
     
     var mail = ""
@@ -45,7 +47,43 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
     var photo = ""
     var profileImageTransform:CGAffineTransform?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        userTitleLabel.text =  UserDefaults.standard.value(forKey: "user_title") as? String
+        emailLabel.text = UserDefaults.standard.value(forKey: "user_mail") as? String
+        photo = (UserDefaults.standard.value(forKey: "user_photo") as? String)!
+        
+        print("http://heybook.online/\(photo)")
+        print(UserDefaults.standard.value(forKey: "user_photo") as? String)
+        
+        //Aschronized image loading !!!!
+        if(photo == "img/users/no-photo.jpg"){
+            self.profileImage.image = UIImage(named: "logo")
+        }
+        else if !isImageFromLibrary {
+            print("elsejjuu")
+            URLSession.shared.dataTask(with: NSURL(string: "http://heybook.online/\(photo)")! as URL, completionHandler: { (data, response, error) -> Void in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.profileImage.image = self.imageRotatedByDegrees(oldImage: UIImage(data: data!)!, deg: 90)
+                    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
+                    self.profileImage.contentMode = .scaleAspectFill
+                    self.profileImage.clipsToBounds = true
+                    //self.profileImage.transform = self.profileImageTransform!
+                })
+                
+            }).resume()
+        }
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        isImageFromLibrary = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,27 +103,8 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
             
             
             
-            userTitleLabel.text =  UserDefaults.standard.value(forKey: "user_title") as? String
-            emailLabel.text = UserDefaults.standard.value(forKey: "user_mail") as? String
-            photo = "http://heybook.online/\((UserDefaults.standard.value(forKey: "user_photo") as? String)!)"
-            //Aschronized image loading !!!!
-            URLSession.shared.dataTask(with: NSURL(string: photo)! as URL, completionHandler: { (data, response, error) -> Void in
-                if error != nil {
-                    print(error)
-                    return
-                }
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.profileImage.image = UIImage(data: data!)
-                    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
-                    self.profileImage.contentMode = .scaleAspectFill
-                    self.profileImage.clipsToBounds = true
-                    self.profileImageTransform = self.profileImage.transform
-                    self.profileImage.transform = self.profileImage.transform.rotated(by: CGFloat(M_PI_2))
-                })
-                
-            }).resume()
+           
         }
-
         
         //keyboard için
         newPassTxt.delegate = self
@@ -644,7 +663,8 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
                 
                 UserDefaults.standard.setValue(self.emailLabel.text!, forKey: "user_mail")
                 UserDefaults.standard.setValue(self.userTitleLabel.text!, forKey: "user_title")
-                //UserDefaults.standard.setValue(self.photo, forKey: "user_photo")
+                self.photo = "img/users/\((UserDefaults.standard.value(forKey: "user_id") as! String)).jpg"
+                UserDefaults.standard.setValue(self.photo, forKey: "user_photo")
                 
                 
                 DispatchQueue.main.async(execute: {
@@ -707,9 +727,30 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2;
         profileImage.contentMode = .scaleAspectFill
         profileImage.clipsToBounds = true
-        profileImage.transform = profileImageTransform!
+        isImageFromLibrary = true
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func imageRotatedByDegrees(oldImage: UIImage, deg degrees: CGFloat) -> UIImage {
+        //Calculate the size of the rotated view's containing box for our drawing space
+        let rotatedViewBox: UIView = UIView(frame: CGRect(x: 0, y: 0, width: oldImage.size.width, height: oldImage.size.height))
+        let t: CGAffineTransform = CGAffineTransform(rotationAngle: degrees * CGFloat.pi / 180)
+        rotatedViewBox.transform = t
+        let rotatedSize: CGSize = rotatedViewBox.frame.size
+        //Create the bitmap context
+        UIGraphicsBeginImageContext(rotatedSize)
+        let bitmap: CGContext = UIGraphicsGetCurrentContext()!
+        //Move the origin to the middle of the image so we will rotate and scale around the center.
+        bitmap.translateBy(x: rotatedSize.width / 2, y: rotatedSize.height / 2)
+        //Rotate the image context
+        bitmap.rotate(by: (degrees * CGFloat.pi / 180))
+        //Now, draw the rotated/scaled image into the context
+        bitmap.scaleBy(x: 1.0, y: -1.0)
+        bitmap.draw(oldImage.cgImage!, in: CGRect(x: -oldImage.size.width / 2, y: -oldImage.size.height / 2, width: oldImage.size.width, height: oldImage.size.height))
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
     
     @IBAction func photoAddButton(_ sender: Any) {

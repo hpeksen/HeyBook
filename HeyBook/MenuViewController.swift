@@ -26,28 +26,30 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         menuNameArr = ["HeyBook! Vitrin","Kategoriler","HeyBook'ta Ara","Kitaplarım","Favorilerim","Sepet","Ayarlar","Giriş Yap"]
-        if UserDefaults.standard.value(forKey: "user_photo") == nil{
-            self.imgIcon.image = UIImage(named: "logo")
-            
-        }
-        if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil || UserDefaults.standard.value(forKey: "user_image") != nil){
-            photo = "http://heybook.online/\((UserDefaults.standard.value(forKey: "user_photo") as? String)!)"
-            //Aschronized image loading !!!!
-            URLSession.shared.dataTask(with: NSURL(string: photo)! as URL, completionHandler: { (data, response, error) -> Void in
-                if error != nil {
-                    print(error)
-                    return
-                }
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.imgIcon.image = UIImage(data: data!)
-                    self.imgIcon.layer.cornerRadius = self.imgIcon.frame.size.width / 2;
-                    self.imgIcon.contentMode = .scaleAspectFill
-                    self.imgIcon.clipsToBounds = true
-                    self.imgIcon.transform = self.imgIcon.transform.rotated(by: CGFloat(M_PI_2))
-                })
+        if UserDefaults.standard.value(forKey: "user_mail") != nil {
+            if UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_photo") as! String == "img/users/no-photo.jpg" {
+                self.imgIcon.image = UIImage(named: "logo")
                 
-            }).resume()
-        
+            }
+            else {
+                photo = "http://heybook.online/\((UserDefaults.standard.value(forKey: "user_photo") as? String)!)"
+                //Aschronized image loading !!!!
+                URLSession.shared.dataTask(with: NSURL(string: photo)! as URL, completionHandler: { (data, response, error) -> Void in
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.imgIcon.image = UIImage(data: data!)
+                        self.imgIcon.layer.cornerRadius = self.imgIcon.frame.size.width / 2;
+                        self.imgIcon.contentMode = .scaleAspectFill
+                        self.imgIcon.clipsToBounds = true
+                        self.imgIcon.transform = self.imgIcon.transform.rotated(by: CGFloat(M_PI_2))
+                    })
+                    
+                }).resume()
+                
+            }
         }
         // Do any additional setup after loading the view.  LoginFromMenuViewController
     }

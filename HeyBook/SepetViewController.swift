@@ -63,8 +63,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     private let audioEngine = AVAudioEngine()
 
     
-   var mounth = ""
-    var year = ""
+   var mounth = "01"
+    var year = "2017"
     @IBOutlet weak var monthPickerView: UIPickerView!
     @IBOutlet weak var yearPickerView: UIPickerView!
     @IBOutlet weak var CreditCardNameSurname: UITextField!
@@ -640,7 +640,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
 
     @IBAction func odemeyiOnaylaButton(_ sender: Any) {
       
-        if((kartNameSurname.text?.isEmpty)! || (kartNumarası.text?.isEmpty)! || (cvcNumarası.text?.isEmpty)! || mounth.isEmpty || year.isEmpty){
+        if((kartNameSurname.text?.isEmpty)! || (kartNumarası.text?.isEmpty)! || (cvcNumarası.text?.isEmpty)! ){
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen bütün alanları doldurunuz!", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)

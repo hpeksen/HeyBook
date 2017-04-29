@@ -135,7 +135,17 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
 
         
         
+        if(self.records.isEmpty){
         
+            let tapAlert = UIAlertController(title: "Mesaj", message: "Aradığınız kriterlere uygun kitap bulunamadı.", preferredStyle: UIAlertControllerStyle.alert)
+            tapAlert.addAction(UIAlertAction(title: "Tekrar Ara", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }))
+            self.present(tapAlert, animated: true, completion: nil)
+            
+        }
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
