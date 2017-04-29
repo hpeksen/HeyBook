@@ -46,6 +46,7 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             }).resume()
         
         }
+        self.imgIcon.reloadInputViews()
         // Do any additional setup after loading the view.  LoginFromMenuViewController
     }
 

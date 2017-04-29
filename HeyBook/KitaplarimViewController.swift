@@ -243,7 +243,6 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     }
     func btnMenu(){
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
-        
     }
     
     
