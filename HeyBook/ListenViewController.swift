@@ -306,28 +306,10 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.present(tapAlert, animated: true, completion: nil)
             }
         }
-        var bool:Bool = false
-        if isPreListenPlayerPlaying {
-//            let assetPlaying = preListenPlayerPlaying.currentItem?.asset
-//            let asset = player.currentItem?.asset
-//            if asset != nil , let urlAsset = asset as? AVURLAsset, assetPlaying != nil , let urlAssetPlaying = asset as? AVURLAsset {
-//                if urlAsset.url == urlAssetPlaying.url {
-//                    player = preListenPlayerPlaying
-//                    listesnBookImage.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
-//                    bool = true
-//                }
-//            }
-            if player.currentItem == preListenPlayerPlaying.currentItem {
-                player = preListenPlayerPlaying
-                listesnBookImage.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
-                bool = true
-            }
-        }
-        if !bool {
+        
             let url_demo = URL(string: demo)
             let playerItem:AVPlayerItem = AVPlayerItem(url: url_demo!)
             player = AVPlayer(playerItem: playerItem)
-        }
         
         // Do any additional setup after loading the view.
         //Bar Buttonları
@@ -799,6 +781,15 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             isPreListenPlayerPlaying = true
             listesnBookImage.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        player.pause()
+        player = AVPlayer()
+        preListenPlayerPlaying.pause()
+        preListenPlayerPlaying = AVPlayer()
     }
     
     
