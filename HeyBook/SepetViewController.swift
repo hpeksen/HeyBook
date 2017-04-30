@@ -705,7 +705,9 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 case .success:
              
                     print(response)
-                    
+                    self.totalPriceLabel.text = "0.00 TL"
+                    self.records = []
+                    self.myCollectionView.reloadData()
                     
                     break
                 case .failure(let error):
@@ -738,9 +740,18 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     
     @IBAction func goToKitaplarim(_ sender: Any) {
+        sepetView.isHidden = false
+        onayView.isHidden = true
+        kartBilgileriView.isHidden = true
+        onaylandıView.isHidden = true
+        self.kartNumarası.text = ""
+        self.kartNameSurname.text = ""
+        self.cvcNumarası.text = ""
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
         self.navigationController?.pushViewController(controller, animated: true)
+        
     }
     
     
