@@ -52,32 +52,45 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
         
         userTitleLabel.text =  UserDefaults.standard.value(forKey: "user_title") as? String
         emailLabel.text = UserDefaults.standard.value(forKey: "user_mail") as? String
-        photo = (UserDefaults.standard.value(forKey: "user_photo") as? String)!
+       // photo = (UserDefaults.standard.value(forKey: "user_photo") as? String)!
         
-        print("http://heybook.online/\(photo)")
-        print(UserDefaults.standard.value(forKey: "user_photo") as? String)
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2;
+//        profileImage.contentMode = .scaleToFill
+//        profileImage.clipsToBounds = true
         
-        //Aschronized image loading !!!!
-        if(photo == "img/users/no-photo.jpg"){
-            self.profileImage.image = UIImage(named: "logo")
+        //Decode
+        if let data = UserDefaults.standard.object(forKey: "user_photo") as? NSData {
+            profileImage.image = UIImage(data: data as Data)
         }
-        else if !isImageFromLibrary {
-            print("elsejjuu")
-            URLSession.shared.dataTask(with: NSURL(string: "http://heybook.online/\(photo)")! as URL, completionHandler: { (data, response, error) -> Void in
-                if error != nil {
-                    print(error)
-                    return
-                }
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.profileImage.image = self.imageRotatedByDegrees(oldImage: UIImage(data: data!)!, deg: 90)
-                    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
-                    self.profileImage.contentMode = .scaleAspectFill
-                    self.profileImage.clipsToBounds = true
-                    //self.profileImage.transform = self.profileImageTransform!
-                })
-                
-            }).resume()
+        else {
+            profileImage.image = UIImage(named: "logo")
         }
+  
+        
+//        print("http://heybook.online/\(photo)")
+//        print(UserDefaults.standard.value(forKey: "user_photo") as? String)
+//        
+//        //Aschronized image loading !!!!
+//        if(photo == "img/users/no-photo.jpg"){
+//            self.profileImage.image = UIImage(named: "logo")
+//        }
+//        else if !isImageFromLibrary {
+//            print("elsejjuu")
+//            URLSession.shared.dataTask(with: NSURL(string: "http://heybook.online/\(photo)")! as URL, completionHandler: { (data, response, error) -> Void in
+//                if error != nil {
+//                    print(error)
+//                    return
+//                }
+//                DispatchQueue.main.async(execute: { () -> Void in
+//                    self.profileImage.image = self.imageRotatedByDegrees(oldImage: UIImage(data: data!)!, deg: 90)
+//                    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width / 2;
+//                    self.profileImage.contentMode = .scaleAspectFill
+//                    self.profileImage.clipsToBounds = true
+//                    //self.profileImage.transform = self.profileImageTransform!
+//                })
+//                
+//            }).resume()
+//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -722,13 +735,21 @@ class SettingsViewController: UIViewController,UITextFieldDelegate, UINavigation
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        profileImage.image = selectedImage
-        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2;
-        profileImage.contentMode = .scaleAspectFill
-        profileImage.clipsToBounds = true
-        isImageFromLibrary = true
+        let selectedImage = imageRotatedByDegrees(oldImage: info[UIImagePickerControllerOriginalImage] as! UIImage , deg: 90)
         
+        profileImage.image = selectedImage
+      
+        
+        let imageData : NSData = UIImagePNGRepresentation(selectedImage)! as NSData
+        
+        //Save
+        UserDefaults.standard.set(imageData, forKey: "user_photo")
+        
+//        
+//        //Decode
+//        let data = UserDefaults.standard.object(forKey: "user_photo") as! NSData
+//        profileImage.image = UIImage(data: data as Data)
+//        
         dismiss(animated: true, completion: nil)
     }
     

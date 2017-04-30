@@ -474,7 +474,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
                     UserDefaults.standard.setValue(self.mail, forKey: "user_mail")
                     UserDefaults.standard.setValue(self.userTitle, forKey: "user_title")
                     UserDefaults.standard.setValue(self.user_id, forKey: "user_id")
-                    UserDefaults.standard.setValue(self.user_photo, forKey: "user_photo")
+                 //   UserDefaults.standard.setValue(self.user_photo, forKey: "user_photo")
                     
                     //get downloaded books
                     // Get the document directory url
