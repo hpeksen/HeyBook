@@ -496,7 +496,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
             
             if let id = UserDefaults.standard.value(forKey: "playing_book_id") {
-                if book_id == id as! String {
+                if isPlayerPlaying && book_id == id as! String {
                     UserDefaults.standard.setValue(book_id, forKey: "playing_book_id")
                     let position:String = "\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))"
                     UserDefaults.standard.setValue(position, forKey: "playing_book_duration")

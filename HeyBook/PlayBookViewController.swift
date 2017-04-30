@@ -249,6 +249,7 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
             else {
                 player = playerPlaying
+                slider.maximumValue = Float(CMTimeGetSeconds((player.currentItem?.asset.duration)!))
                 time = Int(CMTimeGetSeconds((player.currentItem?.currentTime())!))
                 slider.value = Float(CMTimeGetSeconds((player.currentItem?.currentTime())!))
                 if((player.rate != 0) && (player.error == nil)) {
@@ -665,12 +666,28 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
     func updateTime(_ timer: Timer) {
         var time:Int
         if isDownloaded {
-            time = Int(audioPlayer.currentTime)
-            slider.value = Float(audioPlayer.currentTime)
+            if audioPlayer.currentTime >= audioPlayer.duration {
+                playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+                time = 0
+                slider.value = 0
+                audioPlayer.stop()
+            }
+            else {
+                time = Int(audioPlayer.currentTime)
+                slider.value = Float(audioPlayer.currentTime)
+            }
         }
         else {
-            time = Int(CMTimeGetSeconds((player.currentItem?.currentTime())!))
-            slider.value = Float(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+            if CMTimeGetSeconds((player.currentItem?.currentTime())!) >= CMTimeGetSeconds((player.currentItem?.asset.duration)!) {
+                playButtonImage.setImage(UIImage(named: "play-1.png"), for: UIControlState.normal)
+                time = 0
+                slider.value = 0
+                player.seek(to: CMTimeMakeWithSeconds(Float64(0), 10000))
+            }
+            else {
+                time = Int(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+                slider.value = Float(CMTimeGetSeconds((player.currentItem?.currentTime())!))
+            }
         }
         
         let (h,m,s) = secondsToHoursMinutesSeconds(seconds: time)
