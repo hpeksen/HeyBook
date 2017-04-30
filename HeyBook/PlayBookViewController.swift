@@ -590,6 +590,12 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                             playerPlaying = AVPlayer()
                             isPlayerPlaying = false
                         }
+                        else if isPreListenPlayerPlaying {
+                            preListenPlayerPlaying.pause()
+                            preListenPlayerPlaying = AVPlayer()
+                            isPreListenPlayerPlaying = false
+                            isDownloadedPlaying = false
+                        }
                     }
                 }
                 audioPlayer.play()
@@ -619,6 +625,12 @@ class PlayBookViewController: UIViewController, SFSpeechRecognizerDelegate {
                             audioPlayerPlaying.pause()
                             audioPlayerPlaying = AVAudioPlayer()
                             isAudioPlayerPlaying = false
+                        }
+                        else if isPreListenPlayerPlaying {
+                            preListenPlayerPlaying.pause()
+                            preListenPlayerPlaying = AVPlayer()
+                            isPreListenPlayerPlaying = false
+                            isDownloadedPlaying = false
                         }
                     }
                 }

@@ -13,6 +13,9 @@ import Cosmos
 import Alamofire
 import RNCryptor
 
+var preListenPlayerPlaying = AVPlayer()
+var isPreListenPlayerPlaying = Bool()
+
 class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var timer:Timer!
@@ -303,10 +306,28 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.present(tapAlert, animated: true, completion: nil)
             }
         }
-        
-        let url_demo = URL(string: demo)
-        let playerItem:AVPlayerItem = AVPlayerItem(url: url_demo!)
-        player = AVPlayer(playerItem: playerItem)
+        var bool:Bool = false
+        if isPreListenPlayerPlaying {
+//            let assetPlaying = preListenPlayerPlaying.currentItem?.asset
+//            let asset = player.currentItem?.asset
+//            if asset != nil , let urlAsset = asset as? AVURLAsset, assetPlaying != nil , let urlAssetPlaying = asset as? AVURLAsset {
+//                if urlAsset.url == urlAssetPlaying.url {
+//                    player = preListenPlayerPlaying
+//                    listesnBookImage.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
+//                    bool = true
+//                }
+//            }
+            if player.currentItem == preListenPlayerPlaying.currentItem {
+                player = preListenPlayerPlaying
+                listesnBookImage.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
+                bool = true
+            }
+        }
+        if !bool {
+            let url_demo = URL(string: demo)
+            let playerItem:AVPlayerItem = AVPlayerItem(url: url_demo!)
+            player = AVPlayer(playerItem: playerItem)
+        }
         
         // Do any additional setup after loading the view.
         //Bar Buttonları
@@ -741,26 +762,43 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     @IBOutlet weak var listesnBookImage: UIButton!
+
     var player = AVPlayer()
     var playerLayer:AVPlayerLayer?
     
     @IBAction func listenBook(_ sender: UIButton) {
         
-        if((player.rate != 0) && (player.error == nil)) {
+        if player.isPlaying {
             player.pause()
+            isPreListenPlayerPlaying = false
             listesnBookImage.setImage(UIImage(named: "play.png"), for: UIControlState.normal)
-        }
-        else {
+        } else {
             
+            if isAudioPlayerPlaying {
+                UserDefaults.standard.setValue(book_id, forKey: "playing_book_id")
+                UserDefaults.standard.setValue("\(audioPlayerPlaying.currentTime)", forKey: "playing_book_duration")
+                audioPlayerPlaying.pause()
+                isAudioPlayerPlaying = false
+                isDownloadedPlaying = false
+            }
+            else if isPlayerPlaying {
+                UserDefaults.standard.setValue(book_id, forKey: "playing_book_id")
+                UserDefaults.standard.setValue("\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))", forKey: "playing_book_duration")
+                playerPlaying.pause()
+                isPlayerPlaying = false
+                isDownloadedPlaying = false
+            }
+            else if isPreListenPlayerPlaying {
+                preListenPlayerPlaying.pause()
+                preListenPlayerPlaying = AVPlayer()
+                isPreListenPlayerPlaying = false
+                isDownloadedPlaying = false
+            }
             player.play()
-            
+            preListenPlayerPlaying = player
+            isPreListenPlayerPlaying = true
             listesnBookImage.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
-            
-            print("çalıyo")
-            print(bookLink)
         }
-        
-        
     }
     
     
