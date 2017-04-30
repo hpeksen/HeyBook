@@ -23,6 +23,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     @IBOutlet weak var kartNameSurname: UITextField!
     @IBOutlet weak var kartNumarası: UITextField!
     @IBOutlet weak var cvcNumarası: UITextField!
+    @IBOutlet weak var dOnaySifreTextField: UITextField!
     
     
     var timer = Timer()
@@ -78,12 +79,24 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         sepetView.isHidden = false
         onayView.isHidden = true
         kartBilgileriView.isHidden = true
         onaylandıView.isHidden = true
+        
+        self.kartNumarası.text = ""
+        self.kartNameSurname.text = ""
+        self.cvcNumarası.text = ""
+        self.dOnaySifreTextField.text = ""
+        timeCount = 180.0
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         
         self.kartNameSurname.resignFirstResponder()
         self.kartNumarası.resignFirstResponder()
@@ -746,7 +759,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     @IBAction func dOnaylamaButton(_ sender: Any) {
         
-        if (!(cvcNumarası.text?.isEmpty)!){
+        if (!(dOnaySifreTextField.text?.isEmpty)!){
        
             print("user id:")
             print(UserDefaults.standard.value(forKey: "user_id")!)

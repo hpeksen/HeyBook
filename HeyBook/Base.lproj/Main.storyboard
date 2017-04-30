@@ -708,7 +708,7 @@
                                                 <rect key="frame" x="3.5" y="0.0" width="368" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biq-Oi-5In">
@@ -993,6 +993,7 @@
                         <outlet property="CreditCardNameSurname" destination="5vm-TE-Wq2" id="KZL-c4-WsL"/>
                         <outlet property="CreditCardNo" destination="mfg-Xx-TT3" id="EV5-tI-Zm0"/>
                         <outlet property="cvcNumarası" destination="TrP-lt-def" id="vl2-Lw-sFu"/>
+                        <outlet property="dOnaySifreTextField" destination="CD4-tG-BHH" id="3Oi-MO-Ozh"/>
                         <outlet property="kartBilgileriView" destination="PMR-1V-Cwa" id="VbH-Xj-0o9"/>
                         <outlet property="kartNameSurname" destination="5vm-TE-Wq2" id="xhf-uk-CHD"/>
                         <outlet property="kartNumarası" destination="mfg-Xx-TT3" id="drZ-by-TbD"/>
@@ -1256,13 +1257,13 @@
                                 <rect key="frame" x="0.0" y="209" width="375" height="458"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="o8y-mn-Eh0">
                                     <size key="itemSize" width="368" height="80"/>
-                                    <size key="headerReferenceSize" width="50" height="42"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="b7m-6M-GOX" customClass="CustomKitaplarimCollectionViewCell" customModule="HeyBook" customModuleProvider="target">
-                                        <rect key="frame" x="3.5" y="42" width="368" height="80"/>
+                                        <rect key="frame" x="3.5" y="0.0" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
@@ -1356,28 +1357,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Header" id="DmZ-II-4Ox" customClass="HeaderKitaplarimCollectionReusableView" customModule="HeyBook" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ROMAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-Ac-cJT">
-                                            <rect key="frame" x="16" y="8" width="351" height="26"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="LT6-Ac-cJT" firstAttribute="top" secondItem="DmZ-II-4Ox" secondAttribute="topMargin" id="7os-fU-PsV"/>
-                                        <constraint firstItem="LT6-Ac-cJT" firstAttribute="trailing" secondItem="DmZ-II-4Ox" secondAttribute="trailingMargin" id="KgA-1h-Jau"/>
-                                        <constraint firstItem="LT6-Ac-cJT" firstAttribute="bottom" secondItem="DmZ-II-4Ox" secondAttribute="bottomMargin" id="Z4N-Aq-v6c"/>
-                                        <constraint firstItem="LT6-Ac-cJT" firstAttribute="leading" secondItem="DmZ-II-4Ox" secondAttribute="leadingMargin" constant="8" id="h6Q-dA-cmz"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="header" destination="LT6-Ac-cJT" id="7SF-DT-dk0"/>
-                                    </connections>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="cOj-px-TNs" id="b84-PX-enE"/>
                                     <outlet property="delegate" destination="cOj-px-TNs" id="HVw-ze-9pw"/>
@@ -3229,8 +3208,8 @@
         <image name="yazar" width="18" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hGl-Z4-WYp"/>
         <segue reference="2a9-6B-NpY"/>
-        <segue reference="f7d-jf-ysr"/>
+        <segue reference="hGl-Z4-WYp"/>
+        <segue reference="MDA-31-8I5"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -52,8 +52,10 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
     private let audioEngine = AVAudioEngine()
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        records = []
         
         let urlString = "http://heybook.online/api.php"
         let parameters = ["request": "user_books",
@@ -133,6 +135,10 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 self.myCollectionView.reloadData()
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
@@ -533,20 +539,8 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderKitaplarimCollectionReusableView
         
-        if(indexPath.section == 0 )
-        {
-            headerView.header.text = "ROMAN"
-        }
+            headerView.header.text = ""
         
-        if(indexPath.section == 1 )
-        {
-            headerView.header.text = "KİŞİSEL GELİŞİM"
-        }
-        
-        if(indexPath.section == 2 )
-        {
-            headerView.header.text = "BİLİM KURGU"
-        }
         return headerView
     }
     
