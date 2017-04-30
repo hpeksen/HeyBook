@@ -393,12 +393,30 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate, SFSpeechR
         let parameters = ["request": "forgot",
                           "mail": "\(myTextField.text!)"]
         
+        
+        var alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
+        
+        var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+        loadingIndicator.center = self.view.center;
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        
+        alert.setValue(loadingIndicator, forKey: "accessoryView")
+        
+        loadingIndicator.startAnimating()
+        
+        alert.show();
+        
+        
+
+        
         Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
             response in
             switch response.result {
             case .success:
                 
-                
+                alert.dismiss(withClickedButtonIndex: alert.cancelButtonIndex, animated: true)
                 let json = JSON(data: response.data!)
                 print(json)
                 self.newPasswordResponse = json["response"].string!

@@ -98,27 +98,27 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
 //            present(alertController, animated: true, completion: nil)
             
             
-            
-            
+    
+        
         
             
             
             if records.isEmpty {
                 let urlString = "http://heybook.online/api.php"
                 
-                alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
-                
-                var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
-                loadingIndicator.center = self.view.center;
-                loadingIndicator.hidesWhenStopped = true
-                loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-                loadingIndicator.startAnimating();
-                
-                alert.setValue(loadingIndicator, forKey: "accessoryView")
-                
-                loadingIndicator.startAnimating()
-                
-                alert.show();
+//                alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
+//                
+//                var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+//                loadingIndicator.center = self.view.center;
+//                loadingIndicator.hidesWhenStopped = true
+//                loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+//                loadingIndicator.startAnimating();
+//                
+//                alert.setValue(loadingIndicator, forKey: "accessoryView")
+//                
+//                loadingIndicator.startAnimating()
+//                
+//                alert.show();
                 
                 Alamofire.request(urlString, method: .post, parameters: ["request": "books"],encoding: URLEncoding.httpBody, headers: nil).responseJSON {
                     response in
@@ -164,7 +164,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         }
                         self.myCollectionView.reloadData()
                         self.carouselView.reloadData()
-                         self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                        // self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                         
                         
                         
