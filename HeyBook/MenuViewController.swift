@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import AVFoundation
 
 class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
@@ -201,6 +202,17 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             UserDefaults.standard.setValue(nil, forKey: "user_title")
             UserDefaults.standard.setValue(nil, forKey: "user_id")
             UserDefaults.standard.setValue(nil, forKey: "user_photo")
+            
+            if isAudioPlayerPlaying {
+                audioPlayerPlaying.pause()
+                isAudioPlayerPlaying = false
+                UserDefaults.standard.setValue("\(audioPlayerPlaying.currentTime)", forKey: "playing_book_duration")
+            }
+            else if isPlayerPlaying {
+                playerPlaying.pause()
+                isPlayerPlaying = false
+                UserDefaults.standard.setValue("\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))", forKey: "playing_book_duration")
+            }
             
             self.imgIcon.image = UIImage(named: "logo.png")
             let tapAlert = UIAlertController(title: "mesaj", message: "Çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
