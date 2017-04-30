@@ -11,7 +11,7 @@ import SideMenu
 import Alamofire
 import Speech
 
-class SepetViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, SFSpeechRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class SepetViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, SFSpeechRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var kartBilgileriView: UIView!
     @IBOutlet weak var sepetView: UIView!
@@ -92,6 +92,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         self.cvcNumarası.text = ""
         self.dOnaySifreTextField.text = ""
         timeCount = 180.0
+        self.kartNumarası.delegate = self
+        self.cvcNumarası.delegate = self
     }
     
     override func viewDidLoad() {
@@ -652,6 +654,24 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         }
         
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var newLength = 0
+        var limit = 0
+        if textField.isEqual(kartNumarası) {
+            guard let text = textField.text else { return true }
+            newLength = text.characters.count + string.characters.count - range.length
+            limit = 16
+        }
+        else if textField.isEqual(cvcNumarası) {
+            guard let text = textField.text else { return true }
+            newLength = text.characters.count + string.characters.count - range.length
+            limit = 3
+        }
+        
+        return newLength <= limit // Bool
+    }
+    
     var alert  = UIAlertView()
     @IBAction func odemeyiOnaylaButton(_ sender: Any) {
       
@@ -660,6 +680,11 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
             
+        }
+        else if (kartNumarası.text?.characters.count != 16){
+            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen 16 haneli kredi kart numaranızı giriniz!", preferredStyle: UIAlertControllerStyle.alert)
+            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(longPressAlert, animated: true, completion: nil)
         }
         else {
              alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
