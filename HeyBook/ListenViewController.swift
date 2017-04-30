@@ -260,6 +260,40 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
             }
             
+            urlString = "http://heybook.online/api.php"
+            parameters = ["request": "user_cart",
+                          "user_id": "\(userID)"]
+            
+            Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+                response in
+                switch response.result {
+                case .success:
+                    
+                    
+                    let json = JSON(data: response.data!)
+                    print(json)
+                    self.registerResponse = json["response"].string!
+                    let total = json["data"].count
+                    print(total)
+                    
+                    for index in 0..<total {
+                        if (self.book_id == json["data"][index]["book_id"].string!){
+                            self.addToChartButton.setTitle("SEPETE EKLENDİ", for: .normal)
+                        }
+                    }
+                    
+                    print(self.registerResponse)
+                    
+                    
+                    
+                    
+                    break
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+            
             starsView.isUserInteractionEnabled = true
             starsView.didFinishTouchingCosmos = {
                 rating in
@@ -391,6 +425,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                         let total = json["data"].count
                         print(total)
                         print(self.registerResponse)
+                        
+                        self.addToChartButton.setTitle("SEPETE EKLENDİ", for: .normal)
                         
                         break
                     case .failure(let error):
