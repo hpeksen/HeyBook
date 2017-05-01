@@ -21,15 +21,15 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
     var btn2 = UIButton(type: .custom)
     var alert = UIAlertView()
     
+    @IBOutlet weak var kitapAdıRadioBtn: UIButton!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.delegate = self
-        
+    
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -452,8 +452,10 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
     }
     
     @IBAction func buttonAramaYap(_ sender: UIButton) {
-        if (searchTextField.text?.isEmpty)!{
-            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen ne istediğinizi yazınız.", preferredStyle: UIAlertControllerStyle.alert)
+        
+       
+        if ((searchTextField.text?.isEmpty)! || searchTextField.text == ""){
+            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen ne aramak istediğinizi yazınız.", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
             
@@ -464,6 +466,7 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen neye göre arama yapmak istediğinizi belirtiniz.", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
+         
             
         }
         else {
@@ -474,9 +477,10 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
             myVC.message2 = searchTextField.text!
             check = 0
             navigationController?.pushViewController(myVC, animated: true)
+            searchTextField.text = ""
+    
+            }
             
-        
-        }
         }
         
        

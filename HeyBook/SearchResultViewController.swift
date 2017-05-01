@@ -93,6 +93,8 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
                     let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title, narrator_title: self.narrator_title)
                     
                     
+                    
+                    
                     if (self.message1 == 1) {
                     if(record.book_title.lowercased() == self.message2.lowercased()){
                     
@@ -121,9 +123,18 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
                 }
                 
                 self.myCollectionView.reloadData()
-         
                 
-                
+                if(self.records.isEmpty){
+                    
+                    let tapAlert = UIAlertController(title: "Mesaj", message: "Aradığınız kriterlere uygun kitap bulunamadı.", preferredStyle: UIAlertControllerStyle.alert)
+                    tapAlert.addAction(UIAlertAction(title: "Tekrar Ara", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }))
+                    self.present(tapAlert, animated: true, completion: nil)
+                    
+                }
                 
                 break
             case .failure(let error):
@@ -134,18 +145,7 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
         
 
         
-        
-        if(self.records.isEmpty){
-        
-            let tapAlert = UIAlertController(title: "Mesaj", message: "Aradığınız kriterlere uygun kitap bulunamadı.", preferredStyle: UIAlertControllerStyle.alert)
-            tapAlert.addAction(UIAlertAction(title: "Tekrar Ara", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
-                self.navigationController?.pushViewController(controller, animated: true)
-            }))
-            self.present(tapAlert, animated: true, completion: nil)
-            
-        }
+       
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -241,8 +241,7 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
         
         
     }
-
-    
+   
     
     func btnSearch(){
         print("search button")
