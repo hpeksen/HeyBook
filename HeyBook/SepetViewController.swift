@@ -57,7 +57,6 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     var narrator_title = ""
     
     
-    
     //voice
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
     
@@ -99,7 +98,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+            
         self.kartNameSurname.resignFirstResponder()
         self.kartNumarası.resignFirstResponder()
          self.cvcNumarası.resignFirstResponder()
@@ -638,12 +637,20 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     
     @IBAction func odemeYapButton(_ sender: Any) {
-        
+           var valid = (UserDefaults.standard.value(forKey: "valid_status"))!
+        print(valid)
         if(records.isEmpty) {
             let longPressAlert = UIAlertController(title: "Mesaj", message: "Sepetinizde kitap bulunmamaktadır.", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
         
+        }
+        else if(valid as! String == "0"){
+            
+            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen mail adresinizi onaylamak için mailinizi kontrol edinz!", preferredStyle: UIAlertControllerStyle.alert)
+            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+            self.present(longPressAlert, animated: true, completion: nil)
+            
         }
         else {
         
@@ -675,17 +682,21 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     var alert  = UIAlertView()
     @IBAction func odemeyiOnaylaButton(_ sender: Any) {
       
+     
+        
         if((kartNameSurname.text?.isEmpty)! || (kartNumarası.text?.isEmpty)! || (cvcNumarası.text?.isEmpty)! ){
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen bütün alanları doldurunuz!", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
             
         }
+            
         else if (kartNumarası.text?.characters.count != 16){
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen 16 haneli kredi kart numaranızı giriniz!", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
         }
+     
         else {
              alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
             
