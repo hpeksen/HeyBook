@@ -445,14 +445,15 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
             
             if result != nil {
                 
-               print(result?.bestTranscription.formattedString)  //9
+               print(result?.bestTranscription.formattedString.lowercased())  //9
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
                    self.audioEngine.stop()
+                    recognitionRequest.endAudio()
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     
                 }
-                if(result?.bestTranscription.formattedString == "Kitaplarım"){
+               else if(result?.bestTranscription.formattedString == "Kitaplarım"){
                      self.audioEngine.stop()
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
@@ -476,7 +477,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         
                     }
                 }
-                if(result?.bestTranscription.formattedString == "Kategoriler"){
+               else if(result?.bestTranscription.formattedString == "Kategoriler"){
                     self.audioEngine.stop()
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -484,7 +485,15 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                     self.navigationController?.pushViewController(controller, animated: true)
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-                if(result?.bestTranscription.formattedString == "Favorilerim"){
+                else if(result?.bestTranscription.formattedString.lowercased() == "arama yap"){
+                    self.audioEngine.stop()
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                }
+               else if(result?.bestTranscription.formattedString == "Favorilerim"){
                     self.audioEngine.stop()
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
@@ -508,7 +517,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         
                     }
                 }
-                if(result?.bestTranscription.formattedString == "Ayarlar"){
+               else if(result?.bestTranscription.formattedString == "Ayarlar"){
                     self.audioEngine.stop()
                     
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
@@ -532,7 +541,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                     }
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-                if(result?.bestTranscription.formattedString == "Sepet"){
+               else if(result?.bestTranscription.formattedString == "Sepet"){
                     self.audioEngine.stop()
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
@@ -559,7 +568,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 }
              
                 
-                if(result?.bestTranscription.formattedString == "Giriş yap"){
+               else if(result?.bestTranscription.formattedString == "Giriş yap"){
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
@@ -581,7 +590,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                     }
                     
                 }
-                if(result?.bestTranscription.formattedString == "Çıkış yap"){
+               else if(result?.bestTranscription.formattedString == "Çıkış yap"){
                        self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                         self.audioEngine.stop()
@@ -622,6 +631,20 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         
                         
                     }
+                }
+                else {
+                
+                    self.audioEngine.stop()
+                    recognitionRequest.endAudio()
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    
+                    let longPressAlert = UIAlertController(title: "Mesaj", message: "Aramanıza uygun birşey bulamadık", preferredStyle: UIAlertControllerStyle.alert)
+                    longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(longPressAlert, animated: true, completion: nil)
+                
+                
+                
+                
                 }
                 
                 
