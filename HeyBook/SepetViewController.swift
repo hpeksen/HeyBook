@@ -56,7 +56,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     var publisher_title = ""
     var narrator_title = ""
     
-    
+     var valid = ""
     //voice
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
     
@@ -637,28 +637,53 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     
     @IBAction func odemeYapButton(_ sender: Any) {
-           var valid = (UserDefaults.standard.value(forKey: "valid_status"))!
-        print(valid)
-        if(records.isEmpty) {
-            let longPressAlert = UIAlertController(title: "Mesaj", message: "Sepetinizde kitap bulunmamaktadır.", preferredStyle: UIAlertControllerStyle.alert)
-            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(longPressAlert, animated: true, completion: nil)
         
-        }
-        else if(valid as! String == "0"){
-            
-            let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen mail adresinizi onaylamak için mailinizi kontrol edinz!", preferredStyle: UIAlertControllerStyle.alert)
-            longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
-            self.present(longPressAlert, animated: true, completion: nil)
-            
-        }
-        else {
         
-        kartBilgileriView.isHidden = false
-        sepetView.isHidden = true
-         onayView.isHidden = true
-        onaylandıView.isHidden = true
+        let urlString = "http://heybook.online/api.php"
+        let parameters = ["request": "user",
+                          "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)"]
+        
+        
+        
+        
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                
+                let json = JSON(data: response.data!)
+                
+                 self.valid = json["data"]["valid_status"].description
+         
+                print(self.valid)
+                if(self.records.isEmpty) {
+                    let longPressAlert = UIAlertController(title: "Mesaj", message: "Sepetinizde kitap bulunmamaktadır.", preferredStyle: UIAlertControllerStyle.alert)
+                    longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(longPressAlert, animated: true, completion: nil)
+                    
+                }
+                else if(self.valid == "0"){
+                    
+                    let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen mail adresinizi onaylamak için mailinizi kontrol edinz!", preferredStyle: UIAlertControllerStyle.alert)
+                    longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(longPressAlert, animated: true, completion: nil)
+                    
+                }
+                else if (self.valid != "0" && !self.records.isEmpty){
+                    
+                    self.kartBilgileriView.isHidden = false
+                    self.sepetView.isHidden = true
+                    self.onayView.isHidden = true
+                    self.onaylandıView.isHidden = true
+                }
+                break
+            case .failure(let error):
+                
+                print(error)
+            }
         }
+        
+     
         
     }
     

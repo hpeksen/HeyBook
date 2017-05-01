@@ -17,10 +17,9 @@ class User {
     var password: String
     var subscribe: String
     var photo: String
-    var valid_status: String
     
     
-    init(user_id: String, user_title: String, mail: String, password: String, subscribe: String, photo: String, valid_status: String) {
+    init(user_id: String, user_title: String, mail: String, password: String, subscribe: String, photo: String) {
         self.user_id = user_id
         self.user_title = user_title
         self.mail = mail
@@ -28,7 +27,6 @@ class User {
         self.password = password
         self.subscribe = subscribe
         self.photo=photo
-         self.valid_status=valid_status
     }
     
 }

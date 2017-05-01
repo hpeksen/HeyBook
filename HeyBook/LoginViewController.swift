@@ -22,7 +22,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
     var userTitle = ""
     var user_id = ""
     var user_photo = ""
-    var valid_status = ""
     var parentView = ""
     
     @IBOutlet weak var myStackView: UIStackView!
@@ -459,7 +458,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
                 self.userTitle = json["data"]["user_title"].description
                 self.user_id = json["data"]["user_id"].description
                 self.user_photo = json["data"]["photo"].description
-                self.valid_status = json["data"]["valid_status"].description
                
                 if (json["response"].description == "error"){
                     let tapAlert = UIAlertController(title: "", message: "\(json["message"].description)", preferredStyle: UIAlertControllerStyle.alert)
@@ -475,7 +473,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
                     UserDefaults.standard.setValue(self.mail, forKey: "user_mail")
                     UserDefaults.standard.setValue(self.userTitle, forKey: "user_title")
                     UserDefaults.standard.setValue(self.user_id, forKey: "user_id")
-                     UserDefaults.standard.setValue(self.valid_status, forKey: "valid_status")
                  //   UserDefaults.standard.setValue(self.user_photo, forKey: "user_photo")
                     
                     //get downloaded books
