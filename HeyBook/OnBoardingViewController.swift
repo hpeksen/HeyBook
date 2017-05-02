@@ -24,7 +24,7 @@ class OnBoardingViewController: UIViewController,PaperOnboardingDataSource, Pape
     }
     
     func onboardingItemsCount() -> Int {
-        return 3
+        return 7
     }
     func onboardingItemAtIndex(_ index: Int) -> OnboardingItemInfo {
         let backgroundColorOne = UIColor(red: 217/255, green: 72/255, blue: 89/255, alpha: 1)
@@ -34,25 +34,24 @@ class OnBoardingViewController: UIViewController,PaperOnboardingDataSource, Pape
         let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
         let descriptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!
         
-        return [("bg1","First View","Description","",backgroundColorOne,UIColor.blue,UIColor.yellow,titleFont,descriptionFont),
-                ("login_bg","ghkjtuykyu","sfgjstyjst","",backgroundColorTwo,UIColor.red,UIColor.white,titleFont,descriptionFont),
-                ("register_bg","fghfghfghf","dgjhdghjd","",backgroundColorThree,UIColor.white,UIColor.white,titleFont,descriptionFont)][index]
+        return [
+            ("logo","Vitrin","Sistemimizde var olan kitaplara göz atabileeğiniz ana sayfamız.","",backgroundColorOne,UIColor.black,UIColor.black,titleFont,descriptionFont),
+            
+            ("logo","Kategoriler","İstediğiniz kategoride kitapların erişim noktası.","",backgroundColorTwo,UIColor.black,UIColor.black,titleFont,descriptionFont),
+            ("logo","HeyBook'ta Ara","Kitap adına, yazara veya seslendirene göre arama yapabilirsiniz.","",backgroundColorThree,UIColor.black,UIColor.black,titleFont,descriptionFont),
+            ("logo","Kitaplarım","Satın aldığınız kitapları görüntüleyebilir ve çevrimdışı dinleyebilirsiniz.","",backgroundColorOne,UIColor.black,UIColor.black,titleFont,descriptionFont),
+            ("logo","Sepet","Satın almak istediğiniz kitapları sepetinize ekleyip, toplu bir şekilde ödeme yapabilirsiniz.","",backgroundColorTwo,UIColor.black,UIColor.black,titleFont,descriptionFont),
+            ("logo","Giriş Yap","Sistemimize kayıt olduktan sonra, giriş yaparak daha fazla özelliğe erişim sağlayabilirsiniz.","",backgroundColorThree,UIColor.black,UIColor.black,titleFont,descriptionFont),
+            ("logo","HeyBook","HeyBook'u keşfetmeye başla!","",backgroundColorTwo,UIColor.black,UIColor.black,titleFont,descriptionFont),
+            
+            ][index]
     }
     
     func onboardingConfigurationItem(_ item: OnboardingContentViewItem, index: Int) {
         
     }
     func onboardingWillTransitonToIndex(_ index: Int) {
-        if index == 0 {
-            if self.getStartedButton.alpha == 1 {
-                
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.getStartedButton.alpha = 0
-                    self.getStartedButton.isHidden = true
-                })
-            }
-        }
-        if index == 1 {
+        if index != 6 {
             if self.getStartedButton.alpha == 1 {
                 
                 UIView.animate(withDuration: 0.2, animations: {
@@ -63,7 +62,7 @@ class OnBoardingViewController: UIViewController,PaperOnboardingDataSource, Pape
         }
     }
     func onboardingDidTransitonToIndex(_ index: Int) {
-        if index == 2 {
+        if index == 6 {
             UIView.animate(withDuration: 0.4, animations: {
                 self.getStartedButton.alpha = 1
                 self.getStartedButton.isHidden = false
