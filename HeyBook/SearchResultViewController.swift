@@ -12,7 +12,7 @@ import SideMenu
 import Alamofire
 
 class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     var message1 = 0
     var message2 = ""
     
@@ -45,7 +45,7 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
     var author_title = ""
     var publisher_title = ""
     var narrator_title = ""
-
+    
     
     
     override func viewDidLoad() {
@@ -63,7 +63,7 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
                 
                 
                 let json = JSON(data: response.data!)
-               // print(json["data"][0]["book_title"].string!)
+                // print(json["data"][0]["book_title"].string!)
                 
                 
                 let total = json["data"].count
@@ -96,15 +96,15 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
                     
                     
                     if (self.message1 == 1) {
-                    if(record.book_title.lowercased() == self.message2.lowercased()){
-                    
-                    self.records.append(record)
-                    
-                    print("record: \(record.book_title)")
-                    }
+                        if(record.book_title.lowercased().contains(self.message2.lowercased())){
+                            
+                            self.records.append(record)
+                            
+                            print("record: \(record.book_title)")
+                        }
                     }
                     else if (self.message1 == 2) {
-                        if(record.author_title.lowercased() == self.message2.lowercased()){
+                        if(record.author_title.lowercased().contains(self.message2.lowercased())){
                             
                             self.records.append(record)
                             
@@ -112,7 +112,7 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
                         }
                     }
                     if (self.message1 == 3) {
-                        if(record.narrator_title.lowercased() == self.message2.lowercased()){
+                        if(record.narrator_title.lowercased().contains(self.message2.lowercased())){
                             
                             self.records.append(record)
                             
@@ -139,71 +139,71 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
                 break
             case .failure(let error):
                 
-                    print("internet yookk")
-                    let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
-                    
-                    let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
-                        guard let settingsUrl = URL(string: "App-Prefs:root=Wifi") else {
-                            return
-                        }
-                        
-                        if UIApplication.shared.canOpenURL(settingsUrl) {
-                            //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
-                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                print("Settings opened: \(success)") // Prints true
-                            })
-                        }
-                    }
-                    alertController.addAction(settingsWifi)
-                    
-                    let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
-                        guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
-                            return
-                        }
-                        
-                        if UIApplication.shared.canOpenURL(settingsUrl) {
-                            //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
-                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                print("Settings opened: \(success)") // Prints true
-                            })
-                        }
-                    }
-                    alertController.addAction(settingsCellular)
-                    
-                    let okAction = UIAlertAction(title: "Kitaplarım'a Git", style: UIAlertActionStyle.default) {
-                        UIAlertAction in
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
-                        self.navigationController?.pushViewController(controller, animated: true)
+                print("internet yookk")
+                let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
+                
+                let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
+                    guard let settingsUrl = URL(string: "App-Prefs:root=Wifi") else {
+                        return
                     }
                     
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)") // Prints true
+                        })
+                    }
+                }
+                alertController.addAction(settingsWifi)
+                
+                let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
+                    guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
+                        return
+                    }
                     
-                    // Add the actions
-                    alertController.addAction(okAction)
-                    
-                    
-                    
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                    
-                    
-                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)") // Prints true
+                        })
+                    }
+                }
+                alertController.addAction(settingsCellular)
+                
+                let okAction = UIAlertAction(title: "Kitaplarım'a Git", style: UIAlertActionStyle.default) {
+                    UIAlertAction in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+                
+                
+                // Add the actions
+                alertController.addAction(okAction)
+                
+                
+                
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                
+                
+                
                 
                 print(error)
             }
         }
         
-
         
-       
+        
+        
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-
+        
         
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
@@ -230,7 +230,7 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
         layout.minimumLineSpacing = 0
         myCollectionView!.collectionViewLayout = layout
         
-
+        
         
         //voice
         
@@ -288,11 +288,11 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
         self.navigationItem.setLeftBarButton(item3, animated: true)
         
         
-      
+        
         
         
     }
-   
+    
     
     func btnSearch(){
         print("search button")
@@ -520,9 +520,9 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
+        
         return records.count
-    
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -538,7 +538,7 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
         
         //let records: [Record] = mDataSource.recordsInSection(indexPath.section)
         let record: Record
-    
+        
         
         
         record = records[indexPath.row]
@@ -561,47 +561,47 @@ class SearchResultViewController: UIViewController, SFSpeechRecognizerDelegate,U
             })
             
         }).resume()
-   
+        
         
         
         return cell
     }
     
- 
- 
-
-
+    
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "PlayBookViewController")
-            self.navigationController?.pushViewController(controller, animated: true)
-            
-            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
-            UserDefaults.standard.set(encodedData, forKey: "book_record")
-            UserDefaults.standard.synchronize()
-       
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "PlayBookViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
+        UserDefaults.standard.set(encodedData, forKey: "book_record")
+        UserDefaults.standard.synchronize()
+        
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
