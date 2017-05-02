@@ -155,6 +155,14 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         descriptionLabel.text = desc
         bookNameLabel.text = bookName
+//            print(bookNameLabel.center.x )
+//            if (bookNameLabel.center.x > 100){
+//                UIView.animate(withDuration: 12.0, delay: 1, options: ([.curveLinear, .beginFromCurrentState]), animations: {() -> Void in
+//                    self.bookNameLabel.center = CGPoint(x: 0 - self.bookNameLabel.bounds.size.width / 2, y: self.bookNameLabel.center.y)
+//                }, completion:  { _ in })
+//            }
+            
+            
         authorNameLabel.text = authorName
         priceLabel.text = price
         print("YÜKLEDİİİİİİ")

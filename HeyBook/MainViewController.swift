@@ -833,9 +833,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
         if !records.isEmpty{
+             animationBookName.text = records[carousel.currentItemIndex].book_title
+             animationAuthorName.text = records[carousel.currentItemIndex].author_title
+          
             
-            animationBookName.text = records[carousel.currentItemIndex].book_title
-            animationAuthorName.text = records[carousel.currentItemIndex].author_title
+           
             
         }
     }
