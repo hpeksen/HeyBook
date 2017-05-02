@@ -453,7 +453,7 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
     
     @IBAction func buttonAramaYap(_ sender: UIButton) {
         
-       
+        
         if ((searchTextField.text?.isEmpty)! || searchTextField.text == ""){
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen ne aramak istediğinizi yazınız.", preferredStyle: UIAlertControllerStyle.alert)
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
@@ -482,8 +482,6 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
             }
             
         }
-        
-       
         
        
         
@@ -561,5 +559,29 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
         // Pass the selected object to the new view controller.
     }
     */
-
+    func isConnectedToNetwork()->Bool{
+        
+        var Status:Bool = false
+        let url = URL(string: "https://google.com/")
+        var response: URLResponse?
+        let request = NSMutableURLRequest(url: url!)
+        request.httpMethod = "HEAD"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
+        request.timeoutInterval = 10.0
+        
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest)
+        
+        if let httpResponse = response as? HTTPURLResponse {
+            if httpResponse.statusCode == 200 {
+                Status = true
+            }
+        }
+        
+        
+        task.resume()
+        return !Status
+    }
 }
