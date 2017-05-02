@@ -209,8 +209,9 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
                     self.audioEngine.stop()
-                    recognitionRequest.endAudio()
-                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
                     
@@ -258,10 +259,7 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
                 }
                 else if(result?.bestTranscription.formattedString == "Arama"){
                     self.audioEngine.stop()
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    recognitionRequest.endAudio()
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
                 else if(result?.bestTranscription.formattedString == "Favorilerim"){

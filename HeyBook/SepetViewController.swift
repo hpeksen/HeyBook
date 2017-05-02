@@ -12,7 +12,7 @@ import Alamofire
 import Speech
 
 class SepetViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, SFSpeechRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
-
+    
     @IBOutlet weak var kartBilgileriView: UIView!
     @IBOutlet weak var sepetView: UIView!
     @IBOutlet weak var onayView: UIView!
@@ -27,12 +27,12 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     
     
     var timer = Timer()
-     var timer2 = Timer()
+    var timer2 = Timer()
     let timeInterval : TimeInterval = 0.1
-     var timeCount : TimeInterval = 180.0
+    var timeCount : TimeInterval = 180.0
     
-     var odemeWait : TimeInterval = 3.0
-     var onayWait : TimeInterval = 3.0
+    var odemeWait : TimeInterval = 3.0
+    var onayWait : TimeInterval = 3.0
     
     @IBOutlet weak var totalPriceLabel: UILabel!
     var records: [Record] = []
@@ -56,23 +56,23 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     var publisher_title = ""
     var narrator_title = ""
     
-     var valid = ""
+    var valid = ""
     //voice
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
-    
+    var btn2 = UIButton(type: .custom)
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
-
     
-   var mounth = "01"
+    
+    var mounth = "01"
     var year = "2017"
     @IBOutlet weak var monthPickerView: UIPickerView!
     @IBOutlet weak var yearPickerView: UIPickerView!
     @IBOutlet weak var CreditCardNameSurname: UITextField!
     @IBOutlet weak var CreditCardNo: UITextField!
     var monthArr = ["01","02","03", "04","05","06","07","08", "09","10","11","12"]
-    var yearArr = ["2017","2018", "2019", "2020"]
+    var yearArr = ["2017","2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"]
     
     var totalPrice:Double = 0.0
     
@@ -98,10 +98,10 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            
+        
         self.kartNameSurname.resignFirstResponder()
         self.kartNumarası.resignFirstResponder()
-         self.cvcNumarası.resignFirstResponder()
+        self.cvcNumarası.resignFirstResponder()
         
         
         
@@ -112,59 +112,59 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         
         Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil)
             .responseJSON {
-            response in
-            switch response.result {
-            case .success:
-                
-                
-                let json = JSON(data: response.data!)
-                
-                let total = json["data"].count
-              //  print("json \(total)")
-                //
-                for index in 0..<total {
-                    self.book_id = json["data"][index]["book_id"].string!
-                    self.category_id = json["data"][index]["category_id"].string!
-                    self.publisher_id = json["data"][index]["publisher_id"].string!
-                    self.author_id = json["data"][index]["author_id"].string!
-                    self.narrator_id = json["data"][index]["narrator_id"].string!
-                    self.book_title = json["data"][index]["book_title"].string!
-                    self.desc = json["data"][index]["description"].string!
-                    self.price = json["data"][index]["price"].string!
-                    self.photo = json["data"][index]["photo"].string!
-                    self.thumb = json["data"][index]["thumb"].string!
-                    self.audio = json["data"][index]["audio"].string!
-                    self.duration = json["data"][index]["duration"].string!
-                    self.size = json["data"][index]["size"].string!
-                    self.demo = json["data"][index]["demo"].string!
-                    self.star = json["data"][index]["star"].string!
-                    self.category_title = json["data"][index]["category_title"].string!
-                    self.author_title = json["data"][index]["author_title"].string!
-                    self.publisher_title = json["data"][index]["publisher_title"].string!
-                    self.narrator_title = json["data"][index]["narrator_title"].string!
-                    
-                    let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title, narrator_title: self.narrator_title)
+                response in
+                switch response.result {
+                case .success:
                     
                     
-                    self.records.append(record)
+                    let json = JSON(data: response.data!)
                     
-                    self.totalPrice += Double(record.price)!
+                    let total = json["data"].count
+                    //  print("json \(total)")
+                    //
+                    for index in 0..<total {
+                        self.book_id = json["data"][index]["book_id"].string!
+                        self.category_id = json["data"][index]["category_id"].string!
+                        self.publisher_id = json["data"][index]["publisher_id"].string!
+                        self.author_id = json["data"][index]["author_id"].string!
+                        self.narrator_id = json["data"][index]["narrator_id"].string!
+                        self.book_title = json["data"][index]["book_title"].string!
+                        self.desc = json["data"][index]["description"].string!
+                        self.price = json["data"][index]["price"].string!
+                        self.photo = json["data"][index]["photo"].string!
+                        self.thumb = json["data"][index]["thumb"].string!
+                        self.audio = json["data"][index]["audio"].string!
+                        self.duration = json["data"][index]["duration"].string!
+                        self.size = json["data"][index]["size"].string!
+                        self.demo = json["data"][index]["demo"].string!
+                        self.star = json["data"][index]["star"].string!
+                        self.category_title = json["data"][index]["category_title"].string!
+                        self.author_title = json["data"][index]["author_title"].string!
+                        self.publisher_title = json["data"][index]["publisher_title"].string!
+                        self.narrator_title = json["data"][index]["narrator_title"].string!
+                        
+                        let record: Record = Record(book_id: self.book_id, category_id: self.category_id, publisher_id: self.publisher_id, author_id: self.author_id, narrator_id: self.narrator_id, book_title: self.book_title, desc: self.desc, price: self.price,  photo: self.photo, thumb: self.thumb, audio: self.audio, duration: self.duration, size: self.size,  demo: self.demo, star: self.star, category_title: self.category_title, author_title: self.author_title, publisher_title: self.publisher_title, narrator_title: self.narrator_title)
+                        
+                        
+                        self.records.append(record)
+                        
+                        self.totalPrice += Double(record.price)!
+                        
+                    }
                     
+                    self.totalPriceLabel.text = "\(String(format: "%.2f", self.totalPrice)) TL"
+                    self.myCollectionView.reloadData()
+                    
+                    
+                    
+                    
+                    break
+                case .failure(let error):
+                    
+                    print("NABIYON:")
                 }
-                                
-                self.totalPriceLabel.text = "\(String(format: "%.2f", self.totalPrice)) TL"
-                self.myCollectionView.reloadData()
-                
-                
-                
-                
-                break
-            case .failure(let error):
-                
-                print("NABIYON:")
-            }
         }
-
+        
         // Do any additional setup after loading the view.
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -232,12 +232,11 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         
         //voice
         
-
+        
         
         
         //Bar Buttonları
         
-        let btn2 = UIButton(type: .custom)
         btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
         btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
         btn2.addTarget(self, action: #selector(SepetViewController.btnVoice), for: .touchUpInside)
@@ -261,7 +260,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         
     }
     
-  
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -337,8 +336,25 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
             
             //  microphoneButton.setTitle("Start Recording", for: .normal)
         } else {
+            
+            
+            
+            alert = UIAlertView(title: "Mesaj", message: "Dinleniyor...", delegate: nil, cancelButtonTitle: nil);
+            
+            var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+            loadingIndicator.center = self.view.center;
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.startAnimating();
+            
+            alert.setValue(loadingIndicator, forKey: "accessoryView")
+            
+            loadingIndicator.startAnimating()
+            
+            alert.show();
             startRecording()
             // microphoneButton.setTitle("Stop Recording", for: .normal)
+            
             
             
         }
@@ -388,80 +404,167 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
-                if(result?.bestTranscription.formattedString == "Kitaplarım"){
+                else if(result?.bestTranscription.formattedString == "Kitaplarım"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                        
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else {
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
+                        
+                        
+                    }
                     
                 }
-                if(result?.bestTranscription.formattedString == "Kategoriler"){
+                else if(result?.bestTranscription.formattedString == "Kategoriler"){
                     self.audioEngine.stop()
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     
                 }
-                if(result?.bestTranscription.formattedString == "Favorilerim"){
+                else if(result?.bestTranscription.formattedString.lowercased() == "arama"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
                     
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-                if(result?.bestTranscription.formattedString == "Ayarlar"){
+                else  if(result?.bestTranscription.formattedString == "Favorilerim"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                        
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else {
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
+                        
+                        
+                    }
                     
                 }
-                if(result?.bestTranscription.formattedString == "Sepet"){
+                else  if(result?.bestTranscription.formattedString == "Ayarlar"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                        
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else {
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
+                        
+                        
+                    }
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     
                 }
-                if(result?.bestTranscription.formattedString == "Satınalma geçmişi"){
+                else if(result?.bestTranscription.formattedString == "Sepet"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    recognitionRequest.endAudio()
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     
                 }
-                
-                if(result?.bestTranscription.formattedString == "Giriş yap"){
+                    
+                else if(result?.bestTranscription.formattedString == "Giriş"){
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
                         self.audioEngine.stop()
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
                         self.navigationController?.pushViewController(controller, animated: true)
+                        self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     }
                     else {
                         
                         self.audioEngine.stop()
-                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya daha önce giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                         self.present(longPressAlert, animated: true, completion: nil)
                         
                         
                         
                     }
-                   
                     
                 }
-                if(result?.bestTranscription.formattedString == "Çıkış yap"){
+                else if(result?.bestTranscription.formattedString == "Çıkış"){
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                         self.audioEngine.stop()
-                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamadan çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
-                        longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                        self.present(longPressAlert, animated: true, completion: nil)
+                        UserDefaults.standard.setValue(nil, forKey: "user_mail")
+                        UserDefaults.standard.setValue(nil, forKey: "user_title")
+                        UserDefaults.standard.setValue(nil, forKey: "user_id")
+                        UserDefaults.standard.setValue(nil, forKey: "user_photo")
+                        
+                        if isAudioPlayerPlaying {
+                            audioPlayerPlaying.pause()
+                            isAudioPlayerPlaying = false
+                            UserDefaults.standard.setValue("\(audioPlayerPlaying.currentTime)", forKey: "playing_book_duration")
+                        }
+                        else if isPlayerPlaying {
+                            playerPlaying.pause()
+                            isPlayerPlaying = false
+                            UserDefaults.standard.setValue("\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))", forKey: "playing_book_duration")
+                        }
+                        
+                        //self.imgIcon.image = UIImage(named: "logo.png")
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        self.present(tapAlert, animated: true, completion: nil)
                         
                         
                     }
                     else {
                         self.audioEngine.stop()
+                        
+                        recognitionRequest.endAudio()
                         
                         let longPressAlert = UIAlertController(title: "Mesaj", message: "Zaten çıkış yapmışsınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
@@ -471,7 +574,20 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                         
                     }
                 }
-                
+                else {
+                    
+                    self.audioEngine.stop()
+                    recognitionRequest.endAudio()
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    
+                    let longPressAlert = UIAlertController(title: "Mesaj", message: "Aramanıza uygun birşey bulamadık", preferredStyle: UIAlertControllerStyle.alert)
+                    longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(longPressAlert, animated: true, completion: nil)
+                    
+                    
+                    
+                    
+                }
                 
                 
                 
@@ -520,10 +636,10 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         }
     }
     
-
     
-
-  
+    
+    
+    
     
     func getIndexPathForSelectedCell() -> IndexPath? {
         var indexPath: IndexPath?
@@ -536,8 +652,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       // print("records.count")
-       // print(records.count)
+        // print("records.count")
+        // print(records.count)
         if !records.isEmpty {
             return records.count
         }
@@ -563,7 +679,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         //Aschronized image loading !!!!
         URLSession.shared.dataTask(with: NSURL(string: record.photo)! as URL, completionHandler: { (data, response, error) -> Void in
             if error != nil {
-           //     print(error)
+                //     print(error)
                 return
             }
             DispatchQueue.main.async(execute: { () -> Void in
@@ -571,7 +687,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 cell.bookName.text = record.book_title
                 cell.bookImage.image = UIImage(data: data!)
                 cell.bookPrice.text = record.price
-               
+                
                 cell.deleteBookFromFav.tag = Int(record.book_id)!
             })
             
@@ -590,20 +706,20 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         return cell
     }
     
-
+    
     
     @IBAction func deleteBookFromSepet(sender : UIButton){
-    
-    let index = sender.tag
+        
+        let index = sender.tag
         print("book Id sini bastırıyom: ")
-       // print(index)
+        // print(index)
         
         
         
         let urlString = "http://heybook.online/api.php"
         let parameters = ["request": "user_cart-delete",
                           "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
-                        "book_id": "\(index)"]
+            "book_id": "\(index)"]
         
         Alamofire.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: nil).responseJSON {
             response in
@@ -633,7 +749,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 print(error)
             }
         }
-    
+        
     }
     
     @IBAction func odemeYapButton(_ sender: Any) {
@@ -653,8 +769,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 
                 let json = JSON(data: response.data!)
                 
-                 self.valid = json["data"]["valid_status"].description
-         
+                self.valid = json["data"]["valid_status"].description
+                
                 print(self.valid)
                 if(self.records.isEmpty) {
                     let longPressAlert = UIAlertController(title: "Mesaj", message: "Sepetinizde kitap bulunmamaktadır.", preferredStyle: UIAlertControllerStyle.alert)
@@ -683,7 +799,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
             }
         }
         
-     
+        
         
     }
     
@@ -706,8 +822,8 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
     
     var alert  = UIAlertView()
     @IBAction func odemeyiOnaylaButton(_ sender: Any) {
-      
-     
+        
+        
         
         if((kartNameSurname.text?.isEmpty)! || (kartNumarası.text?.isEmpty)! || (cvcNumarası.text?.isEmpty)! ){
             let longPressAlert = UIAlertController(title: "Hata", message: "Lütfen bütün alanları doldurunuz!", preferredStyle: UIAlertControllerStyle.alert)
@@ -721,9 +837,9 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
             longPressAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
             self.present(longPressAlert, animated: true, completion: nil)
         }
-     
+            
         else {
-             alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
+            alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
             
             var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
             loadingIndicator.center = self.view.center;
@@ -740,18 +856,18 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
             
             if !timer2.isValid { // Prevent more than one timer on the thread
                 timer2 = Timer.scheduledTimer(timeInterval: timeInterval,
-                                             target: self,
-                                             selector: #selector(SepetViewController.timerDidEnd2),
-                                             userInfo: nil,
-                                             repeats: true) // Repeating timer
+                                              target: self,
+                                              selector: #selector(SepetViewController.timerDidEnd2),
+                                              userInfo: nil,
+                                              repeats: true) // Repeating timer
                 
                 
             }
             
-          
-       
             
-        
+            
+            
+            
         }
     }
     func timeToString(_ time: TimeInterval) -> String {
@@ -800,7 +916,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
             
             timer2.invalidate()
             
-           
+            
         }
         
         
@@ -815,19 +931,19 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         }
         else {
             timeLabel.text = timeToString(timeCount)
-    
+            
         }
     }
     @IBAction func dOnaylamaButton(_ sender: Any) {
         
         if (!(dOnaySifreTextField.text?.isEmpty)!){
-       
+            
             print("user id:")
             print(UserDefaults.standard.value(forKey: "user_id")!)
             let urlString = "http://heybook.online/api.php"
             let parameters = ["request": "user_cart-pay",
                               "user_id": "\(UserDefaults.standard.value(forKey: "user_id")!)",
-                                "payment_hash": "ok"]
+                "payment_hash": "ok"]
             alert = UIAlertView(title: "Mesaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
             
             var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
@@ -847,10 +963,10 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                 case .success:
                     if !self.timer2.isValid { // Prevent more than one timer on the thread
                         self.timer2 = Timer.scheduledTimer(timeInterval: self.timeInterval,
-                                                     target: self,
-                                                     selector: #selector(SepetViewController.timerDidEnd3),
-                                                     userInfo: nil,
-                                                     repeats: true) // Repeating timer
+                                                           target: self,
+                                                           selector: #selector(SepetViewController.timerDidEnd3),
+                                                           userInfo: nil,
+                                                           repeats: true) // Repeating timer
                         
                         
                     }
@@ -863,21 +979,21 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
                     print(error)
                 }
             }
-//            
-//            var alert: UIAlertView = UIAlertView(title: "Meaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
-//            
-//            
-//            var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
-//            loadingIndicator.center = self.view.center;
-//            loadingIndicator.hidesWhenStopped = true
-//            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-//            loadingIndicator.startAnimating();
-//            
-//            alert.setValue(loadingIndicator, forKey: "accessoryView")
-//            loadingIndicator.startAnimating()
-//            
-//            alert.show();
-
+            //
+            //            var alert: UIAlertView = UIAlertView(title: "Meaj", message: "İşleminiz yapılırken lütfen bekleyiniz...", delegate: nil, cancelButtonTitle: nil);
+            //
+            //
+            //            var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+            //            loadingIndicator.center = self.view.center;
+            //            loadingIndicator.hidesWhenStopped = true
+            //            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            //            loadingIndicator.startAnimating();
+            //
+            //            alert.setValue(loadingIndicator, forKey: "accessoryView")
+            //            loadingIndicator.startAnimating()
+            //
+            //            alert.show();
+            
             
         }
         else {
@@ -895,7 +1011,7 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         self.kartNumarası.text = ""
         self.kartNameSurname.text = ""
         self.cvcNumarası.text = ""
-
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
         self.navigationController?.pushViewController(controller, animated: true)
@@ -919,17 +1035,17 @@ class SepetViewController: UIViewController,UICollectionViewDataSource, UICollec
         self.view.endEditing(true)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension Double {
