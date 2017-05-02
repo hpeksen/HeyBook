@@ -72,6 +72,10 @@ class OnBoardingViewController: UIViewController,PaperOnboardingDataSource, Pape
         
     }
     
+  
+    
+    
+    
     /*
     // MARK: - Navigation
 
