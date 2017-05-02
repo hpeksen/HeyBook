@@ -1146,7 +1146,7 @@
                                     <constraint firstAttribute="height" constant="1" id="cN9-Zf-7QU"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-ra-d3J" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-ra-d3J" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="271" y="208" width="96" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
