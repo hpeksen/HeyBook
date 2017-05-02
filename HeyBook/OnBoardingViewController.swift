@@ -35,7 +35,7 @@ class OnBoardingViewController: UIViewController,PaperOnboardingDataSource, Pape
         let descriptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!
         
         return [
-            ("logo","Vitrin","Sistemimizde var olan kitaplara göz atabileeğiniz ana sayfamız.","",backgroundColorOne,UIColor.black,UIColor.black,titleFont,descriptionFont),
+            ("logo","Vitrin","Sistemimizde var olan kitaplara göz atabileceğiniz ana sayfamız.","",backgroundColorOne,UIColor.black,UIColor.black,titleFont,descriptionFont),
             
             ("logo","Kategoriler","İstediğiniz kategoride kitapların erişim noktası.","",backgroundColorTwo,UIColor.black,UIColor.black,titleFont,descriptionFont),
             ("logo","HeyBook'ta Ara","Kitap adına, yazara veya seslendirene göre arama yapabilirsiniz.","",backgroundColorThree,UIColor.black,UIColor.black,titleFont,descriptionFont),

@@ -12,12 +12,14 @@ import SideMenu
 import Cosmos
 import Alamofire
 import RNCryptor
+import SystemConfiguration
 
 var preListenPlayerPlaying = AVPlayer()
 var isPreListenPlayerPlaying = Bool()
 
 class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
+    @IBOutlet var listenViewUI: UIView!
     var timer:Timer!
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
@@ -83,22 +85,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        if let dataa = UserDefaults.standard.data(forKey: "book_record"),
-            let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
-            book_id = (record.book_id)
-            desc = (record.desc)
-            bookName = (record.book_title)
-            authorName = (record.author_title)
-            bookLink = (record.demo)
-            bookImage = (record.thumb)
-            price = (record.price)
-            star = (record.star)
-            demo = (record.demo)
-        } else {
-            print("olmadi lan....")
-            
-        }
-        
+       
         //yan menu
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
@@ -144,6 +131,24 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         //voice
         
+        if(isConnectedToNetwork() == true){
+        
+        listenViewUI.isHidden = false
+        if let dataa = UserDefaults.standard.data(forKey: "book_record"),
+            let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
+            book_id = (record.book_id)
+            desc = (record.desc)
+            bookName = (record.book_title)
+            authorName = (record.author_title)
+            bookLink = (record.demo)
+            bookImage = (record.thumb)
+            price = (record.price)
+            star = (record.star)
+            demo = (record.demo)
+        } else {
+            print("olmadi lan....")
+            
+        }
         
         
         
@@ -347,6 +352,58 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         // Do any additional setup after loading the view.
         //Bar Buttonları
+        }
+        else {
+          listenViewUI.isHidden = false
+            
+            let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
+            
+            let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: "App-Prefs:root=Wifi") else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            }
+            alertController.addAction(settingsWifi)
+            
+            let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            }
+            alertController.addAction(settingsCellular)
+            
+            let okAction = UIAlertAction(title: "Vitrin'e Git", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            
+            
+            
+            
+            self.present(alertController, animated: true, completion: nil)
+        
+        
+        }
         
         let btn2 = UIButton(type: .custom)
         btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
@@ -828,7 +885,38 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         preListenPlayerPlaying = AVPlayer()
     }
     
-    
+    func isConnectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
+        
+    }
     @IBOutlet weak var switchToAdd: UISwitch!
     var registerResponse = ""
     @IBAction func addToFavori(_ sender: Any) {

@@ -9,6 +9,7 @@
 import UIKit
 import SideMenu
 import AVFoundation
+import SystemConfiguration
 
 class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
 
@@ -85,6 +86,8 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
             self.navigationController?.pushViewController(controller, animated: true)
             }
+                
+                
             else {
                 let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
                 tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
@@ -190,10 +193,18 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                 self.navigationController?.pushViewController(controller, animated: true)
             }
             else {
+                if(isConnectedToNetwork() == true){
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
                 self.navigationController?.pushViewController(controller, animated: true)
-            }
+                }
+                else {
+                    let tapAlert = UIAlertController(title: "", message: "Lütfen internet bağlantınızı kontrol ediniz.", preferredStyle: UIAlertControllerStyle.alert)
+                    tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(tapAlert, animated: true, completion: nil)
+                
+                }
+                }
            
         }
         if ( cell.lblMenuButton.text  == "Çıkış Yap")
@@ -254,6 +265,38 @@ class MenuViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         myTableView.reloadData()
     }
     
+    func isConnectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
+        
+    }
     /*
     // MARK: - Navigation
 

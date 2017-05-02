@@ -335,7 +335,6 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 }
                 else if(result?.bestTranscription.formattedString == "Arama"){
                     self.audioEngine.stop()
-                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
@@ -424,7 +423,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 }
                     
                     
-                else if(result?.bestTranscription.formattedString == "Giriş yap"){
+                else if(result?.bestTranscription.formattedString == "Giriş"){
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
@@ -446,7 +445,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                     }
                     
                 }
-                else if(result?.bestTranscription.formattedString == "Çıkış yap"){
+                else if(result?.bestTranscription.formattedString == "Çıkış"){
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                         self.audioEngine.stop()

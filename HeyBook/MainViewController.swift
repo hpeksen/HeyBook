@@ -9,6 +9,7 @@
 import UIKit
 import SideMenu
 import Alamofire
+import Foundation
 import SystemConfiguration
 import Speech
 class MainViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate, iCarouselDelegate,iCarouselDataSource, SFSpeechRecognizerDelegate  {
@@ -203,13 +204,16 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         alertController.addAction(settingsCellular)
                         
                         let okAction = UIAlertAction(title: "Kitaplarım'a Git", style: UIAlertActionStyle.default) {
+                            
+                            
+                            
                             UIAlertAction in
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
                             self.navigationController?.pushViewController(controller, animated: true)
                         }
                        
-                        
+                    
                         // Add the actions
                         alertController.addAction(okAction)
                         
@@ -561,7 +565,9 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                             self.navigationController?.pushViewController(controller, animated: true)
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
+                        self.present(tapAlert, animated: true, completion: {
+                        self.audioEngine.stop()
+                        })
                         
                         
                     }
@@ -1020,11 +1026,79 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if(isConnectedToNetwork() == true){
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: records[indexPath.row])
         UserDefaults.standard.set(encodedData, forKey: "book_record")
         UserDefaults.standard.synchronize()
-    }
+        }
+        else {
+            let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
+            
+            let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: "App-Prefs:root=Wifi") else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            }
+            alertController.addAction(settingsWifi)
+            
+            let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            }
+            alertController.addAction(settingsCellular)
+            
+            if(UserDefaults.standard.value(forKey: "user_id") != nil){
+            
+            let okAction = UIAlertAction(title: "Kitaplarım'a Git", style: UIAlertActionStyle.default) {
+                
+                UIAlertAction in
+            
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+             alertController.addAction(okAction)
+            }
+            else {
+            // Add the actions
+           
+            
+            let loginAction = UIAlertAction(title: "Giriş Yap", style: UIAlertActionStyle.default) {
+                
+                UIAlertAction in
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            
+            
+            // Add the actions
+            alertController.addAction(loginAction)
+            }
+            
+            
+            
+            
+            self.present(alertController, animated: true, completion: nil)
+        
+        }
+        }
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
         let hours = Int(seconds) / 3600
@@ -1032,33 +1106,64 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
         let seconds = Int(seconds) % 60
         return (hours, minutes, seconds)
     }
-    
-    //check the internet connection
-    func isConnectedToNetwork()->Bool{
+    func isConnectedToNetwork() -> Bool {
         
-        var Status:Bool = false
-        let url = URL(string: "https://google.com/")
-        var response: URLResponse?
-        let request = NSMutableURLRequest(url: url!)
-        request.httpMethod = "HEAD"
-        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
-        request.timeoutInterval = 10.0
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
         
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest)
-        
-        if let httpResponse = response as? HTTPURLResponse {
-            if httpResponse.statusCode == 200 {
-                Status = true
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
             }
         }
         
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
         
-        task.resume()
-        return !Status
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
+        
     }
+    //check the internet connection
+//    func isConnectedToNetwork()->Bool{
+//        
+//        var Status:Bool = false
+//        let url = URL(string: "https://google.com/")
+//        var response: URLResponse?
+//        let request = NSMutableURLRequest(url: url!)
+//        request.httpMethod = "HEAD"
+//        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
+//        request.timeoutInterval = 10.0
+//        
+//        let sessionConfig = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+//        
+//        let task = URLSession.shared.dataTask(with: request as URLRequest)
+//        
+//        if let httpResponse = response as? HTTPURLResponse {
+//            if httpResponse.statusCode == 200 {
+//                Status = true
+//            }
+//        }
+//        
+//        
+//        task.resume()
+//        return !Status
+//    }
 }
 
 extension MainViewController: UISearchBarDelegate {
