@@ -1120,17 +1120,17 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BookName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUo-zZ-0Oi">
-                                <rect key="frame" x="16" y="90" width="245" height="23"/>
+                                <rect key="frame" x="16" y="90" width="245" height="19.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="245" id="3nf-uW-2gt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AuthorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4c-2Q-9At">
-                                <rect key="frame" x="16" y="119" width="96.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="115.5" width="76" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1458,7 +1458,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="poG-si-Ea4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-circle" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-Ef-TF4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-Ef-TF4">
                                 <rect key="frame" x="137.5" y="72" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="HUu-4L-c49"/>
@@ -2555,7 +2555,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tCT-mo-0aB">
                                     <size key="itemSize" width="600" height="150"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
-                                    <size key="footerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -2563,7 +2563,7 @@
                                         <rect key="frame" x="-112.5" y="50" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="601" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">
@@ -2572,7 +2572,7 @@
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AMK-L5-6wD">
                                                         <size key="itemSize" width="100" height="120"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="50" height="50"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
@@ -2663,23 +2663,6 @@
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
-                                                    <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadMoreVerticalCollectionFooterViewCellIdentifier" id="W9U-dw-2eE" customClass="LoadMoreCollectionReusableView" customModule="HeyBook" customModuleProvider="target">
-                                                        <rect key="frame" x="110" y="0.0" width="50" height="134"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Xd-wPo">
-                                                                <rect key="frame" x="6.5" y="48.5" width="37" height="37"/>
-                                                            </activityIndicatorView>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstItem="hQj-Xd-wPo" firstAttribute="centerY" secondItem="W9U-dw-2eE" secondAttribute="centerY" id="Gqm-Om-HEz"/>
-                                                            <constraint firstItem="hQj-Xd-wPo" firstAttribute="centerX" secondItem="W9U-dw-2eE" secondAttribute="centerX" id="T4b-GH-6w0"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outlet property="activityIndicator" destination="hQj-Xd-wPo" id="XLz-ac-EWt"/>
-                                                        </connections>
-                                                    </collectionReusableView>
                                                     <connections>
                                                         <outlet property="dataSource" destination="z28-iT-72y" id="xeg-cG-XdR"/>
                                                         <outlet property="delegate" destination="z28-iT-72y" id="2Ie-pO-3EX"/>
@@ -2737,23 +2720,6 @@
                                     <connections>
                                         <outlet property="headerBookCount" destination="XGU-Bg-qj8" id="GKe-SN-KM6"/>
                                         <outlet property="headerLabel" destination="xWP-D2-5Fk" id="gBA-iK-hYZ"/>
-                                    </connections>
-                                </collectionReusableView>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadMoreVerticalCollectionFooterViewCellIdentifier" id="Xvg-1d-2xQ" customClass="LoadMoreCollectionReusableView" customModule="HeyBook" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="200" width="375" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1kU-IQ-n1R">
-                                            <rect key="frame" x="56" y="6.5" width="263" height="37"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="1kU-IQ-n1R" firstAttribute="centerY" secondItem="Xvg-1d-2xQ" secondAttribute="centerY" id="5hX-jY-GeY"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="1kU-IQ-n1R" secondAttribute="trailing" constant="48" id="BLC-Tv-iHg"/>
-                                        <constraint firstItem="1kU-IQ-n1R" firstAttribute="centerX" secondItem="Xvg-1d-2xQ" secondAttribute="centerX" id="c7t-eU-Fxb"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="activityIndicator" destination="1kU-IQ-n1R" id="Zi5-4G-try"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -3247,7 +3213,6 @@
         <image name="parola" width="40" height="44"/>
         <image name="play" width="512" height="512"/>
         <image name="play-1" width="600" height="600"/>
-        <image name="profile-circle" width="501" height="501"/>
         <image name="sepet2" width="512" height="512"/>
         <image name="sil" width="512" height="512"/>
         <image name="sure" width="30" height="30"/>
@@ -3257,6 +3222,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="P6e-6F-lHX"/>
         <segue reference="mYp-jS-djT"/>
-        <segue reference="MDA-31-8I5"/>
+        <segue reference="d79-0k-Lpf"/>
     </inferredMetricsTieBreakers>
 </document>

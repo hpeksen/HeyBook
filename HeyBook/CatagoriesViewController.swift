@@ -12,8 +12,8 @@ import Alamofire
 import Speech
 
 class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
-
-  
+    
+    
     @IBOutlet weak var catagoriesCollectionView: UICollectionView!
     var records:[Record] = []
     var categories:[String] = []
@@ -36,33 +36,16 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
     var author_title = ""
     var publisher_title = ""
     var narrator_title = ""
-
+    
     
     //voice
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "tr-TUR"))!
-     var btn2 = UIButton(type: .custom)
+    var btn2 = UIButton(type: .custom)
     var alert = UIAlertView()
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
-    
-    var numberOfCells=1
-    
-    var loadingStatus = LoadMoreStatus.haveMore
-    
-    func loadMore() {
-        
-        if numberOfCells >= 1{
-            loadingStatus = .finished
-            catagoriesCollectionView.reloadData()
-            return
-        }
-        
-        
-        self.numberOfCells += 5
-        self.catagoriesCollectionView.reloadData()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,7 +113,7 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.navigationController?.view.backgroundColor = .clear
         
         self.automaticallyAdjustsScrollViewInsets = false;
-
+        
         
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
@@ -179,11 +162,11 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         //voice
         
-
+        
         
         //Bar Buttonları
         
-    
+        
         btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
         btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
         btn2.addTarget(self, action: #selector(CatagoriesViewController.btnVoice), for: .touchUpInside)
@@ -255,7 +238,7 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
             loadingIndicator.startAnimating()
             
             alert.show();
-
+            
             
             startRecording()
             // microphoneButton.setTitle("Stop Recording", for: .normal)
@@ -310,7 +293,7 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     
                 }
-               else if(result?.bestTranscription.formattedString == "Kitaplarım"){
+                else if(result?.bestTranscription.formattedString == "Kitaplarım"){
                     self.audioEngine.stop()
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
@@ -342,12 +325,12 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                     self.navigationController?.pushViewController(controller, animated: true)
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-              else if(result?.bestTranscription.formattedString == "Kategoriler"){
+                else if(result?.bestTranscription.formattedString == "Kategoriler"){
                     self.audioEngine.stop()
                     recognitionRequest.endAudio()
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-               else if(result?.bestTranscription.formattedString == "Favorilerim"){
+                else if(result?.bestTranscription.formattedString == "Favorilerim"){
                     self.audioEngine.stop()
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
@@ -371,7 +354,7 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                         
                     }
                 }
-               else if(result?.bestTranscription.formattedString == "Ayarlar"){
+                else if(result?.bestTranscription.formattedString == "Ayarlar"){
                     self.audioEngine.stop()
                     
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
@@ -395,7 +378,7 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                     }
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-               else if(result?.bestTranscription.formattedString == "Sepet"){
+                else if(result?.bestTranscription.formattedString == "Sepet"){
                     self.audioEngine.stop()
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
@@ -420,8 +403,8 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                         
                     }
                 }
-                
-                
+                    
+                    
                 else if(result?.bestTranscription.formattedString == "Giriş yap"){
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
@@ -444,7 +427,7 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                     }
                     
                 }
-               else if(result?.bestTranscription.formattedString == "Çıkış yap"){
+                else if(result?.bestTranscription.formattedString == "Çıkış yap"){
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                         self.audioEngine.stop()
@@ -486,7 +469,7 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                         
                     }
                 }
-                
+                    
                 else {
                     
                     self.audioEngine.stop()
@@ -546,8 +529,8 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-
-   
+    
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -557,35 +540,29 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension CatagoriesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return numberOfCells
+        return 1
         
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        
-        if(indexPath.row==numberOfCells-1){
-            if loadingStatus == .haveMore {
-                self.perform(#selector(CatagoriesViewController.loadMore), with: nil, afterDelay: 0)
-            }
-        }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerticalCellIdentifier", for: indexPath) as! VerticalCategoriesCollectionViewCell
         
@@ -606,26 +583,20 @@ extension CatagoriesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if (kind ==  UICollectionElementKindSectionFooter) && (loadingStatus != .finished){
-            var footerView:LoadMoreCollectionReusableView!
-            footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LoadMoreVerticalCollectionFooterViewCellIdentifier", for: indexPath) as! LoadMoreCollectionReusableView
-            return footerView
-        } else if(kind == UICollectionElementKindSectionHeader){
-            var headerView:HeaderCategoriesCollectionReusableView!
-            headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderCategoriesCollectionReusableView
-            
-            headerView.headerLabel.text = categories[indexPath.section]
-            headerView.headerBookCount.text = "\(records.count) kitap"
-            
-            return headerView
+        var headerView:HeaderCategoriesCollectionReusableView!
+        headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! HeaderCategoriesCollectionReusableView
+        
+        var array:[Record] = []
+        for i in 0..<records.count {
+            if records[i].category_title == categories[indexPath.section] {
+                array.append(records[i])
+            }
         }
-        assert(false, "Unexpected element kind")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
-        return (loadingStatus == .finished) ? CGSize.zero : CGSize(width: self.view.frame.width, height: 150)
+        headerView.headerLabel.text = categories[indexPath.section]
+        headerView.headerBookCount.text = "\(array.count) kitap"
         
+        return headerView
     }
     
 }

@@ -9,19 +9,9 @@
 import UIKit
 import Alamofire
 
-enum LoadMoreStatus{
-    case loading
-    case finished
-    case haveMore
-}
-
 class VerticalCategoriesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    
-    var numberOfCells = 7
-    var loadingStatus = LoadMoreStatus.haveMore
     
     var records:[Record] = []
     var book_id = ""
@@ -45,26 +35,6 @@ class VerticalCategoriesCollectionViewCell: UICollectionViewCell {
     var narrator_title = ""
     
     var section = ""
-    
-    func reloadData(){
-        numberOfCells = 7
-        collectionView.reloadData()
-        if numberOfCells > 0 {
-            collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
-        }
-    }
-    
-    func loadMore() {
-        
-        if numberOfCells >= 7{
-            loadingStatus = .finished
-            collectionView.reloadData()
-            return
-        }
-        
-        self.numberOfCells += 5
-        self.collectionView.reloadData()
-    }
     
 }
 
@@ -96,31 +66,11 @@ extension VerticalCategoriesCollectionViewCell: UICollectionViewDataSource, UISc
             
         }).resume()
         
-        if(indexPath.row==numberOfCells-1){
-            if loadingStatus == .haveMore {
-                self.perform(#selector(VerticalCategoriesCollectionViewCell.loadMore), with: nil, afterDelay: 0)
-            }
-        }
-        
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
         return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        var footerView:LoadMoreCollectionReusableView!
-        
-        if (kind ==  UICollectionElementKindSectionFooter) && (loadingStatus != .finished){
-            footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LoadMoreVerticalCollectionFooterViewCellIdentifier", for: indexPath) as! LoadMoreCollectionReusableView
-            
-        }
-        return footerView
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return (loadingStatus == .finished) ? CGSize.zero : CGSize(width: 80, height: self.frame.height)
     }
     
     @objc(collectionView:didSelectItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
