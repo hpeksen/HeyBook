@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Cuy-ao-Tcu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -35,7 +35,7 @@
                                         <rect key="frame" x="3.5" y="42" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T00-wQ-JYy">
@@ -708,7 +708,7 @@
                                                 <rect key="frame" x="3.5" y="0.0" width="368" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biq-Oi-5In">
@@ -1011,10 +1011,10 @@
             </objects>
             <point key="canvasLocation" x="3752.8000000000002" y="919.79010494752629"/>
         </scene>
-        <!--View Controller-->
+        <!--Data Source-->
         <scene sceneID="O6C-cR-PUP">
             <objects>
-                <viewController id="5m3-Vv-MOa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Onboarding" id="5m3-Vv-MOa" customClass="OnBoardingViewController" customModule="HeyBook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RAM-If-Nn3"/>
                         <viewControllerLayoutGuide type="bottom" id="d2C-tz-Kbr"/>
@@ -1022,12 +1022,41 @@
                     <view key="view" contentMode="scaleToFill" id="1jn-zK-Xty">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh9-je-SZ8" customClass="OnBoardingView" customModule="HeyBook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5m3-Vv-MOa" id="xox-Z0-f5h"/>
+                                    <outlet property="delegate" destination="5m3-Vv-MOa" id="M8h-ln-zkG"/>
+                                </connections>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBX-YN-M5P">
+                                <rect key="frame" x="164" y="557" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="Cuy-ao-Tcu" kind="show" id="F3c-Ly-TsE"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zh9-je-SZ8" firstAttribute="leading" secondItem="1jn-zK-Xty" secondAttribute="leading" id="9FX-im-0K8"/>
+                            <constraint firstItem="d2C-tz-Kbr" firstAttribute="top" secondItem="gBX-YN-M5P" secondAttribute="bottom" constant="80" id="Evq-dI-MvL"/>
+                            <constraint firstItem="d2C-tz-Kbr" firstAttribute="top" secondItem="zh9-je-SZ8" secondAttribute="bottom" id="FpD-1Q-5Mg"/>
+                            <constraint firstAttribute="trailing" secondItem="zh9-je-SZ8" secondAttribute="trailing" id="gMx-9X-etz"/>
+                            <constraint firstItem="gBX-YN-M5P" firstAttribute="centerX" secondItem="1jn-zK-Xty" secondAttribute="centerX" id="jOK-6e-iyz"/>
+                            <constraint firstItem="zh9-je-SZ8" firstAttribute="top" secondItem="1jn-zK-Xty" secondAttribute="top" id="xgs-KO-ISR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="getStartedButton" destination="gBX-YN-M5P" id="rRm-8U-cJF"/>
+                        <outlet property="onBoardingView" destination="zh9-je-SZ8" id="uD5-fV-mg5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMb-36-7G4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4440.8000000000002" y="919.79010494752629"/>
+            <point key="canvasLocation" x="37.600000000000001" y="138.98050974512745"/>
         </scene>
         <!--Listen View Controller-->
         <scene sceneID="k8R-Kk-Voy">
@@ -1146,7 +1175,7 @@
                                     <constraint firstAttribute="height" constant="1" id="cN9-Zf-7QU"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-ra-d3J" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-ra-d3J" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="271" y="208" width="96" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -1269,7 +1298,7 @@
                                         <rect key="frame" x="3.5" y="0.0" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeA-IX-rws">
@@ -2380,7 +2409,7 @@
                                         <rect key="frame" x="3.5" y="0.0" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nS5-N3-Bsp">
@@ -2520,7 +2549,7 @@
                                         <rect key="frame" x="-112.5" y="50" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="601" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">
@@ -2890,7 +2919,7 @@
                                         <rect key="frame" x="3.5" y="42" width="368" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitap Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caT-e0-TOq">

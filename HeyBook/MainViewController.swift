@@ -568,7 +568,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                 }
              
                 
-               else if(result?.bestTranscription.formattedString == "Giriş yap"){
+               else if(result?.bestTranscription.formattedString == "Giriş"){
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
@@ -590,7 +590,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                     }
                     
                 }
-               else if(result?.bestTranscription.formattedString == "Çıkış yap"){
+               else if(result?.bestTranscription.formattedString == "Çıkış"){
                        self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                         self.audioEngine.stop()
@@ -623,6 +623,8 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                     }
                     else {
                         self.audioEngine.stop()
+                        
+                        recognitionRequest.endAudio()
                         
                         let longPressAlert = UIAlertController(title: "Mesaj", message: "Zaten çıkış yapmışsınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
