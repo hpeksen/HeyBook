@@ -1218,6 +1218,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTY-Vv-iZI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1233,8 +1237,11 @@
                             <constraint firstItem="N3m-Iu-PT3" firstAttribute="top" secondItem="huh-Cj-fCa" secondAttribute="bottom" constant="6" id="EFu-xE-ea5"/>
                             <constraint firstItem="GgG-pR-W0b" firstAttribute="top" secondItem="PbO-wV-V5b" secondAttribute="top" id="I8k-ta-Umz"/>
                             <constraint firstItem="7F1-AR-25f" firstAttribute="centerX" secondItem="PbO-wV-V5b" secondAttribute="centerX" id="Jke-zk-KP2"/>
+                            <constraint firstItem="zh0-Lu-LKu" firstAttribute="top" secondItem="JTY-Vv-iZI" secondAttribute="bottom" id="MOT-1W-nO3"/>
                             <constraint firstItem="aCL-yH-39g" firstAttribute="top" secondItem="PbO-wV-V5b" secondAttribute="topMargin" constant="50" id="NFm-2L-Guv"/>
+                            <constraint firstAttribute="trailing" secondItem="JTY-Vv-iZI" secondAttribute="trailing" id="QxQ-9q-Hav"/>
                             <constraint firstItem="jJx-WW-TKa" firstAttribute="top" secondItem="RkK-Q0-DD0" secondAttribute="bottom" constant="11" id="R1O-Tx-yeW"/>
+                            <constraint firstItem="JTY-Vv-iZI" firstAttribute="top" secondItem="PbO-wV-V5b" secondAttribute="top" id="USi-4c-M02"/>
                             <constraint firstItem="Z4c-2Q-9At" firstAttribute="leading" secondItem="PbO-wV-V5b" secondAttribute="leadingMargin" id="UY3-sT-8kb"/>
                             <constraint firstItem="3fD-ra-d3J" firstAttribute="top" secondItem="GgG-pR-W0b" secondAttribute="bottom" constant="8" id="YuN-0R-XgF"/>
                             <constraint firstItem="RkK-Q0-DD0" firstAttribute="leading" secondItem="PbO-wV-V5b" secondAttribute="leadingMargin" id="aDb-Rv-OfG"/>
@@ -1249,6 +1256,7 @@
                             <constraint firstItem="jJx-WW-TKa" firstAttribute="bottom" secondItem="zh0-Lu-LKu" secondAttribute="top" id="iif-hY-lYJ"/>
                             <constraint firstItem="p3M-i1-Iku" firstAttribute="trailing" secondItem="PbO-wV-V5b" secondAttribute="trailingMargin" id="kBC-82-3GX"/>
                             <constraint firstItem="zh0-Lu-LKu" firstAttribute="top" secondItem="TB1-4f-b4T" secondAttribute="bottom" constant="8" id="kvy-0N-LQV"/>
+                            <constraint firstItem="JTY-Vv-iZI" firstAttribute="leading" secondItem="PbO-wV-V5b" secondAttribute="leading" id="mfu-zu-SdZ"/>
                             <constraint firstItem="TB1-4f-b4T" firstAttribute="trailing" secondItem="PbO-wV-V5b" secondAttribute="trailingMargin" id="nXi-uC-n4M"/>
                             <constraint firstItem="p3M-i1-Iku" firstAttribute="leading" secondItem="PbO-wV-V5b" secondAttribute="leadingMargin" id="pWl-Lm-OAM"/>
                             <constraint firstItem="zh0-Lu-LKu" firstAttribute="top" secondItem="Kep-9y-JKv" secondAttribute="bottom" constant="8" id="rvh-UI-2H1"/>
@@ -1267,6 +1275,7 @@
                         <outlet property="bookListenImage" destination="aCL-yH-39g" id="KR6-F9-jot"/>
                         <outlet property="bookNameLabel" destination="BUo-zZ-0Oi" id="FBr-Ia-6Zj"/>
                         <outlet property="descriptionLabel" destination="p3M-i1-Iku" id="K1r-zB-Irl"/>
+                        <outlet property="emptyView" destination="JTY-Vv-iZI" id="fop-jQ-iZA"/>
                         <outlet property="listenViewUI" destination="PbO-wV-V5b" id="mgh-es-Wwm"/>
                         <outlet property="listesnBookImage" destination="7F1-AR-25f" id="sbx-6S-zxb"/>
                         <outlet property="priceLabel" destination="Kep-9y-JKv" id="41k-VJ-8Ud"/>
@@ -2554,7 +2563,7 @@
                                         <rect key="frame" x="-112.5" y="50" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="601" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-PM-ow7">
@@ -2571,7 +2580,7 @@
                                                             <rect key="frame" x="0.0" y="7" width="100" height="120"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="101" height="120"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ymd-Ij-hsb">
@@ -2655,7 +2664,7 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadMoreVerticalCollectionFooterViewCellIdentifier" id="W9U-dw-2eE" customClass="LoadMoreCollectionReusableView" customModule="HeyBook" customModuleProvider="target">
-                                                        <rect key="frame" x="110" y="0.0" width="50" height="134"/>
+                                                        <rect key="frame" x="111" y="0.0" width="50" height="134"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Xd-wPo">

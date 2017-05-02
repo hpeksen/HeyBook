@@ -19,6 +19,7 @@ var isPreListenPlayerPlaying = Bool()
 
 class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
     
+    @IBOutlet weak var emptyView: UIView!
     @IBOutlet var listenViewUI: UIView!
     var timer:Timer!
     @IBOutlet weak var bookNameLabel: UILabel!
@@ -133,7 +134,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         if(isConnectedToNetwork() == true){
         
-        listenViewUI.isHidden = false
+            emptyView.isHidden = true
         if let dataa = UserDefaults.standard.data(forKey: "book_record"),
             let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
             book_id = (record.book_id)
@@ -354,8 +355,8 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
         //Bar Buttonları
         }
         else {
-          listenViewUI.isHidden = false
-            
+         
+            emptyView.isHidden = false
             let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
             
             let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
