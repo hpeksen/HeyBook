@@ -209,6 +209,8 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
                     self.audioEngine.stop()
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
                     self.navigationController?.pushViewController(controller, animated: true)

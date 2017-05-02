@@ -252,7 +252,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
                     self.audioEngine.stop()
-                    recognitionRequest.endAudio()
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     
                 }

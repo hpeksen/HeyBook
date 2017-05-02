@@ -26,7 +26,8 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate, SFSpeechR
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
 
-    
+    var btn2 = UIButton(type: .custom)
+    var alert = UIAlertView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +100,6 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate, SFSpeechR
         
         //Bar Buttonları
         
-        let btn2 = UIButton(type: .custom)
         btn2.setImage(UIImage(named: "mikrofon_beyaz"), for: .normal)
         btn2.frame = CGRect(x: 0, y: 0, width: 20, height: 30)
         btn2.addTarget(self, action: #selector(NewPasswordViewController.btnVoice), for: .touchUpInside)
@@ -155,6 +155,20 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate, SFSpeechR
             
             //  microphoneButton.setTitle("Start Recording", for: .normal)
         } else {
+            
+            alert = UIAlertView(title: "Mesaj", message: "Dinleniyor...", delegate: nil, cancelButtonTitle: nil);
+            
+            var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x:50, y:10, width:37, height:37)) as UIActivityIndicatorView
+            loadingIndicator.center = self.view.center;
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.startAnimating();
+            
+            alert.setValue(loadingIndicator, forKey: "accessoryView")
+            
+            loadingIndicator.startAnimating()
+            
+            alert.show();
             startRecording()
             // microphoneButton.setTitle("Stop Recording", for: .normal)
             
@@ -197,90 +211,200 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate, SFSpeechR
             
             if result != nil {
                 
-                print(result?.bestTranscription.formattedString)  //9
+                print(result?.bestTranscription.formattedString.lowercased())  //9
                 
                 if(result?.bestTranscription.formattedString == "Vitrin"){
                     self.audioEngine.stop()
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
                     
                 }
-                if(result?.bestTranscription.formattedString == "Kitaplarım"){
+                else if(result?.bestTranscription.formattedString == "Kitaplarım"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
                     
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                        
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else {
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
+                        
+                        
+                    }
                 }
-                if(result?.bestTranscription.formattedString == "Kategoriler"){
+                else if(result?.bestTranscription.formattedString == "Kategoriler"){
                     self.audioEngine.stop()
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "CatagoriesViewController")
                     self.navigationController?.pushViewController(controller, animated: true)
-                    
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-                if(result?.bestTranscription.formattedString == "Favorilerim"){
+                else if(result?.bestTranscription.formattedString.lowercased() == "arama"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
                     
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-                if(result?.bestTranscription.formattedString == "Ayarlar"){
+                else if(result?.bestTranscription.formattedString == "Favorilerim"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
                     
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                        
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "FavorilerViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else {
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
+                        
+                        
+                    }
                 }
-                if(result?.bestTranscription.formattedString == "Sepet"){
+                else if(result?.bestTranscription.formattedString == "Ayarlar"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
                     
+                    if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                        
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else {
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
+                        
+                        
+                    }
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-                if(result?.bestTranscription.formattedString == "Satınalma geçmişi"){
+                else if(result?.bestTranscription.formattedString == "Sepet"){
                     self.audioEngine.stop()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
                     
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    
+                    if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil || UserDefaults.standard.value(forKey: "user_id") != nil){
+                        
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "SepetViewController")
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                    else {
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Giriş yapınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                        })
+                        
+                        
+                    }
                 }
-                
-                if(result?.bestTranscription.formattedString == "Giriş yap"){
+                    
+                    
+                else if(result?.bestTranscription.formattedString == "Giriş"){
+                    
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
                         self.audioEngine.stop()
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let controller = storyboard.instantiateViewController(withIdentifier: "loginView")
                         self.navigationController?.pushViewController(controller, animated: true)
+                        self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     }
                     else {
                         
                         self.audioEngine.stop()
-                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamaya daha önce giriş yaptınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
                         self.present(longPressAlert, animated: true, completion: nil)
                         
                         
                         
                     }
-              
                     
                 }
-                
-                if(result?.bestTranscription.formattedString == "Çıkış yap"){
+                else if(result?.bestTranscription.formattedString == "Çıkış"){
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                         self.audioEngine.stop()
-                        let longPressAlert = UIAlertController(title: "Mesaj", message: "Uygulamadan çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
-                        longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
-                        self.present(longPressAlert, animated: true, completion: nil)
+                        UserDefaults.standard.setValue(nil, forKey: "user_mail")
+                        UserDefaults.standard.setValue(nil, forKey: "user_title")
+                        UserDefaults.standard.setValue(nil, forKey: "user_id")
+                        UserDefaults.standard.setValue(nil, forKey: "user_photo")
+                        
+                        if isAudioPlayerPlaying {
+                            audioPlayerPlaying.pause()
+                            isAudioPlayerPlaying = false
+                            UserDefaults.standard.setValue("\(audioPlayerPlaying.currentTime)", forKey: "playing_book_duration")
+                        }
+                        else if isPlayerPlaying {
+                            playerPlaying.pause()
+                            isPlayerPlaying = false
+                            UserDefaults.standard.setValue("\(CMTimeGetSeconds((playerPlaying.currentItem?.currentTime())!))", forKey: "playing_book_duration")
+                        }
+                        
+                        //self.imgIcon.image = UIImage(named: "logo.png")
+                        let tapAlert = UIAlertController(title: "Mesaj", message: "Çıkış yaptınız", preferredStyle: UIAlertControllerStyle.alert)
+                        tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: {(action: UIAlertAction!) in
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }))
+                        self.present(tapAlert, animated: true, completion: nil)
                         
                         
                     }
                     else {
                         self.audioEngine.stop()
+                        
+                        recognitionRequest.endAudio()
                         
                         let longPressAlert = UIAlertController(title: "Mesaj", message: "Zaten çıkış yapmışsınız", preferredStyle: UIAlertControllerStyle.alert)
                         longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
@@ -290,10 +414,23 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate, SFSpeechR
                         
                     }
                 }
+                else {
+                    
+                    self.audioEngine.stop()
+                    recognitionRequest.endAudio()
+                    self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
+                    
+                    let longPressAlert = UIAlertController(title: "Mesaj", message: "Aramanıza uygun birşey bulamadık", preferredStyle: UIAlertControllerStyle.alert)
+                    longPressAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                    self.present(longPressAlert, animated: true, completion: nil)
+                    
+                    
+                    
+                    
+                }
                 
                 
-                
-                
+
                 
                 
                 isFinal = (result?.isFinal)!
@@ -433,7 +570,10 @@ class NewPasswordViewController: UIViewController,UITextFieldDelegate, SFSpeechR
                 
                 break
             case .failure(let error):
-                
+                alert.dismiss(withClickedButtonIndex: alert.cancelButtonIndex, animated: true)
+                let tapAlert = UIAlertController(title: "", message: "Lütfen internet bağlantınızı kontrol ediniz.", preferredStyle: UIAlertControllerStyle.alert)
+                tapAlert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.destructive, handler: nil))
+                self.present(tapAlert, animated: true, completion: nil)
                 print(error)
             }
         }
