@@ -312,12 +312,15 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                             self.navigationController?.pushViewController(controller, animated: true)
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
                         
                         
                     }
                 }
-                else if(result?.bestTranscription.formattedString == "Arama"){
+                else if(result?.bestTranscription.formattedString.lowercased() == "arama"){
                     self.audioEngine.stop()
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -349,7 +352,10 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                             self.navigationController?.pushViewController(controller, animated: true)
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
                         
                         
                     }
@@ -372,7 +378,10 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                             self.navigationController?.pushViewController(controller, animated: true)
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
                         
                         
                     }
@@ -398,14 +407,17 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                             self.navigationController?.pushViewController(controller, animated: true)
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
                         
                         
                     }
                 }
                     
                     
-                else if(result?.bestTranscription.formattedString == "Giriş yap"){
+                else if(result?.bestTranscription.formattedString == "Giriş"){
                     
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") == nil || UserDefaults.standard.value(forKey: "user_title") == nil){
@@ -427,7 +439,7 @@ class CatagoriesViewController: UIViewController, SFSpeechRecognizerDelegate {
                     }
                     
                 }
-                else if(result?.bestTranscription.formattedString == "Çıkış yap"){
+                else if(result?.bestTranscription.formattedString == "Çıkış"){
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     if( UserDefaults.standard.value(forKey: "user_mail") != nil || UserDefaults.standard.value(forKey: "user_title") != nil){
                         self.audioEngine.stop()

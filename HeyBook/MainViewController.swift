@@ -475,7 +475,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                     self.navigationController?.pushViewController(controller, animated: true)
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                 }
-                else if(result?.bestTranscription.formattedString.lowercased() == "arama yap"){
+                else if(result?.bestTranscription.formattedString.lowercased() == "arama"){
                     self.audioEngine.stop()
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)

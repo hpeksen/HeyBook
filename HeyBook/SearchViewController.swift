@@ -213,6 +213,17 @@ class SearchViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogn
                     self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                     
                 }
+                    
+//                  else  if(result?.bestTranscription.formattedString.lowercased().contains("ara"))!{
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let myVC = storyboard.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+//                myVC.message1 = check
+//                myVC.message2 = (result?.bestTranscription.formattedString)!
+//                check = 0
+//                self.navigationController?.pushViewController(myVC, animated: true)
+//                self.searchTextField.text = ""
+//                    }
+                
                 else if(result?.bestTranscription.formattedString == "Kitaplarım"){
                     self.audioEngine.stop()
                     
