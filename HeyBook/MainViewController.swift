@@ -173,9 +173,9 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         self.alert.dismiss(withClickedButtonIndex: self.alert.cancelButtonIndex, animated: true)
                         print("internett")
                     //    print(isConnectedToNetwork())
-                        let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
+                        let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için yan menüden Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
                         
-                        let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
+                        let settingsWifi = UIAlertAction(title: "İnterneti Aç", style: .default) { (_) -> Void in
                             guard let settingsUrl = URL(string: "App-Prefs:root=Wifi") else {
                                 return
                             }
@@ -189,28 +189,11 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         }
                         alertController.addAction(settingsWifi)
                         
-                        let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
-                            guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
-                                return
-                            }
-                            
-                            if UIApplication.shared.canOpenURL(settingsUrl) {
-                                //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
-                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                    print("Settings opened: \(success)") // Prints true
-                                })
-                            }
-                        }
-                        alertController.addAction(settingsCellular)
-                        
-                        let okAction = UIAlertAction(title: "Kitaplarım'a Git", style: UIAlertActionStyle.default) {
-                            
-                            
+                       
+                        let okAction = UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default) {
                             
                             UIAlertAction in
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let controller = storyboard.instantiateViewController(withIdentifier: "KitaplarimViewController")
-                            self.navigationController?.pushViewController(controller, animated: true)
+                            self.present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
                         }
                        
                     
@@ -476,7 +459,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                             self.navigationController?.pushViewController(controller, animated: true)
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
+                        self.present(tapAlert, animated: true, completion: {
+                        recognitionRequest.endAudio()
+                        
+                        })
                         
                         
                     }
@@ -516,7 +502,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                             self.navigationController?.pushViewController(controller, animated: true)
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
                         
                         
                     }
@@ -539,7 +528,10 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                             self.navigationController?.pushViewController(controller, animated: true)
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
-                        self.present(tapAlert, animated: true, completion: nil)
+                        self.present(tapAlert, animated: true, completion: {
+                            recognitionRequest.endAudio()
+                            
+                        })
                         
                         
                     }
@@ -566,7 +558,7 @@ class MainViewController: UIViewController,UICollectionViewDataSource, UICollect
                         }))
                         tapAlert.addAction(UIAlertAction(title: "İptal", style: .cancel, handler: nil))
                         self.present(tapAlert, animated: true, completion: {
-                        self.audioEngine.stop()
+                        recognitionRequest.endAudio()
                         })
                         
                         

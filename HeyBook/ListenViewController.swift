@@ -359,7 +359,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             emptyView.isHidden = false
             let alertController = UIAlertController (title: "Hata", message: "Lütfen internet bağlantınız kontrol ediniz. Ya da indirdiğiniz kitapları dinlemek için Kitaplarım sayfasına gidiniz.", preferredStyle: .alert)
             
-            let settingsWifi = UIAlertAction(title: "Wifi Aç", style: .default) { (_) -> Void in
+            let settingsWifi = UIAlertAction(title: "İnterneti Aç", style: .default) { (_) -> Void in
                 guard let settingsUrl = URL(string: "App-Prefs:root=Wifi") else {
                     return
                 }
@@ -373,20 +373,7 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
             alertController.addAction(settingsWifi)
             
-            let settingsCellular = UIAlertAction(title: "Mobil Verisi Aç", style: .default) { (_) -> Void in
-                guard let settingsUrl = URL(string: "App-Prefs:root=Settings") else {
-                    return
-                }
-                
-                if UIApplication.shared.canOpenURL(settingsUrl) {
-                    //   UIApplication.shared.openURL(URL(string: "prefs:root=General")!)
-                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        print("Settings opened: \(success)") // Prints true
-                    })
-                }
-            }
-            alertController.addAction(settingsCellular)
-            
+          
             let okAction = UIAlertAction(title: "Vitrin'e Git", style: UIAlertActionStyle.default) {
                 UIAlertAction in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
