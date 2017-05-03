@@ -116,7 +116,7 @@ class KitaplarimViewController: UIViewController,UICollectionViewDataSource, UIC
                 print("ERRORRR!!!! \(error)")
             }
             
-            if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded"),
+            if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded\(UserDefaults.standard.value(forKey: "user_id")!)"),
                 let decodedBooks = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [Record] {
                 self.downloadedBooks = decodedBooks
             }

@@ -702,7 +702,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, SFSpeechRecogni
                                         
                                         print("downloaded! \(downloadedBooks[0].book_title)")
                                         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: downloadedBooks)
-                                        UserDefaults.standard.set(encodedData, forKey: "book_record_downloaded")
+                                        UserDefaults.standard.set(encodedData, forKey: "book_record_downloaded\(UserDefaults.standard.value(forKey: "user_id")!)")
                                         UserDefaults.standard.synchronize()
                                         
                                         print("RESPONSEBOOK \(response)")

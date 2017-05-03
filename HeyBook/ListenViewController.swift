@@ -531,14 +531,14 @@ class ListenViewController: UIViewController, SFSpeechRecognizerDelegate {
                 if let dataa = UserDefaults.standard.data(forKey: "book_record"),
                     let record = NSKeyedUnarchiver.unarchiveObject(with: dataa) as? Record {
                     
-                    if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded"),
+                    if let decoded = UserDefaults.standard.object(forKey: "book_record_downloaded\(UserDefaults.standard.value(forKey: "user_id")!)"),
                         let decodedBooks = NSKeyedUnarchiver.unarchiveObject(with: decoded as! Data) as? [Record] {
                         downloadedBooks = decodedBooks
                     }
                     
                     downloadedBooks.append(record)
                     let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: downloadedBooks)
-                    UserDefaults.standard.set(encodedData, forKey: "book_record_downloaded")
+                    UserDefaults.standard.set(encodedData, forKey: "book_record_downloaded\(UserDefaults.standard.value(forKey: "user_id")!)")
                     UserDefaults.standard.synchronize()
                 }
                 
